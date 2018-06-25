@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="utils.h" path="D:\svo\gtfpga\hls\hls_dft\utils.h"/>
+    <originFiles name="dft.h" path="D:\svo\gtfpga\hls\hls_dft\dft.h"/>
+    <originFiles name="dft.cpp" path="D:\svo\gtfpga\hls\hls_dft\dft.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="tb.cpp" path="D:\svo\gtfpga\hls\hls_dft\tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

@@ -1,0 +1,6 @@
+STARTING RACK NUMBER 3
+# Proc	ComponentType:Name	Load
+#----------------------------------------------------------------------------------------
+SUBSYSTEM 1
+#----------------------
+6   ControlsProcessor1  100

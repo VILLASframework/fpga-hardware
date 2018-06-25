@@ -1,0 +1,308 @@
+DRAFT 2.015i
+RTDS
+TITLE: Test Circuit
+CREATED: 10/28/02 9:41 AM (bruce)
+LAST-MODIFIED: Nov 17, 2009 (bruce)
+TIME-STEP: 5.0E-5
+FINISH-TIME: 0.2
+PRINT-STEP: 5.0E-4
+RTDS-RACK: 27
+COMPILE-MODE: AUTO
+RTDS REAL-TIME: Yes 
+1 SUBSYSTEMS
+SUBSYSTEM-TAB-NAME: SS #1
+SUBSYSTEM-TITLE:
+SUBSYSTEM-COMMENT:
+SUBSYSTEM-PRINTMODE:     PRINT-LAYOUT:CUSTOM    PAPER-DIMENSIONS:8.5x11
+17 COMPONENTS
+rtds_ctl_rackdef
+	144 112 0 0 1
+	Sub	:1
+gtfpga_ctl.def
+	528 528 0 0 136
+	Proc	:1
+	Pri	:1
+	prtyp	:GPC
+	Card	:1
+	Port	:1
+	Suffix	:0
+	numVarsToGTFPGA	:3
+	SetTypeToGTFPGA1	:Int
+	SetTypeToGTFPGA2	:Int
+	SetTypeToGTFPGA3	:Int
+	SetTypeToGTFPGA4	:Int
+	SetTypeToGTFPGA5	:Int
+	SetTypeToGTFPGA6	:Int
+	SetTypeToGTFPGA7	:Int
+	SetTypeToGTFPGA8	:Int
+	SetTypeToGTFPGA9	:Int
+	SetTypeToGTFPGA10	:Int
+	SetTypeToGTFPGA11	:Int
+	SetTypeToGTFPGA12	:Int
+	SetTypeToGTFPGA13	:Int
+	SetTypeToGTFPGA14	:Int
+	SetTypeToGTFPGA15	:Int
+	SetTypeToGTFPGA16	:Int
+	SetTypeToGTFPGA17	:Int
+	SetTypeToGTFPGA18	:Int
+	SetTypeToGTFPGA19	:Int
+	SetTypeToGTFPGA20	:Int
+	SetTypeToGTFPGA21	:Int
+	SetTypeToGTFPGA22	:Int
+	SetTypeToGTFPGA23	:Int
+	SetTypeToGTFPGA24	:Int
+	SetTypeToGTFPGA25	:Int
+	SetTypeToGTFPGA26	:Int
+	SetTypeToGTFPGA27	:Int
+	SetTypeToGTFPGA28	:Int
+	SetTypeToGTFPGA29	:Int
+	SetTypeToGTFPGA30	:Int
+	SetTypeToGTFPGA31	:Int
+	SetTypeToGTFPGA32	:Int
+	SetTypeToGTFPGA33	:Int
+	SetTypeToGTFPGA34	:Int
+	SetTypeToGTFPGA35	:Int
+	SetTypeToGTFPGA36	:Int
+	SetTypeToGTFPGA37	:Int
+	SetTypeToGTFPGA38	:Int
+	SetTypeToGTFPGA39	:Int
+	SetTypeToGTFPGA40	:Int
+	SetTypeToGTFPGA41	:Int
+	SetTypeToGTFPGA42	:Int
+	SetTypeToGTFPGA43	:Int
+	SetTypeToGTFPGA44	:Int
+	SetTypeToGTFPGA45	:Int
+	SetTypeToGTFPGA46	:Int
+	SetTypeToGTFPGA47	:Int
+	SetTypeToGTFPGA48	:Int
+	SetTypeToGTFPGA49	:Int
+	SetTypeToGTFPGA50	:Int
+	SetTypeToGTFPGA51	:Int
+	SetTypeToGTFPGA52	:Int
+	SetTypeToGTFPGA53	:Int
+	SetTypeToGTFPGA54	:Int
+	SetTypeToGTFPGA55	:Int
+	SetTypeToGTFPGA56	:Int
+	SetTypeToGTFPGA57	:Int
+	SetTypeToGTFPGA58	:Int
+	SetTypeToGTFPGA59	:Int
+	SetTypeToGTFPGA60	:Int
+	SetTypeToGTFPGA61	:Int
+	SetTypeToGTFPGA62	:Int
+	SetTypeToGTFPGA63	:Int
+	SetTypeToGTFPGA64	:Int
+	numVarsFromGTFPGA	:4
+	SetTypeFrGTFPGA1	:Int
+	SetTypeFrGTFPGA2	:Int
+	SetTypeFrGTFPGA3	:Int
+	SetTypeFrGTFPGA4	:Int
+	SetTypeFrGTFPGA5	:Int
+	SetTypeFrGTFPGA6	:Int
+	SetTypeFrGTFPGA7	:Int
+	SetTypeFrGTFPGA8	:Int
+	SetTypeFrGTFPGA9	:Int
+	SetTypeFrGTFPGA10	:Int
+	SetTypeFrGTFPGA11	:Int
+	SetTypeFrGTFPGA12	:Int
+	SetTypeFrGTFPGA13	:Int
+	SetTypeFrGTFPGA14	:Int
+	SetTypeFrGTFPGA15	:Int
+	SetTypeFrGTFPGA16	:Int
+	SetTypeFrGTFPGA17	:Int
+	SetTypeFrGTFPGA18	:Int
+	SetTypeFrGTFPGA19	:Int
+	SetTypeFrGTFPGA20	:Int
+	SetTypeFrGTFPGA21	:Int
+	SetTypeFrGTFPGA22	:Int
+	SetTypeFrGTFPGA23	:Int
+	SetTypeFrGTFPGA24	:Int
+	SetTypeFrGTFPGA25	:Int
+	SetTypeFrGTFPGA26	:Int
+	SetTypeFrGTFPGA27	:Int
+	SetTypeFrGTFPGA28	:Int
+	SetTypeFrGTFPGA29	:Int
+	SetTypeFrGTFPGA30	:Int
+	SetTypeFrGTFPGA31	:Int
+	SetTypeFrGTFPGA32	:Int
+	SetTypeFrGTFPGA33	:Int
+	SetTypeFrGTFPGA34	:Int
+	SetTypeFrGTFPGA35	:Int
+	SetTypeFrGTFPGA36	:Int
+	SetTypeFrGTFPGA37	:Int
+	SetTypeFrGTFPGA38	:Int
+	SetTypeFrGTFPGA39	:Int
+	SetTypeFrGTFPGA40	:Int
+	SetTypeFrGTFPGA41	:Int
+	SetTypeFrGTFPGA42	:Int
+	SetTypeFrGTFPGA43	:Int
+	SetTypeFrGTFPGA44	:Int
+	SetTypeFrGTFPGA45	:Int
+	SetTypeFrGTFPGA46	:Int
+	SetTypeFrGTFPGA47	:Int
+	SetTypeFrGTFPGA48	:Int
+	SetTypeFrGTFPGA49	:Int
+	SetTypeFrGTFPGA50	:Int
+	SetTypeFrGTFPGA51	:Int
+	SetTypeFrGTFPGA52	:Int
+	SetTypeFrGTFPGA53	:Int
+	SetTypeFrGTFPGA54	:Int
+	SetTypeFrGTFPGA55	:Int
+	SetTypeFrGTFPGA56	:Int
+	SetTypeFrGTFPGA57	:Int
+	SetTypeFrGTFPGA58	:Int
+	SetTypeFrGTFPGA59	:Int
+	SetTypeFrGTFPGA60	:Int
+	SetTypeFrGTFPGA61	:Int
+	SetTypeFrGTFPGA62	:Int
+	SetTypeFrGTFPGA63	:Int
+	SetTypeFrGTFPGA64	:Int
+wirelabel
+	560 272 0 0 2
+	Name	:iToGT1_0
+	Monitor	:Yes
+GROUP
+	464 400 0 0 0
+	4
+wirelabel
+	560 400 0 0 2
+	Name	:iToGT3_0
+	Monitor	:Yes
+rtds_sharc_ctl_IEEE2INT
+	464 400 0 0 6
+	prtyp	:GPC
+	Op	:Round
+	Proc	:1
+	Pri	:3
+	Op2	:Round
+	cmv	:1
+rtds_sharc_ctl_SLIDER
+	400 400 0 0 5
+	Name	:SL2
+	Init	:1.0
+	Max	:100
+	Min	:-100
+	Units	:volts
+WIRE
+	528 400 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+GROUP
+	464 336 0 0 0
+	4
+rtds_sharc_ctl_IEEE2INT
+	464 336 0 0 6
+	prtyp	:GPC
+	Op	:Round
+	Proc	:1
+	Pri	:2
+	Op2	:Round
+	cmv	:1
+rtds_sharc_ctl_SLIDER
+	400 336 0 0 5
+	Name	:SL1
+	Init	:1.0
+	Max	:100
+	Min	:-100
+	Units	:volts
+WIRE
+	528 336 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	560 336 0 0 2
+	Name	:iToGT2_0
+	Monitor	:Yes
+rtds_sharc_ctl_SWITCH
+	464 272 0 0 7
+	Name	:LED
+	Init	:Off
+	Type	:INTEGER
+	VOn	:1
+	VOff	:0
+	Ton	:ON
+	Toff	:OFF
+WIRE
+	528 272 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	464 720 0 0 2
+	Name	:iFrGT2_0
+	Monitor	:Yes
+WIRE
+	464 720 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	464 656 0 0 2
+	Name	:iFrGT1_0
+	Monitor	:Yes
+WIRE
+	464 656 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	464 784 0 0 2
+	Name	:iFrGT3_0
+	Monitor	:Yes
+WIRE
+	464 784 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	464 848 0 0 2
+	Name	:iFrGT4_0
+	Monitor	:Yes
+WIRE
+	464 848 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_TEXT9
+	688 400 0 0 19
+	NL	:4
+	COL1	:BLUE
+	COL2	:BLUE
+	COL3	:BLUE
+	COL4	:BLUE
+	COL5	:CYAN
+	COL6	:YELLOW
+	COL7	:GOLD
+	COL8	:BROWN
+	COL9	:VIOLET
+	AL1	:VALUES GOING TO GTFPGA
+	AL2	:iToGT1_0 = control GPIO LED 2
+	AL3	:iToGT2_0 = Slider 1 data
+	AL4	:iToGT3_0 = Slider 2 data
+	AL5	:Line5
+	AL6	:Line6
+	AL7	:Line7
+	AL8	:Line8
+	AL9	:Line9
+rtds_TEXT9
+	304 752 0 0 19
+	NL	:5
+	COL1	:BLUE
+	COL2	:BLUE
+	COL3	:BLUE
+	COL4	:BLUE
+	COL5	:BLUE
+	COL6	:YELLOW
+	COL7	:GOLD
+	COL8	:BROWN
+	COL9	:VIOLET
+	AL1	:VALUES COMING FROM GTFPGA
+	AL2	:iFrGT1_0 = 4 bit Tstep clock from GTFPGA
+	AL3	:iFrGT2_0 = SL1 echoed back
+	AL4	:iFrGT3_0 = SL2 echoed back
+	AL5	:iFrGT4_0 = DIP Switch SW11 on GTFPGA
+	AL6	:Line6
+	AL7	:Line7
+	AL8	:Line8
+	AL9	:Line9

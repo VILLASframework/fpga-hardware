@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="attributes" />
+            <top_module name="glbl" />
+            <top_module name="helpers" />
+            <top_module name="math_real" />
+            <top_module name="numeric_std" />
+            <top_module name="standard" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_misc" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="textio" />
+            <top_module name="top_tb" />
+            <top_module name="txt_util" />
+            <top_module name="villas" />
+            <top_module name="vl_types" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="9700000001fs"></ZoomEndTime>
+      <Cursor1Time time="399233000fs"></Cursor1Time>
+   </zoom_setting>
+   <WVObjectSize size="10" />
+   <wvobject db_ref_id="1" fp_name="/top_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/top_tb/aresetn" type="logic">
+      <obj_property name="ElementShortName">aresetn</obj_property>
+      <obj_property name="ObjectShortName">aresetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="group684" type="group">
+      <obj_property name="label">DELAY</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/s_axis_aclk" type="logic">
+         <obj_property name="ElementShortName">s_axis_aclk</obj_property>
+         <obj_property name="ObjectShortName">s_axis_aclk</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/s_axis_aresetn" type="logic">
+         <obj_property name="ElementShortName">s_axis_aresetn</obj_property>
+         <obj_property name="ObjectShortName">s_axis_aresetn</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/s_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">s_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/s_axis_tready" type="logic">
+         <obj_property name="ElementShortName">s_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/s_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">s_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/s_axis_tdata" type="array">
+         <obj_property name="ElementShortName">s_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tdata[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/m_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/m_axis_tready" type="logic">
+         <obj_property name="ElementShortName">m_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/m_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">m_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/m_axis_tdata" type="array">
+         <obj_property name="ElementShortName">m_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tdata[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/inpacket" type="other">
+         <obj_property name="ElementShortName">inpacket</obj_property>
+         <obj_property name="ObjectShortName">inpacket</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/dly_cnt" type="other">
+         <obj_property name="ElementShortName">dly_cnt</obj_property>
+         <obj_property name="ObjectShortName">dly_cnt</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/MEAN" type="other">
+         <obj_property name="ElementShortName">MEAN</obj_property>
+         <obj_property name="ObjectShortName">MEAN</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/VARIANCE" type="other">
+         <obj_property name="ElementShortName">VARIANCE</obj_property>
+         <obj_property name="ObjectShortName">VARIANCE</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/USE_RANDOM" type="other">
+         <obj_property name="ElementShortName">USE_RANDOM</obj_property>
+         <obj_property name="ObjectShortName">USE_RANDOM</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/AXIS_DLY/SEED" type="other">
+         <obj_property name="ElementShortName">SEED</obj_property>
+         <obj_property name="ObjectShortName">SEED</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group737" type="group">
+      <obj_property name="label">FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/s_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">s_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/s_axis_tready" type="logic">
+         <obj_property name="ElementShortName">s_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/s_axis_tdata" type="array">
+         <obj_property name="ElementShortName">s_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tdata[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/s_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">s_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/m_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/m_axis_tready" type="logic">
+         <obj_property name="ElementShortName">m_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/m_axis_tdata" type="array">
+         <obj_property name="ElementShortName">m_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tdata[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/FIFO/m_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">m_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tlast</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group735" type="group">
+      <obj_property name="label">RTDS2AXIS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/m_axis_tdata" type="array">
+         <obj_property name="ElementShortName">m_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tdata[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/m_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">m_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/m_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">m_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/m_axis_tready" type="logic">
+         <obj_property name="ElementShortName">m_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">m_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/rx_data" type="array">
+         <obj_property name="ElementShortName">rx_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rx_data[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/rx_addr" type="array">
+         <obj_property name="ElementShortName">rx_addr[23:0]</obj_property>
+         <obj_property name="ObjectShortName">rx_addr[23:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/rx_valid" type="logic">
+         <obj_property name="ElementShortName">rx_valid</obj_property>
+         <obj_property name="ObjectShortName">rx_valid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/ts_pulse" type="logic">
+         <obj_property name="ElementShortName">ts_pulse</obj_property>
+         <obj_property name="ObjectShortName">ts_pulse</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/mrate" type="array">
+         <obj_property name="ElementShortName">mrate[15:0]</obj_property>
+         <obj_property name="ObjectShortName">mrate[15:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/state" type="other">
+         <obj_property name="ElementShortName">state</obj_property>
+         <obj_property name="ObjectShortName">state</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/wdt" type="other">
+         <obj_property name="ElementShortName">wdt</obj_property>
+         <obj_property name="ObjectShortName">wdt</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_RTDS2AXIS/previous_tdata" type="array">
+         <obj_property name="ElementShortName">previous_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">previous_tdata[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group734" type="group">
+      <obj_property name="label">AXIS2RTDS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/s_axis_tdata" type="array">
+         <obj_property name="ElementShortName">s_axis_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tdata[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/s_axis_tvalid" type="logic">
+         <obj_property name="ElementShortName">s_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/s_axis_tlast" type="logic">
+         <obj_property name="ElementShortName">s_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/s_axis_tready" type="logic">
+         <obj_property name="ElementShortName">s_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">s_axis_tready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/tx_data" type="array">
+         <obj_property name="ElementShortName">tx_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tx_data[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/tx_addr" type="array">
+         <obj_property name="ElementShortName">tx_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tx_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/tx_wr" type="logic">
+         <obj_property name="ElementShortName">tx_wr</obj_property>
+         <obj_property name="ObjectShortName">tx_wr</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/ts_pulse" type="logic">
+         <obj_property name="ElementShortName">ts_pulse</obj_property>
+         <obj_property name="ObjectShortName">ts_pulse</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/tx_inprogress" type="logic">
+         <obj_property name="ElementShortName">tx_inprogress</obj_property>
+         <obj_property name="ObjectShortName">tx_inprogress</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/tx_full" type="logic">
+         <obj_property name="ElementShortName">tx_full</obj_property>
+         <obj_property name="ObjectShortName">tx_full</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/lock_bank" type="logic">
+         <obj_property name="ElementShortName">lock_bank</obj_property>
+         <obj_property name="ObjectShortName">lock_bank</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/free_bank" type="logic">
+         <obj_property name="ElementShortName">free_bank</obj_property>
+         <obj_property name="ObjectShortName">free_bank</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/overflow" type="logic">
+         <obj_property name="ElementShortName">overflow</obj_property>
+         <obj_property name="ObjectShortName">overflow</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/mrate" type="array">
+         <obj_property name="ElementShortName">mrate[15:0]</obj_property>
+         <obj_property name="ObjectShortName">mrate[15:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/state" type="other">
+         <obj_property name="ElementShortName">state</obj_property>
+         <obj_property name="ObjectShortName">state</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/ready" type="logic">
+         <obj_property name="ElementShortName">ready</obj_property>
+         <obj_property name="ObjectShortName">ready</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/completed" type="logic">
+         <obj_property name="ElementShortName">completed</obj_property>
+         <obj_property name="ObjectShortName">completed</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/index" type="array">
+         <obj_property name="ElementShortName">index[5:0]</obj_property>
+         <obj_property name="ObjectShortName">index[5:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/FSM_AXIS2RTDS/tx_inprogress_1d" type="logic">
+         <obj_property name="ElementShortName">tx_inprogress_1d</obj_property>
+         <obj_property name="ObjectShortName">tx_inprogress_1d</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group183" type="group">
+      <obj_property name="label">IFM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/crst" type="logic">
+         <obj_property name="ElementShortName">crst</obj_property>
+         <obj_property name="ObjectShortName">crst</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/ts_pulse" type="logic">
+         <obj_property name="ElementShortName">ts_pulse</obj_property>
+         <obj_property name="ObjectShortName">ts_pulse</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/ts_pulse_pre" type="logic">
+         <obj_property name="ElementShortName">ts_pulse_pre</obj_property>
+         <obj_property name="ObjectShortName">ts_pulse_pre</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/initialized" type="other">
+         <obj_property name="ElementShortName">initialized</obj_property>
+         <obj_property name="ObjectShortName">initialized</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/running" type="other">
+         <obj_property name="ElementShortName">running</obj_property>
+         <obj_property name="ObjectShortName">running</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/locked" type="other">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/irq_ts" type="logic">
+         <obj_property name="ElementShortName">irq_ts</obj_property>
+         <obj_property name="ObjectShortName">irq_ts</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/irq_overflow" type="logic">
+         <obj_property name="ElementShortName">irq_overflow</obj_property>
+         <obj_property name="ObjectShortName">irq_overflow</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/irq_case" type="logic">
+         <obj_property name="ElementShortName">irq_case</obj_property>
+         <obj_property name="ObjectShortName">irq_case</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserTxAdr" type="array">
+         <obj_property name="ElementShortName">UserTxAdr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">UserTxAdr[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserTxData" type="array">
+         <obj_property name="ElementShortName">UserTxData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">UserTxData[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserTxWr" type="logic">
+         <obj_property name="ElementShortName">UserTxWr</obj_property>
+         <obj_property name="ObjectShortName">UserTxWr</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserTxFull" type="logic">
+         <obj_property name="ElementShortName">UserTxFull</obj_property>
+         <obj_property name="ObjectShortName">UserTxFull</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserTxInProgress" type="logic">
+         <obj_property name="ElementShortName">UserTxInProgress</obj_property>
+         <obj_property name="ObjectShortName">UserTxInProgress</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserLockBank" type="logic">
+         <obj_property name="ElementShortName">UserLockBank</obj_property>
+         <obj_property name="ObjectShortName">UserLockBank</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserFreeBank" type="logic">
+         <obj_property name="ElementShortName">UserFreeBank</obj_property>
+         <obj_property name="ObjectShortName">UserFreeBank</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserVersion" type="array">
+         <obj_property name="ElementShortName">UserVersion[15:0]</obj_property>
+         <obj_property name="ObjectShortName">UserVersion[15:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserRxAdr" type="array">
+         <obj_property name="ElementShortName">UserRxAdr[23:0]</obj_property>
+         <obj_property name="ObjectShortName">UserRxAdr[23:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserRxData" type="array">
+         <obj_property name="ElementShortName">UserRxData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">UserRxData[31:0]</obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">24</obj_property>
+         <obj_property name="radix_otherWidth">8</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserRxValid" type="logic">
+         <obj_property name="ElementShortName">UserRxValid</obj_property>
+         <obj_property name="ObjectShortName">UserRxValid</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/UserTstepPulse" type="logic">
+         <obj_property name="ElementShortName">UserTstepPulse</obj_property>
+         <obj_property name="ObjectShortName">UserTstepPulse</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/LinkUp" type="logic">
+         <obj_property name="ElementShortName">LinkUp</obj_property>
+         <obj_property name="ObjectShortName">LinkUp</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/CardDetected" type="logic">
+         <obj_property name="ElementShortName">CardDetected</obj_property>
+         <obj_property name="ObjectShortName">CardDetected</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/CaseReset" type="logic">
+         <obj_property name="ElementShortName">CaseReset</obj_property>
+         <obj_property name="ObjectShortName">CaseReset</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/CaseInit" type="logic">
+         <obj_property name="ElementShortName">CaseInit</obj_property>
+         <obj_property name="ObjectShortName">CaseInit</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/Clk100M" type="logic">
+         <obj_property name="ElementShortName">Clk100M</obj_property>
+         <obj_property name="ObjectShortName">Clk100M</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/IFM/PowerOnRst" type="logic">
+         <obj_property name="ElementShortName">PowerOnRst</obj_property>
+         <obj_property name="ObjectShortName">PowerOnRst</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/top_tb/UUT/ts_period_cnt" type="array">
+      <obj_property name="ElementShortName">ts_period_cnt[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ts_period_cnt[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/top_tb/UUT/ts_prev_period_cnt" type="array">
+      <obj_property name="ElementShortName">ts_prev_period_cnt[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ts_prev_period_cnt[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="group381" type="group">
+      <obj_property name="label">AXI-Lite registers</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/ts_cnt" type="array">
+         <obj_property name="ElementShortName">ts_cnt[39:0]</obj_property>
+         <obj_property name="ObjectShortName">ts_cnt[39:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/ts_period" type="array">
+         <obj_property name="ElementShortName">ts_period[15:0]</obj_property>
+         <obj_property name="ObjectShortName">ts_period[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status" type="array">
+         <obj_property name="ElementShortName">status[7:0]</obj_property>
+         <obj_property name="ObjectShortName">status[7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[7]" type="logic">
+            <obj_property name="ElementShortName">[7]</obj_property>
+            <obj_property name="ObjectShortName">status[7]</obj_property>
+         </wvobject>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[6]" type="logic">
+            <obj_property name="ElementShortName">[6]</obj_property>
+            <obj_property name="ObjectShortName">status[6]</obj_property>
+         </wvobject>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[5]" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[5]</obj_property>
+            <obj_property name="ObjectShortName">status[5]</obj_property>
+            <obj_property name="label">case_inreset</obj_property>
+         </wvobject>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[4]" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[4]</obj_property>
+            <obj_property name="ObjectShortName">status[4]</obj_property>
+            <obj_property name="label">case_running</obj_property>
+         </wvobject>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[3]" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[3]</obj_property>
+            <obj_property name="ObjectShortName">status[3]</obj_property>
+            <obj_property name="label">tx_inprogress</obj_property>
+         </wvobject>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[2]" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[2]</obj_property>
+            <obj_property name="ObjectShortName">status[2]</obj_property>
+            <obj_property name="label">tx_full</obj_property>
+         </wvobject>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[1]" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[1]</obj_property>
+            <obj_property name="ObjectShortName">status[1]</obj_property>
+            <obj_property name="label">linkup</obj_property>
+         </wvobject>
+         <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/status[0]" type="logic">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[0]</obj_property>
+            <obj_property name="ObjectShortName">status[0]</obj_property>
+            <obj_property name="label">carddetected</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/control" type="array">
+         <obj_property name="ElementShortName">control[7:0]</obj_property>
+         <obj_property name="ObjectShortName">control[7:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/version" type="array">
+         <obj_property name="ElementShortName">version[15:0]</obj_property>
+         <obj_property name="ObjectShortName">version[15:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/coalesc" type="array">
+         <obj_property name="ElementShortName">coalesc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">coalesc[31:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/mrate_rtds2axis" type="array">
+         <obj_property name="ElementShortName">mrate_rtds2axis[15:0]</obj_property>
+         <obj_property name="ObjectShortName">mrate_rtds2axis[15:0]</obj_property>
+      </wvobject>
+      <wvobject db_ref_id="1" fp_name="/top_tb/UUT/AXI_SLAVE/mrate_axis2rtds" type="array">
+         <obj_property name="ElementShortName">mrate_axis2rtds[15:0]</obj_property>
+         <obj_property name="ObjectShortName">mrate_axis2rtds[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

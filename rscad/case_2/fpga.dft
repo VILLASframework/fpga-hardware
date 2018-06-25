@@ -1,0 +1,669 @@
+DRAFT 3.003
+RTDS
+TITLE: Test Circuit
+CREATED: Dec 20, 2013 (jwa-yso)
+LAST-MODIFIED: Jul 18, 2014 (sla-svo)
+TIME-STEP: 5.0E-5
+FINISH-TIME: 0.2
+PRINT-STEP: 5.0E-4
+RTDS-RACK: 3
+COMPILE-MODE: AUTO
+RTDS REAL-TIME: Yes 
+1 SUBSYSTEMS
+SUBSYSTEM-TAB-NAME: SS #1
+SUBSYSTEM-TITLE:
+SUBSYSTEM-COMMENT:
+SUBSYSTEM-PRINTMODE:     PRINT-LAYOUT:CUSTOM    PAPER-DIMENSIONS:8.5x11
+54 COMPONENTS
+DASHED_LINE
+	1104 336 1 0 2
+	-4 -256 4 256
+	LW	:1.0
+	COL	:RED
+GROUP
+	368 144 0 0 0
+	6
+WIRE
+	400 144 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	432 144 0 0 3
+	Name	:out7a
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_SRCABSPH
+	368 144 0 0 6
+	WType	:Sine
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:6
+rtds_sharc_ctl_CONSTANT
+	304 112 0 0 1
+	Val	:15000.0
+rtds_sharc_ctl_CONSTANT
+	304 144 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	304 176 0 0 1
+	Val	:0.0
+GROUP
+	368 240 0 0 0
+	6
+WIRE
+	400 240 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	432 240 0 0 3
+	Name	:out8a
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_SRCABSPH
+	368 240 0 0 6
+	WType	:Sine
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:5
+rtds_sharc_ctl_CONSTANT
+	304 208 0 0 1
+	Val	:888000.0
+rtds_sharc_ctl_CONSTANT
+	304 240 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	304 272 0 0 1
+	Val	:0.0
+WIRE
+	400 432 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	304 464 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	304 432 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	304 400 0 0 1
+	Val	:1122334.0
+WIRE
+	400 528 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	304 560 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	304 528 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	304 496 0 0 1
+	Val	:122222.0
+wirelabel
+	432 432 0 0 3
+	Name	:out10a
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	432 528 0 0 3
+	Name	:out11a
+	COL	:BLUE
+	Monitor	:Yes
+_rtds_GTFPGA.def
+	720 304 0 0 265
+	prtyp	:2
+	Port	:1
+	Card	:1
+	Proc	:1
+	Pri	:1
+	sfx	:
+	numVarsToGTFPGA	:16
+	out1	:out1d
+	SetTypeToGTFPGA1	:Int
+	out2	:out2d
+	SetTypeToGTFPGA2	:Int
+	out3	:out3d
+	SetTypeToGTFPGA3	:Int
+	out4	:out4d
+	SetTypeToGTFPGA4	:Int
+	out5	:out5d
+	SetTypeToGTFPGA5	:Int
+	out6	:out6d
+	SetTypeToGTFPGA6	:Int
+	out7	:out7a
+	SetTypeToGTFPGA7	:Float
+	out8	:out8a
+	SetTypeToGTFPGA8	:Float
+	out9	:out9a
+	SetTypeToGTFPGA9	:Float
+	out10	:out10a
+	SetTypeToGTFPGA10	:Float
+	out11	:out11a
+	SetTypeToGTFPGA11	:Float
+	out12	:out12a
+	SetTypeToGTFPGA12	:Float
+	out13	:out13a
+	SetTypeToGTFPGA13	:Float
+	out14	:out14a
+	SetTypeToGTFPGA14	:Float
+	out15	:out15a
+	SetTypeToGTFPGA15	:Float
+	out16	:out16a
+	SetTypeToGTFPGA16	:Float
+	out17	:out17
+	SetTypeToGTFPGA17	:Int
+	out18	:out18
+	SetTypeToGTFPGA18	:Int
+	out19	:out19
+	SetTypeToGTFPGA19	:Int
+	out20	:out20
+	SetTypeToGTFPGA20	:Int
+	out21	:out21
+	SetTypeToGTFPGA21	:Int
+	out22	:out22
+	SetTypeToGTFPGA22	:Int
+	out23	:out23
+	SetTypeToGTFPGA23	:Int
+	out24	:out24
+	SetTypeToGTFPGA24	:Int
+	out25	:out25
+	SetTypeToGTFPGA25	:Int
+	out26	:out26
+	SetTypeToGTFPGA26	:Int
+	out27	:out27
+	SetTypeToGTFPGA27	:Int
+	out28	:out28
+	SetTypeToGTFPGA28	:Int
+	out29	:out29
+	SetTypeToGTFPGA29	:Int
+	out30	:out30
+	SetTypeToGTFPGA30	:Int
+	out31	:out31
+	SetTypeToGTFPGA31	:Int
+	out32	:out32
+	SetTypeToGTFPGA32	:Int
+	out33	:out33
+	SetTypeToGTFPGA33	:Int
+	out34	:out34
+	SetTypeToGTFPGA34	:Int
+	out35	:out35
+	SetTypeToGTFPGA35	:Int
+	out36	:out36
+	SetTypeToGTFPGA36	:Int
+	out37	:out37
+	SetTypeToGTFPGA37	:Int
+	out38	:out38
+	SetTypeToGTFPGA38	:Int
+	out39	:out39
+	SetTypeToGTFPGA39	:Int
+	out40	:out40
+	SetTypeToGTFPGA40	:Int
+	out41	:out41
+	SetTypeToGTFPGA41	:Int
+	out42	:out42
+	SetTypeToGTFPGA42	:Int
+	out43	:out43
+	SetTypeToGTFPGA43	:Int
+	out44	:out44
+	SetTypeToGTFPGA44	:Int
+	out45	:out45
+	SetTypeToGTFPGA45	:Int
+	out46	:out46
+	SetTypeToGTFPGA46	:Int
+	out47	:out47
+	SetTypeToGTFPGA47	:Int
+	out48	:out48
+	SetTypeToGTFPGA48	:Int
+	out49	:out49
+	SetTypeToGTFPGA49	:Int
+	out50	:out50
+	SetTypeToGTFPGA50	:Int
+	out51	:out51
+	SetTypeToGTFPGA51	:Int
+	out52	:out52
+	SetTypeToGTFPGA52	:Int
+	out53	:out53
+	SetTypeToGTFPGA53	:Int
+	out54	:out54
+	SetTypeToGTFPGA54	:Int
+	out55	:out55
+	SetTypeToGTFPGA55	:Int
+	out56	:out56
+	SetTypeToGTFPGA56	:Int
+	out57	:out57
+	SetTypeToGTFPGA57	:Int
+	out58	:out58
+	SetTypeToGTFPGA58	:Int
+	out59	:out59
+	SetTypeToGTFPGA59	:Int
+	out60	:out60
+	SetTypeToGTFPGA60	:Int
+	out61	:out61
+	SetTypeToGTFPGA61	:Int
+	out62	:out62
+	SetTypeToGTFPGA62	:Int
+	out63	:out63
+	SetTypeToGTFPGA63	:Int
+	out64	:out64
+	SetTypeToGTFPGA64	:Int
+	numVarsFromGTFPGA	:16
+	in1	:in1d
+	SetTypeFrGTFPGA1	:Int
+	in2	:in2d
+	SetTypeFrGTFPGA2	:Int
+	in3	:in3d
+	SetTypeFrGTFPGA3	:Int
+	in4	:in4d
+	SetTypeFrGTFPGA4	:Int
+	in5	:in5d
+	SetTypeFrGTFPGA5	:Int
+	in6	:in6d
+	SetTypeFrGTFPGA6	:Int
+	in7	:in7a
+	SetTypeFrGTFPGA7	:Float
+	in8	:in8a
+	SetTypeFrGTFPGA8	:Float
+	in9	:in9a
+	SetTypeFrGTFPGA9	:Float
+	in10	:in10a
+	SetTypeFrGTFPGA10	:Float
+	in11	:in11a
+	SetTypeFrGTFPGA11	:Float
+	in12	:in12a
+	SetTypeFrGTFPGA12	:Float
+	in13	:in13a
+	SetTypeFrGTFPGA13	:Float
+	in14	:in14a
+	SetTypeFrGTFPGA14	:Float
+	in15	:in15a
+	SetTypeFrGTFPGA15	:Float
+	in16	:in16a
+	SetTypeFrGTFPGA16	:Float
+	in17	:in17
+	SetTypeFrGTFPGA17	:Int
+	in18	:in18
+	SetTypeFrGTFPGA18	:Int
+	in19	:in19
+	SetTypeFrGTFPGA19	:Int
+	in20	:in20
+	SetTypeFrGTFPGA20	:Int
+	in21	:in21
+	SetTypeFrGTFPGA21	:Int
+	in22	:in22
+	SetTypeFrGTFPGA22	:Int
+	in23	:in23
+	SetTypeFrGTFPGA23	:Int
+	in24	:in24
+	SetTypeFrGTFPGA24	:Int
+	in25	:in25
+	SetTypeFrGTFPGA25	:Int
+	in26	:in26
+	SetTypeFrGTFPGA26	:Int
+	in27	:in27
+	SetTypeFrGTFPGA27	:Int
+	in28	:in28
+	SetTypeFrGTFPGA28	:Int
+	in29	:in29
+	SetTypeFrGTFPGA29	:Int
+	in30	:in30
+	SetTypeFrGTFPGA30	:Int
+	in31	:in31
+	SetTypeFrGTFPGA31	:Int
+	in32	:in32
+	SetTypeFrGTFPGA32	:Int
+	in33	:in33
+	SetTypeFrGTFPGA33	:Int
+	in34	:in34
+	SetTypeFrGTFPGA34	:Int
+	in35	:in35
+	SetTypeFrGTFPGA35	:Int
+	in36	:in36
+	SetTypeFrGTFPGA36	:Int
+	in37	:in37
+	SetTypeFrGTFPGA37	:Int
+	in38	:in38
+	SetTypeFrGTFPGA38	:Int
+	in39	:in39
+	SetTypeFrGTFPGA39	:Int
+	in40	:in40
+	SetTypeFrGTFPGA40	:Int
+	in41	:in41
+	SetTypeFrGTFPGA41	:Int
+	in42	:in42
+	SetTypeFrGTFPGA42	:Int
+	in43	:in43
+	SetTypeFrGTFPGA43	:Int
+	in44	:in44
+	SetTypeFrGTFPGA44	:Int
+	in45	:in45
+	SetTypeFrGTFPGA45	:Int
+	in46	:in46
+	SetTypeFrGTFPGA46	:Int
+	in47	:in47
+	SetTypeFrGTFPGA47	:Int
+	in48	:in48
+	SetTypeFrGTFPGA48	:Int
+	in49	:in49
+	SetTypeFrGTFPGA49	:Int
+	in50	:in50
+	SetTypeFrGTFPGA50	:Int
+	in51	:in51
+	SetTypeFrGTFPGA51	:Int
+	in52	:in52
+	SetTypeFrGTFPGA52	:Int
+	in53	:in53
+	SetTypeFrGTFPGA53	:Int
+	in54	:in54
+	SetTypeFrGTFPGA54	:Int
+	in55	:in55
+	SetTypeFrGTFPGA55	:Int
+	in56	:in56
+	SetTypeFrGTFPGA56	:Int
+	in57	:in57
+	SetTypeFrGTFPGA57	:Int
+	in58	:in58
+	SetTypeFrGTFPGA58	:Int
+	in59	:in59
+	SetTypeFrGTFPGA59	:Int
+	in60	:in60
+	SetTypeFrGTFPGA60	:Int
+	in61	:in61
+	SetTypeFrGTFPGA61	:Int
+	in62	:in62
+	SetTypeFrGTFPGA62	:Int
+	in63	:in63
+	SetTypeFrGTFPGA63	:Int
+	in64	:in64
+	SetTypeFrGTFPGA64	:Int
+	useVersion	:THREE
+rtds_risc_ctl_PROCASN
+	720 464 0 0 3
+	CPRO	:1
+	BRD	:3
+	ABC	:A
+WIRE
+	176 560 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 560 0 0 3
+	Name	:out16a
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_SRCABSPH
+	368 336 0 0 6
+	WType	:Square
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:4
+WIRE
+	400 336 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	304 368 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	304 336 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	304 304 0 0 1
+	Val	:999999.0
+wirelabel
+	432 336 0 0 3
+	Name	:out9a
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_SRCABSPH
+	368 432 0 0 6
+	WType	:SawTooth
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:3
+rtds_sharc_ctl_SRCABSPH
+	368 528 0 0 6
+	WType	:Triangle
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:2
+wirelabel
+	208 528 0 0 3
+	Name	:out15a
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 528 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+WIRE
+	176 496 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 496 0 0 3
+	Name	:out14a
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_CONSTANT
+	144 496 0 0 1
+	Val	:999.232
+rtds_sharc_ctl_CONSTANT
+	144 560 0 0 1
+	Val	:123.345
+wirelabel
+	208 368 0 0 3
+	Name	:out12a
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_DIAL
+	144 368 0 0 34
+	Name	:DIAL1
+	Type	:REAL
+	Pos	:10
+	Init	:1
+	IP1	:1
+	IP2	:2
+	IP3	:3
+	IP4	:4
+	IP5	:5
+	IP6	:6
+	IP7	:7
+	IP8	:8
+	IP9	:9
+	IP10	:10
+	FP1	:1.0
+	FP2	:2.0
+	FP3	:3.0
+	FP4	:4.0
+	FP5	:5.0
+	FP6	:6.0
+	FP7	:7.0
+	FP8	:8.0
+	FP9	:9.0
+	FP10	:10.0
+	HEX1	:01
+	HEX2	:02
+	HEX3	:03
+	HEX4	:04
+	HEX5	:05
+	HEX6	:06
+	HEX7	:07
+	HEX8	:08
+	HEX9	:09
+	HEX10	:0A
+GROUP
+	176 368 0 0 0
+	1
+WIRE
+	176 368 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 432 0 0 3
+	Name	:out13a
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 432 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_DIAL
+	144 432 0 0 34
+	Name	:DIAL2
+	Type	:REAL
+	Pos	:10
+	Init	:1
+	IP1	:1
+	IP2	:2
+	IP3	:3
+	IP4	:4
+	IP5	:5
+	IP6	:6
+	IP7	:7
+	IP8	:8
+	IP9	:9
+	IP10	:10
+	FP1	:1.0
+	FP2	:2.0
+	FP3	:3.0
+	FP4	:4.0
+	FP5	:5.0
+	FP6	:6.0
+	FP7	:7.0
+	FP8	:8.0
+	FP9	:9.0
+	FP10	:10.0
+	HEX1	:01
+	HEX2	:02
+	HEX3	:03
+	HEX4	:04
+	HEX5	:05
+	HEX6	:06
+	HEX7	:07
+	HEX8	:08
+	HEX9	:09
+	HEX10	:0A
+rtds_sharc_ctl_ICONST
+	144 176 0 0 1
+	Val	:222
+wirelabel
+	208 176 0 0 3
+	Name	:out3d
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	208 176 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 208 0 0 3
+	Name	:out4d
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 208 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_ICONST
+	144 240 0 0 1
+	Val	:123
+wirelabel
+	208 240 0 0 3
+	Name	:out5d
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	208 240 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 272 0 0 3
+	Name	:out6d
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 272 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 112 0 0 3
+	Name	:out1d
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 112 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_SWITCH
+	112 112 0 0 7
+	Name	:SW1
+	Init	:Off
+	Type	:INTEGER
+	VOn	:1
+	VOff	:0
+	Ton	:ON
+	Toff	:OFF
+rtds_sharc_ctl_SWITCH
+	112 208 0 0 7
+	Name	:SW2
+	Init	:Off
+	Type	:INTEGER
+	VOn	:1
+	VOff	:0
+	Ton	:ON
+	Toff	:OFF
+GROUP
+	176 144 0 0 0
+	3
+WIRE
+	176 144 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 144 0 0 3
+	Name	:out2d
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_ICONST
+	144 144 0 0 1
+	Val	:0
+rtds_sharc_ctl_PB
+	144 272 0 0 4
+	Name	:PB1
+	Type	:INTEGER
+	VOn	:1
+	VOff	:0
+rtds_sharc_ctl_SLIDER
+	144 528 0 0 5
+	Name	:SL1
+	Init	:1.0
+	Max	:100
+	Min	:-100
+	Units	:volts

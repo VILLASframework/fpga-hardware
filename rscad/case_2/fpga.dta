@@ -1,0 +1,343 @@
+Test Circuit
+C
+C Compiled by: DRAFT 3.003
+C Source File:U:\ACS-Public\35_msv\05_s2ss\01_RTDSandGTFPGAandOPAL_02_07_2014_tests_with_Steffen\RSCAD_TestGTFPGA_1\fpga.dft
+C
+C==============================================================================================
+5.0E-5 0.2 5.0E-4 /Delta-T Finish-Time Print-Step
+1      /Number of subsystems
+C =====================================================================================
+C SUBSYSTEM #1:SS 1
+C ------------------------------------------------------
+1     /# of nodes in subsystem
+0.0   /initial node voltages
+C
+C Node Voltage and Current Bases
+C
+C* Node: 1 Vbase: 1 kV Ibase: 0 kA NodeName: "CONTROLS"
+C
+C Network RLC branch data section
+C
+C
+  999      /End of RLC Branch data
+C Source data section
+C
+ 999      /End of Source data
+C
+C Transformer data section
+C
+ 999      /End of Transformer data
+C
+C Transducer data section
+ 999      /End of CT,CVT & PT model data
+CRtdspcpp Sequencer "SS 1"
+C =====================================================================================
+C Transmission line section 
+C
+C
+C
+999     /End of T-Line section
+C =====================================================================================
+C
+C ===================================================================================
+C
+C Valve group data
+C
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_3 IEEE
+         FDATA: 15000.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_2 IEEE
+         FDATA: 60
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_1 IEEE
+         FDATA: 0.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_6 IEEE
+         FDATA: 888000.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_5 IEEE
+         FDATA: 60
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_4 IEEE
+         FDATA: 0.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_7 IEEE
+         FDATA: 0.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_8 IEEE
+         FDATA: 60
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_9 IEEE
+         FDATA: 1122334.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_a IEEE
+         FDATA: 0.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_b IEEE
+         FDATA: 60
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_c IEEE
+         FDATA: 122222.0
+END
+RTDS.CTL.RISC_CMODEL
+COMP: gtfpgav2 1 1 1 0 2 10
+    INTDATA: 1 Card 1 Port 16 numVarsToGTFPGA 16 numVarsFromGTFPGA 0 SetTypeToGTFPGA1
+    INTDATA: 0 SetTypeToGTFPGA2 0 SetTypeToGTFPGA3 0 SetTypeToGTFPGA4 0 SetTypeFrGTFPGA1 0 SetTypeFrGTFPGA2
+    INTDATA: 0 SetTypeFrGTFPGA3 0 SetTypeFrGTFPGA4 0 SetTypeToGTFPGA5 0 SetTypeToGTFPGA6 1 SetTypeToGTFPGA7
+    INTDATA: 1 SetTypeToGTFPGA8 1 SetTypeToGTFPGA9 1 SetTypeToGTFPGA10 1 SetTypeToGTFPGA11 1 SetTypeToGTFPGA12
+    INTDATA: 1 SetTypeToGTFPGA13 1 SetTypeToGTFPGA14 1 SetTypeToGTFPGA15 1 SetTypeToGTFPGA16 0 SetTypeToGTFPGA17
+    INTDATA: 0 SetTypeToGTFPGA18 0 SetTypeToGTFPGA19 0 SetTypeToGTFPGA20 0 SetTypeToGTFPGA21 0 SetTypeToGTFPGA22
+    INTDATA: 0 SetTypeToGTFPGA23 0 SetTypeToGTFPGA24 0 SetTypeToGTFPGA25 0 SetTypeToGTFPGA26 0 SetTypeToGTFPGA27
+    INTDATA: 0 SetTypeToGTFPGA28 0 SetTypeToGTFPGA29 0 SetTypeToGTFPGA30 0 SetTypeToGTFPGA31 0 SetTypeToGTFPGA32
+    INTDATA: 0 SetTypeToGTFPGA33 0 SetTypeToGTFPGA34 0 SetTypeToGTFPGA35 0 SetTypeToGTFPGA36 0 SetTypeToGTFPGA37
+    INTDATA: 0 SetTypeToGTFPGA38 0 SetTypeToGTFPGA39 0 SetTypeToGTFPGA40 0 SetTypeToGTFPGA41 0 SetTypeToGTFPGA42
+    INTDATA: 0 SetTypeToGTFPGA43 0 SetTypeToGTFPGA44 0 SetTypeToGTFPGA45 0 SetTypeToGTFPGA46 0 SetTypeToGTFPGA47
+    INTDATA: 0 SetTypeToGTFPGA48 0 SetTypeToGTFPGA49 0 SetTypeToGTFPGA50 0 SetTypeToGTFPGA51 0 SetTypeToGTFPGA52
+CHARDATA: out5d out5x out6d out6x out7a out7x out8a out8x out9a out9x
+CHARDATA: out10a out10x out11a out11x out12a out12x out13a out13x out14a out14x
+CHARDATA: out15a out15x out16a out16x out17 out17x out18 out18x out19 out19x
+CHARDATA: out20 out20x out21 out21x out22 out22x out23 out23x out24 out24x
+CHARDATA: out25 out25x out26 out26x out27 out27x out28 out28x out29 out29x
+END
+RTDS.CTL.RISC_DUD
+COMP: gtfpgav2 1 1 1 0 2 0
+    INTDATA: 0 SetTypeToGTFPGA53 0 SetTypeToGTFPGA54 0 SetTypeToGTFPGA55 0 SetTypeToGTFPGA56 0 SetTypeToGTFPGA57
+    INTDATA: 0 SetTypeToGTFPGA58 0 SetTypeToGTFPGA59 0 SetTypeToGTFPGA60 0 SetTypeToGTFPGA61 0 SetTypeToGTFPGA62
+    INTDATA: 0 SetTypeToGTFPGA63 0 SetTypeToGTFPGA64 0 SetTypeFrGTFPGA5 0 SetTypeFrGTFPGA6 1 SetTypeFrGTFPGA7
+    INTDATA: 1 SetTypeFrGTFPGA8 1 SetTypeFrGTFPGA9 1 SetTypeFrGTFPGA10 1 SetTypeFrGTFPGA11 1 SetTypeFrGTFPGA12
+    INTDATA: 1 SetTypeFrGTFPGA13 1 SetTypeFrGTFPGA14 1 SetTypeFrGTFPGA15 1 SetTypeFrGTFPGA16 0 SetTypeFrGTFPGA17
+    INTDATA: 0 SetTypeFrGTFPGA18 0 SetTypeFrGTFPGA19 0 SetTypeFrGTFPGA20 0 SetTypeFrGTFPGA21 0 SetTypeFrGTFPGA22
+    INTDATA: 0 SetTypeFrGTFPGA23 0 SetTypeFrGTFPGA24 0 SetTypeFrGTFPGA25 0 SetTypeFrGTFPGA26 0 SetTypeFrGTFPGA27
+    INTDATA: 0 SetTypeFrGTFPGA28 0 SetTypeFrGTFPGA29 0 SetTypeFrGTFPGA30 0 SetTypeFrGTFPGA31 0 SetTypeFrGTFPGA32
+    INTDATA: 0 SetTypeFrGTFPGA33 0 SetTypeFrGTFPGA34 0 SetTypeFrGTFPGA35 0 SetTypeFrGTFPGA36 0 SetTypeFrGTFPGA37
+    INTDATA: 0 SetTypeFrGTFPGA38 0 SetTypeFrGTFPGA39 0 SetTypeFrGTFPGA40 0 SetTypeFrGTFPGA41 0 SetTypeFrGTFPGA42
+    INTDATA: 0 SetTypeFrGTFPGA43 0 SetTypeFrGTFPGA44 0 SetTypeFrGTFPGA45 0 SetTypeFrGTFPGA46 0 SetTypeFrGTFPGA47
+    INTDATA: 0 SetTypeFrGTFPGA48 0 SetTypeFrGTFPGA49 0 SetTypeFrGTFPGA50 0 SetTypeFrGTFPGA51 0 SetTypeFrGTFPGA52
+CHARDATA: out30 out30x out31 out31x out32 out32x out33 out33x out34 out34x
+CHARDATA: out35 out35x out36 out36x out37 out37x out38 out38x out39 out39x
+CHARDATA: out40 out40x out41 out41x out42 out42x out43 out43x out44 out44x
+CHARDATA: out45 out45x out46 out46x out47 out47x out48 out48x out49 out49x
+CHARDATA: out50 out50x out51 out51x out52 out52x out53 out53x out54 out54x
+END
+RTDS.CTL.RISC_DUD
+COMP: gtfpgav2 1 1 1 0 2 0
+    INTDATA: 0 SetTypeFrGTFPGA53 0 SetTypeFrGTFPGA54 0 SetTypeFrGTFPGA55 0 SetTypeFrGTFPGA56 0 SetTypeFrGTFPGA57
+    INTDATA: 0 SetTypeFrGTFPGA58 0 SetTypeFrGTFPGA59 0 SetTypeFrGTFPGA60 0 SetTypeFrGTFPGA61 0 SetTypeFrGTFPGA62
+    INTDATA: 0 SetTypeFrGTFPGA63 0 SetTypeFrGTFPGA64 3 useVersion
+CHARDATA: out55 out55x out56 out56x out57 out57x out58 out58x out59 out59x
+CHARDATA: out60 out60x out61 out61x out62 out62x out63 out63x out64 out64x
+CHARDATA: in1d in1x in2d in2x in3d in3x in4d in4x in5d in5x
+CHARDATA: in6d in6x in7a in7x in8a in8x in9a in9x in10a in10x
+CHARDATA: in11a in11x in12a in12x in13a in13x in14a in14x in15a in15x
+END
+RTDS.CTL.RISC_DUD
+COMP: gtfpgav2 1 1 1 0 2 0
+CHARDATA: in16a in16x in17 in17x in18 in18x in19 in19x in20 in20x
+CHARDATA: in21 in21x in22 in22x in23 in23x in24 in24x in25 in25x
+CHARDATA: in26 in26x in27 in27x in28 in28x in29 in29x in30 in30x
+CHARDATA: in31 in31x in32 in32x in33 in33x in34 in34x in35 in35x
+CHARDATA: in36 in36x in37 in37x in38 in38x in39 in39x in40 in40x
+END
+RTDS.CTL.RISC_DUD
+COMP: gtfpgav2 1 1 1 0 2 0
+CHARDATA: in41 in41x in42 in42x in43 in43x in44 in44x in45 in45x
+CHARDATA: in46 in46x in47 in47x in48 in48x in49 in49x in50 in50x
+CHARDATA: in51 in51x in52 in52x in53 in53x in54 in54x in55 in55x
+CHARDATA: in56 in56x in57 in57x in58 in58x in59 in59x in60 in60x
+CHARDATA: in61 in61x in62 in62x in63 in63x in64 in64x out1d out1x
+END
+RTDS.CTL.RISC_DUD
+COMP: gtfpgav2 1 1 1 0 2 0
+CHARDATA: out2d out2x out3d out3x out4d out4x
+END
+C CONTROLS COMPILER: RISC CONTROLS PROCESSOR MANUAL ASSIGNMENT
+RTDS.CTL.RISC_PROCASS
+COMP: RISC_PROCASS 1 0 0
+      IDATA: 3 0 1
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_d IEEE
+         FDATA: 0.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_e IEEE
+         FDATA: 60
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: RT_f IEEE
+         FDATA: 999999.0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: out14a IEEE
+         FDATA: 999.232
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.CONSTANT
+COMP: CONST 1 0 0
+         OVARS: out16a IEEE
+         FDATA: 123.345
+END
+C CONTROLS COMPILER: SHARC DIAL COMPONENT
+RTDS.CTL.SH_DIAL
+COMP: DIAL1 1 0 0
+     OVARS: out12a IEEE
+     IDATA: 1  2  3  4  5  6  7  8  9  10
+     FDATA: 1.0  2.0  3.0  4.0  5.0  6.0  7.0  8.0  9.0  10.0
+CDATA: 01 02 03 04 05 06 07 08 09 0A
+     IDATA: 10 1 1
+END
+C CONTROLS COMPILER: SHARC DIAL COMPONENT
+RTDS.CTL.SH_DIAL
+COMP: DIAL2 1 0 0
+     OVARS: out13a IEEE
+     IDATA: 1  2  3  4  5  6  7  8  9  10
+     FDATA: 1.0  2.0  3.0  4.0  5.0  6.0  7.0  8.0  9.0  10.0
+CDATA: 01 02 03 04 05 06 07 08 09 0A
+     IDATA: 10 1 1
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.SH_ICONST
+COMP: CONST 1 0 0
+      OVARS: out3d INT
+      IDATA: 222
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.SH_ICONST
+COMP: CONST 1 0 0
+      OVARS: out5d INT
+      IDATA: 123
+END
+C CONTROLS COMPILER: SHARC SWITCH COMPONENT
+RTDS.CTL.SH_SWITCH
+COMP: SW1 1 0 0
+     OVARS: out1d INT
+     FDATA: 0 1 0
+CDATA: ON OFF
+     IDATA: 0
+END
+C CONTROLS COMPILER: SHARC SWITCH COMPONENT
+RTDS.CTL.SH_SWITCH
+COMP: SW2 1 0 0
+     OVARS: out4d INT
+     FDATA: 0 1 0
+CDATA: ON OFF
+     IDATA: 0
+END
+C CONTROLS COMPILER: CONSTANT VALUE
+RTDS.CTL.SH_ICONST
+COMP: CONST 1 0 0
+      OVARS: out2d INT
+      IDATA: 0
+END
+C CONTROLS COMPILER: SHARC PUSH BUTTON COMPONENT
+RTDS.CTL.SH_PB
+COMP: PB1 1 0 0
+     OVARS: out6d INT
+     IDATA: 0
+     FDATA: 0 1
+END
+C CONTROLS COMPILER: SLIDER COMPONENT (IEEE data format)
+RTDS.CTL.SLIDER
+COMP: SL1 1 0 0
+     OVARS: out15a IEEE
+     FDATA: 1.0 100 -100
+CDATA: volts
+END
+C CONTROLS COMPILER: RISC FUNCTION GENERATOR
+RTDS.CTL.RISC_FGEN2
+COMP: FGEN2 1 1 2 0 2 49
+       IVARS: RT_c IEEE RT_b IEEE RT_a IEEE
+       OVARS: out11a IEEE
+CDATA: volts
+       IDATA: 1
+       FDATA: 50
+END
+C CONTROLS COMPILER: RISC FUNCTION GENERATOR
+RTDS.CTL.RISC_FGEN2
+COMP: FGEN2 1 1 3 0 2 46
+       IVARS: RT_9 IEEE RT_8 IEEE RT_7 IEEE
+       OVARS: out10a IEEE
+CDATA: volts
+       IDATA: 2
+       FDATA: 50
+END
+C CONTROLS COMPILER: RISC FUNCTION GENERATOR
+RTDS.CTL.RISC_FGEN2
+COMP: FGEN2 1 1 4 0 2 44
+       IVARS: RT_f IEEE RT_e IEEE RT_d IEEE
+       OVARS: out9a IEEE
+CDATA: volts
+       IDATA: 3
+       FDATA: 50
+END
+C CONTROLS COMPILER: RISC FUNCTION GENERATOR
+RTDS.CTL.RISC_FGEN2
+COMP: FGEN2 1 1 5 0 2 231
+       IVARS: RT_6 IEEE RT_5 IEEE RT_4 IEEE
+       OVARS: out8a IEEE
+CDATA: volts
+       IDATA: 0
+       FDATA: 50
+END
+C CONTROLS COMPILER: RISC FUNCTION GENERATOR
+RTDS.CTL.RISC_FGEN2
+COMP: FGEN2 1 1 6 0 2 231
+       IVARS: RT_3 IEEE RT_2 IEEE RT_1 IEEE
+       OVARS: out7a IEEE
+CDATA: volts
+       IDATA: 0
+       FDATA: 50
+END
+999     /End of Valve-group section
+C ===================================================================================
+C
+C =====================================================================================
+C
+C Model data
+C
+C =====================================================================================
+CRtdspcpp Variable VarType="StringVar" Desc="CircuitTitle Annotation" Group="Annotation" InitValue="Test Circuit"

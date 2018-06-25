@@ -1,0 +1,5 @@
+date_format: %Y/%m/%d %H:%M:%S
+compile_date_prefix: Draft Compile Date:
+sequencer_compile_date_prefix: Sequencer Compile Date:
+draft_save_date_prefix: Draft Save Date:
+create_backup_files: False

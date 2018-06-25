@@ -1,0 +1,44 @@
+{
+   guistr: "# # String gsaved with Nlview 6.5.5  2015-06-26 bk=1.3371 VDI=38 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port S_AXI_CTL_IRQ -pg 1 -y 350 -defaultsOSRD
+preplace port axi_ctl_aclk_out -pg 1 -y 100 -defaultsOSRD
+preplace port perstn -pg 1 -y 590 -defaultsOSRD
+preplace port axi_aclk_out -pg 1 -y 80 -defaultsOSRD
+preplace port S_AXI -pg 1 -y 70 -defaultsOSRD
+preplace port PCIE_MGT -pg 1 -y 60 -defaultsOSRD
+preplace port M_AXI -pg 1 -y 40 -defaultsOSRD
+preplace port PCIE_REFCLK -pg 1 -y 180 -defaultsOSRD
+preplace port reset -pg 1 -y 570 -defaultsOSRD
+preplace port S_AXI_CTL -pg 1 -y 90 -defaultsOSRD
+preplace portBus msi_irq -pg 1 -y 410 -defaultsOSRD
+preplace portBus peripheral_aresetn -pg 1 -y 320 -defaultsOSRD
+preplace portBus interconnect_aresetn -pg 1 -y 300 -defaultsOSRD
+preplace inst axi_pcie_0 -pg 1 -lvl 2 -y 120 -defaultsOSRD
+preplace inst rst_axi_pcie_0_125M -pg 1 -lvl 1 -y 590 -defaultsOSRD
+preplace inst pcie_msi_requester_0 -pg 1 -lvl 1 -y 410 -defaultsOSRD
+preplace inst util_ds_buf_0 -pg 1 -lvl 1 -y 180 -defaultsOSRD
+preplace netloc S_AXI_1 1 0 2 NJ 70 NJ
+preplace netloc axi_pcie_0_INTX_MSI_Grant 1 0 3 20 250 NJ 250 760
+preplace netloc axi_pcie_0_axi_aclk_out1 1 0 3 40 280 NJ 280 790
+preplace netloc axi_pcie_0_pcie_7x_mgt 1 2 1 NJ
+preplace netloc s_axi_ctl_1_1 1 0 1 NJ
+preplace netloc axi_pcie_0_axi_ctl_aclk_out 1 2 1 NJ
+preplace netloc i_irq_1 1 0 1 NJ
+preplace netloc axi_pcie_0_MSI_Vector_Width 1 0 3 30 260 NJ 260 750
+preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 NJ
+preplace netloc axi_pcie_0_mmcm_lock 1 0 3 50 290 NJ 290 780
+preplace netloc pcie_msi_requester_0_o_irq 1 1 1 390
+preplace netloc axi_pcie_0_M_AXI 1 2 1 NJ
+preplace netloc axi_interconnect_0_M05_AXI 1 0 2 NJ 90 NJ
+preplace netloc pcie_ref_1 1 0 1 NJ
+preplace netloc rst_axi_pcie_0_125M_peripheral_aresetn 1 0 3 70 300 400 320 NJ
+preplace netloc axi_pcie_0_MSI_enable 1 0 3 60 270 NJ 270 770
+preplace netloc reset_1 1 0 1 NJ
+preplace netloc pcie_msi_requester_0_o_vector_num 1 1 1 420
+preplace netloc aux_reset_in_1 1 0 1 NJ
+preplace netloc S00_ARESETN_1 1 1 2 410 300 NJ
+levelinfo -pg 1 0 230 590 810 -top 0 -bot 680
+",
+}
+0

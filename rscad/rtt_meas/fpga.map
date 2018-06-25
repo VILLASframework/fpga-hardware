@@ -1,0 +1,91 @@
+CASE: Test Circuit
+Delt: 50.000000 us 
+Backplane operation set to IEEE mode
+
+ +----------------------------------------------------------+
+ |                                                          |
+ |                  S U B S Y S T E M #01                   |
+ |                                                          |
+ |                        mapped to                         |
+ |                                                          |
+ |                   R T D S  R A C K #03                   |
+ |                                                          |
+ +----------------------------------------------------------+
+
+
+           C O M P O N E N T   P R O C E S S O R S        
+ ------------------------------------------------------------
+
+
+RISC CONTROLS COMPONENTS(proc 1) --> RPC-GPC Card #4 Processor A
+	RISC gtfpgav2 function
+	RISC ieee2int_ function
+	RISC FGENsin2 function
+	RISC FGENsqr2 function
+	RISC FGENtri2 function
+	RISC FGENsin2 function
+	RISC FGENsqr2 function
+	RISC FGENtri2 function
+	RISC FGENsin2 function
+	RISC FGENsqr2 function
+	RISC FGENsin2 function
+	RISC FGENsqr2 function
+	RISC FGENsqr2 function
+	RISC FGENsin2 function
+	RISC FGENtri2 function
+	RISC ieee2int_ function
+	RISC ieee2int_ function
+	RISC TIMERC function
+	RISC sdelay function
+	RISC ieee2int_ function
+	RISC TIMERC function
+
+    Hidden T2 Transfer List
+--------------------------------
+BP_Address  Signal_Type       Signal_name
+0x104       named_signal_prc  in1
+0x105       named_signal_prc  in2
+0x106       named_signal_prc  in3
+0x107       named_signal_prc  in4
+0x108       named_signal_prc  in5
+0x109       named_signal_prc  in6
+0x10A       named_signal_prc  in7
+0x10B       named_signal_prc  in8
+0x10C       named_signal_prc  in9
+0x10D       named_signal_prc  in10
+0x10E       named_signal_prc  in11
+0x10F       named_signal_prc  in12
+0x110       named_signal_prc  in13
+0x111       named_signal_prc  in14
+0x112       named_signal_prc  in15
+0x113       named_signal_prc  in16
+0x114       named_signal_prc  out9
+0x115       named_signal_prc  out8
+0x116       named_signal_prc  out10
+0x117       named_signal_prc  out15
+0x118       named_signal_prc  out14
+0x119       named_signal_prc  out16
+0x11A       named_signal_prc  out12
+0x11B       named_signal_prc  out11
+0x11C       named_signal_prc  out13
+0x11D       named_signal_prc  out5
+0x11E       named_signal_prc  testTimer1
+0x11F       named_signal_prc  out6
+0x120       named_signal_prc  out7
+0x121       named_signal_prc  signal5_RT
+0x122       named_signal_prc  testTimer2
+0x123       named_signal_prc  signal_RT
+
+
+       T I M E - S T E P   I N F O R M A T I O N         
+                 S U B S Y S T E M   1
+ ==========================================================
+
+
+  Backplane Communication Speed = 60.000000 ns
+  T2 communication time 2.4000 us
+
+
+  Minimum time-step 4.4000 us
+
+	 Common Current Injections: 0(local) + 0(xrack)

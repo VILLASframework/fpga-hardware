@@ -1,0 +1,13 @@
+# We use do not manage the Vivado working directory under VCS
+# This is a best practice by the Vivado Ultrafast Design Methodology
+# See XAPP1165 (http://www.xilinx.com/support/documentation/application_notes/xapp1165.pdf)
+vc707/vc707_pcie/work/
+vc707/vc707_villas/work/
+vc707/vc707_villas_simple/work/
+vc707/vc707_prom_flasher/work/
+
+ips/hdl_multiply/work/
+ips/pcie_msi_requester/work/
+ips/axi_pcie_intc/work/
+
+.Xil/

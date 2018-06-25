@@ -1,0 +1,8 @@
+/hls_dft/*.dat
+/*/solution*/csim/
+/*/solution*/syn/
+/*/solution*/sim/
+/*/solution*/impl/
+/*/solution*/.autopilot/
+.vivado_hls_log_all.xml
+!*.aps

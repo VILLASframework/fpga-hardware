@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="multiply.cpp" path="D:\svo\gtfpga\hls\hls_multiply\multiply.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="tb.cpp" path="D:\svo\gtfpga\hls\hls_multiply\tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

@@ -1,0 +1,75 @@
+CASE: Test Circuit
+Delt: 50.000000 us 
+Rack: 3 NoRealTime: 0
+
+Output Desc="in1" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200410
+Output Desc="in2" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200414
+Output Desc="in3" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200418
+Output Desc="in4" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20041C
+Output Desc="in5" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200420
+Output Desc="in6" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200424
+Output Desc="in7" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200428
+Output Desc="in8" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20042C
+Output Desc="in9" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200430
+Output Desc="in10" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200434
+Output Desc="in11" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200438
+Output Desc="in12" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20043C
+Output Desc="in13" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200440
+Output Desc="in14" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=200444
+Output Desc="in15" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=200448
+Output Desc="in16" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=20044C
+Output Desc="out9" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200450
+Output Desc="out8" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200454
+Output Desc="out10" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200458
+Output Desc="out15" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20045C
+Output Desc="out14" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200460
+Output Desc="out16" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200464
+Output Desc="out12" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200468
+Output Desc="out11" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20046C
+Output Desc="out13" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200470
+Output Desc="out5" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200474
+Output Desc="testTimer1" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200478
+Output Desc="out6" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20047C
+Output Desc="out7" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200480
+Output Desc="signal5_RT" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200484
+Output Desc="testTimer2" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200488
+Output Desc="signal_RT" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20048C
+Switch Desc="SW1" Group="Subsystem #1|CTLs|Inputs" Type=INT P0=0 P1=1 InitValue=0 OnText="ON" OffText="OFF" Rack=3 Adr=200400
+Switch Desc="SW2" Group="Subsystem #1|CTLs|Inputs" Type=INT P0=0 P1=1 InitValue=0 OnText="ON" OffText="OFF" Rack=3 Adr=200408
+String Desc="CircuitTitle Annotation" Group="Annotation" InitValue="Test Circuit"
+String Desc="Draft file" Group="Annotation" InitValue="Draft file: N:\Research\Other Public\ACS0033_ProOfGrids_msv\Data\WorkData_2015\04_DistSimPlatforms\01_RTDS_GTFPGA_PowerPC_S2SS_basicTest\01_RSCAD\fpga.dft"
+String Desc="Draft file modification date" Group="Time tags" InitValue="2015/08/21 14:22:33"
+String Desc="Compile date" Group="Time tags" InitValue="2015/08/21 14:22:35"
+
+
+COMPONENT_TIMING_INFORMATION:
+timing_record: subsystem=1 processor=0 processor_type=GPC
+timing_record: subsystem=1 processor=1 processor_type=GPC
+timing_record: subsystem=1 processor=2 processor_type=GPC
+timing_record: subsystem=1 processor=3 processor_type=GPC
+timing_record: subsystem=1 processor=4 processor_type=GPC
+timing_record: subsystem=1 processor=5 processor_type=GPC
+timing_record: subsystem=1 processor=6 processor_type=GPC
+timing_record: subsystem=1 processor=7 processor_type=GPC
+timing_record: subsystem=1 processor_type=3PC processor_count=0
+timing_record: timing_name=gtfpgav2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=40 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=ieee2int_ component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=41 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsin2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=42 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsqr2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=43 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENtri2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=44 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsin2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=45 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsqr2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=46 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENtri2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=47 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsin2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=48 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsqr2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=49 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsin2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=50 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsqr2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=51 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsqr2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=52 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENsin2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=53 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGENtri2 component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=54 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=ieee2int_ component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=55 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=ieee2int_ component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=56 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=TIMERC component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=57 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=sdelay component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=58 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=ieee2int_ component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=59 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=TIMERC component_type=RISC_CMODEL subsystem=1 processor=6 processor_type=GPC clock_index=60 enabled=true use=CTLS lf=0.000000 logical_proc=1

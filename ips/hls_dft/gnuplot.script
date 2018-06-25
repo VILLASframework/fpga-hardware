@@ -1,0 +1,21 @@
+set term qt
+
+if (!exists('dir')) {
+	solution = 'solution1'
+}
+
+if (!exists('mode')) {
+	mode = 'cosim'
+}
+
+if (mode eq 'cosim') {
+	path = solution . "/sim/wrapc"
+}
+else {
+	path = solution . "/csim/build"
+}
+
+plot path . "/input.dat"  title "signal" with lines, \
+     path . "/output.dat" title "idft"   with lines
+
+pause mouse close 

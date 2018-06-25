@@ -1,0 +1,65 @@
+CASE: Test Circuit
+Delt: 50.000000 us 
+Backplane operation set to IEEE mode
+
+ +----------------------------------------------------------+
+ |                                                          |
+ |                  S U B S Y S T E M #01                   |
+ |                                                          |
+ |                        mapped to                         |
+ |                                                          |
+ |                   R T D S  R A C K #03                   |
+ |                                                          |
+ +----------------------------------------------------------+
+
+
+           C O M P O N E N T   P R O C E S S O R S        
+ ------------------------------------------------------------
+
+
+RISC CONTROLS COMPONENTS(proc 1) --> RPC-GPC Card #3 Processor A
+	RISC gtfpgav2 function
+	RISC Function Generator2 w/absolute phase input (Triangle Wave) 
+	RISC Function Generator2 w/absolute phase input (Saw Tooth Wave) 
+	RISC Function Generator2 w/absolute phase input (Square Wave) 
+	RISC Function Generator2 w/absolute phase input (Sine Wave) 
+	RISC Function Generator2 w/absolute phase input (Sine Wave) 
+
+    Hidden T2 Transfer List
+--------------------------------
+BP_Address  Signal_Type       Signal_name
+0x10B       named_signal_prc  in1d
+0x10C       named_signal_prc  in2d
+0x10D       named_signal_prc  in3d
+0x10E       named_signal_prc  in4d
+0x10F       named_signal_prc  in5d
+0x110       named_signal_prc  in6d
+0x111       named_signal_prc  in7a
+0x112       named_signal_prc  in8a
+0x113       named_signal_prc  in9a
+0x114       named_signal_prc  in10a
+0x115       named_signal_prc  in11a
+0x116       named_signal_prc  in12a
+0x117       named_signal_prc  in13a
+0x118       named_signal_prc  in14a
+0x119       named_signal_prc  in15a
+0x11A       named_signal_prc  in16a
+0x11B       named_signal_prc  out11a
+0x11C       named_signal_prc  out10a
+0x11D       named_signal_prc  out9a
+0x11E       named_signal_prc  out8a
+0x11F       named_signal_prc  out7a
+
+
+       T I M E - S T E P   I N F O R M A T I O N         
+                 S U B S Y S T E M   1
+ ==========================================================
+
+
+  Backplane Communication Speed = 60.000000 ns
+  T2 communication time 2.1600 us
+
+
+  Minimum time-step 4.1600 us
+
+	 Common Current Injections: 0(local) + 0(xrack)

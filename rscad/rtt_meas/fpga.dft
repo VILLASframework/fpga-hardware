@@ -1,0 +1,912 @@
+DRAFT 4.004.2
+RTDS
+TITLE: Test Circuit
+CREATED: Dec 20, 2013 (jwa-yso)
+LAST-MODIFIED: Aug 21, 2015 (msv)
+TIME-STEP: 5.0E-5
+FINISH-TIME: 0.2
+PRINT-STEP: 5.0E-4
+RTDS-RACK: 3
+COMPILE-MODE: AUTO
+RTDS REAL-TIME: Yes 
+1 SUBSYSTEMS
+SUBSYSTEM-TAB-NAME: SS #1
+SUBSYSTEM-TITLE:
+SUBSYSTEM-COMMENT:
+SUBSYSTEM-PRINTMODE:     PRINT-LAYOUT:CUSTOM    PAPER-DIMENSIONS:8.5x11
+130 COMPONENTS
+DASHED_LINE
+	80 272 1 0 2
+	-4 -192 4 160
+	LW	:1.0
+	COL	:RED
+DASHED_LINE
+	432 112 0 0 2
+	-352 -4 320 4
+	LW	:1.0
+	COL	:RED
+rtds_BLUETEXT1
+	144 80 0 0 1
+	AL1	:From RTDS to FPGA
+DASHED_LINE
+	432 80 0 0 2
+	-352 -4 320 4
+	LW	:1.0
+	COL	:RED
+WIRE
+	176 144 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_SWITCH
+	112 144 0 0 7
+	Name	:SW1
+	Init	:Off
+	Type	:INTEGER
+	VOn	:1
+	VOff	:0
+	Ton	:ON
+	Toff	:OFF
+rtds_sharc_ctl_ICONST
+	144 240 0 0 1
+	Val	:6
+wirelabel
+	208 240 0 0 3
+	Name	:out3
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	208 240 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	208 304 0 0 3
+	Name	:out4
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 304 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_SWITCH
+	112 304 0 0 7
+	Name	:SW2
+	Init	:Off
+	Type	:INTEGER
+	VOn	:1
+	VOff	:0
+	Ton	:ON
+	Toff	:OFF
+DASHED_LINE
+	432 432 0 0 2
+	-352 -4 320 4
+	LW	:1.0
+	COL	:RED
+DASHED_LINE
+	432 496 0 0 2
+	-352 -4 320 4
+	LW	:1.0
+	COL	:RED
+rtds_BLUETEXT1
+	144 496 0 0 1
+	AL1	:Round trip time
+DASHED_LINE
+	432 528 0 0 2
+	-352 -4 320 4
+	LW	:1.0
+	COL	:RED
+DASHED_LINE
+	80 688 1 0 2
+	-4 -192 4 160
+	LW	:1.0
+	COL	:RED
+rtds_sharc_ctl_SRCABSPH
+	368 368 0 0 6
+	WType	:Triangle
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:15
+WIRE
+	400 368 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	304 400 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	304 368 0 0 1
+	Val	:2.0
+rtds_sharc_ctl_CONSTANT
+	304 336 0 0 1
+	Val	:150.2
+rtds_sharc_ctl_CONSTANT
+	304 304 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	304 272 0 0 1
+	Val	:50
+rtds_sharc_ctl_CONSTANT
+	304 240 0 0 1
+	Val	:88.23
+rtds_sharc_ctl_SRCABSPH
+	368 272 0 0 6
+	WType	:Sine
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:14
+wirelabel
+	432 368 0 0 3
+	Name	:out7
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	400 272 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_ICONST
+	144 208 0 0 1
+	Val	:0
+wirelabel
+	208 208 0 0 3
+	Name	:out2
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 208 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+DASHED_LINE
+	752 688 1 0 2
+	-4 -192 4 160
+	LW	:1.0
+	COL	:RED
+rtds_sharc_ctl_TIMER
+	336 720 0 0 6
+	Tran	:Rising Edge
+	SRST	:Yes
+	RST	:No
+	prtyp	:2
+	Proc	:1
+	Pri	:21
+WIRE
+	272 720 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+WIRE
+	272 752 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	400 720 0 0 3
+	Name	:signal_RT
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	400 720 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_SRCABSPH
+	208 944 0 0 6
+	WType	:Square
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:13
+wirelabel
+	272 944 0 0 3
+	Name	:testTimer1
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	240 944 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	144 720 0 0 3
+	Name	:testTimer1
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	144 752 0 0 3
+	Name	:testTimer2
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	304 944 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	464 944 0 0 3
+	Name	:testTimer2
+	COL	:BLUE
+	Monitor	:Yes
+rtds_sharc_ctl_SDELAY
+	368 944 0 0 7
+	IorF	:Real
+	DEL	:0.002
+	NS	:1
+	INIT	:0.0
+	prtyp	:2
+	Proc	:1
+	Pri	:19
+WIRE
+	432 944 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_TIMER
+	336 592 0 0 6
+	Tran	:Rising Edge
+	SRST	:Yes
+	RST	:No
+	prtyp	:2
+	Proc	:1
+	Pri	:18
+wirelabel
+	400 592 0 0 3
+	Name	:signal5_RT
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	400 592 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	144 592 0 0 3
+	Name	:out5
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	144 624 0 0 3
+	Name	:in5
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	176 592 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+WIRE
+	176 624 0 0 2
+	-32 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_SRCABSPH
+	368 176 0 0 6
+	WType	:Square
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:12
+WIRE
+	400 176 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+_rtds_GTFPGA.def
+	1232 240 0 0 265
+	prtyp	:2
+	Port	:1
+	Card	:1
+	Proc	:1
+	Pri	:1
+	sfx	:
+	numVarsToGTFPGA	:16
+	out1	:out1
+	SetTypeToGTFPGA1	:Int
+	out2	:out2
+	SetTypeToGTFPGA2	:Int
+	out3	:out3
+	SetTypeToGTFPGA3	:Int
+	out4	:out4
+	SetTypeToGTFPGA4	:Int
+	out5	:out5
+	SetTypeToGTFPGA5	:Float
+	out6	:out6
+	SetTypeToGTFPGA6	:Float
+	out7	:out7
+	SetTypeToGTFPGA7	:Float
+	out8	:out8
+	SetTypeToGTFPGA8	:Float
+	out9	:out9
+	SetTypeToGTFPGA9	:Float
+	out10	:out10
+	SetTypeToGTFPGA10	:Float
+	out11	:out11
+	SetTypeToGTFPGA11	:Float
+	out12	:out12
+	SetTypeToGTFPGA12	:Float
+	out13	:out13
+	SetTypeToGTFPGA13	:Float
+	out14	:out14
+	SetTypeToGTFPGA14	:Float
+	out15	:out15
+	SetTypeToGTFPGA15	:Float
+	out16	:out16
+	SetTypeToGTFPGA16	:Float
+	out17	:out17a
+	SetTypeToGTFPGA17	:Int
+	out18	:out18a
+	SetTypeToGTFPGA18	:Float
+	out19	:out19a
+	SetTypeToGTFPGA19	:Float
+	out20	:out20a
+	SetTypeToGTFPGA20	:Float
+	out21	:out21a
+	SetTypeToGTFPGA21	:Float
+	out22	:out22a
+	SetTypeToGTFPGA22	:Float
+	out23	:out23a
+	SetTypeToGTFPGA23	:Float
+	out24	:out24a
+	SetTypeToGTFPGA24	:Float
+	out25	:Out25
+	SetTypeToGTFPGA25	:Int
+	out26	:Out26
+	SetTypeToGTFPGA26	:Int
+	out27	:Out27
+	SetTypeToGTFPGA27	:Int
+	out28	:Out28
+	SetTypeToGTFPGA28	:Int
+	out29	:Out29
+	SetTypeToGTFPGA29	:Int
+	out30	:Out30
+	SetTypeToGTFPGA30	:Int
+	out31	:Out31
+	SetTypeToGTFPGA31	:Int
+	out32	:Out32
+	SetTypeToGTFPGA32	:Int
+	out33	:Out33
+	SetTypeToGTFPGA33	:Int
+	out34	:Out34
+	SetTypeToGTFPGA34	:Int
+	out35	:Out35
+	SetTypeToGTFPGA35	:Int
+	out36	:Out36
+	SetTypeToGTFPGA36	:Int
+	out37	:Out37
+	SetTypeToGTFPGA37	:Int
+	out38	:Out38
+	SetTypeToGTFPGA38	:Int
+	out39	:Out39
+	SetTypeToGTFPGA39	:Int
+	out40	:Out40
+	SetTypeToGTFPGA40	:Int
+	out41	:Out41
+	SetTypeToGTFPGA41	:Int
+	out42	:Out42
+	SetTypeToGTFPGA42	:Int
+	out43	:Out43
+	SetTypeToGTFPGA43	:Int
+	out44	:Out44
+	SetTypeToGTFPGA44	:Int
+	out45	:Out45
+	SetTypeToGTFPGA45	:Int
+	out46	:Out46
+	SetTypeToGTFPGA46	:Int
+	out47	:Out47
+	SetTypeToGTFPGA47	:Int
+	out48	:Out48
+	SetTypeToGTFPGA48	:Int
+	out49	:Out49
+	SetTypeToGTFPGA49	:Int
+	out50	:Out50
+	SetTypeToGTFPGA50	:Int
+	out51	:Out51
+	SetTypeToGTFPGA51	:Int
+	out52	:Out52
+	SetTypeToGTFPGA52	:Int
+	out53	:Out53
+	SetTypeToGTFPGA53	:Int
+	out54	:Out54
+	SetTypeToGTFPGA54	:Int
+	out55	:Out55
+	SetTypeToGTFPGA55	:Int
+	out56	:Out56
+	SetTypeToGTFPGA56	:Int
+	out57	:Out57
+	SetTypeToGTFPGA57	:Int
+	out58	:Out58
+	SetTypeToGTFPGA58	:Int
+	out59	:Out59
+	SetTypeToGTFPGA59	:Int
+	out60	:Out60
+	SetTypeToGTFPGA60	:Int
+	out61	:Out61
+	SetTypeToGTFPGA61	:Int
+	out62	:Out62
+	SetTypeToGTFPGA62	:Int
+	out63	:Out63
+	SetTypeToGTFPGA63	:Int
+	out64	:Out64
+	SetTypeToGTFPGA64	:Int
+	numVarsFromGTFPGA	:16
+	in1	:in1
+	SetTypeFrGTFPGA1	:Float
+	in2	:in2
+	SetTypeFrGTFPGA2	:Float
+	in3	:in3
+	SetTypeFrGTFPGA3	:Float
+	in4	:in4
+	SetTypeFrGTFPGA4	:Float
+	in5	:in5
+	SetTypeFrGTFPGA5	:Float
+	in6	:in6
+	SetTypeFrGTFPGA6	:Float
+	in7	:in7
+	SetTypeFrGTFPGA7	:Float
+	in8	:in8
+	SetTypeFrGTFPGA8	:Float
+	in9	:in9
+	SetTypeFrGTFPGA9	:Float
+	in10	:in10
+	SetTypeFrGTFPGA10	:Float
+	in11	:in11
+	SetTypeFrGTFPGA11	:Float
+	in12	:in12
+	SetTypeFrGTFPGA12	:Float
+	in13	:in13
+	SetTypeFrGTFPGA13	:Float
+	in14	:in14
+	SetTypeFrGTFPGA14	:Int
+	in15	:in15
+	SetTypeFrGTFPGA15	:Int
+	in16	:in16
+	SetTypeFrGTFPGA16	:Int
+	in17	:in17
+	SetTypeFrGTFPGA17	:Int
+	in18	:in18
+	SetTypeFrGTFPGA18	:Int
+	in19	:in19
+	SetTypeFrGTFPGA19	:Int
+	in20	:in20
+	SetTypeFrGTFPGA20	:Int
+	in21	:in21
+	SetTypeFrGTFPGA21	:Int
+	in22	:in22
+	SetTypeFrGTFPGA22	:Int
+	in23	:in23
+	SetTypeFrGTFPGA23	:Int
+	in24	:in24
+	SetTypeFrGTFPGA24	:Int
+	in25	:in25
+	SetTypeFrGTFPGA25	:Int
+	in26	:in26
+	SetTypeFrGTFPGA26	:Int
+	in27	:in27
+	SetTypeFrGTFPGA27	:Int
+	in28	:in28
+	SetTypeFrGTFPGA28	:Int
+	in29	:in29
+	SetTypeFrGTFPGA29	:Int
+	in30	:in30
+	SetTypeFrGTFPGA30	:Int
+	in31	:in31
+	SetTypeFrGTFPGA31	:Int
+	in32	:in32
+	SetTypeFrGTFPGA32	:Int
+	in33	:in33
+	SetTypeFrGTFPGA33	:Int
+	in34	:in34
+	SetTypeFrGTFPGA34	:Int
+	in35	:in35
+	SetTypeFrGTFPGA35	:Int
+	in36	:in36
+	SetTypeFrGTFPGA36	:Int
+	in37	:in37
+	SetTypeFrGTFPGA37	:Int
+	in38	:in38
+	SetTypeFrGTFPGA38	:Int
+	in39	:in39
+	SetTypeFrGTFPGA39	:Int
+	in40	:in40
+	SetTypeFrGTFPGA40	:Int
+	in41	:in41
+	SetTypeFrGTFPGA41	:Int
+	in42	:in42
+	SetTypeFrGTFPGA42	:Int
+	in43	:in43
+	SetTypeFrGTFPGA43	:Int
+	in44	:in44
+	SetTypeFrGTFPGA44	:Int
+	in45	:in45
+	SetTypeFrGTFPGA45	:Int
+	in46	:in46
+	SetTypeFrGTFPGA46	:Int
+	in47	:in47
+	SetTypeFrGTFPGA47	:Int
+	in48	:in48
+	SetTypeFrGTFPGA48	:Int
+	in49	:in49
+	SetTypeFrGTFPGA49	:Int
+	in50	:in50
+	SetTypeFrGTFPGA50	:Int
+	in51	:in51
+	SetTypeFrGTFPGA51	:Int
+	in52	:in52
+	SetTypeFrGTFPGA52	:Int
+	in53	:in53
+	SetTypeFrGTFPGA53	:Int
+	in54	:in54
+	SetTypeFrGTFPGA54	:Int
+	in55	:in55
+	SetTypeFrGTFPGA55	:Int
+	in56	:in56
+	SetTypeFrGTFPGA56	:Int
+	in57	:in57
+	SetTypeFrGTFPGA57	:Int
+	in58	:in58
+	SetTypeFrGTFPGA58	:Int
+	in59	:in59
+	SetTypeFrGTFPGA59	:Int
+	in60	:in60
+	SetTypeFrGTFPGA60	:Int
+	in61	:in61
+	SetTypeFrGTFPGA61	:Int
+	in62	:in62
+	SetTypeFrGTFPGA62	:Int
+	in63	:in63
+	SetTypeFrGTFPGA63	:Int
+	in64	:in64
+	SetTypeFrGTFPGA64	:Int
+	useVersion	:THREE
+rtds_risc_ctl_PROCASN
+	1232 368 0 0 3
+	CPRO	:1
+	BRD	:4
+	ABC	:A
+DASHED_LINE
+	976 272 1 0 2
+	-4 -192 4 160
+	LW	:1.0
+	COL	:RED
+rtds_sharc_ctl_SRCABSPH
+	816 368 0 0 6
+	WType	:Sine
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:11
+WIRE
+	880 368 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	752 400 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	752 368 0 0 1
+	Val	:2
+rtds_sharc_ctl_CONSTANT
+	752 336 0 0 1
+	Val	:150.2
+rtds_sharc_ctl_CONSTANT
+	752 208 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	752 176 0 0 1
+	Val	:5
+rtds_sharc_ctl_CONSTANT
+	752 144 0 0 1
+	Val	:15000.0
+rtds_sharc_ctl_CONSTANT
+	752 304 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	752 272 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	752 240 0 0 1
+	Val	:100.5
+rtds_sharc_ctl_SRCABSPH
+	816 176 0 0 6
+	WType	:Square
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:10
+rtds_sharc_ctl_SRCABSPH
+	816 272 0 0 6
+	WType	:Sine
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:9
+wirelabel
+	880 176 0 0 3
+	Name	:out11
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	848 176 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	880 368 0 0 3
+	Name	:out13
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	880 272 0 0 3
+	Name	:out12
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	848 272 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_SRCABSPH
+	912 720 0 0 6
+	WType	:Triangle
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:8
+WIRE
+	976 720 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	848 752 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	848 720 0 0 1
+	Val	:20.0
+rtds_sharc_ctl_CONSTANT
+	848 688 0 0 1
+	Val	:150.2
+rtds_sharc_ctl_CONSTANT
+	848 560 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	848 528 0 0 1
+	Val	:5
+rtds_sharc_ctl_CONSTANT
+	848 496 0 0 1
+	Val	:15000.0
+rtds_sharc_ctl_CONSTANT
+	848 656 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	848 624 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	848 592 0 0 1
+	Val	:100.5
+rtds_sharc_ctl_SRCABSPH
+	912 528 0 0 6
+	WType	:Square
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:7
+rtds_sharc_ctl_SRCABSPH
+	912 624 0 0 6
+	WType	:Sine
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:6
+wirelabel
+	976 528 0 0 3
+	Name	:out14
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	944 528 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	976 720 0 0 3
+	Name	:out16
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	976 624 0 0 3
+	Name	:out15
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	944 624 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_SRCABSPH
+	592 368 0 0 6
+	WType	:Triangle
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:5
+WIRE
+	656 368 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	528 400 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	528 368 0 0 1
+	Val	:20.0
+rtds_sharc_ctl_CONSTANT
+	528 336 0 0 1
+	Val	:150.2
+rtds_sharc_ctl_CONSTANT
+	528 208 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	528 176 0 0 1
+	Val	:5
+rtds_sharc_ctl_CONSTANT
+	528 144 0 0 1
+	Val	:15000.0
+rtds_sharc_ctl_CONSTANT
+	528 304 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	528 272 0 0 1
+	Val	:60
+rtds_sharc_ctl_CONSTANT
+	528 240 0 0 1
+	Val	:100.5
+rtds_sharc_ctl_SRCABSPH
+	592 176 0 0 6
+	WType	:Square
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:4
+rtds_sharc_ctl_SRCABSPH
+	592 272 0 0 6
+	WType	:Sine
+	Units	:volts
+	Duty	:50
+	prtyp	:2
+	Proc	:1
+	Pri	:3
+wirelabel
+	656 176 0 0 3
+	Name	:out8
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	624 176 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+wirelabel
+	656 368 0 0 3
+	Name	:out10
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	656 272 0 0 3
+	Name	:out9
+	COL	:BLUE
+	Monitor	:Yes
+WIRE
+	624 272 0 0 2
+	0 -4 32 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	304 208 0 0 1
+	Val	:0.0
+rtds_sharc_ctl_CONSTANT
+	304 144 0 0 1
+	Val	:1
+rtds_sharc_ctl_CONSTANT
+	304 176 0 0 1
+	Val	:4
+rtds_sharc_ctl_IEEE2INT
+	240 592 0 0 6
+	prtyp	:2
+	Op	:Round
+	Proc	:1
+	Pri	:17
+	Op2	:Round
+	cmv	:1
+WIRE
+	304 592 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_IEEE2INT
+	240 624 0 0 6
+	prtyp	:2
+	Op	:Round
+	Proc	:1
+	Pri	:2
+	Op2	:Round
+	cmv	:1
+WIRE
+	304 624 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_IEEE2INT
+	208 720 0 0 6
+	prtyp	:2
+	Op	:Round
+	Proc	:1
+	Pri	:16
+	Op2	:Round
+	cmv	:1
+rtds_sharc_ctl_IEEE2INT
+	208 752 0 0 6
+	prtyp	:2
+	Op	:Round
+	Proc	:1
+	Pri	:20
+	Op2	:Round
+	cmv	:1
+WIRE
+	176 720 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+WIRE
+	176 752 0 0 2
+	-32 -4 0 4
+	COL	:RED
+	LW	:1.0
+rtds_sharc_ctl_CONSTANT
+	144 912 0 0 1
+	Val	:15000.0
+rtds_sharc_ctl_CONSTANT
+	144 944 0 0 1
+	Val	:10
+rtds_sharc_ctl_CONSTANT
+	144 976 0 0 1
+	Val	:0
+DASHED_LINE
+	432 656 0 0 2
+	-352 -4 320 4
+	LW	:1.0
+	COL	:RED
+wirelabel
+	432 176 0 0 3
+	Name	:out5
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	208 144 0 0 3
+	Name	:out1
+	COL	:BLUE
+	Monitor	:Yes
+wirelabel
+	432 272 0 0 3
+	Name	:out6
+	COL	:BLUE
+	Monitor	:Yes

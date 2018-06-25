@@ -1,0 +1,46 @@
+{
+   guistr: "# # String gsaved with Nlview 6.5.12  2016-01-29 bk=1.3547 VDI=39 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port perstn -pg 1 -y 580 -defaultsOSRD
+preplace port axi_aclk_out -pg 1 -y 710 -defaultsOSRD
+preplace port S_AXI -pg 1 -y 700 -defaultsOSRD
+preplace port PCIE_REFCLK -pg 1 -y 810 -defaultsOSRD
+preplace port PCIE_MGT -pg 1 -y 690 -defaultsOSRD
+preplace port M_AXI -pg 1 -y 430 -defaultsOSRD
+preplace portBus msi_irq -pg 1 -y 390 -defaultsOSRD
+preplace portBus peripheral_aresetn -pg 1 -y 600 -defaultsOSRD
+preplace portBus interconnect_aresetn -pg 1 -y 580 -defaultsOSRD
+preplace inst axi_pcie_0 -pg 1 -lvl 2 -y 750 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 1 -y 440 -defaultsOSRD
+preplace inst axi_pcie_intc_0 -pg 1 -lvl 2 -y 150 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 1 -y 200 -defaultsOSRD
+preplace inst rst_axi_pcie_0_125M -pg 1 -lvl 1 -y 580 -defaultsOSRD
+preplace inst util_ds_buf_0 -pg 1 -lvl 1 -y 810 -defaultsOSRD
+preplace inst axi_reset_0 -pg 1 -lvl 2 -y 350 -defaultsOSRD
+preplace netloc S_AXI_1 1 0 2 NJ 700 NJ
+preplace netloc axi_pcie_0_INTX_MSI_Grant 1 1 2 480 40 860
+preplace netloc axi_reset_0_gpio_io_o 1 0 3 30 670 NJ 440 840
+preplace netloc axi_pcie_0_axi_aclk_out1 1 0 3 20 390 440 430 880
+preplace netloc axi_pcie_0_pcie_7x_mgt 1 2 1 NJ
+preplace netloc msi_irq_1 1 0 2 NJ 10 NJ
+preplace netloc axi_interconnect_0_M02_AXI 1 1 1 430
+preplace netloc util_vector_logic_0_Res 1 0 2 40 680 370
+preplace netloc axi_pcie_0_axi_ctl_aclk_out 1 0 3 50 490 NJ 490 820
+preplace netloc axi_pcie_0_MSI_Vector_Width 1 1 2 490 270 870
+preplace netloc axi_pcie_intc_0_MSI_Vector_Num 1 1 2 460 10 830
+preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 NJ
+preplace netloc axi_pcie_0_mmcm_lock 1 0 3 50 690 NJ 620 810
+preplace netloc axi_pcie_0_M_AXI 1 0 3 40 380 NJ 420 830
+preplace netloc axi_interconnect_0_M00_AXI 1 1 1 410
+preplace netloc axi_pcie_intc_0_INTX_MSI_Request 1 1 2 470 30 810
+preplace netloc pcie_ref_1 1 0 1 NJ
+preplace netloc axi_interconnect_0_M01_AXI 1 1 1 400
+preplace netloc axi_pcie_0_MSI_enable 1 1 2 480 280 850
+preplace netloc rst_axi_pcie_0_125M_peripheral_aresetn 1 0 3 30 20 390 600 NJ
+preplace netloc axi_interconnect_0_M03_AXI 1 1 2 NJ 260 NJ
+preplace netloc aux_reset_in_1 1 0 1 NJ
+preplace netloc S00_ARESETN_1 1 1 2 380 580 NJ
+levelinfo -pg 1 -10 210 650 910 -top 0 -bot 880
+",
+}
+0

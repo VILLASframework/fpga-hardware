@@ -1,0 +1,53 @@
+state wait_ts:
+	if (top_i/hier_0/rtds_axis_0/U0/IFM_CDC/s_UserTstepPulse == 1'b1) then
+		goto ts_started;
+	else
+		goto wait_ts;
+	endif
+
+state ts_started:
+	if (top_i/hier_0/rtds_axis_0/U0/IFM_CDC/s_UserRxValid == 1'b1) then
+		goto received;
+	else
+		clear_flag $flag0;
+		clear_flag $flag1;
+		clear_flag $flag2;
+		clear_flag $flag3;
+
+		goto ts_started;
+	endif
+
+state received:
+	if (top_i/hier_0/rtds_axis_0/U0/IFM_CDC/UserTxWr == 1'b1) then
+		set_flag $flag0;
+		goto written;
+	elseif (top_i/hier_0/rtds_axis_0/U0/IFM_CDC/s_UserTstepPulse==1'b1) then
+		goto nothing_sent;
+	else
+		goto received;
+	endif
+
+state written:
+	if (top_i/hier_0/rtds_axis_0/U0/IFM_CDC/s_UserTxInProgress==1'b1) then
+		set_flag $flag1;
+		goto sending;
+	else
+		goto written;
+	endif
+
+state sending:
+	if (top_i/hier_0/rtds_axis_0/U0/IFM_CDC/s_UserTxInProgress== 1'b0) then
+		set_flag $flag2;
+		goto wait_ts;
+	elseif (top_i/hier_0/rtds_axis_0/U0/IFM_CDC/s_UserTstepPulse == 1'b1) then
+		goto overflow;
+	else
+		goto sending;
+	endif
+
+state overflow:
+	set_flag $flag3;
+	trigger;
+	
+state nothing_sent:
+	trigger;

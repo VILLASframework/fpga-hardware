@@ -1,0 +1,56 @@
+CASE: Test Circuit
+Delt: 50.000000 us 
+Rack: 3 NoRealTime: 0
+
+Output Desc="in1d" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=20042C
+Output Desc="in2d" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=200430
+Output Desc="in3d" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=200434
+Output Desc="in4d" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=200438
+Output Desc="in5d" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=20043C
+Output Desc="in6d" Group="Subsystem #1|GTFPGA" Units="units" Type=INT Min=0 Max=1 Rack=3 Adr=200440
+Output Desc="in7a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200444
+Output Desc="in8a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200448
+Output Desc="in9a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20044C
+Output Desc="in10a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200450
+Output Desc="in11a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200454
+Output Desc="in12a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200458
+Output Desc="in13a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20045C
+Output Desc="in14a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200460
+Output Desc="in15a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200464
+Output Desc="in16a" Group="Subsystem #1|GTFPGA" Units="units" Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200468
+Output Desc="out11a" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20046C
+Output Desc="out10a" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200470
+Output Desc="out9a" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200474
+Output Desc="out8a" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=200478
+Output Desc="out7a" Group="Subsystem #1|CTLs|Vars" Units=" " Type=IEEE Min=0.0000 Max=1.0000 Rack=3 Adr=20047C
+Turnpot Desc="DIAL1" Group="Subsystem #1|CTLs|Inputs" Type=IEEE Positions=10 InitValue=1 P1=1.0000 P2=2.0000 P3=3.0000 P4=4.0000 P5=5.0000 P6=6.0000 P7=7.0000 P8=8.0000 P9=9.0000 P10=10.0000 Rack=3 Adr=200408
+Turnpot Desc="DIAL2" Group="Subsystem #1|CTLs|Inputs" Type=IEEE Positions=10 InitValue=1 P1=1.0000 P2=2.0000 P3=3.0000 P4=4.0000 P5=5.0000 P6=6.0000 P7=7.0000 P8=8.0000 P9=9.0000 P10=10.0000 Rack=3 Adr=20040C
+Switch Desc="SW1" Group="Subsystem #1|CTLs|Inputs" Type=INT P0=0 P1=1 InitValue=0 OnText="ON" OffText="OFF" Rack=3 Adr=200418
+Switch Desc="SW2" Group="Subsystem #1|CTLs|Inputs" Type=INT P0=0 P1=1 InitValue=0 OnText="ON" OffText="OFF" Rack=3 Adr=20041C
+Pushbutton Desc="PB1" Group="Subsystem #1|CTLs|Inputs" Type=INT P0=0 P1=1 Rack=3 Adr=200424
+Slider Desc="SL1" Group="Subsystem #1|CTLs|Inputs" Type=IEEE Units="volts" Min=-100.0000 Max=100.0000 InitValue=1.0000 Rack=3 Adr=200428
+String Desc="CircuitTitle Annotation" Group="Annotation" InitValue="Test Circuit"
+String Desc="Sequencer file" Group="Annotation" InitValue="Sequencer file: <None>"
+String Desc="Draft file" Group="Annotation" InitValue="Draft file: U:\ACS-Public\35_msv\05_s2ss\01_RTDSandGTFPGAandOPAL_02_07_2014_tests_with_Steffen\RSCAD_TestGTFPGA_1\fpga.dft"
+String Desc="Draft file modification date" Group="Time tags" InitValue="Draft Save Date:14/07/18 19:36:08"
+String Desc="Sequencer file modification date" Group="Time tags" InitValue="Sequencer Compile Date:<None>"
+String Desc="Compile date" Group="Time tags" InitValue="Draft Compile Date:14/07/18 19:36:09"
+Sequencer: 
+
+
+COMPONENT_TIMING_INFORMATION:
+timing_record: subsystem=1 processor=0 processor_type=GPC
+timing_record: subsystem=1 processor=1 processor_type=GPC
+timing_record: subsystem=1 processor=2 processor_type=GPC
+timing_record: subsystem=1 processor=3 processor_type=GPC
+timing_record: subsystem=1 processor=4 processor_type=GPC
+timing_record: subsystem=1 processor=5 processor_type=GPC
+timing_record: subsystem=1 processor=6 processor_type=GPC
+timing_record: subsystem=1 processor=7 processor_type=GPC
+timing_record: subsystem=1 processor_type=3PC processor_count=0
+timing_record: timing_name=gtfpgav2 component_type=RISC_CMODEL subsystem=1 processor=4 processor_type=GPC clock_index=16 enabled=true use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGEN2 component_type=RISC_FGEN2 subsystem=1 processor=4 processor_type=GPC clock_index=17 enabled=false use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGEN2 component_type=RISC_FGEN2 subsystem=1 processor=4 processor_type=GPC clock_index=18 enabled=false use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGEN2 component_type=RISC_FGEN2 subsystem=1 processor=4 processor_type=GPC clock_index=19 enabled=false use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGEN2 component_type=RISC_FGEN2 subsystem=1 processor=4 processor_type=GPC clock_index=20 enabled=false use=CTLS lf=0.000000 logical_proc=1
+timing_record: timing_name=FGEN2 component_type=RISC_FGEN2 subsystem=1 processor=4 processor_type=GPC clock_index=21 enabled=false use=CTLS lf=0.000000 logical_proc=1

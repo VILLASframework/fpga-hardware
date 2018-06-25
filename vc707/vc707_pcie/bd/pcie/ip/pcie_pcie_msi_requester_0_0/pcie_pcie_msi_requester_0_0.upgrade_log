@@ -1,0 +1,73 @@
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.4.1 (win64) Build 1431336 Fri Dec 11 14:52:45 MST 2015
+| Date         : Thu Apr 21 10:49:47 2016
+| Host         : E265 running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7vx485tffg1761-2
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'pcie_pcie_msi_requester_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of pcie_pcie_msi_requester_0_0 from acs.eonerc.rwth-aachen.de:user:pcie_msi_requester:1.0 (Rev. 5) to acs.eonerc.rwth-aachen.de:user:pcie_msi_requester:1.1 (Rev. 13)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Interface Information
+------------------------
+
+Detected external interface differences while upgrading IP 'pcie_pcie_msi_requester_0_0'.
+
+
+-upgrade has added interface 's_axi_ctl'
+
+3. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading IP 'pcie_pcie_msi_requester_0_0'. These changes may impact your design.
+
+
+-upgrade has added port 's_axi_ctl_araddr'
+-upgrade has added port 's_axi_ctl_arprot'
+-upgrade has added port 's_axi_ctl_arready'
+-upgrade has added port 's_axi_ctl_arvalid'
+-upgrade has added port 's_axi_ctl_awaddr'
+-upgrade has added port 's_axi_ctl_awprot'
+-upgrade has added port 's_axi_ctl_awready'
+-upgrade has added port 's_axi_ctl_awvalid'
+-upgrade has added port 's_axi_ctl_bready'
+-upgrade has added port 's_axi_ctl_bresp'
+-upgrade has added port 's_axi_ctl_bvalid'
+-upgrade has added port 's_axi_ctl_rdata'
+-upgrade has added port 's_axi_ctl_rready'
+-upgrade has added port 's_axi_ctl_rresp'
+-upgrade has added port 's_axi_ctl_rvalid'
+-upgrade has added port 's_axi_ctl_wdata'
+-upgrade has added port 's_axi_ctl_wready'
+-upgrade has added port 's_axi_ctl_wstrb'
+-upgrade has added port 's_axi_ctl_wvalid'
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.4.1 (win64) Build 1431336 Fri Dec 11 14:52:45 MST 2015
+| Date         : Tue Mar 29 08:17:16 2016
+| Host         : E265 running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7vx485tffg1761-2
+--------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'pcie_pcie_msi_requester_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the update of pcie_pcie_msi_requester_0_0 (acs.eonerc.rwth-aachen.de:user:pcie_msi_requester:1.0 (Rev. 5)) to current project options.
+

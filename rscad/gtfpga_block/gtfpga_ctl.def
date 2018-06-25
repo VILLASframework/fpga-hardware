@@ -1,0 +1,233 @@
+COMPONENT-BUILDER-OPTIONS:
+  COMPONENT-MODE:        CTL
+  STACKING-LOAD:         2
+  AUTO-GEN-INST-CNT:     true
+  AUTO-UPDATE-FILE-DEFN: false
+  SHOW-NODE-NAMES:       true
+  AUTO-ADD-ASC:          false
+  DEFAULT-FONT-SIZE:     10
+
+PARAMETERS:
+  SECTION: "CONFIGURATION"
+    Proc     "Assigned Controls Processor"                          ""           0    INTEGER   1     1   36
+    Pri      "Priority Level"                                       ""           0    INTEGER   1     1
+    prtyp    "Solve Model on card type:"                            ";RPC;GPC"   0    TOGGLE    GPC   1   2
+    Card     "GTFPGA Card Number"                                   ""           0    INTEGER   1     1   12
+    Port     "GPC GTIO Fiber Port Number"                           ""           0    INTEGER   1     1   2
+    Suffix   "Add signal suffix for multiple instances of GTPFGA"   ""           10   NAME      0
+  SECTION: "To GTFPGA"
+    numVarsToGTFPGA     "Number of Variables sent from GPC to GTFPGA"   ""            0   INTEGER   1     0   64
+    SetTypeToGTFPGA1    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>0
+    SetTypeToGTFPGA2    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>1
+    SetTypeToGTFPGA3    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>2
+    SetTypeToGTFPGA4    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>3
+    SetTypeToGTFPGA5    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>4
+    SetTypeToGTFPGA6    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>5
+    SetTypeToGTFPGA7    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>6
+    SetTypeToGTFPGA8    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>7
+    SetTypeToGTFPGA9    "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>8
+    SetTypeToGTFPGA10   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>9
+    SetTypeToGTFPGA11   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>10
+    SetTypeToGTFPGA12   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>11
+    SetTypeToGTFPGA13   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>12
+    SetTypeToGTFPGA14   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>13
+    SetTypeToGTFPGA15   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>14
+    SetTypeToGTFPGA16   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>15
+    SetTypeToGTFPGA17   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>16
+    SetTypeToGTFPGA18   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>17
+    SetTypeToGTFPGA19   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>18
+    SetTypeToGTFPGA20   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>19
+    SetTypeToGTFPGA21   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>20
+    SetTypeToGTFPGA22   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>21
+    SetTypeToGTFPGA23   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>22
+    SetTypeToGTFPGA24   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>23
+    SetTypeToGTFPGA25   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>24
+    SetTypeToGTFPGA26   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>25
+    SetTypeToGTFPGA27   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>26
+    SetTypeToGTFPGA28   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>27
+    SetTypeToGTFPGA29   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>28
+    SetTypeToGTFPGA30   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>29
+    SetTypeToGTFPGA31   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>30
+    SetTypeToGTFPGA32   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>31
+    SetTypeToGTFPGA33   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>32
+    SetTypeToGTFPGA34   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>33
+    SetTypeToGTFPGA35   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>34
+    SetTypeToGTFPGA36   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>35
+    SetTypeToGTFPGA37   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>36
+    SetTypeToGTFPGA38   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>37
+    SetTypeToGTFPGA39   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>38
+    SetTypeToGTFPGA40   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>39
+    SetTypeToGTFPGA41   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>40
+    SetTypeToGTFPGA42   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>41
+    SetTypeToGTFPGA43   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>42
+    SetTypeToGTFPGA44   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>43
+    SetTypeToGTFPGA45   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>44
+    SetTypeToGTFPGA46   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>45
+    SetTypeToGTFPGA47   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>46
+    SetTypeToGTFPGA48   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>47
+    SetTypeToGTFPGA49   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>48
+    SetTypeToGTFPGA50   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>49
+    SetTypeToGTFPGA51   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>50
+    SetTypeToGTFPGA52   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>51
+    SetTypeToGTFPGA53   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>52
+    SetTypeToGTFPGA54   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>53
+    SetTypeToGTFPGA55   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>54
+    SetTypeToGTFPGA56   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>55
+    SetTypeToGTFPGA57   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>56
+    SetTypeToGTFPGA58   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>57
+    SetTypeToGTFPGA59   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>58
+    SetTypeToGTFPGA60   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>59
+    SetTypeToGTFPGA61   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>60
+    SetTypeToGTFPGA62   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>61
+    SetTypeToGTFPGA63   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>62
+    SetTypeToGTFPGA64   "Select Data format to GTFPGA"                  "Int;Float"   0   TOGGLE    Int   0   1     numVarsToGTFPGA>63
+  SECTION: "From GTFPGA"
+    numVarsFromGTFPGA   "Number of Variables recieved on GPC from GTFPGA"   ""            0   INTEGER   1     0   64
+    SetTypeFrGTFPGA1    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>0
+    SetTypeFrGTFPGA2    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>1
+    SetTypeFrGTFPGA3    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>2
+    SetTypeFrGTFPGA4    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>3
+    SetTypeFrGTFPGA5    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>4
+    SetTypeFrGTFPGA6    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>5
+    SetTypeFrGTFPGA7    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>6
+    SetTypeFrGTFPGA8    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>7
+    SetTypeFrGTFPGA9    "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>8
+    SetTypeFrGTFPGA10   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>9
+    SetTypeFrGTFPGA11   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>10
+    SetTypeFrGTFPGA12   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>11
+    SetTypeFrGTFPGA13   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>12
+    SetTypeFrGTFPGA14   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>13
+    SetTypeFrGTFPGA15   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>14
+    SetTypeFrGTFPGA16   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>15
+    SetTypeFrGTFPGA17   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>16
+    SetTypeFrGTFPGA18   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>17
+    SetTypeFrGTFPGA19   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>18
+    SetTypeFrGTFPGA20   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>19
+    SetTypeFrGTFPGA21   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>20
+    SetTypeFrGTFPGA22   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>21
+    SetTypeFrGTFPGA23   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>22
+    SetTypeFrGTFPGA24   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>23
+    SetTypeFrGTFPGA25   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>24
+    SetTypeFrGTFPGA26   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>25
+    SetTypeFrGTFPGA27   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>26
+    SetTypeFrGTFPGA28   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>27
+    SetTypeFrGTFPGA29   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>28
+    SetTypeFrGTFPGA30   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>29
+    SetTypeFrGTFPGA31   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>30
+    SetTypeFrGTFPGA32   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>31
+    SetTypeFrGTFPGA33   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>32
+    SetTypeFrGTFPGA34   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>33
+    SetTypeFrGTFPGA35   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>34
+    SetTypeFrGTFPGA36   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>35
+    SetTypeFrGTFPGA37   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>36
+    SetTypeFrGTFPGA38   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>37
+    SetTypeFrGTFPGA39   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>38
+    SetTypeFrGTFPGA40   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>39
+    SetTypeFrGTFPGA41   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>40
+    SetTypeFrGTFPGA42   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>41
+    SetTypeFrGTFPGA43   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>42
+    SetTypeFrGTFPGA44   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>43
+    SetTypeFrGTFPGA45   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>44
+    SetTypeFrGTFPGA46   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>45
+    SetTypeFrGTFPGA47   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>46
+    SetTypeFrGTFPGA48   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>47
+    SetTypeFrGTFPGA49   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>48
+    SetTypeFrGTFPGA50   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>49
+    SetTypeFrGTFPGA51   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>50
+    SetTypeFrGTFPGA52   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>51
+    SetTypeFrGTFPGA53   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>52
+    SetTypeFrGTFPGA54   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>53
+    SetTypeFrGTFPGA55   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>54
+    SetTypeFrGTFPGA56   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>55
+    SetTypeFrGTFPGA57   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>56
+    SetTypeFrGTFPGA58   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>57
+    SetTypeFrGTFPGA59   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>58
+    SetTypeFrGTFPGA60   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>59
+    SetTypeFrGTFPGA61   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>60
+    SetTypeFrGTFPGA62   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>61
+    SetTypeFrGTFPGA63   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>62
+    SetTypeFrGTFPGA64   "Select Data format from GTFPGA"                    "Int;Float"   0   TOGGLE    Int   0   1     numVarsFromGTFPGA>63
+
+GRAPHICS:
+  Box(-64,-64,64,64)
+  FontSize(14)
+  FText(0,-32,"GTFPGA")
+  If (numVarsToGTFPGA>0)
+    Line(64,-32,128,-32)
+    Line(64,32,128,32)
+    Line(160,0,128,-48)
+    Line(160,0,128,48)
+    Line(128,-48,128,-32)
+    Line(128,32,128,48)
+    FontSize(10)
+    FText(96,-12,"To GTFPGA")
+    FontSize(10)
+    Text(128,12,numVarsToGTFPGA)
+    FontSize(10)
+    FText(96,12,"Variables = ")
+  EndIf
+  If (numVarsFromGTFPGA>0)
+    Line(-160,-32,-96,-32)
+    Line(-160,32,-96,32)
+    Line(-64,0,-96,-48)
+    Line(-64,0,-96,48)
+    Line(-96,-48,-96,-32)
+    Line(-96,32,-96,48)
+    FontSize(10)
+    FText(-120,-12,"From GTFPGA")
+    FontSize(10)
+    Text(-96,12,numVarsFromGTFPGA)
+    FontSize(10)
+    FText(-128,12,"Variables = ")
+    Line(-160,-32,-160,32)
+  EndIf
+  Box(-60,-60,60,60)
+  FontSize(10)
+  FText(-16,0,"Controls Proc")
+  FontSize(10)
+  Text(32,0,Proc)
+  FontSize(10)
+  FText(4,16,"Port")
+  FontSize(10)
+  Text(32,16,Port)
+
+
+COMPUTATIONS:
+  #IF prtyp=2
+    INTEGER _CBMANAGE_0_GTFPGA_Ctl_inst = 3787
+    INTEGER _GPCINST_                   = _CBMANAGE_0_GTFPGA_Ctl_inst
+    INTEGER INST_CNT                    = _GPCINST_
+  #END
+
+
+VALVE-GROUP:
+  RTDS.CTL.RISC_CMODEL
+    COMP: GTFPGA_Ctl $SS $Proc $Pri 0 $prtyp $INST_CNT
+    INTDATA: $Card Card $Port Port $numVarsToGTFPGA numVarsToGTFPGA $numVarsFromGTFPGA numVarsFromGTFPGA $SetTypeToGTFPGA1 SetTypeToGTFPGA1 $SetTypeToGTFPGA2 SetTypeToGTFPGA2 $SetTypeToGTFPGA3 SetTypeToGTFPGA3 $SetTypeToGTFPGA4 SetTypeToGTFPGA4
+    INTDATA: $SetTypeFrGTFPGA1 SetTypeFrGTFPGA1 $SetTypeFrGTFPGA2 SetTypeFrGTFPGA2 $SetTypeFrGTFPGA3 SetTypeFrGTFPGA3 $SetTypeFrGTFPGA4 SetTypeFrGTFPGA4 $SetTypeToGTFPGA5 SetTypeToGTFPGA5 $SetTypeToGTFPGA6 SetTypeToGTFPGA6
+    INTDATA: $SetTypeToGTFPGA7 SetTypeToGTFPGA7 $SetTypeToGTFPGA8 SetTypeToGTFPGA8 $SetTypeToGTFPGA9 SetTypeToGTFPGA9 $SetTypeToGTFPGA10 SetTypeToGTFPGA10 $SetTypeToGTFPGA11 SetTypeToGTFPGA11 $SetTypeToGTFPGA12 SetTypeToGTFPGA12
+    INTDATA: $SetTypeToGTFPGA13 SetTypeToGTFPGA13 $SetTypeToGTFPGA14 SetTypeToGTFPGA14 $SetTypeToGTFPGA15 SetTypeToGTFPGA15 $SetTypeToGTFPGA16 SetTypeToGTFPGA16 $SetTypeToGTFPGA17 SetTypeToGTFPGA17 $SetTypeToGTFPGA18 SetTypeToGTFPGA18
+    INTDATA: $SetTypeToGTFPGA19 SetTypeToGTFPGA19 $SetTypeToGTFPGA20 SetTypeToGTFPGA20 $SetTypeToGTFPGA21 SetTypeToGTFPGA21 $SetTypeToGTFPGA22 SetTypeToGTFPGA22 $SetTypeToGTFPGA23 SetTypeToGTFPGA23 $SetTypeToGTFPGA24 SetTypeToGTFPGA24
+    INTDATA: $SetTypeToGTFPGA25 SetTypeToGTFPGA25 $SetTypeToGTFPGA26 SetTypeToGTFPGA26 $SetTypeToGTFPGA27 SetTypeToGTFPGA27 $SetTypeToGTFPGA28 SetTypeToGTFPGA28 $SetTypeToGTFPGA29 SetTypeToGTFPGA29 $SetTypeToGTFPGA30 SetTypeToGTFPGA30
+    INTDATA: $SetTypeToGTFPGA31 SetTypeToGTFPGA31 $SetTypeToGTFPGA32 SetTypeToGTFPGA32 $SetTypeToGTFPGA33 SetTypeToGTFPGA33 $SetTypeToGTFPGA34 SetTypeToGTFPGA34 $SetTypeToGTFPGA35 SetTypeToGTFPGA35 $SetTypeToGTFPGA36 SetTypeToGTFPGA36
+    INTDATA: $SetTypeToGTFPGA37 SetTypeToGTFPGA37 $SetTypeToGTFPGA38 SetTypeToGTFPGA38 $SetTypeToGTFPGA39 SetTypeToGTFPGA39 $SetTypeToGTFPGA40 SetTypeToGTFPGA40 $SetTypeToGTFPGA41 SetTypeToGTFPGA41 $SetTypeToGTFPGA42 SetTypeToGTFPGA42
+    INTDATA: $SetTypeToGTFPGA43 SetTypeToGTFPGA43 $SetTypeToGTFPGA44 SetTypeToGTFPGA44 $SetTypeToGTFPGA45 SetTypeToGTFPGA45 $SetTypeToGTFPGA46 SetTypeToGTFPGA46 $SetTypeToGTFPGA47 SetTypeToGTFPGA47 $SetTypeToGTFPGA48 SetTypeToGTFPGA48
+    INTDATA: $SetTypeToGTFPGA49 SetTypeToGTFPGA49 $SetTypeToGTFPGA50 SetTypeToGTFPGA50 $SetTypeToGTFPGA51 SetTypeToGTFPGA51 $SetTypeToGTFPGA52 SetTypeToGTFPGA52 $SetTypeToGTFPGA53 SetTypeToGTFPGA53 $SetTypeToGTFPGA54 SetTypeToGTFPGA54
+    INTDATA: $SetTypeToGTFPGA55 SetTypeToGTFPGA55 $SetTypeToGTFPGA56 SetTypeToGTFPGA56 $SetTypeToGTFPGA57 SetTypeToGTFPGA57 $SetTypeToGTFPGA58 SetTypeToGTFPGA58 $SetTypeToGTFPGA59 SetTypeToGTFPGA59 $SetTypeToGTFPGA60 SetTypeToGTFPGA60
+    INTDATA: $SetTypeToGTFPGA61 SetTypeToGTFPGA61 $SetTypeToGTFPGA62 SetTypeToGTFPGA62 $SetTypeToGTFPGA63 SetTypeToGTFPGA63 $SetTypeToGTFPGA64 SetTypeToGTFPGA64 $SetTypeFrGTFPGA5 SetTypeFrGTFPGA5 $SetTypeFrGTFPGA6 SetTypeFrGTFPGA6
+    INTDATA: $SetTypeFrGTFPGA7 SetTypeFrGTFPGA7
+    CHARDATA: $Suffix Suffix
+  END
+  RTDS.CTL.RISC_DUD
+    COMP: GTFPGA_Ctl $SS $Proc $Pri 0 $prtyp 0
+    INTDATA: $SetTypeFrGTFPGA8 SetTypeFrGTFPGA8 $SetTypeFrGTFPGA9 SetTypeFrGTFPGA9 $SetTypeFrGTFPGA10 SetTypeFrGTFPGA10 $SetTypeFrGTFPGA11 SetTypeFrGTFPGA11 $SetTypeFrGTFPGA12 SetTypeFrGTFPGA12 $SetTypeFrGTFPGA13 SetTypeFrGTFPGA13
+    INTDATA: $SetTypeFrGTFPGA14 SetTypeFrGTFPGA14 $SetTypeFrGTFPGA15 SetTypeFrGTFPGA15 $SetTypeFrGTFPGA16 SetTypeFrGTFPGA16 $SetTypeFrGTFPGA17 SetTypeFrGTFPGA17 $SetTypeFrGTFPGA18 SetTypeFrGTFPGA18 $SetTypeFrGTFPGA19 SetTypeFrGTFPGA19
+    INTDATA: $SetTypeFrGTFPGA20 SetTypeFrGTFPGA20 $SetTypeFrGTFPGA21 SetTypeFrGTFPGA21 $SetTypeFrGTFPGA22 SetTypeFrGTFPGA22 $SetTypeFrGTFPGA23 SetTypeFrGTFPGA23 $SetTypeFrGTFPGA24 SetTypeFrGTFPGA24 $SetTypeFrGTFPGA25 SetTypeFrGTFPGA25
+    INTDATA: $SetTypeFrGTFPGA26 SetTypeFrGTFPGA26 $SetTypeFrGTFPGA27 SetTypeFrGTFPGA27 $SetTypeFrGTFPGA28 SetTypeFrGTFPGA28 $SetTypeFrGTFPGA29 SetTypeFrGTFPGA29 $SetTypeFrGTFPGA30 SetTypeFrGTFPGA30 $SetTypeFrGTFPGA31 SetTypeFrGTFPGA31
+    INTDATA: $SetTypeFrGTFPGA32 SetTypeFrGTFPGA32 $SetTypeFrGTFPGA33 SetTypeFrGTFPGA33 $SetTypeFrGTFPGA34 SetTypeFrGTFPGA34 $SetTypeFrGTFPGA35 SetTypeFrGTFPGA35 $SetTypeFrGTFPGA36 SetTypeFrGTFPGA36 $SetTypeFrGTFPGA37 SetTypeFrGTFPGA37
+    INTDATA: $SetTypeFrGTFPGA38 SetTypeFrGTFPGA38 $SetTypeFrGTFPGA39 SetTypeFrGTFPGA39 $SetTypeFrGTFPGA40 SetTypeFrGTFPGA40 $SetTypeFrGTFPGA41 SetTypeFrGTFPGA41 $SetTypeFrGTFPGA42 SetTypeFrGTFPGA42 $SetTypeFrGTFPGA43 SetTypeFrGTFPGA43
+    INTDATA: $SetTypeFrGTFPGA44 SetTypeFrGTFPGA44 $SetTypeFrGTFPGA45 SetTypeFrGTFPGA45 $SetTypeFrGTFPGA46 SetTypeFrGTFPGA46 $SetTypeFrGTFPGA47 SetTypeFrGTFPGA47 $SetTypeFrGTFPGA48 SetTypeFrGTFPGA48 $SetTypeFrGTFPGA49 SetTypeFrGTFPGA49
+    INTDATA: $SetTypeFrGTFPGA50 SetTypeFrGTFPGA50 $SetTypeFrGTFPGA51 SetTypeFrGTFPGA51 $SetTypeFrGTFPGA52 SetTypeFrGTFPGA52 $SetTypeFrGTFPGA53 SetTypeFrGTFPGA53 $SetTypeFrGTFPGA54 SetTypeFrGTFPGA54 $SetTypeFrGTFPGA55 SetTypeFrGTFPGA55
+    INTDATA: $SetTypeFrGTFPGA56 SetTypeFrGTFPGA56 $SetTypeFrGTFPGA57 SetTypeFrGTFPGA57 $SetTypeFrGTFPGA58 SetTypeFrGTFPGA58 $SetTypeFrGTFPGA59 SetTypeFrGTFPGA59 $SetTypeFrGTFPGA60 SetTypeFrGTFPGA60 $SetTypeFrGTFPGA61 SetTypeFrGTFPGA61
+    INTDATA: $SetTypeFrGTFPGA62 SetTypeFrGTFPGA62 $SetTypeFrGTFPGA63 SetTypeFrGTFPGA63 $SetTypeFrGTFPGA64 SetTypeFrGTFPGA64
+  END

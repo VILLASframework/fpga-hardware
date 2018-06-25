@@ -5,7 +5,6 @@ This directory contains HDL projects for Virtex 5 (ML507) / Virtex 6 (ML605) bas
 ## Structure
 
 - `xsg` Xilinx System Generator files
-- `hls` High-Level Sythesis files
 - `ips`
   - `rtds_axis` An AXI4-Stream to RTDS_InterfaceModule interface
   - `axi_pcie_intc`

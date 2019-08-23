@@ -111,10 +111,10 @@ set_property "board_part" "xilinx.com:vc707:part0:1.2" $obj
 set_property "corecontainer.enable" "1" $obj
 set_property "default_lib" "xil_defaultlib" $obj
 set_property "ip_cache_permissions" "read write" $obj
-set_property "ip_output_repo" "D:/svo/gtfpga/vc707/vc707_villas/work/vc707_villas.cache/ip" $obj
+set_property "ip_output_repo" "$origin_dir/work/vc707_villas.cache/ip" $obj
 set_property "sim.ip.auto_export_scripts" "1" $obj
 set_property "simulator_language" "Mixed" $obj
-set_property "target_language" "VHDL" $obj
+set_property "target_language" "Verilog" $obj
 set_property "target_simulator" "ModelSim" $obj
 set_property "xpm_libraries" "XPM_CDC XPM_MEMORY" $obj
 
@@ -237,10 +237,9 @@ set_property "transport_path_delay" "0" $obj
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {
-  create_run -name synth_1 -part xc7vx485tffg1761-2 -flow {Vivado Synthesis 2015} -strategy "Vivado Synthesis Defaults" -constrset constrs_1
+  create_run -name synth_1 -part xc7vx485tffg1761-2 -flow {Vivado Synthesis 2018} -constrset constrs_1
 } else {
-  set_property strategy "Vivado Synthesis Defaults" [get_runs synth_1]
-  set_property flow "Vivado Synthesis 2015" [get_runs synth_1]
+  set_property flow "Vivado Synthesis 2018" [get_runs synth_1]
 }
 set obj [get_runs synth_1]
 
@@ -249,14 +248,14 @@ current_run -synthesis [get_runs synth_1]
 
 # Create 'impl_1' run (if not found)
 if {[string equal [get_runs -quiet impl_1] ""]} {
-  create_run -name impl_1 -part xc7vx485tffg1761-2 -flow {Vivado Implementation 2015} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
+  create_run -name impl_1 -part xc7vx485tffg1761-2 -flow {Vivado Implementation 2018} -constrset constrs_1 -parent_run synth_1
 } else {
-  set_property strategy "Vivado Implementation Defaults" [get_runs impl_1]
-  set_property flow "Vivado Implementation 2015" [get_runs impl_1]
+  set_property flow "Vivado Implementation 2018" [get_runs impl_1]
 }
 set obj [get_runs impl_1]
 set_property "steps.write_bitstream.args.readback_file" "0" $obj
 set_property "steps.write_bitstream.args.verbose" "0" $obj
+set_property "steps.write_bitstream.args.bin_file" true $obj
 
 # set the current impl run
 current_run -implementation [get_runs impl_1]

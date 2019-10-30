@@ -1,0 +1,1463 @@
+
+*** Running vivado
+    with args -log aurora_8b10b_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source aurora_8b10b_0.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source aurora_8b10b_0.tcl -notrace
+Command: synth_design -top aurora_8b10b_0 -part xc7vx485tffg1761-2 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7vx485t'
+INFO: [Common 17-1540] The version limit for your license is '2019.04' and has expired for new software. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 7654 
+WARNING: [Synth 8-2507] parameter declaration becomes local in aurora_8b10b_0_GT_WRAPPER with formal parameter declaration list [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_transceiver_wrapper.v:213]
+WARNING: [Synth 8-2507] parameter declaration becomes local in aurora_8b10b_0_GT_WRAPPER with formal parameter declaration list [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_transceiver_wrapper.v:215]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1389.387 ; gain = 29.500 ; free physical = 57592 ; free virtual = 60844
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0.v:54]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_support' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_support.v:53]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_CLOCK_MODULE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_clock_module.v:62]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:609]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (1#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:609]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_CLOCK_MODULE' (2#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_clock_module.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_cdc_sync' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:104]
+	Parameter c_cdc_type bound to: 2'b01 
+	Parameter c_flop_input bound to: 1'b0 
+	Parameter c_reset_state bound to: 1'b0 
+	Parameter c_single_bit bound to: 1'b1 
+	Parameter c_vector_width bound to: 6'b000010 
+	Parameter c_mtbf_stages bound to: 3'b011 
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:129]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:130]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:131]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:132]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:133]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:134]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:135]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:138]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:139]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:140]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:141]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:142]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:143]
+INFO: [Synth 8-5534] Detected attribute (* KEEP = "TRUE" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:145]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:150]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:151]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:152]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:153]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:154]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:155]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_cdc_sync' (3#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:104]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_SUPPORT_RESET_LOGIC' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_support_reset_logic.v:62]
+INFO: [Synth 8-5534] Detected attribute (* ASYNC_REG = "true" *) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_support_reset_logic.v:84]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_cdc_sync__parameterized0' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:104]
+	Parameter c_cdc_type bound to: 2'b01 
+	Parameter c_flop_input bound to: 1'b1 
+	Parameter c_reset_state bound to: 1'b0 
+	Parameter c_single_bit bound to: 1'b1 
+	Parameter c_vector_width bound to: 6'b000010 
+	Parameter c_mtbf_stages bound to: 3'b011 
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_cdc_sync__parameterized0' (3#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_cdc_sync.v:104]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_SUPPORT_RESET_LOGIC' (4#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_support_reset_logic.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_gt_common_wrapper' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_gt_common_wrapper.v:55]
+	Parameter WRAPPER_SIM_GTRESET_SPEEDUP bound to: FALSE - type: string 
+	Parameter QPLL_FBDIV_TOP bound to: 40 - type: integer 
+	Parameter QPLL_FBDIV_IN bound to: 10'b0010000000 
+	Parameter QPLL_FBDIV_RATIO bound to: 1'b1 
+INFO: [Synth 8-6157] synthesizing module 'GTXE2_COMMON' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:12253]
+	Parameter BIAS_CFG bound to: 64'b0000000000000000000001000000000000000000000000000001000000000000 
+	Parameter COMMON_CFG bound to: 0 - type: integer 
+	Parameter IS_DRPCLK_INVERTED bound to: 1'b0 
+	Parameter IS_GTGREFCLK_INVERTED bound to: 1'b0 
+	Parameter IS_QPLLLOCKDETCLK_INVERTED bound to: 1'b0 
+	Parameter QPLL_CFG bound to: 27'b000011010000000000111000001 
+	Parameter QPLL_CLKOUT_CFG bound to: 4'b0000 
+	Parameter QPLL_COARSE_FREQ_OVRD bound to: 6'b010000 
+	Parameter QPLL_COARSE_FREQ_OVRD_EN bound to: 1'b0 
+	Parameter QPLL_CP bound to: 10'b0000011111 
+	Parameter QPLL_CP_MONITOR_EN bound to: 1'b0 
+	Parameter QPLL_DMONITOR_SEL bound to: 1'b0 
+	Parameter QPLL_FBDIV bound to: 10'b0010000000 
+	Parameter QPLL_FBDIV_MONITOR_EN bound to: 1'b0 
+	Parameter QPLL_FBDIV_RATIO bound to: 1'b1 
+	Parameter QPLL_INIT_CFG bound to: 24'b000000000000000000000110 
+	Parameter QPLL_LOCK_CFG bound to: 16'b0010000111101000 
+	Parameter QPLL_LPF bound to: 4'b1111 
+	Parameter QPLL_REFCLK_DIV bound to: 1 - type: integer 
+	Parameter SIM_QPLLREFCLK_SEL bound to: 3'b001 
+	Parameter SIM_RESET_SPEEDUP bound to: FALSE - type: string 
+	Parameter SIM_VERSION bound to: 4.0 - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'GTXE2_COMMON' (5#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:12253]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_gt_common_wrapper' (6#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_gt_common_wrapper.v:55]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_core' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0_core.v:62]
+	Parameter SIM_GTRESET_SPEEDUP bound to: TRUE - type: string 
+	Parameter CC_FREQ_FACTOR bound to: 5'b01100 
+	Parameter EXAMPLE_SIMULATION bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_RESET_LOGIC' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_reset_logic.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_RESET_LOGIC' (7#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_reset_logic.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_AURORA_LANE_4BYTE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_aurora_lane_4byte.v:65]
+	Parameter EXAMPLE_SIMULATION bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_LANE_INIT_SM_4BYTE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_lane_init_sm_4byte.v:62]
+INFO: [Synth 8-6157] synthesizing module 'FDR' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:3958]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDR' (8#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:3958]
+WARNING: [Synth 8-6014] Unused sequential element prev_char_was_comma_r_reg was removed.  [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_lane_init_sm_4byte.v:366]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_LANE_INIT_SM_4BYTE' (9#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_lane_init_sm_4byte.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_CHBOND_COUNT_DEC_4BYTE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_chbond_count_dec_4byte.v:62]
+	Parameter CHANNEL_BOND_LOAD_CODE bound to: 6'b100111 
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_CHBOND_COUNT_DEC_4BYTE' (10#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_chbond_count_dec_4byte.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_SYM_GEN_4BYTE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_gen_4byte.v:77]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_SYM_GEN_4BYTE' (11#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_gen_4byte.v:77]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_SYM_DEC_4BYTE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:64]
+	Parameter K_CHAR_0 bound to: 4'b1011 
+	Parameter K_CHAR_1 bound to: 4'b1100 
+	Parameter SP_DATA_0 bound to: 4'b0100 
+	Parameter SP_DATA_1 bound to: 4'b1010 
+	Parameter SPA_DATA_0 bound to: 4'b0010 
+	Parameter SPA_DATA_1 bound to: 4'b1100 
+	Parameter SP_NEG_DATA_0 bound to: 4'b1011 
+	Parameter SP_NEG_DATA_1 bound to: 4'b0101 
+	Parameter SPA_NEG_DATA_0 bound to: 4'b1101 
+	Parameter SPA_NEG_DATA_1 bound to: 4'b0011 
+	Parameter PAD_0 bound to: 4'b1001 
+	Parameter PAD_1 bound to: 4'b1100 
+	Parameter SCP_0 bound to: 4'b0101 
+	Parameter SCP_1 bound to: 4'b1100 
+	Parameter SCP_2 bound to: 4'b1111 
+	Parameter SCP_3 bound to: 4'b1011 
+	Parameter ECP_0 bound to: 4'b1111 
+	Parameter ECP_1 bound to: 4'b1101 
+	Parameter ECP_2 bound to: 4'b1111 
+	Parameter ECP_3 bound to: 4'b1110 
+	Parameter A_CHAR_0 bound to: 4'b0111 
+	Parameter A_CHAR_1 bound to: 4'b1100 
+	Parameter VER_DATA_0 bound to: 4'b1110 
+	Parameter VER_DATA_1 bound to: 4'b1000 
+	Parameter CC_CHAR_0 bound to: 4'b1111 
+	Parameter CC_CHAR_1 bound to: 4'b0111 
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:248]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:260]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:272]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:284]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:296]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:308]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:320]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:332]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_SYM_DEC_4BYTE' (12#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sym_dec_4byte.v:64]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_ERR_DETECT_4BYTE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_err_detect_4byte.v:62]
+	Parameter ENABLE_SOFT_ERR_MONITOR bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_ERR_DETECT_4BYTE' (13#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_err_detect_4byte.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_hotplug' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_hotplug.v:53]
+	Parameter ENABLE_HOTPLUG bound to: 1 - type: integer 
+	Parameter EXAMPLE_SIMULATION bound to: 0 - type: integer 
+INFO: [Synth 8-3936] Found unconnected internal register 'link_reset_r_reg' and it is trimmed from '2' to '1' bits. [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_hotplug.v:185]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_hotplug' (14#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_hotplug.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_AURORA_LANE_4BYTE' (15#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_aurora_lane_4byte.v:65]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_GT_WRAPPER' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_transceiver_wrapper.v:57]
+	Parameter EXAMPLE_SIMULATION bound to: 0 - type: integer 
+	Parameter SIM_GTRESET_SPEEDUP bound to: TRUE - type: string 
+	Parameter STABLE_CLOCK_PERIOD bound to: 10 - type: integer 
+	Parameter RX_CDRLOCK_TIME bound to: 25000.000000 - type: float 
+	Parameter WAIT_TIME_CDRLOCK bound to: 2500 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_tx_startup_fsm' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_tx_startup_fsm.v:76]
+	Parameter GT_TYPE bound to: GTX - type: string 
+	Parameter STABLE_CLOCK_PERIOD bound to: 10 - type: integer 
+	Parameter RETRY_COUNTER_BITWIDTH bound to: 8 - type: integer 
+	Parameter EXAMPLE_SIMULATION bound to: 0 - type: integer 
+	Parameter TX_QPLL_USED bound to: FALSE - type: string 
+	Parameter RX_QPLL_USED bound to: FALSE - type: string 
+	Parameter PHASE_ALIGNMENT_MANUAL bound to: FALSE - type: string 
+	Parameter INIT bound to: 4'b0000 
+	Parameter ASSERT_ALL_RESETS bound to: 4'b0001 
+	Parameter WAIT_FOR_PLL_LOCK bound to: 4'b0010 
+	Parameter RELEASE_PLL_RESET bound to: 4'b0011 
+	Parameter WAIT_FOR_TXOUTCLK bound to: 4'b0100 
+	Parameter RELEASE_MMCM_RESET bound to: 4'b0101 
+	Parameter WAIT_FOR_TXUSRCLK bound to: 4'b0110 
+	Parameter WAIT_RESET_DONE bound to: 4'b0111 
+	Parameter DO_PHASE_ALIGNMENT bound to: 4'b1000 
+	Parameter RESET_FSM_DONE bound to: 4'b1001 
+	Parameter MMCM_LOCK_CNT_MAX bound to: 1024 - type: integer 
+	Parameter STARTUP_DELAY bound to: 500 - type: integer 
+	Parameter WAIT_CYCLES bound to: 50 - type: integer 
+	Parameter WAIT_MAX bound to: 60 - type: integer 
+	Parameter WAIT_TIMEOUT_2ms bound to: 200000 - type: integer 
+	Parameter WAIT_TLOCK_MAX bound to: 10000 - type: integer 
+	Parameter WAIT_TIMEOUT_500us bound to: 50000 - type: integer 
+	Parameter WAIT_1us_CYCLES bound to: 100 - type: integer 
+	Parameter WAIT_1us bound to: 110 - type: integer 
+	Parameter WAIT_TIME_MAX bound to: 1000 - type: integer 
+	Parameter PORT_WIDTH bound to: 18 - type: integer 
+	Parameter MAX_RETRIES bound to: 255 - type: integer 
+	Parameter MAX_WAIT_BYPASS bound to: 86784 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_tx_startup_fsm' (16#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_tx_startup_fsm.v:76]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_rx_startup_fsm' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:75]
+	Parameter EXAMPLE_SIMULATION bound to: 0 - type: integer 
+	Parameter GT_TYPE bound to: GTX - type: string 
+	Parameter EQ_MODE bound to: DFE - type: string 
+	Parameter STABLE_CLOCK_PERIOD bound to: 10 - type: integer 
+	Parameter RETRY_COUNTER_BITWIDTH bound to: 8 - type: integer 
+	Parameter TX_QPLL_USED bound to: FALSE - type: string 
+	Parameter RX_QPLL_USED bound to: FALSE - type: string 
+	Parameter PHASE_ALIGNMENT_MANUAL bound to: FALSE - type: string 
+	Parameter INIT bound to: 4'b0000 
+	Parameter ASSERT_ALL_RESETS bound to: 4'b0001 
+	Parameter WAIT_FOR_PLL_LOCK bound to: 4'b0010 
+	Parameter RELEASE_PLL_RESET bound to: 4'b0011 
+	Parameter VERIFY_RECCLK_STABLE bound to: 4'b0100 
+	Parameter RELEASE_MMCM_RESET bound to: 4'b0101 
+	Parameter WAIT_FOR_RXUSRCLK bound to: 4'b0110 
+	Parameter WAIT_RESET_DONE bound to: 4'b0111 
+	Parameter DO_PHASE_ALIGNMENT bound to: 4'b1000 
+	Parameter MONITOR_DATA_VALID bound to: 4'b1001 
+	Parameter FSM_DONE bound to: 4'b1010 
+	Parameter MMCM_LOCK_CNT_MAX bound to: 1024 - type: integer 
+	Parameter STARTUP_DELAY bound to: 500 - type: integer 
+	Parameter WAIT_CYCLES bound to: 50 - type: integer 
+	Parameter WAIT_MAX bound to: 60 - type: integer 
+	Parameter WAIT_TIMEOUT_2ms bound to: 300000 - type: integer 
+	Parameter WAIT_TLOCK_MAX bound to: 10000 - type: integer 
+	Parameter WAIT_TIMEOUT_500us bound to: 50000 - type: integer 
+	Parameter WAIT_TIMEOUT_1us bound to: 100 - type: integer 
+	Parameter WAIT_TIMEOUT_100us bound to: 10000 - type: integer 
+	Parameter WAIT_TIME_ADAPT bound to: 1850000 - type: integer 
+	Parameter WAIT_TIME_MAX bound to: 1000 - type: integer 
+	Parameter PORT_WIDTH bound to: 19 - type: integer 
+	Parameter MAX_RETRIES bound to: 255 - type: integer 
+	Parameter MAX_WAIT_BYPASS bound to: 5000 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element time_out_500us_reg was removed.  [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:326]
+WARNING: [Synth 8-6014] Unused sequential element pll_reset_asserted_reg was removed.  [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:612]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_rx_startup_fsm' (17#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:75]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_multi_gt' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_multi_gt.v:55]
+	Parameter WRAPPER_SIM_GTRESET_SPEEDUP bound to: TRUE - type: string 
+	Parameter RX_DFE_KL_CFG2_IN bound to: 806439084 - type: integer 
+	Parameter PMA_RSV_IN bound to: 99456 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_gt' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_gt.v:55]
+	Parameter GT_SIM_GTRESET_SPEEDUP bound to: TRUE - type: string 
+	Parameter RX_DFE_KL_CFG2_IN bound to: 806439084 - type: integer 
+	Parameter PMA_RSV_IN bound to: 99456 - type: integer 
+	Parameter PCS_RSVD_ATTR_IN bound to: 48'b000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6157] synthesizing module 'GTXE2_CHANNEL' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:11580]
+	Parameter ALIGN_COMMA_DOUBLE bound to: FALSE - type: string 
+	Parameter ALIGN_COMMA_ENABLE bound to: 10'b1111111111 
+	Parameter ALIGN_COMMA_WORD bound to: 2 - type: integer 
+	Parameter ALIGN_MCOMMA_DET bound to: TRUE - type: string 
+	Parameter ALIGN_MCOMMA_VALUE bound to: 10'b1010000011 
+	Parameter ALIGN_PCOMMA_DET bound to: TRUE - type: string 
+	Parameter ALIGN_PCOMMA_VALUE bound to: 10'b0101111100 
+	Parameter CBCC_DATA_SOURCE_SEL bound to: DECODED - type: string 
+	Parameter CHAN_BOND_KEEP_ALIGN bound to: FALSE - type: string 
+	Parameter CHAN_BOND_MAX_SKEW bound to: 7 - type: integer 
+	Parameter CHAN_BOND_SEQ_1_1 bound to: 10'b0101111100 
+	Parameter CHAN_BOND_SEQ_1_2 bound to: 10'b0000000000 
+	Parameter CHAN_BOND_SEQ_1_3 bound to: 10'b0000000000 
+	Parameter CHAN_BOND_SEQ_1_4 bound to: 10'b0000000000 
+	Parameter CHAN_BOND_SEQ_1_ENABLE bound to: 4'b0001 
+	Parameter CHAN_BOND_SEQ_2_1 bound to: 10'b0000000000 
+	Parameter CHAN_BOND_SEQ_2_2 bound to: 10'b0000000000 
+	Parameter CHAN_BOND_SEQ_2_3 bound to: 10'b0000000000 
+	Parameter CHAN_BOND_SEQ_2_4 bound to: 10'b0000000000 
+	Parameter CHAN_BOND_SEQ_2_ENABLE bound to: 4'b0000 
+	Parameter CHAN_BOND_SEQ_2_USE bound to: FALSE - type: string 
+	Parameter CHAN_BOND_SEQ_LEN bound to: 1 - type: integer 
+	Parameter CLK_CORRECT_USE bound to: TRUE - type: string 
+	Parameter CLK_COR_KEEP_IDLE bound to: FALSE - type: string 
+	Parameter CLK_COR_MAX_LAT bound to: 31 - type: integer 
+	Parameter CLK_COR_MIN_LAT bound to: 24 - type: integer 
+	Parameter CLK_COR_PRECEDENCE bound to: TRUE - type: string 
+	Parameter CLK_COR_REPEAT_WAIT bound to: 0 - type: integer 
+	Parameter CLK_COR_SEQ_1_1 bound to: 10'b0111110111 
+	Parameter CLK_COR_SEQ_1_2 bound to: 10'b0111110111 
+	Parameter CLK_COR_SEQ_1_3 bound to: 10'b0111110111 
+	Parameter CLK_COR_SEQ_1_4 bound to: 10'b0111110111 
+	Parameter CLK_COR_SEQ_1_ENABLE bound to: 4'b1111 
+	Parameter CLK_COR_SEQ_2_1 bound to: 10'b0100000000 
+	Parameter CLK_COR_SEQ_2_2 bound to: 10'b0100000000 
+	Parameter CLK_COR_SEQ_2_3 bound to: 10'b0100000000 
+	Parameter CLK_COR_SEQ_2_4 bound to: 10'b0100000000 
+	Parameter CLK_COR_SEQ_2_ENABLE bound to: 4'b1111 
+	Parameter CLK_COR_SEQ_2_USE bound to: FALSE - type: string 
+	Parameter CLK_COR_SEQ_LEN bound to: 4 - type: integer 
+	Parameter CPLL_CFG bound to: 24'b101111000000011111011100 
+	Parameter CPLL_FBDIV bound to: 4 - type: integer 
+	Parameter CPLL_FBDIV_45 bound to: 4 - type: integer 
+	Parameter CPLL_INIT_CFG bound to: 24'b000000000000000000011110 
+	Parameter CPLL_LOCK_CFG bound to: 16'b0000000111101000 
+	Parameter CPLL_REFCLK_DIV bound to: 1 - type: integer 
+	Parameter DEC_MCOMMA_DETECT bound to: TRUE - type: string 
+	Parameter DEC_PCOMMA_DETECT bound to: TRUE - type: string 
+	Parameter DEC_VALID_COMMA_ONLY bound to: FALSE - type: string 
+	Parameter DMONITOR_CFG bound to: 24'b000000000000101000000000 
+	Parameter ES_CONTROL bound to: 6'b000000 
+	Parameter ES_ERRDET_EN bound to: FALSE - type: string 
+	Parameter ES_EYE_SCAN_EN bound to: TRUE - type: string 
+	Parameter ES_HORZ_OFFSET bound to: 12'b000000000000 
+	Parameter ES_PMA_CFG bound to: 10'b0000000000 
+	Parameter ES_PRESCALE bound to: 5'b00000 
+	Parameter ES_QUALIFIER bound to: 80'b00000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter ES_QUAL_MASK bound to: 80'b00000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter ES_SDATA_MASK bound to: 80'b00000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter ES_VERT_OFFSET bound to: 9'b000000000 
+	Parameter FTS_DESKEW_SEQ_ENABLE bound to: 4'b1111 
+	Parameter FTS_LANE_DESKEW_CFG bound to: 4'b1111 
+	Parameter FTS_LANE_DESKEW_EN bound to: FALSE - type: string 
+	Parameter GEARBOX_MODE bound to: 3'b000 
+	Parameter IS_CPLLLOCKDETCLK_INVERTED bound to: 1'b0 
+	Parameter IS_DRPCLK_INVERTED bound to: 1'b0 
+	Parameter IS_GTGREFCLK_INVERTED bound to: 1'b0 
+	Parameter IS_RXUSRCLK2_INVERTED bound to: 1'b0 
+	Parameter IS_RXUSRCLK_INVERTED bound to: 1'b0 
+	Parameter IS_TXPHDLYTSTCLK_INVERTED bound to: 1'b0 
+	Parameter IS_TXUSRCLK2_INVERTED bound to: 1'b0 
+	Parameter IS_TXUSRCLK_INVERTED bound to: 1'b0 
+	Parameter OUTREFCLK_SEL_INV bound to: 2'b11 
+	Parameter PCS_PCIE_EN bound to: FALSE - type: string 
+	Parameter PCS_RSVD_ATTR bound to: 48'b000000000000000000000000000000000000000000000000 
+	Parameter PD_TRANS_TIME_FROM_P2 bound to: 12'b000000111100 
+	Parameter PD_TRANS_TIME_NONE_P2 bound to: 8'b00011001 
+	Parameter PD_TRANS_TIME_TO_P2 bound to: 8'b01100100 
+	Parameter PMA_RSV bound to: 99456 - type: integer 
+	Parameter PMA_RSV2 bound to: 16'b0010000001010000 
+	Parameter PMA_RSV3 bound to: 2'b00 
+	Parameter PMA_RSV4 bound to: 0 - type: integer 
+	Parameter RXBUFRESET_TIME bound to: 5'b00001 
+	Parameter RXBUF_ADDR_MODE bound to: FULL - type: string 
+	Parameter RXBUF_EIDLE_HI_CNT bound to: 4'b1000 
+	Parameter RXBUF_EIDLE_LO_CNT bound to: 4'b0000 
+	Parameter RXBUF_EN bound to: TRUE - type: string 
+	Parameter RXBUF_RESET_ON_CB_CHANGE bound to: TRUE - type: string 
+	Parameter RXBUF_RESET_ON_COMMAALIGN bound to: FALSE - type: string 
+	Parameter RXBUF_RESET_ON_EIDLE bound to: FALSE - type: string 
+	Parameter RXBUF_RESET_ON_RATE_CHANGE bound to: TRUE - type: string 
+	Parameter RXBUF_THRESH_OVFLW bound to: 61 - type: integer 
+	Parameter RXBUF_THRESH_OVRD bound to: FALSE - type: string 
+	Parameter RXBUF_THRESH_UNDFLW bound to: 4 - type: integer 
+	Parameter RXCDRFREQRESET_TIME bound to: 5'b00001 
+	Parameter RXCDRPHRESET_TIME bound to: 5'b00001 
+	Parameter RXCDR_CFG bound to: 72'b000000110000000000000000001000111111111101000000001000000000000000100000 
+	Parameter RXCDR_FR_RESET_ON_EIDLE bound to: 1'b0 
+	Parameter RXCDR_HOLD_DURING_EIDLE bound to: 1'b0 
+	Parameter RXCDR_LOCK_CFG bound to: 6'b010101 
+	Parameter RXCDR_PH_RESET_ON_EIDLE bound to: 1'b0 
+	Parameter RXDFELPMRESET_TIME bound to: 7'b0001111 
+	Parameter RXDLY_CFG bound to: 16'b0000000000011111 
+	Parameter RXDLY_LCFG bound to: 9'b000110000 
+	Parameter RXDLY_TAP_CFG bound to: 16'b0000000000000000 
+	Parameter RXGEARBOX_EN bound to: FALSE - type: string 
+	Parameter RXISCANRESET_TIME bound to: 5'b00001 
+	Parameter RXLPM_HF_CFG bound to: 14'b00000011110000 
+	Parameter RXLPM_LF_CFG bound to: 14'b00000011110000 
+	Parameter RXOOB_CFG bound to: 7'b0000110 
+	Parameter RXOUT_DIV bound to: 2 - type: integer 
+	Parameter RXPCSRESET_TIME bound to: 5'b00001 
+	Parameter RXPHDLY_CFG bound to: 24'b000010000100000000100000 
+	Parameter RXPH_CFG bound to: 24'b000000000000000000000000 
+	Parameter RXPH_MONITOR_SEL bound to: 5'b00000 
+	Parameter RXPMARESET_TIME bound to: 5'b00011 
+	Parameter RXPRBS_ERR_LOOPBACK bound to: 1'b0 
+	Parameter RXSLIDE_AUTO_WAIT bound to: 7 - type: integer 
+	Parameter RXSLIDE_MODE bound to: OFF - type: string 
+	Parameter RX_BIAS_CFG bound to: 12'b000000000100 
+	Parameter RX_BUFFER_CFG bound to: 6'b000000 
+	Parameter RX_CLK25_DIV bound to: 5 - type: integer 
+	Parameter RX_CLKMUX_PD bound to: 1'b1 
+	Parameter RX_CM_SEL bound to: 2'b11 
+	Parameter RX_CM_TRIM bound to: 3'b010 
+	Parameter RX_DATA_WIDTH bound to: 40 - type: integer 
+	Parameter RX_DDI_SEL bound to: 6'b000000 
+	Parameter RX_DEBUG_CFG bound to: 12'b000000000000 
+	Parameter RX_DEFER_RESET_BUF_EN bound to: TRUE - type: string 
+	Parameter RX_DFE_GAIN_CFG bound to: 23'b00000100000111111101010 
+	Parameter RX_DFE_H2_CFG bound to: 12'b000000000000 
+	Parameter RX_DFE_H3_CFG bound to: 12'b000001000000 
+	Parameter RX_DFE_H4_CFG bound to: 11'b00011110000 
+	Parameter RX_DFE_H5_CFG bound to: 11'b00011100000 
+	Parameter RX_DFE_KL_CFG bound to: 13'b0000011111110 
+	Parameter RX_DFE_KL_CFG2 bound to: 806439084 - type: integer 
+	Parameter RX_DFE_LPM_CFG bound to: 16'b0000100101010100 
+	Parameter RX_DFE_LPM_HOLD_DURING_EIDLE bound to: 1'b0 
+	Parameter RX_DFE_UT_CFG bound to: 17'b10001111000000000 
+	Parameter RX_DFE_VP_CFG bound to: 17'b00011111100000011 
+	Parameter RX_DFE_XYD_CFG bound to: 13'b0000000000000 
+	Parameter RX_DISPERR_SEQ_MATCH bound to: TRUE - type: string 
+	Parameter RX_INT_DATAWIDTH bound to: 1 - type: integer 
+	Parameter RX_OS_CFG bound to: 13'b0000010000000 
+	Parameter RX_SIG_VALID_DLY bound to: 10 - type: integer 
+	Parameter RX_XCLK_SEL bound to: RXREC - type: string 
+	Parameter SAS_MAX_COM bound to: 64 - type: integer 
+	Parameter SAS_MIN_COM bound to: 36 - type: integer 
+	Parameter SATA_BURST_SEQ_LEN bound to: 4'b0101 
+	Parameter SATA_BURST_VAL bound to: 3'b100 
+	Parameter SATA_CPLL_CFG bound to: VCO_3000MHZ - type: string 
+	Parameter SATA_EIDLE_VAL bound to: 3'b100 
+	Parameter SATA_MAX_BURST bound to: 8 - type: integer 
+	Parameter SATA_MAX_INIT bound to: 21 - type: integer 
+	Parameter SATA_MAX_WAKE bound to: 7 - type: integer 
+	Parameter SATA_MIN_BURST bound to: 4 - type: integer 
+	Parameter SATA_MIN_INIT bound to: 12 - type: integer 
+	Parameter SATA_MIN_WAKE bound to: 4 - type: integer 
+	Parameter SHOW_REALIGN_COMMA bound to: TRUE - type: string 
+	Parameter SIM_CPLLREFCLK_SEL bound to: 3'b001 
+	Parameter SIM_RECEIVER_DETECT_PASS bound to: TRUE - type: string 
+	Parameter SIM_RESET_SPEEDUP bound to: TRUE - type: string 
+	Parameter SIM_TX_EIDLE_DRIVE_LEVEL bound to: X - type: string 
+	Parameter SIM_VERSION bound to: 4.0 - type: string 
+	Parameter TERM_RCAL_CFG bound to: 5'b10000 
+	Parameter TERM_RCAL_OVRD bound to: 1'b0 
+	Parameter TRANS_TIME_RATE bound to: 8'b00001110 
+	Parameter TST_RSV bound to: 0 - type: integer 
+	Parameter TXBUF_EN bound to: TRUE - type: string 
+	Parameter TXBUF_RESET_ON_RATE_CHANGE bound to: TRUE - type: string 
+	Parameter TXDLY_CFG bound to: 16'b0000000000011111 
+	Parameter TXDLY_LCFG bound to: 9'b000110000 
+	Parameter TXDLY_TAP_CFG bound to: 16'b0000000000000000 
+	Parameter TXGEARBOX_EN bound to: FALSE - type: string 
+	Parameter TXOUT_DIV bound to: 2 - type: integer 
+	Parameter TXPCSRESET_TIME bound to: 5'b00001 
+	Parameter TXPHDLY_CFG bound to: 24'b000010000100000000100000 
+	Parameter TXPH_CFG bound to: 16'b0000011110000000 
+	Parameter TXPH_MONITOR_SEL bound to: 5'b00000 
+	Parameter TXPMARESET_TIME bound to: 5'b00001 
+	Parameter TX_CLK25_DIV bound to: 5 - type: integer 
+	Parameter TX_CLKMUX_PD bound to: 1'b1 
+	Parameter TX_DATA_WIDTH bound to: 40 - type: integer 
+	Parameter TX_DEEMPH0 bound to: 5'b00000 
+	Parameter TX_DEEMPH1 bound to: 5'b00000 
+	Parameter TX_DRIVE_MODE bound to: DIRECT - type: string 
+	Parameter TX_EIDLE_ASSERT_DELAY bound to: 3'b110 
+	Parameter TX_EIDLE_DEASSERT_DELAY bound to: 3'b100 
+	Parameter TX_INT_DATAWIDTH bound to: 1 - type: integer 
+	Parameter TX_LOOPBACK_DRIVE_HIZ bound to: FALSE - type: string 
+	Parameter TX_MAINCURSOR_SEL bound to: 1'b0 
+	Parameter TX_MARGIN_FULL_0 bound to: 7'b1001110 
+	Parameter TX_MARGIN_FULL_1 bound to: 7'b1001001 
+	Parameter TX_MARGIN_FULL_2 bound to: 7'b1000101 
+	Parameter TX_MARGIN_FULL_3 bound to: 7'b1000010 
+	Parameter TX_MARGIN_FULL_4 bound to: 7'b1000000 
+	Parameter TX_MARGIN_LOW_0 bound to: 7'b1000110 
+	Parameter TX_MARGIN_LOW_1 bound to: 7'b1000100 
+	Parameter TX_MARGIN_LOW_2 bound to: 7'b1000010 
+	Parameter TX_MARGIN_LOW_3 bound to: 7'b1000000 
+	Parameter TX_MARGIN_LOW_4 bound to: 7'b1000000 
+	Parameter TX_PREDRIVER_MODE bound to: 1'b0 
+	Parameter TX_QPI_STATUS_EN bound to: 1'b0 
+	Parameter TX_RXDETECT_CFG bound to: 14'b01100000110010 
+	Parameter TX_RXDETECT_REF bound to: 3'b100 
+	Parameter TX_XCLK_SEL bound to: TXOUT - type: string 
+	Parameter UCODEER_CLR bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'GTXE2_CHANNEL' (18#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:11580]
+INFO: [Synth 8-6157] synthesizing module 'FD' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:3730]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FD' (19#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:3730]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_gt' (20#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_gt.v:55]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_multi_gt' (21#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_multi_gt.v:55]
+INFO: [Synth 8-4471] merging register 'rxfsm_rxresetdone_r1_reg' into 'rxfsm_rxresetdone_r_reg' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_transceiver_wrapper.v:382]
+WARNING: [Synth 8-6014] Unused sequential element rxfsm_rxresetdone_r1_reg was removed.  [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_transceiver_wrapper.v:382]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_GT_WRAPPER' (22#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_transceiver_wrapper.v:57]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_GLOBAL_LOGIC' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_global_logic.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_CHANNEL_INIT_SM' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_channel_init_sm.v:79]
+	Parameter WATCHDOG_TIMEOUT bound to: 14 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'FD__parameterized0' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:3730]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FD__parameterized0' (22#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:3730]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_CHANNEL_INIT_SM' (23#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_channel_init_sm.v:79]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_IDLE_AND_VER_GEN' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_idle_and_ver_gen.v:65]
+INFO: [Synth 8-6157] synthesizing module 'SRL16' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:51683]
+	Parameter INIT bound to: 16'b0000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'SRL16' (24#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:51683]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_IDLE_AND_VER_GEN' (25#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_idle_and_ver_gen.v:65]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_CHANNEL_ERR_DETECT' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_channel_err_detect.v:65]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_CHANNEL_ERR_DETECT' (26#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_channel_err_detect.v:65]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_GLOBAL_LOGIC' (27#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_global_logic.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_AXI_TO_LL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_axi_to_ll.v:62]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter STRB_WIDTH bound to: 4 - type: integer 
+	Parameter BC bound to: 4 - type: integer 
+	Parameter USE_4_NFC bound to: 0 - type: integer 
+	Parameter REM_WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_AXI_TO_LL' (28#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_axi_to_ll.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_STANDARD_CC_MODULE' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_standard_cc_module.v:65]
+	Parameter CC_FREQ_FACTOR bound to: 5'b01100 
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_STANDARD_CC_MODULE' (29#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_standard_cc_module.v:65]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_TX_LL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll.v:63]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_TX_LL_DATAPATH' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll_datapath.v:62]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll_datapath.v:194]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll_datapath.v:237]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_TX_LL_DATAPATH' (30#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll_datapath.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_TX_LL_CONTROL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll_control.v:63]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_TX_LL_CONTROL' (31#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll_control.v:63]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_TX_LL' (32#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll.v:63]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_LL_TO_AXI' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_ll_to_axi.v:62]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter STRB_WIDTH bound to: 4 - type: integer 
+	Parameter USE_UFC_REM bound to: 0 - type: integer 
+	Parameter BC bound to: 4 - type: integer 
+	Parameter REM_WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_LL_TO_AXI' (33#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_ll_to_axi.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_RX_LL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_rx_ll.v:64]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_RX_LL_PDU_DATAPATH' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_rx_ll_pdu_datapath.v:63]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_RX_LL_DEFRAMER' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_rx_ll_deframer.v:64]
+INFO: [Synth 8-6157] synthesizing module 'MUXCY' [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:27571]
+INFO: [Synth 8-6155] done synthesizing module 'MUXCY' (34#1) [/opt/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:27571]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_RX_LL_DEFRAMER' (35#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_rx_ll_deframer.v:64]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_LEFT_ALIGN_CONTROL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_left_align_control.v:63]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_LEFT_ALIGN_CONTROL' (36#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_left_align_control.v:63]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_VALID_DATA_COUNTER' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_valid_data_counter.v:70]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_VALID_DATA_COUNTER' (37#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_valid_data_counter.v:70]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_LEFT_ALIGN_MUX' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_left_align_mux.v:67]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_LEFT_ALIGN_MUX' (38#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_left_align_mux.v:67]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_STORAGE_COUNT_CONTROL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_count_control.v:62]
+INFO: [Synth 8-226] default block is never used [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_count_control.v:116]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_STORAGE_COUNT_CONTROL' (39#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_count_control.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_STORAGE_CE_CONTROL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_ce_control.v:63]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_STORAGE_CE_CONTROL' (40#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_ce_control.v:63]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_STORAGE_SWITCH_CONTROL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_switch_control.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_STORAGE_SWITCH_CONTROL' (41#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_switch_control.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_OUTPUT_SWITCH_CONTROL' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_output_switch_control.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_OUTPUT_SWITCH_CONTROL' (42#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_output_switch_control.v:62]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_SIDEBAND_OUTPUT' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sideband_output.v:63]
+WARNING: [Synth 8-3936] Found unconnected internal register 'rx_rem_c_reg' and it is trimmed from '3' to '2' bits. [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sideband_output.v:276]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_SIDEBAND_OUTPUT' (43#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_sideband_output.v:63]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_STORAGE_MUX' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_mux.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_STORAGE_MUX' (44#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_storage_mux.v:64]
+INFO: [Synth 8-6157] synthesizing module 'aurora_8b10b_0_OUTPUT_MUX' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_output_mux.v:65]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_OUTPUT_MUX' (45#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_output_mux.v:65]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_RX_LL_PDU_DATAPATH' (46#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_rx_ll_pdu_datapath.v:63]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_RX_LL' (47#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_rx_ll.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_core' (48#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0_core.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0_support' (49#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_support.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'aurora_8b10b_0' (50#1) [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0.v:54]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[16]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[17]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[18]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[19]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[20]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[21]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[22]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[23]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[24]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[25]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[26]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[27]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[28]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[29]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[30]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_OUTPUT_MUX has unconnected port LEFT_ALIGNED_DATA[31]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_LL_TO_AXI has unconnected port LL_IP_SOF_N
+WARNING: [Synth 8-3331] design aurora_8b10b_0_TX_LL_CONTROL has unconnected port TX_REM[0]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_TX_LL_CONTROL has unconnected port TX_REM[1]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_TX_LL_CONTROL has unconnected port WARN_CC
+WARNING: [Synth 8-3331] design aurora_8b10b_0_STANDARD_CC_MODULE has unconnected port PLL_NOT_LOCKED
+WARNING: [Synth 8-3331] design aurora_8b10b_0_CHANNEL_INIT_SM has unconnected port CH_BOND_DONE
+WARNING: [Synth 8-3331] design aurora_8b10b_0_CHANNEL_INIT_SM has unconnected port CHANNEL_BOND_LOAD
+WARNING: [Synth 8-3331] design aurora_8b10b_0_CHANNEL_INIT_SM has unconnected port GOT_A[0]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_CHANNEL_INIT_SM has unconnected port GOT_A[1]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_CHANNEL_INIT_SM has unconnected port GOT_A[2]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_CHANNEL_INIT_SM has unconnected port GOT_A[3]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync has unconnected port prmry_aclk
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync has unconnected port prmry_rst_n
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync has unconnected port prmry_vect_in[1]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync has unconnected port prmry_vect_in[0]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync has unconnected port scndry_rst_n
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync__parameterized0 has unconnected port prmry_rst_n
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync__parameterized0 has unconnected port prmry_vect_in[1]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync__parameterized0 has unconnected port prmry_vect_in[0]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_cdc_sync__parameterized0 has unconnected port scndry_rst_n
+WARNING: [Synth 8-3331] design aurora_8b10b_0_rx_startup_fsm has unconnected port QPLLREFCLKLOST
+WARNING: [Synth 8-3331] design aurora_8b10b_0_rx_startup_fsm has unconnected port CPLLREFCLKLOST
+WARNING: [Synth 8-3331] design aurora_8b10b_0_tx_startup_fsm has unconnected port QPLLREFCLKLOST
+WARNING: [Synth 8-3331] design aurora_8b10b_0_tx_startup_fsm has unconnected port CPLLREFCLKLOST
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port ENCHANSYNC_IN
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port RXRESET_IN
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port PLL_NOT_LOCKED
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port TXRESET_IN
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port gt0_qplllock_in
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port gt0_qpllrefclklost_in
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port RXFSM_DATA_VALID
+WARNING: [Synth 8-3331] design aurora_8b10b_0_hotplug has unconnected port RX_SP
+WARNING: [Synth 8-3331] design aurora_8b10b_0_hotplug has unconnected port RX_SPA
+WARNING: [Synth 8-3331] design aurora_8b10b_0_hotplug has unconnected port HPCNT_RESET
+WARNING: [Synth 8-3331] design aurora_8b10b_0_SYM_DEC_4BYTE has unconnected port RX_CHAR_IS_COMMA[3]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_SYM_DEC_4BYTE has unconnected port RX_CHAR_IS_COMMA[2]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_SYM_DEC_4BYTE has unconnected port RX_CHAR_IS_COMMA[1]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_SYM_DEC_4BYTE has unconnected port RX_CHAR_IS_COMMA[0]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_SYM_DEC_4BYTE has unconnected port RESET
+WARNING: [Synth 8-3331] design aurora_8b10b_0_SYM_GEN_4BYTE has unconnected port RESET
+WARNING: [Synth 8-3331] design aurora_8b10b_0_AURORA_LANE_4BYTE has unconnected port CHANNEL_UP
+WARNING: [Synth 8-3331] design aurora_8b10b_0_RESET_LOGIC has unconnected port PLL_NOT_LOCKED
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1436.637 ; gain = 76.750 ; free physical = 57592 ; free virtual = 60847
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1436.637 ; gain = 76.750 ; free physical = 57596 ; free virtual = 60851
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1436.637 ; gain = 76.750 ; free physical = 57596 ; free virtual = 60851
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 33 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7vx485tffg1761-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0.xdc] for cell 'inst'
+Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.runs/aurora_8b10b_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.runs/aurora_8b10b_0_synth_1/dont_touch.xdc]
+Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0_clocks.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0_clocks.xdc] for cell 'inst'
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1947.066 ; gain = 0.000 ; free physical = 57177 ; free virtual = 60448
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 29 instances were transformed.
+  FD => FDRE: 26 instances
+  FDR => FDRE: 2 instances
+  SRL16 => SRL16E: 1 instances
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1947.066 ; gain = 0.000 ; free physical = 57177 ; free virtual = 60448
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.10 ; elapsed = 00:00:00.05 . Memory (MB): peak = 1947.066 ; gain = 0.000 ; free physical = 57177 ; free virtual = 60448
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57267 ; free virtual = 60539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7vx485tffg1761-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57267 ; free virtual = 60539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/svg-hka/aurora_rtds/aurora_rtds.runs/aurora_8b10b_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57268 ; free virtual = 60540
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "TX_DATA" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "left_align_select_r" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'tx_state_reg' in module 'aurora_8b10b_0_tx_startup_fsm'
+INFO: [Synth 8-5546] ROM "init_wait_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "init_wait_done" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_counter" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_2ms" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_tlock_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_500us" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "wait_bypass_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_wait_bypass" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "TXUSERRDY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "gttxreset_i" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "MMCM_RESET" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "tx_fsm_reset_done_int" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "CPLL_RESET" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reset_time_out" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "run_phase_alignment_int" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "tx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "tx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "tx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "tx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4471] merging register 'CPLL_RESET_reg' into 'QPLL_RESET_reg' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:611]
+INFO: [Synth 8-4471] merging register 'recclk_mon_count_reset_reg' into 'adapt_count_reset_reg' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:618]
+INFO: [Synth 8-4471] merging register 'RXDFELFHOLD_reg' into 'RXDFEAGCHOLD_reg' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:621]
+INFO: [Synth 8-4471] merging register 'RXLPMHFHOLD_reg' into 'RXLPMLFHOLD_reg' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/gt/aurora_8b10b_0_rx_startup_fsm.v:623]
+INFO: [Synth 8-802] inferred FSM for state register 'rx_state_reg' in module 'aurora_8b10b_0_rx_startup_fsm'
+INFO: [Synth 8-5545] ROM "adapt_count" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "time_out_adapt" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "init_wait_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "init_wait_done" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_counter" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_2ms" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_1us" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_100us" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "wait_bypass_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_out_wait_bypass" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "retry_counter_int" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "gtrxreset_i" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mmcm_reset_i" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "run_phase_alignment_int" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "rx_cdrlocked" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "rx_cdrlock_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-4471] merging register 'eof_r_reg' into 'sof_and_eof_r_reg' [/home/svg-hka/aurora_rtds/aurora_rtds.srcs/sources_1/ip/aurora_8b10b_0/aurora_8b10b_0/src/aurora_8b10b_0_tx_ll_control.v:217]
+INFO: [Synth 8-5544] ROM "valid_c" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "storage_select_c" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "storage_select_c" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "output_select_c" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    INIT |                             0000 |                             0000
+       ASSERT_ALL_RESETS |                             0001 |                             0001
+       WAIT_FOR_PLL_LOCK |                             0010 |                             0010
+       RELEASE_PLL_RESET |                             0011 |                             0011
+       WAIT_FOR_TXOUTCLK |                             0100 |                             0100
+      RELEASE_MMCM_RESET |                             0101 |                             0101
+       WAIT_FOR_TXUSRCLK |                             0110 |                             0110
+         WAIT_RESET_DONE |                             0111 |                             0111
+      DO_PHASE_ALIGNMENT |                             1000 |                             1000
+          RESET_FSM_DONE |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'tx_state_reg' using encoding 'sequential' in module 'aurora_8b10b_0_tx_startup_fsm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    INIT |                             0000 |                             0000
+       ASSERT_ALL_RESETS |                             0001 |                             0001
+       WAIT_FOR_PLL_LOCK |                             0010 |                             0010
+       RELEASE_PLL_RESET |                             0011 |                             0011
+    VERIFY_RECCLK_STABLE |                             0100 |                             0100
+      RELEASE_MMCM_RESET |                             0101 |                             0101
+       WAIT_FOR_RXUSRCLK |                             0110 |                             0110
+         WAIT_RESET_DONE |                             0111 |                             0111
+      DO_PHASE_ALIGNMENT |                             1000 |                             1000
+      MONITOR_DATA_VALID |                             1001 |                             1001
+                FSM_DONE |                             1010 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rx_state_reg' using encoding 'sequential' in module 'aurora_8b10b_0_rx_startup_fsm'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57246 ; free virtual = 60519
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 5     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 5     
+	   2 Input      2 Bit       Adders := 4     
+	   5 Input      2 Bit       Adders := 1     
+	   3 Input      2 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 3     
+	   3 Input      1 Bit         XORs := 1     
++---Registers : 
+	              128 Bit    Registers := 1     
+	               96 Bit    Registers := 1     
+	               32 Bit    Registers := 11    
+	               24 Bit    Registers := 1     
+	               16 Bit    Registers := 6     
+	               15 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 4     
+	                8 Bit    Registers := 23    
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 13    
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 29    
+	                1 Bit    Registers := 323   
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 10    
+	   3 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 2     
+	  10 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 12    
+	  11 Input      4 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   7 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 4     
+	   5 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 20    
+	   9 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 6     
+	   2 Input      1 Bit        Muxes := 49    
+	  11 Input      1 Bit        Muxes := 19    
+	   6 Input      1 Bit        Muxes := 2     
+	   8 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module aurora_8b10b_0_cdc_sync 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 6     
+Module aurora_8b10b_0_cdc_sync__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 7     
+Module aurora_8b10b_0_SUPPORT_RESET_LOGIC 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
+Module aurora_8b10b_0_RESET_LOGIC 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 9     
+Module aurora_8b10b_0_LANE_INIT_SM_4BYTE 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 3     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 13    
+Module aurora_8b10b_0_CHBOND_COUNT_DEC_4BYTE 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module aurora_8b10b_0_SYM_GEN_4BYTE 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                4 Bit    Registers := 3     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   3 Input      8 Bit        Muxes := 1     
+	  10 Input      1 Bit        Muxes := 3     
+	   9 Input      1 Bit        Muxes := 1     
+Module aurora_8b10b_0_SYM_DEC_4BYTE 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
+	               24 Bit    Registers := 1     
+	                8 Bit    Registers := 11    
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 7     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 4     
+	   7 Input      2 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 4     
+Module aurora_8b10b_0_ERR_DETECT_4BYTE 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module aurora_8b10b_0_hotplug 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
+Module aurora_8b10b_0_tx_startup_fsm 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	  10 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 15    
+	  10 Input      1 Bit        Muxes := 17    
+Module aurora_8b10b_0_rx_startup_fsm 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 24    
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	  11 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 6     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 21    
+	  11 Input      1 Bit        Muxes := 19    
+Module aurora_8b10b_0_gt 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	              128 Bit    Registers := 1     
+	               96 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
+Module aurora_8b10b_0_GT_WRAPPER 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 19    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module aurora_8b10b_0_CHANNEL_INIT_SM 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 10    
+Module aurora_8b10b_0_IDLE_AND_VER_GEN 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
++---XORs : 
+	   3 Input      1 Bit         XORs := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   8 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+Module aurora_8b10b_0_CHANNEL_ERR_DETECT 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
+Module aurora_8b10b_0_AXI_TO_LL 
+Detailed RTL Component Info : 
++---Adders : 
+	   5 Input      2 Bit       Adders := 1     
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module aurora_8b10b_0_STANDARD_CC_MODULE 
+Detailed RTL Component Info : 
++---Registers : 
+	               15 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module aurora_8b10b_0_TX_LL_DATAPATH 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
+	               16 Bit    Registers := 1     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   5 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module aurora_8b10b_0_TX_LL_CONTROL 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 12    
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module aurora_8b10b_0_LL_TO_AXI 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+Module aurora_8b10b_0_RX_LL_DEFRAMER 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 1     
+Module aurora_8b10b_0_LEFT_ALIGN_CONTROL 
+Detailed RTL Component Info : 
++---Registers : 
+	                6 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+Module aurora_8b10b_0_VALID_DATA_COUNTER 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
+Module aurora_8b10b_0_LEFT_ALIGN_MUX 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 3     
+Module aurora_8b10b_0_STORAGE_COUNT_CONTROL 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      2 Bit        Muxes := 1     
+Module aurora_8b10b_0_STORAGE_CE_CONTROL 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
+Module aurora_8b10b_0_STORAGE_SWITCH_CONTROL 
+Detailed RTL Component Info : 
++---Registers : 
+	               10 Bit    Registers := 1     
++---Muxes : 
+	   6 Input      1 Bit        Muxes := 2     
+Module aurora_8b10b_0_OUTPUT_SWITCH_CONTROL 
+Detailed RTL Component Info : 
++---Registers : 
+	                5 Bit    Registers := 1     
++---Muxes : 
+	   8 Input      1 Bit        Muxes := 1     
+Module aurora_8b10b_0_SIDEBAND_OUTPUT 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
+	   3 Input      2 Bit       Adders := 2     
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 2     
+Module aurora_8b10b_0_STORAGE_MUX 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 4     
+Module aurora_8b10b_0_OUTPUT_MUX 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 3     
+Module aurora_8b10b_0_RX_LL_PDU_DATAPATH 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 12    
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module aurora_8b10b_0_core 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 2800 (col length:140)
+BRAMs: 2060 (col length: RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5544] ROM "gt_rxresetfsm_i/retry_counter_int" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "gt_rxresetfsm_i/rx_state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/init_wait_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/init_wait_done" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/time_out_counter" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/time_out_2ms" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/time_tlock_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/time_out_500us" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/wait_bypass_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_txresetfsm_i/time_out_wait_bypass" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/init_wait_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/init_wait_done" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/time_out_counter" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/time_out_2ms" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/time_out_100us" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/time_out_1us" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "gt_rxresetfsm_i/adapt_count" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "gt_rxresetfsm_i/time_out_adapt" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/wait_bypass_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "gt_rxresetfsm_i/time_out_wait_bypass" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "rx_cdrlock_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "rx_cdrlocked" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/storage_select_c" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/storage_select_c" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+WARNING: [Synth 8-3331] design aurora_8b10b_0_LL_TO_AXI has unconnected port LL_IP_SOF_N
+WARNING: [Synth 8-3331] design aurora_8b10b_0_TX_LL has unconnected port WARN_CC
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GLOBAL_LOGIC has unconnected port CH_BOND_DONE
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GLOBAL_LOGIC has unconnected port CHANNEL_BOND_LOAD
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GLOBAL_LOGIC has unconnected port GOT_A[0]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GLOBAL_LOGIC has unconnected port GOT_A[1]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GLOBAL_LOGIC has unconnected port GOT_A[2]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GLOBAL_LOGIC has unconnected port GOT_A[3]
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port ENCHANSYNC_IN
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port RXRESET_IN
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port PLL_NOT_LOCKED
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port TXRESET_IN
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port gt0_qplllock_in
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port gt0_qpllrefclklost_in
+WARNING: [Synth 8-3331] design aurora_8b10b_0_GT_WRAPPER has unconnected port RXFSM_DATA_VALID
+WARNING: [Synth 8-3331] design aurora_8b10b_0_AURORA_LANE_4BYTE has unconnected port HPCNT_RESET
+WARNING: [Synth 8-3331] design aurora_8b10b_0_AURORA_LANE_4BYTE has unconnected port CHANNEL_UP
+WARNING: [Synth 8-3331] design aurora_8b10b_0_AURORA_LANE_4BYTE has unconnected port RESET_SYMGEN
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_cc_r_reg[0]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_ecp_d_r_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_cc_r_reg[2]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_ecp_d_r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_cc_r_reg[4]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_ecp_d_r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_cc_r_reg[6]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_ecp_d_r_reg[6]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_lane_init_sm_4byte_i/counter2_r_reg[0]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_gen_4byte_i/gen_spa_r_reg'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/core_reset_logic_i/link_reset_comb_r_reg' (FD) to 'inst/aurora_8b10b_0_core_i/gt_wrapper_i/link_reset_r_reg'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_v_d_r_reg[1]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_sp_r_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_v_d_r_reg[0]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_sp_r_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_pad_d_r_reg[3]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_spa_r_reg[7]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_pad_d_r_reg[1]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_spa_r_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_scp_d_r_reg[6]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_ecp_d_r_reg[6]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_scp_d_r_reg[5]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_spa_r_reg[5]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_scp_d_r_reg[2]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_ecp_d_r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_scp_d_r_reg[1]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_sp_r_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_spa_r_reg[1]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_sp_r_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_spa_r_reg[0]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_dec_4byte_i/rx_sp_r_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/rxfsm_data_valid_r_reg' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_global_logic_i/channel_err_detect_i/lane_up_r_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\aurora_8b10b_0_core_i/gt_wrapper_i/gt_rxresetfsm_i/recclk_mon_restart_count_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\aurora_8b10b_0_core_i/gt_wrapper_i/gt_rxresetfsm_i/recclk_mon_restart_count_reg[1] )
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[3]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[4]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[4]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[5] )
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_gen_4byte_i/gen_v_r_reg[0]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_gen_4byte_i/gen_ecp_r_reg[0]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_sym_gen_4byte_i/gen_scp_r_reg[1]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[0]' (FD) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_left_align_control_i/MUX_SELECT_reg[1] )
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[5]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[8]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[6]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[8]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[7]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[8]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[8]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[0]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[1]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[2]' (FDR) to 'inst/aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_3_storage_switch_control_i/STORAGE_SELECT_reg[3] )
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/prepare_count_r_reg[3]' (FDR) to 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/prepare_count_r_reg[2]' (FDR) to 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/prepare_count_r_reg[1]' (FDR) to 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/prepare_count_r_reg[0]' (FDR) to 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[2]' (FDR) to 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[1]' (FDR) to 'inst/aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\aurora_8b10b_0_core_i/standard_cc_module_i/cc_count_r_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/\aurora_8b10b_0_core_i/aurora_8b10b_0_tx_ll_i/tx_ll_control_i/sof_and_eof_r_reg )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:28 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57234 ; free virtual = 60513
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:34 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57104 ; free virtual = 60389
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:34 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57102 ; free virtual = 60387
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:35 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57097 ; free virtual = 60382
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57096 ; free virtual = 60382
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57096 ; free virtual = 60382
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57096 ; free virtual = 60382
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57096 ; free virtual = 60382
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57097 ; free virtual = 60383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57097 ; free virtual = 60383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++-----------------------+-------------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name            | RTL Name                                                                                                          | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++-----------------------+-------------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_lane_init_sm_4byte_i/counter4_r_reg[15] | 16     | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_lane_init_sm_4byte_i/counter3_r_reg[3]  | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_lane_init_sm_4byte_i/counter5_r_reg[15] | 16     | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_aurora_lane_4byte_0_i/aurora_8b10b_0_lane_init_sm_4byte_i/counter2_r_reg[15] | 15     | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/gt_wrapper_i/txfsm_txresetdone_r_reg                                                        | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/gt_wrapper_i/rxfsm_rxresetdone_r_reg                                                        | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/gt_wrapper_i/aurora_8b10b_0_multi_gt_i/gt0_aurora_8b10b_0_i/cpllpd_wait_reg[95]             | 96     | 1     | NO           | NO                 | YES               | 0      | 3       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/gt_wrapper_i/aurora_8b10b_0_multi_gt_i/gt0_aurora_8b10b_0_i/cpllreset_wait_reg[127]         | 128    | 1     | NO           | NO                 | YES               | 0      | 4       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_global_logic_i/channel_init_sm_i/v_count_r_reg[15]                           | 16     | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_global_logic_i/channel_init_sm_i/rxver_count_r_reg[2]                        | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_global_logic_i/channel_init_sm_i/txver_count_r_reg[7]                        | 8      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_global_logic_i/channel_init_sm_i/verify_watchdog_r_reg[15]                   | 16     | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/aurora_8b10b_0_rx_ll_i/rx_ll_pdu_datapath_i/stage_2_data_r_reg[0]                           | 4      | 32    | NO           | NO                 | YES               | 32     | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/standard_cc_module_i/count_13d_srl_r_reg[11]                                                | 13     | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|aurora_8b10b_0_support | aurora_8b10b_0_core_i/standard_cc_module_i/prepare_count_r_reg[9]                                                 | 6      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++-----------------------+-------------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |BUFG          |     1|
+|2     |CARRY4        |    54|
+|3     |GTXE2_CHANNEL |     1|
+|4     |GTXE2_COMMON  |     1|
+|5     |LUT1          |   525|
+|6     |LUT2          |    54|
+|7     |LUT3          |   115|
+|8     |LUT4          |   147|
+|9     |LUT5          |   116|
+|10    |LUT6          |   157|
+|11    |MUXCY         |     4|
+|12    |MUXF7         |     1|
+|13    |SRL16         |     1|
+|14    |SRL16E        |    44|
+|15    |SRLC32E       |     7|
+|16    |FD            |    26|
+|17    |FDCE          |    22|
+|18    |FDPE          |     4|
+|19    |FDR           |     2|
+|20    |FDRE          |  1011|
+|21    |FDSE          |    60|
++------+--------------+------+
+
+Report Instance Areas: 
++------+------------------------------------------------+-------------------------------------------+------+
+|      |Instance                                        |Module                                     |Cells |
++------+------------------------------------------------+-------------------------------------------+------+
+|1     |top                                             |                                           |  2353|
+|2     |  inst                                          |aurora_8b10b_0_support                     |  2353|
+|3     |    aurora_8b10b_0_core_i                       |aurora_8b10b_0_core                        |  2260|
+|4     |      aurora_8b10b_0_aurora_lane_4byte_0_i      |aurora_8b10b_0_AURORA_LANE_4BYTE           |   545|
+|5     |        aurora_8b10b_0_err_detect_4byte_i       |aurora_8b10b_0_ERR_DETECT_4BYTE            |    36|
+|6     |        aurora_8b10b_0_hotplug_i                |aurora_8b10b_0_hotplug                     |    81|
+|7     |          rx_cc_cdc_sync                        |aurora_8b10b_0_cdc_sync__parameterized0_19 |    27|
+|8     |        aurora_8b10b_0_lane_init_sm_4byte_i     |aurora_8b10b_0_LANE_INIT_SM_4BYTE          |    61|
+|9     |        aurora_8b10b_0_sym_dec_4byte_i          |aurora_8b10b_0_SYM_DEC_4BYTE               |   214|
+|10    |        aurora_8b10b_0_sym_gen_4byte_i          |aurora_8b10b_0_SYM_GEN_4BYTE               |   153|
+|11    |      aurora_8b10b_0_global_logic_i             |aurora_8b10b_0_GLOBAL_LOGIC                |   127|
+|12    |        channel_err_detect_i                    |aurora_8b10b_0_CHANNEL_ERR_DETECT          |    10|
+|13    |        channel_init_sm_i                       |aurora_8b10b_0_CHANNEL_INIT_SM             |    77|
+|14    |        idle_and_ver_gen_i                      |aurora_8b10b_0_IDLE_AND_VER_GEN            |    40|
+|15    |      aurora_8b10b_0_rx_ll_i                    |aurora_8b10b_0_RX_LL                       |   296|
+|16    |        rx_ll_pdu_datapath_i                    |aurora_8b10b_0_RX_LL_PDU_DATAPATH          |   264|
+|17    |          output_mux_i                          |aurora_8b10b_0_OUTPUT_MUX                  |    48|
+|18    |          sideband_output_i                     |aurora_8b10b_0_SIDEBAND_OUTPUT             |    13|
+|19    |          stage_1_rx_ll_deframer_i              |aurora_8b10b_0_RX_LL_DEFRAMER              |    20|
+|20    |          stage_2_left_align_control_i          |aurora_8b10b_0_LEFT_ALIGN_CONTROL          |     1|
+|21    |          stage_2_valid_data_counter_i          |aurora_8b10b_0_VALID_DATA_COUNTER          |     9|
+|22    |          stage_3_left_align_datapath_mux_i     |aurora_8b10b_0_LEFT_ALIGN_MUX              |    48|
+|23    |          stage_3_output_switch_control_i       |aurora_8b10b_0_OUTPUT_SWITCH_CONTROL       |     1|
+|24    |          stage_3_storage_ce_control_i          |aurora_8b10b_0_STORAGE_CE_CONTROL          |     2|
+|25    |          stage_3_storage_count_control_i       |aurora_8b10b_0_STORAGE_COUNT_CONTROL       |     5|
+|26    |          stage_3_storage_switch_control_i      |aurora_8b10b_0_STORAGE_SWITCH_CONTROL      |     4|
+|27    |          stage_4_storage_mux_i                 |aurora_8b10b_0_STORAGE_MUX                 |    32|
+|28    |      aurora_8b10b_0_tx_ll_i                    |aurora_8b10b_0_TX_LL                       |   120|
+|29    |        tx_ll_control_i                         |aurora_8b10b_0_TX_LL_CONTROL               |    28|
+|30    |        tx_ll_datapath_i                        |aurora_8b10b_0_TX_LL_DATAPATH              |    92|
+|31    |      axi_to_ll_pdu_i                           |aurora_8b10b_0_AXI_TO_LL                   |     1|
+|32    |      core_reset_logic_i                        |aurora_8b10b_0_RESET_LOGIC                 |    64|
+|33    |        link_reset_cdc_sync                     |aurora_8b10b_0_cdc_sync__parameterized0_17 |    27|
+|34    |        tx_lock_cdc_sync                        |aurora_8b10b_0_cdc_sync__parameterized0_18 |    27|
+|35    |      gt_wrapper_i                              |aurora_8b10b_0_GT_WRAPPER                  |  1019|
+|36    |        aurora_8b10b_0_multi_gt_i               |aurora_8b10b_0_multi_gt                    |    54|
+|37    |          gt0_aurora_8b10b_0_i                  |aurora_8b10b_0_gt                          |    54|
+|38    |        gt_rxresetfsm_i                         |aurora_8b10b_0_rx_startup_fsm              |   450|
+|39    |          sync_RXRESETDONE_cdc_sync             |aurora_8b10b_0_cdc_sync__parameterized0_10 |    27|
+|40    |          sync_cplllock_cdc_sync                |aurora_8b10b_0_cdc_sync_11                 |    31|
+|41    |          sync_mmcm_lock_reclocked_cdc_sync     |aurora_8b10b_0_cdc_sync_12                 |    29|
+|42    |          sync_qplllock_cdc_sync                |aurora_8b10b_0_cdc_sync_13                 |    27|
+|43    |          sync_run_phase_alignment_int_cdc_sync |aurora_8b10b_0_cdc_sync__parameterized0_14 |    27|
+|44    |          sync_rx_fsm_reset_done_int_cdc_sync   |aurora_8b10b_0_cdc_sync__parameterized0_15 |    27|
+|45    |          sync_time_out_wait_bypass_cdc_sync    |aurora_8b10b_0_cdc_sync__parameterized0_16 |    27|
+|46    |        gt_txresetfsm_i                         |aurora_8b10b_0_tx_startup_fsm              |   389|
+|47    |          sync_TXRESETDONE_cdc_sync             |aurora_8b10b_0_cdc_sync__parameterized0_3  |    27|
+|48    |          sync_cplllock_cdc_sync                |aurora_8b10b_0_cdc_sync_4                  |    32|
+|49    |          sync_mmcm_lock_reclocked_cdc_sync     |aurora_8b10b_0_cdc_sync_5                  |    29|
+|50    |          sync_qplllock_cdc_sync                |aurora_8b10b_0_cdc_sync_6                  |    27|
+|51    |          sync_run_phase_alignment_int_cdc_sync |aurora_8b10b_0_cdc_sync__parameterized0_7  |    27|
+|52    |          sync_time_out_wait_bypass_cdc_sync    |aurora_8b10b_0_cdc_sync__parameterized0_8  |    27|
+|53    |          sync_tx_fsm_reset_done_int_cdc_sync   |aurora_8b10b_0_cdc_sync__parameterized0_9  |    28|
+|54    |        gtrxreset_cdc_sync                      |aurora_8b10b_0_cdc_sync__parameterized0_2  |    27|
+|55    |      hpcnt_reset_cdc_sync                      |aurora_8b10b_0_cdc_sync_1                  |    26|
+|56    |      ll_to_axi_pdu_i                           |aurora_8b10b_0_LL_TO_AXI                   |     3|
+|57    |      standard_cc_module_i                      |aurora_8b10b_0_STANDARD_CC_MODULE          |    59|
+|58    |    clock_module_i                              |aurora_8b10b_0_CLOCK_MODULE                |     1|
+|59    |    gt_common_support                           |aurora_8b10b_0_gt_common_wrapper           |     1|
+|60    |    gt_reset_cdc_sync                           |aurora_8b10b_0_cdc_sync                    |    26|
+|61    |    reset_sync_user_clk_cdc_sync                |aurora_8b10b_0_cdc_sync_0                  |    26|
+|62    |    support_reset_logic_i                       |aurora_8b10b_0_SUPPORT_RESET_LOGIC         |    39|
+|63    |      gt_rst_r_cdc_sync                         |aurora_8b10b_0_cdc_sync__parameterized0    |    27|
++------+------------------------------------------------+-------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57097 ; free virtual = 60383
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 1947.066 ; gain = 76.750 ; free physical = 57150 ; free virtual = 60436
+Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 1947.066 ; gain = 587.180 ; free physical = 57150 ; free virtual = 60436
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 88 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1947.066 ; gain = 0.000 ; free physical = 57085 ; free virtual = 60371
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 31 instances were transformed.
+  (MUXCY,XORCY) => CARRY4: 2 instances
+  FD => FDRE: 26 instances
+  FDR => FDRE: 2 instances
+  SRL16 => SRL16E: 1 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+275 Infos, 83 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:38 . Memory (MB): peak = 1947.066 ; gain = 595.184 ; free physical = 57141 ; free virtual = 60428
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1947.066 ; gain = 0.000 ; free physical = 57141 ; free virtual = 60428
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint '/home/svg-hka/aurora_rtds/aurora_rtds.runs/aurora_8b10b_0_synth_1/aurora_8b10b_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP aurora_8b10b_0, cache-ID = 7ee9a4914a57c307
+INFO: [Coretcl 2-1174] Renamed 62 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1971.078 ; gain = 0.000 ; free physical = 57136 ; free virtual = 60426
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint '/home/svg-hka/aurora_rtds/aurora_rtds.runs/aurora_8b10b_0_synth_1/aurora_8b10b_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file aurora_8b10b_0_utilization_synth.rpt -pb aurora_8b10b_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 16 14:55:50 2019...

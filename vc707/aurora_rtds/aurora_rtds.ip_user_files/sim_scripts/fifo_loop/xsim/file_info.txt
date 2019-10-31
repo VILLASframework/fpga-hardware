@@ -1,2 +1,0 @@
-fifo_loop.v,verilog,xil_defaultlib,../../../ip/fifo_loop/sim/fifo_loop.v,
-glbl.v,Verilog,xil_defaultlib,glbl.v

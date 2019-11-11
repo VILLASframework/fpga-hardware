@@ -116,7 +116,7 @@ set proj_dir [get_property directory [current_project]]
 # Set project properties
 set obj [get_projects rtds_axis]
 set_property "board_part" "xilinx.com:vc707:part0:1.2" $obj
-set_property "corecontainer.enable" "1" $obj
+set_property "corecontainer.enable" "0" $obj
 set_property "default_lib" "xil_defaultlib" $obj
 set_property "sim.ip.auto_export_scripts" "1" $obj
 set_property "simulator_language" "Mixed" $obj
@@ -195,8 +195,8 @@ set obj [get_filesets sources_1]
 set_property "top" "rtds_axis" $obj
 
 # Set IP repository paths
-set obj [get_filesets axis_data_fifo_0]
-set_property "ip_repo_paths" "[file normalize "$origin_dir/ip_repo/rtds_axisp_1.1"] [file normalize "$origin_dir/"] [file normalize "$origin_dir/../../axis_delay"]" $obj
+#set obj [get_filesets axis_data_fifo_0]
+#set_property "ip_repo_paths" "[file normalize "$origin_dir/ip_repo/rtds_axisp_1.1"] [file normalize "$origin_dir/"] [file normalize "$origin_dir/../../axis_delay"]" $obj
 
 # Rebuild user ip_repo's index before adding any source files
 update_ip_catalog -rebuild
@@ -320,14 +320,14 @@ set_property "transport_int_delay" "0" $obj
 set_property "transport_path_delay" "0" $obj
 set_property "xsim.elaborate.debug_level" "all" $obj
 set_property "xsim.simulate.runtime" "200 us" $obj
-set_property "xsim.simulate.uut" "/top_tb/UUT" $obj
+#set_property "xsim.simulate.uut" "/top_tb/UUT" $obj
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {
-  create_run -name synth_1 -part xc7vx485tffg1761-2 -flow {Vivado Synthesis 2015} -strategy "Vivado Synthesis Defaults" -constrset constrs_1
+  create_run -name synth_1 -part xc7vx485tffg1761-2 -flow {Vivado Synthesis 2018} -strategy "Vivado Synthesis Defaults" -constrset constrs_1
 } else {
   set_property strategy "Vivado Synthesis Defaults" [get_runs synth_1]
-  set_property flow "Vivado Synthesis 2015" [get_runs synth_1]
+  set_property flow "Vivado Synthesis 2018" [get_runs synth_1]
 }
 set obj [get_runs synth_1]
 
@@ -336,10 +336,10 @@ current_run -synthesis [get_runs synth_1]
 
 # Create 'impl_1' run (if not found)
 if {[string equal [get_runs -quiet impl_1] ""]} {
-  create_run -name impl_1 -part xc7vx485tffg1761-2 -flow {Vivado Implementation 2015} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
+  create_run -name impl_1 -part xc7vx485tffg1761-2 -flow {Vivado Implementation 2018} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
 } else {
   set_property strategy "Vivado Implementation Defaults" [get_runs impl_1]
-  set_property flow "Vivado Implementation 2015" [get_runs impl_1]
+  set_property flow "Vivado Implementation 2018" [get_runs impl_1]
 }
 set obj [get_runs impl_1]
 set_property "steps.write_bitstream.args.readback_file" "0" $obj

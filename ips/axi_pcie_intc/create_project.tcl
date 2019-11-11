@@ -98,7 +98,7 @@ set proj_dir [get_property directory [current_project]]
 
 # Set project properties
 set obj [get_projects axi_pcie_intc]
-set_property "corecontainer.enable" "1" $obj
+set_property "corecontainer.enable" "0" $obj
 set_property "default_lib" "xil_defaultlib" $obj
 set_property "part" "xc7vx485tffg1157-1" $obj
 set_property "sim.ip.auto_export_scripts" "1" $obj
@@ -145,8 +145,8 @@ set obj [get_filesets sources_1]
 set_property "top" "axi_pcie_intc" $obj
 
 # Set IP repository paths
-set obj [get_filesets axi_intc_0]
-set_property "ip_repo_paths" "[file normalize "$origin_dir/"]" $obj
+#set obj [get_filesets axi_intc_0]
+#set_property "ip_repo_paths" "[file normalize "$origin_dir/"]" $obj
 
 # Rebuild user ip_repo's index before adding any source files
 update_ip_catalog -rebuild

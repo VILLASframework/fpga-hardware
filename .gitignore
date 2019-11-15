@@ -28,8 +28,10 @@ ips/axi_pcie_intc/work/
 *.done
 
 # IP generated from Tcl scripts
-vc707/aurora_rtds/ip/
+*.xci*
+vc707/aurora_rtds/ip/axi_pcie_intc/ip/
 
 # Vivado working directory
 vc707/aurora_rtds/vivado/
+vc707/aurora_rtds/ip/axi_pcie_intc/vivado/
 

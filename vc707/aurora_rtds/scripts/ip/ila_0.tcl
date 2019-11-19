@@ -6,7 +6,7 @@ set ipDir ./ip
 open_project ./vivado/ip/ip.xpr
 
 # Create IP
-create_ip -vendor xilinx.com -library ip -name ila -module_name ila_0 -dir $ipDir
+create_ip -vendor xilinx.com -library ip -name ila -module_name ila_0 -dir $ipDir -quiet
 
 set_property -dict [list \
     CONFIG.Component_Name {ila_0} \
@@ -18,14 +18,14 @@ set_property -dict [list \
     CONFIG.ALL_PROBE_SAME_MU {false}
 ] [get_ips ila_0]
 
-generate_target all [get_files ila_0.xci]
+generate_target all [get_files ila_0.xci] -quiet
 
 export_ip_user_files -of_objects [get_files ila_0.xci] -no_script -ip_user_files_dir ./vivado/ip_user_files -sync -force -quiet
 
-create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files */ila_0.xci]]
+create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files */ila_0.xci]] -quiet
 
-launch_runs -jobs 16 ila_0_synth_1
-wait_on_run ila_0_synth_1
+launch_runs -jobs 16 ila_0_synth_1 -quiet
+wait_on_run ila_0_synth_1 -quiet
 
 export_simulation -of_objects [get_files ila_0.xci] -directory ./vivado/ip_user_files/sim_scripts -ip_user_files_dir ./vivado/ip_user_files -ipstatic_source_dir ./vivado/ip_user_files/ipstatic -use_ip_compiled_libs -force -quiet
 

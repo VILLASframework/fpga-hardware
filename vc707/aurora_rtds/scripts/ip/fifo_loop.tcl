@@ -6,7 +6,7 @@ set ipDir ./ip
 open_project ./vivado/ip/ip.xpr
 
 # Create IP
-create_ip -vendor xilinx.com -library ip -name fifo_generator -module_name fifo_loop -dir $ipDir
+create_ip -vendor xilinx.com -library ip -name fifo_generator -module_name fifo_loop -dir $ipDir -quiet
 
 set_property -dict [list \
     CONFIG.Component_Name {fifo_loop} \
@@ -31,14 +31,14 @@ set_property -dict [list \
     CONFIG.Enable_Safety_Circuit {true} \
 ] [get_ips fifo_loop]
 
-generate_target all [get_files fifo_loop.xci]
+generate_target all [get_files fifo_loop.xci] -quiet
 
 export_ip_user_files -of_objects [get_files fifo_loop.xci] -no_script -ip_user_files_dir ./vivado/ip_user_files -sync -force -quiet
 
-create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files */fifo_loop.xci]]
+create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files */fifo_loop.xci]] -quiet
 
-launch_runs -jobs 16 fifo_loop_synth_1
-wait_on_run fifo_loop_synth_1
+launch_runs -jobs 16 fifo_loop_synth_1 -quiet
+wait_on_run fifo_loop_synth_1 -quiet
 
 export_simulation -of_objects [get_files fifo_loop.xci] -directory ./vivado/ip_user_files/sim_scripts -ip_user_files_dir ./vivado/ip_user_files -ipstatic_source_dir ./vivado/ip_user_files/ipstatic -use_ip_compiled_libs -force -quiet
 

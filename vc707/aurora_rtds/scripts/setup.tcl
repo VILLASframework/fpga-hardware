@@ -16,6 +16,10 @@ set obj [get_projects top]
 set_property "board_part" "xilinx.com:vc707:part0:1.3" $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "Verilog" $obj
+
+# Include custom IP in Vivado repo path
+set_property "ip_repo_paths" "$ipRoot" $obj
+
 check_ip_cache -disable_cache
 update_ip_catalog
 

@@ -1,6 +1,6 @@
 RTL=./hdl/top.v
 
-IP=./ip/aurora_8b10b_0.xcix ./ip/fifo_loop.xcix ./ip/ila_0.xcix
+IP=./ip/aurora_8b10b_0.xci ./ip/fifo_loop.xci ./ip/ila_0.xci
 
 vivado: ip_vivado setup_vivado
 
@@ -12,13 +12,14 @@ setup_vivado: ./vivado/.setup_vivado.done
 ip_vivado: ./vivado/.ip_top_vivado.done $(IP)
 
 ./vivado/.ip_top_vivado.done:
+	$(MAKE) -C ./ip/axi_pcie_intc vivado
 	mkdir -p ./vivado/ip
-	mkdir -p ./ip
-	vivado -mode batch -source ./scripts/ip_project.tcl -log ./vivado/ip/ip.log -jou ./vivado/ip/ip.jou
+	vivado -mode batch -source ./scripts/ip_project.tcl -nolog -nojournal
 
 $(IP): ./vivado/.ip_top_vivado.done
-	vivado -mode batch -source ./scripts/$(@:.xcix=.tcl) -log ./vivado/$(@:.xcix=.log) -jou ./vivado/$(@:.xcix=.jou)
+	vivado -mode batch -source ./scripts/$(@:.xci=.tcl) -nolog -nojournal
 
 .PHONY: clean
 clean:
+	$(MAKE) -C ./ip/axi_pcie_intc clean
 	rm -rf ./vivado ./ip/aurora_8b10b_0 ./ip/fifo_loop ./ip/ila_0 .Xil ./ip/.Xil vivado.jou vivado.log

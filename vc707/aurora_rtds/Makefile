@@ -21,4 +21,4 @@ $(IP): ./vivado/.ip_top_vivado.done
 
 .PHONY: clean
 clean:
-	rm -rf ./vivado ./ip/* .Xil ./ip/.Xil vivado.jou vivado.log
+	rm -rf ./vivado ./ip/aurora_8b10b_0 ./ip/fifo_loop ./ip/ila_0 .Xil ./ip/.Xil vivado.jou vivado.log

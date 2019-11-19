@@ -15,7 +15,6 @@ set obj [get_projects ip]
 set_property "board_part" "xilinx.com:vc707:part0:1.3" $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "Verilog" $obj
-set_property coreContainer.enable 1 $obj
 
 set_property target_simulator XSim [current_project]
 

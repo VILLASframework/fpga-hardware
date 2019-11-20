@@ -33,7 +33,8 @@ module top(
                        s_axi_tx_tlast, s_axi_tx_tvalid, s_axi_tx_tready,
                        m_axi_rx_tlast, m_axi_rx_tvalid, m_axi_rx_tready,
                        rx_resetdone_out, tx_resetdone_out, tx_lock, sys_reset_out,
-                       s_axi_loop_tx_tlast, s_axi_loop_tx_tvalid, m_axi_loop_rx_tready;
+                       s_axi_loop_tx_tlast, s_axi_loop_tx_tvalid, m_axi_loop_rx_tready,
+                       m_axis_tvalid_seq, m_axis_tlast_seq;
 
    wire [0 : 0]        lane_up;
 
@@ -41,7 +42,9 @@ module top(
 
    wire [0 : 31]       s_axi_tx_tdata, m_axi_rx_tdata;
 
-   wire [31 : 0]       s_axi_loop_tx_tdata;
+   wire [18 : 0]       axis_data_0_ila;
+
+   wire [31 : 0]       s_axi_loop_tx_tdata, m_axis_tdata_seq;
 
    reg                 rst_stretch, rtds_tx_pulse;
 
@@ -179,7 +182,7 @@ module top(
                             .frame_err               (frame_err),
                             .link_reset_out          (link_reset_out), // Relative to init_clk_in
 
-                            // User IO ports (TX)
+                            // User IO ports (TX), AXI_Stream slave interface
                             .s_axi_tx_tdata          (s_axi_tx_tdata),
                             .s_axi_tx_tkeep          (s_axi_tx_tkeep),
                             .s_axi_tx_tlast          (s_axi_tx_tlast),
@@ -187,7 +190,7 @@ module top(
 
                             .s_axi_tx_tready         (s_axi_tx_tready),
 
-                            // User IO ports (RX)
+                            // User IO ports (RX), AXI_Stream master interface
                             .m_axi_rx_tdata          (m_axi_rx_tdata),
                             .m_axi_rx_tkeep          (m_axi_rx_tkeep),
                             .m_axi_rx_tlast          (m_axi_rx_tlast),
@@ -255,12 +258,14 @@ module top(
                           .s_axis_tvalid (m_axi_rx_tvalid),
                           .s_axis_tdata  (m_axi_rx_tdata),
                           .s_axis_tlast  (m_axi_rx_tlast),
+
                           .s_axis_tready (m_axi_loop_rx_tready),
 
                           // User IO ports AXI-Stream (RX)
                           .m_axis_tvalid (s_axi_loop_tx_tvalid),
                           .m_axis_tdata  (s_axi_loop_tx_tdata),
                           .m_axis_tlast  (s_axi_loop_tx_tlast),
+
                           .m_axis_tready (s_axi_tx_tready)
                           );
 
@@ -270,11 +275,33 @@ module top(
    assign s_axi_tx_tlast = s_axi_loop_tx_tlast;
 
 
+   axis_data axis_data_0 (
+                          .m_axis_aclk    (user_clk_out),
+                          .m_axis_aresetn (!sys_reset_out),
+
+                          // AXI-Stream slave interface
+                          .s_axis_tvalid  (s_axi_loop_tx_tvalid),
+                          .s_axis_tdata   (s_axi_loop_tx_tdata),
+                          .s_axis_tlast   (s_axi_loop_tx_tlast),
+                          .s_axis_tready  (),
+
+                          // AXI-Stream master interface
+                          .m_axis_tvalid  (m_axis_tvalid_seq),
+                          .m_axis_tdata   (m_axis_tdata_seq),
+                          .m_axis_tlast   (m_axis_tlast_seq),
+                          .m_axis_tready  (s_axi_tx_tready),
+
+                          // ILA probes out
+                          .ila_out        (axis_data_0_ila)
+                          );
+
+
    ila_0 ila_0 (
                 .clk    (user_clk_out),
                 .probe0 ({m_axi_rx_tdata, m_axi_rx_tkeep, m_axi_rx_tlast, m_axi_rx_tvalid}),
                 .probe1 ({s_axi_tx_tdata, s_axi_tx_tkeep, s_axi_tx_tlast, s_axi_tx_tvalid, s_axi_tx_tready}),
-                .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out})
+                .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out}),
+                .probe3 (axis_data_0_ila)
                 );
 
 endmodule // top

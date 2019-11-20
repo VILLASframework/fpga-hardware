@@ -17,7 +17,7 @@ ip_vivado: ./vivado/.ip_top_vivado.done $(IP)
 $(IP): ./vivado/.ip_top_vivado.done
 	vivado -mode batch -source ./scripts/$(@:.xci=.tcl) -nolog -nojournal
 
-bitstream: ./build/.bitstream.done
+bitstream: vivado ./build/.bitstream.done
 ./build/.bitstream.done:
 	mkdir -p ./build
 	vivado -mode batch -source ./scripts/bitstream.tcl -nolog -nojournal

@@ -1,16 +1,7 @@
-# We do not check the Vivado working directory into the VCS
-# This is a best practice by the Vivado Ultrafast Design Methodology
-# See XAPP1165 (http://www.xilinx.com/support/documentation/application_notes/xapp1165.pdf)
-vc707/vc707_pcie/work/
-vc707/vc707_villas/work/
-vc707/vc707_villas_simple/work/
-vc707/vc707_prom_flasher/work/
-
-ips/hdl_multiply/work/
-ips/pcie_msi_requester/work/
-ips/axi_pcie_intc/work/
-
 .Xil
+
+# Build directories
+vc707/aurora_rtds/build
 
 # Backup files
 *~
@@ -39,4 +30,11 @@ vc707/aurora_rtds/ip/ila_0
 # Vivado working directories
 vc707/aurora_rtds/vivado
 vc707/aurora_rtds/ip/axi_pcie_intc/vivado
+vc707/vc707_pcie/work/
+vc707/vc707_villas/work/
+vc707/vc707_villas_simple/work/
+vc707/vc707_prom_flasher/work/
+ips/hdl_multiply/work/
+ips/pcie_msi_requester/work/
+ips/axi_pcie_intc/work/
 

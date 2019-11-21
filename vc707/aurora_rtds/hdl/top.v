@@ -34,7 +34,7 @@ module top(
                        m_axi_rx_tlast, m_axi_rx_tvalid, m_axi_rx_tready,
                        rx_resetdone_out, tx_resetdone_out, tx_lock, sys_reset_out,
                        s_axi_loop_tx_tlast, s_axi_loop_tx_tvalid, m_axi_loop_rx_tready,
-                       m_axis_tvalid_seq, m_axis_tlast_seq;
+                       m_axis_tvalid_seq, m_axis_tlast_seq, s_axis_tready_seq;
 
    wire [0 : 0]        lane_up;
 
@@ -46,7 +46,8 @@ module top(
 
    wire [31 : 0]       s_axi_loop_tx_tdata, m_axis_tdata_seq;
 
-   reg                 rst_stretch, rtds_tx_pulse;
+   reg                 rst_stretch, rtds_tx_pulse,
+                       ctrl_loopback; // Control register, assert for loopback mode
 
    reg [31 : 0]        rst_count;
 
@@ -269,10 +270,58 @@ module top(
                           .m_axis_tready (s_axi_tx_tready)
                           );
 
-   assign m_axi_rx_tready = m_axi_loop_rx_tready;
-   assign s_axi_tx_tvalid = s_axi_loop_tx_tvalid;
-   assign s_axi_tx_tdata = s_axi_loop_tx_tdata;
-   assign s_axi_tx_tlast = s_axi_loop_tx_tlast;
+
+   // TODO: The following temporary block is in place only for testing the 
+   // axis_data module. It stimulates the slave interface by dispatching 
+   // a two-word constant {32'h00_05, 32'h00_03} periodically.
+   // The st_count counter determines periodic stimulation, and it is long 
+   // enough to discount the backpressure from the axis_data slave interface.
+   reg          st_tvalid, st_tlast;
+   reg  [1 : 0] st_state;
+   reg  [7 : 0] st_count;
+   reg [31 : 0] st_tdata;
+   localparam
+     S_ST_IDLE = 2'b00,
+     S_ST_0005 = 2'b01,
+     S_ST_0003 = 2'b11;
+   always @(posedge user_clk_out) begin
+      if (sys_reset_out == 1'b1) begin
+         st_tvalid <= 1'b0;
+         st_tdata <= 32'h00_00_00_00;
+         st_tlast <= 1'b0;
+
+         st_count <= 8'h00;
+
+         st_state <= S_ST_IDLE;
+      end else begin
+         case (st_state)
+           S_ST_IDLE: begin
+              st_count <= st_count + 8'h01;
+
+              st_tvalid <= 1'b0;
+              st_tlast <= 1'b0;
+
+              if (st_count == 8'hff) begin
+                 st_state <= S_ST_0005;
+              end
+           end
+           S_ST_0005: begin
+              st_count <= 8'h00;
+
+              st_tvalid <= 1'b1;
+              st_tdata <= 32'h00_00_00_05;
+
+              st_state <= S_ST_0003;
+           end
+           S_ST_0003: begin
+              st_tdata <= 32'h00_00_00_03;
+              st_tlast <= 1'b1;
+
+              st_state <= S_ST_IDLE;
+           end
+         endcase
+      end
+   end
 
 
    axis_data axis_data_0 (
@@ -280,10 +329,10 @@ module top(
                           .m_axis_aresetn (!sys_reset_out),
 
                           // AXI-Stream slave interface
-                          .s_axis_tvalid  (s_axi_loop_tx_tvalid),
-                          .s_axis_tdata   (s_axi_loop_tx_tdata),
-                          .s_axis_tlast   (s_axi_loop_tx_tlast),
-                          .s_axis_tready  (),
+                          .s_axis_tvalid  (st_tvalid),
+                          .s_axis_tdata   (st_tdata),
+                          .s_axis_tlast   (st_tlast),
+                          .s_axis_tready  (s_axis_tready_seq),
 
                           // AXI-Stream master interface
                           .m_axis_tvalid  (m_axis_tvalid_seq),
@@ -294,6 +343,24 @@ module top(
                           // ILA probes out
                           .ila_out        (axis_data_0_ila)
                           );
+
+
+   // TODO: ctrl_loopback should be exposed over AXI register interface for 
+   // external control. The following temporary block is in place only for 
+   // testing the axis_data module. 
+   always @(posedge user_clk_out) begin
+      if (sys_reset_out == 1'b1) begin
+         ctrl_loopback <= 1'b0;
+      end else begin
+      end
+   end
+
+   // AXI-Stream master interface of Aurora does NOT have a tready port, so partner cannot exert backpressure.
+   assign m_axi_rx_tready = m_axi_loop_rx_tready;
+
+   assign s_axi_tx_tvalid = (ctrl_loopback == 1'b1) ? s_axi_loop_tx_tvalid : m_axis_tvalid_seq;
+   assign s_axi_tx_tdata = (ctrl_loopback == 1'b1) ? s_axi_loop_tx_tdata : m_axis_tdata_seq;
+   assign s_axi_tx_tlast = (ctrl_loopback == 1'b1) ? s_axi_loop_tx_tlast : m_axis_tlast_seq;
 
 
    ila_0 ila_0 (

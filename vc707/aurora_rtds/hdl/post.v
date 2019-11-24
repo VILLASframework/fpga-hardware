@@ -4,8 +4,6 @@
  * transaction, and strip the trailing sequence number before forwarding to 
  * the outside world over AXI-Stream. 
  *
- * TODO: Sequence number is stripped only if ctrl_strip_seq is asserted.
- * TODO: Move incoming-packet-counting logic from top module to this module.
  * TODO: Aurora from RTDS does not have a tready at its AXI-Stream master 
  *       interface, but a tready could be introduced here (maybe via a FIFO?).
  *
@@ -28,27 +26,30 @@ module post(
             output wire          m_axis_tlast,
 
             // Control ports
-            input wire           ctrl_strip_seq,
+            input wire           ctrl_strip_seq_en,
 
             // ILA probes
             output wire [47 : 0] ila_out
             );
 
-   wire                          stat_cnt_pkts_rdy; // Indicates when the corresponding status register holds the correct count
+   wire                          stat_cnt_pkts_rdy, // Indicates when the corresponding status register holds the correct count
+                                 data_pkts_window;
+
+   wire [15 : 0]                 stat_cnt_pkts; // Count of number of packets received (depends on ctrl_strip_seq_en)
 
    reg                           stat_cnt_pkts_rdy_i, state_cnt_pkts;
 
-   reg [31 : 0]                  stat_cnt_pkts; // Status register, count of number of packets received 
+   reg [15 : 0]                  cnt_pkts; // Count of number of packets received (always including sequence number), maximum count 2^16 = 65,536
 
    localparam
      ST_IN_COUNT = 1'b0,
      ST_IN_LAST  = 1'b1;
 
    // Count the number of packets received from RTDS
-   // TODO: Does stat_cnt_pkts_in need to be 32-bit long?
+   // TODO: Does stat_cnt_pkts_in need to be 16-bit long?
    always @(posedge m_axis_aclk) begin
       if (m_axis_aresetn == 1'b0) begin
-         stat_cnt_pkts <= 16'h00_00;
+         cnt_pkts <= 16'h00_00;
          stat_cnt_pkts_rdy_i <= 1'b0;
 
          state_cnt_pkts <= ST_IN_COUNT;
@@ -58,7 +59,7 @@ module post(
               stat_cnt_pkts_rdy_i <= 1'b0;
 
               if (s_axis_tvalid == 1'b1) begin
-                 stat_cnt_pkts <= stat_cnt_pkts + 16'h00_01;
+                 cnt_pkts <= cnt_pkts + 16'h00_01;
 
                  if (s_axis_tlast == 1'b1) begin
                     stat_cnt_pkts_rdy_i <= 1'b1;
@@ -69,7 +70,7 @@ module post(
            ST_IN_LAST: begin
               stat_cnt_pkts_rdy_i <= 1'b1;
               if (s_axis_tvalid == 1'b1) begin
-                 stat_cnt_pkts <= 16'h00_01;
+                 cnt_pkts <= 16'h00_01;
 
                  state_cnt_pkts <= ST_IN_COUNT;
               end
@@ -79,7 +80,15 @@ module post(
    end
 
    assign stat_cnt_pkts_rdy = stat_cnt_pkts_rdy_i & ~s_axis_tvalid;
+   assign stat_cnt_pkts = (ctrl_strip_seq_en) ? cnt_pkts - 16'h00_01 : cnt_pkts;
 
-   assign ila_out = {stat_cnt_pkts_rdy, stat_cnt_pkts, 15'b000_0000_0000_0000};
+
+   assign data_pkts_window = ~stat_cnt_pkts_rdy & ~s_axis_tlast;
+
+   assign m_axis_tvalid = (ctrl_strip_seq_en) ? s_axis_tvalid & data_pkts_window : s_axis_tvalid;
+   assign m_axis_tdata = (ctrl_strip_seq_en) ? s_axis_tdata & {32{data_pkts_window}} : s_axis_tdata;
+
+
+   assign ila_out = {stat_cnt_pkts_rdy, stat_cnt_pkts, data_pkts_window, 30'h00_00_00_00};
 
 endmodule // post

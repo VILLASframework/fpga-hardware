@@ -10,8 +10,9 @@ create_ip -vendor xilinx.com -library ip -name ila -module_name ila_0 -dir $ipDi
 
 set_property -dict [list \
     CONFIG.Component_Name {ila_0} \
-    CONFIG.C_DATA_DEPTH {8192} \
-    CONFIG.C_NUM_OF_PROBES {5} \
+    CONFIG.C_DATA_DEPTH {4096} \
+    CONFIG.C_NUM_OF_PROBES {6} \
+    CONFIG.C_PROBE5_WIDTH {34} \
     CONFIG.C_PROBE4_WIDTH {48} \
     CONFIG.C_PROBE3_WIDTH {19} \
     CONFIG.C_PROBE2_WIDTH {6} \

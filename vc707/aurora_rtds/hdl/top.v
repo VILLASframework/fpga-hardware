@@ -34,7 +34,8 @@ module top(
                        m_axi_rx_tlast, m_axi_rx_tvalid, m_axi_rx_tready,
                        rx_resetdone_out, tx_resetdone_out, tx_lock, sys_reset_out,
                        s_axi_loop_tx_tlast, s_axi_loop_tx_tvalid, m_axi_loop_rx_tready,
-                       m_axis_tvalid_seq, m_axis_tlast_seq, s_axis_tready_seq;
+                       m_axis_tvalid_seq, m_axis_tlast_seq, s_axis_tready_seq,
+                       m_axis_tvalid;
 
    wire [0 : 0]        lane_up;
 
@@ -44,7 +45,7 @@ module top(
 
    wire [18 : 0]       pre_0_ila;
 
-   wire [31 : 0]       s_axi_loop_tx_tdata, m_axis_tdata_seq;
+   wire [31 : 0]       s_axi_loop_tx_tdata, m_axis_tdata_seq, m_axis_tdata;
 
    wire [47 : 0]       post_0_ila;
 
@@ -312,20 +313,20 @@ module top(
               .m_axis_aresetn (!sys_reset_out),
 
               // AXI-Stream slave interface
-              .s_axis_tvalid  (m_axi_rx_tvalid),
-              .s_axis_tdata   (m_axi_rx_tdata),
-              .s_axis_tlast   (m_axi_rx_tlast),
+              .s_axis_tvalid     (m_axi_rx_tvalid),
+              .s_axis_tdata      (m_axi_rx_tdata),
+              .s_axis_tlast      (m_axi_rx_tlast),
 
               // AXI-Stream master interface
-              .m_axis_tvalid  (),
-              .m_axis_tdata   (),
-              .m_axis_tlast   (),
+              .m_axis_tvalid     (m_axis_tvalid),
+              .m_axis_tdata      (m_axis_tdata),
+              .m_axis_tlast      (),
 
               // Control ports
-              .ctrl_strip_seq (),
+              .ctrl_strip_seq_en (1'b1), // TODO: ctrl_strip_seq_en should be exposed over AXI register interface for external control
 
               // ILA probes out
-              .ila_out        (post_0_ila)
+              .ila_out           (post_0_ila)
               );
 
 
@@ -392,7 +393,8 @@ module top(
                 .probe1 ({s_axi_tx_tdata, s_axi_tx_tkeep, s_axi_tx_tlast, s_axi_tx_tvalid, s_axi_tx_tready}),
                 .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out}),
                 .probe3 (pre_0_ila),
-                .probe4 (post_0_ila)
+                .probe4 (post_0_ila),
+                .probe5 ({m_axis_tvalid, m_axis_tdata, 1'b0})
                 );
 
 endmodule // top

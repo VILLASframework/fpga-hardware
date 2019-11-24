@@ -34,7 +34,8 @@ module top(
                        m_axi_rx_tlast, m_axi_rx_tvalid, m_axi_rx_tready,
                        rx_resetdone_out, tx_resetdone_out, tx_lock, sys_reset_out,
                        s_axi_loop_tx_tlast, s_axi_loop_tx_tvalid, m_axi_loop_rx_tready,
-                       m_axis_tvalid_seq, m_axis_tlast_seq, s_axis_tready_seq;
+                       m_axis_tvalid_seq, m_axis_tlast_seq, s_axis_tready_seq,
+                       stat_cnt_pkts_in_rdy; // Status register, indicates when the corresponding status register holds the correct count
 
    wire [0 : 0]        lane_up;
 
@@ -47,9 +48,11 @@ module top(
    wire [31 : 0]       s_axi_loop_tx_tdata, m_axis_tdata_seq;
 
    reg                 rst_stretch, rtds_tx_pulse,
-                       ctrl_loopback; // Control register, assert for loopback mode
+                       ctrl_loopback, // Control register, assert for loopback mode
+                       stat_cnt_pkts_in_rdy_i;
 
-   reg [31 : 0]        rst_count;
+   reg [31 : 0]        rst_count,
+                       stat_cnt_pkts_in; // Status register, count of number of packets received 
 
 
    // Clock Buffering
@@ -232,10 +235,53 @@ module top(
                             );
 
 
+   localparam
+      ST_IN_COUNT = 1'b0,
+      ST_IN_LAST  = 1'b1;
+
+   reg state_cnt_pkts_in;
+
+   // Count the number of packets received from RTDS
+   // TODO: Does stat_cnt_pkts_in need to be 32-bit long?
+   always @(posedge user_clk_out) begin
+      if (sys_reset_out == 1'b1) begin
+         stat_cnt_pkts_in <= 32'h00_00_00_00;
+         stat_cnt_pkts_in_rdy_i <= 1'b0;
+
+         state_cnt_pkts_in <= ST_IN_COUNT;
+      end else begin
+         case (state_cnt_pkts_in)
+            ST_IN_COUNT: begin
+               stat_cnt_pkts_in_rdy_i <= 1'b0;
+
+               if (m_axi_rx_tvalid == 1'b1) begin
+                  stat_cnt_pkts_in <= stat_cnt_pkts_in + 32'h00_00_00_01;
+
+                  if (m_axi_rx_tlast == 1'b1) begin
+                     stat_cnt_pkts_in_rdy_i <= 1'b1;
+                     state_cnt_pkts_in <= ST_IN_LAST;
+                  end
+               end
+            end
+            ST_IN_LAST: begin
+               stat_cnt_pkts_in_rdy_i <= 1'b1;
+               if (m_axi_rx_tvalid == 1'b1) begin
+                  stat_cnt_pkts_in <= 32'h00_00_00_01;
+
+                  state_cnt_pkts_in <= ST_IN_COUNT;
+               end
+            end
+         endcase
+      end
+   end
+
+   assign stat_cnt_pkts_in_rdy = stat_cnt_pkts_in_rdy_i & ~m_axi_rx_tvalid;
+
+
    // Generate a pulse after m_axi_rx_tlast to instruct module to initiate data transfer to RTDS
    // TODO: Induce packet delay? If, packet delay user configurable?
    always @(posedge user_clk_out) begin
-      if (sys_reset_out) begin
+      if (sys_reset_out == 1'b1) begin
          rtds_tx_pulse <= 1'b0;
       end else begin
          if (m_axi_rx_tlast == 1'b1) begin
@@ -368,7 +414,8 @@ module top(
                 .probe0 ({m_axi_rx_tdata, m_axi_rx_tkeep, m_axi_rx_tlast, m_axi_rx_tvalid}),
                 .probe1 ({s_axi_tx_tdata, s_axi_tx_tkeep, s_axi_tx_tlast, s_axi_tx_tvalid, s_axi_tx_tready}),
                 .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out}),
-                .probe3 (axis_data_0_ila)
+                .probe3 (axis_data_0_ila),
+                .probe4 ({stat_cnt_pkts_in_rdy, stat_cnt_pkts_in, 15'b000_0000_0000_0000})
                 );
 
 endmodule // top

@@ -2,8 +2,10 @@
 
 /* Wrapper module to generate and append a sequence number to incoming 
  * AXI-Stream data packets, which are then forwarded to the Aurora block.
- * 
+ *
  * TODO: Account for backpressure exerted from partner at master interface.
+ * TODO: Input control port to determine whether sequence number is 
+ *       apppended (like post module has ctrl_strip_seq_en)
  *
  * @author Hatim Kanchwala <hatim@hatimak.me>
  * @copyright 2019 Hatim Kanchwala

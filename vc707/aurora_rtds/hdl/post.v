@@ -6,6 +6,7 @@
  *
  * TODO: Aurora from RTDS does not have a tready at its AXI-Stream master 
  *       interface, but a tready could be introduced here (maybe via a FIFO?).
+ * TODO: tlast signal
  *
  * @author Hatim Kanchwala <hatim@hatimak.me>
  * @copyright 2019 Hatim Kanchwala

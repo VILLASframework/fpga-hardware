@@ -34,8 +34,7 @@ module top(
                        m_axi_rx_tlast, m_axi_rx_tvalid, m_axi_rx_tready,
                        rx_resetdone_out, tx_resetdone_out, tx_lock, sys_reset_out,
                        s_axi_loop_tx_tlast, s_axi_loop_tx_tvalid, m_axi_loop_rx_tready,
-                       m_axis_tvalid_seq, m_axis_tlast_seq, s_axis_tready_seq,
-                       stat_cnt_pkts_in_rdy; // Status register, indicates when the corresponding status register holds the correct count
+                       m_axis_tvalid_seq, m_axis_tlast_seq, s_axis_tready_seq;
 
    wire [0 : 0]        lane_up;
 
@@ -47,13 +46,12 @@ module top(
 
    wire [31 : 0]       s_axi_loop_tx_tdata, m_axis_tdata_seq;
 
+   wire [47 : 0]       post_0_ila;
+
    reg                 rst_stretch, rtds_tx_pulse,
-                       ctrl_loopback, // Control register, assert for loopback mode
-                       stat_cnt_pkts_in_rdy_i;
+                       ctrl_loopback; // Control register, assert for loopback mode
 
-   reg [31 : 0]        rst_count,
-                       stat_cnt_pkts_in; // Status register, count of number of packets received 
-
+   reg [31 : 0]        rst_count;
 
    // Clock Buffering
    // ---------------
@@ -174,6 +172,80 @@ module top(
    // This must be asserted for the RTDS to be able to detect the Aurora link
    assign SFP_TX_DISABLE_N = 1'b1;
 
+
+   // TODO: The following temporary block is in place only for testing the 
+   // pre module. It stimulates the slave interface by dispatching 
+   // a two-word constant {32'h00_05, 32'h00_03} periodically.
+   // The st_count counter determines periodic stimulation, and it is long 
+   // enough to discount the backpressure from the pre slave interface.
+   reg          st_tvalid, st_tlast;
+   reg [1 : 0]  st_state;
+   reg [7 : 0]  st_count;
+   reg [31 : 0] st_tdata;
+   localparam
+     S_ST_IDLE = 2'b00,
+     S_ST_0005 = 2'b01,
+     S_ST_0003 = 2'b11;
+   always @(posedge user_clk_out) begin
+      if (sys_reset_out == 1'b1) begin
+         st_tvalid <= 1'b0;
+         st_tdata <= 32'h00_00_00_00;
+         st_tlast <= 1'b0;
+
+         st_count <= 8'h00;
+
+         st_state <= S_ST_IDLE;
+      end else begin
+         case (st_state)
+           S_ST_IDLE: begin
+              st_count <= st_count + 8'h01;
+
+              st_tvalid <= 1'b0;
+              st_tlast <= 1'b0;
+
+              if (st_count == 8'hff) begin
+                 st_state <= S_ST_0005;
+              end
+           end
+           S_ST_0005: begin
+              st_count <= 8'h00;
+
+              st_tvalid <= 1'b1;
+              st_tdata <= 32'h00_00_00_05;
+
+              st_state <= S_ST_0003;
+           end
+           S_ST_0003: begin
+              st_tdata <= 32'h00_00_00_03;
+              st_tlast <= 1'b1;
+
+              st_state <= S_ST_IDLE;
+           end
+         endcase
+      end
+   end
+
+   pre pre (
+            .m_axis_aclk    (user_clk_out),
+            .m_axis_aresetn (!sys_reset_out),
+
+            // AXI-Stream slave interface
+            .s_axis_tvalid  (st_tvalid),
+            .s_axis_tdata   (st_tdata),
+            .s_axis_tlast   (st_tlast),
+            .s_axis_tready  (s_axis_tready_seq),
+
+            // AXI-Stream master interface
+            .m_axis_tvalid  (m_axis_tvalid_seq),
+            .m_axis_tdata   (m_axis_tdata_seq),
+            .m_axis_tlast   (m_axis_tlast_seq),
+            .m_axis_tready  (s_axi_tx_tready),
+
+            // ILA probes out
+            .ila_out        (pre_0_ila)
+            );
+
+
    aurora_8b10b_0 aurora_0 (
                             // Status and control ports
                             .reset                   (rst_156),
@@ -235,47 +307,26 @@ module top(
                             );
 
 
-   localparam
-     ST_IN_COUNT = 1'b0,
-     ST_IN_LAST  = 1'b1;
+   post post (
+              .m_axis_aclk    (user_clk_out),
+              .m_axis_aresetn (!sys_reset_out),
 
-   reg state_cnt_pkts_in;
+              // AXI-Stream slave interface
+              .s_axis_tvalid  (m_axi_rx_tvalid),
+              .s_axis_tdata   (m_axi_rx_tdata),
+              .s_axis_tlast   (m_axi_rx_tlast),
 
-   // Count the number of packets received from RTDS
-   // TODO: Does stat_cnt_pkts_in need to be 32-bit long?
-   always @(posedge user_clk_out) begin
-      if (sys_reset_out == 1'b1) begin
-         stat_cnt_pkts_in <= 32'h00_00_00_00;
-         stat_cnt_pkts_in_rdy_i <= 1'b0;
+              // AXI-Stream master interface
+              .m_axis_tvalid  (),
+              .m_axis_tdata   (),
+              .m_axis_tlast   (),
 
-         state_cnt_pkts_in <= ST_IN_COUNT;
-      end else begin
-         case (state_cnt_pkts_in)
-           ST_IN_COUNT: begin
-              stat_cnt_pkts_in_rdy_i <= 1'b0;
+              // Control ports
+              .ctrl_strip_seq (),
 
-              if (m_axi_rx_tvalid == 1'b1) begin
-                 stat_cnt_pkts_in <= stat_cnt_pkts_in + 32'h00_00_00_01;
-
-                 if (m_axi_rx_tlast == 1'b1) begin
-                    stat_cnt_pkts_in_rdy_i <= 1'b1;
-                    state_cnt_pkts_in <= ST_IN_LAST;
-                 end
-              end
-           end
-           ST_IN_LAST: begin
-              stat_cnt_pkts_in_rdy_i <= 1'b1;
-              if (m_axi_rx_tvalid == 1'b1) begin
-                 stat_cnt_pkts_in <= 32'h00_00_00_01;
-
-                 state_cnt_pkts_in <= ST_IN_COUNT;
-              end
-           end
-         endcase
-      end
-   end
-
-   assign stat_cnt_pkts_in_rdy = stat_cnt_pkts_in_rdy_i & ~m_axi_rx_tvalid;
+              // ILA probes out
+              .ila_out        (post_0_ila)
+              );
 
 
    // Generate a pulse after m_axi_rx_tlast to instruct module to initiate data transfer to RTDS
@@ -317,80 +368,6 @@ module top(
                           );
 
 
-   // TODO: The following temporary block is in place only for testing the 
-   // pre module. It stimulates the slave interface by dispatching 
-   // a two-word constant {32'h00_05, 32'h00_03} periodically.
-   // The st_count counter determines periodic stimulation, and it is long 
-   // enough to discount the backpressure from the pre slave interface.
-   reg          st_tvalid, st_tlast;
-   reg [1 : 0]  st_state;
-   reg [7 : 0]  st_count;
-   reg [31 : 0] st_tdata;
-   localparam
-     S_ST_IDLE = 2'b00,
-     S_ST_0005 = 2'b01,
-     S_ST_0003 = 2'b11;
-   always @(posedge user_clk_out) begin
-      if (sys_reset_out == 1'b1) begin
-         st_tvalid <= 1'b0;
-         st_tdata <= 32'h00_00_00_00;
-         st_tlast <= 1'b0;
-
-         st_count <= 8'h00;
-
-         st_state <= S_ST_IDLE;
-      end else begin
-         case (st_state)
-           S_ST_IDLE: begin
-              st_count <= st_count + 8'h01;
-
-              st_tvalid <= 1'b0;
-              st_tlast <= 1'b0;
-
-              if (st_count == 8'hff) begin
-                 st_state <= S_ST_0005;
-              end
-           end
-           S_ST_0005: begin
-              st_count <= 8'h00;
-
-              st_tvalid <= 1'b1;
-              st_tdata <= 32'h00_00_00_05;
-
-              st_state <= S_ST_0003;
-           end
-           S_ST_0003: begin
-              st_tdata <= 32'h00_00_00_03;
-              st_tlast <= 1'b1;
-
-              st_state <= S_ST_IDLE;
-           end
-         endcase
-      end
-   end
-
-
-   pre pre (
-            .m_axis_aclk    (user_clk_out),
-            .m_axis_aresetn (!sys_reset_out),
-
-            // AXI-Stream slave interface
-            .s_axis_tvalid  (st_tvalid),
-            .s_axis_tdata   (st_tdata),
-            .s_axis_tlast   (st_tlast),
-            .s_axis_tready  (s_axis_tready_seq),
-
-            // AXI-Stream master interface
-            .m_axis_tvalid  (m_axis_tvalid_seq),
-            .m_axis_tdata   (m_axis_tdata_seq),
-            .m_axis_tlast   (m_axis_tlast_seq),
-            .m_axis_tready  (s_axi_tx_tready),
-
-            // ILA probes out
-            .ila_out        (pre_0_ila)
-            );
-
-
    // TODO: ctrl_loopback should be exposed over AXI register interface for 
    // external control. The following temporary block is in place only for 
    // testing the pre module. 
@@ -415,7 +392,7 @@ module top(
                 .probe1 ({s_axi_tx_tdata, s_axi_tx_tkeep, s_axi_tx_tlast, s_axi_tx_tvalid, s_axi_tx_tready}),
                 .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out}),
                 .probe3 (pre_0_ila),
-                .probe4 ({stat_cnt_pkts_in_rdy, stat_cnt_pkts_in, 15'b000_0000_0000_0000})
+                .probe4 (post_0_ila)
                 );
 
 endmodule // top

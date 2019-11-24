@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 /* Wrapper module to generate and append a sequence number to incoming 
- * AXI-Stream data packets.
+ * AXI-Stream data packets, which are then forwarded to the Aurora block.
  * 
  * TODO: Account for backpressure exerted from partner at master interface.
  *
@@ -9,28 +9,28 @@
  * @copyright 2019 Hatim Kanchwala
  */
 
-module axis_data(
-                 input wire           m_axis_aclk,
-                 input wire           m_axis_aresetn,
+module pre(
+           input wire           m_axis_aclk,
+           input wire           m_axis_aresetn,
 
-                 // AXI-Stream slave interface
-                 input wire           s_axis_tvalid,
-                 input wire [31 : 0]  s_axis_tdata,
-                 input wire           s_axis_tlast,
-                 output wire          s_axis_tready,
+           // AXI-Stream slave interface
+           input wire           s_axis_tvalid,
+           input wire [31 : 0]  s_axis_tdata,
+           input wire           s_axis_tlast,
+           output wire          s_axis_tready,
 
-                 // AXI-Stream master interface
-                 output wire          m_axis_tvalid,
-                 output wire [31 : 0] m_axis_tdata,
-                 output wire          m_axis_tlast,
-                 input wire           m_axis_tready,
+           // AXI-Stream master interface
+           output wire          m_axis_tvalid,
+           output wire [31 : 0] m_axis_tdata,
+           output wire          m_axis_tlast,
+           input wire           m_axis_tready,
 
-                 // ILA probes
-                 output wire [18 : 0] ila_out
-                 );
+           // ILA probes
+           output wire [18 : 0] ila_out
+           );
 
-   reg                                state, passthrough, tvalid;
-   reg [15 : 0]                       seq_ctr;
+   reg                          state, passthrough, tvalid;
+   reg [15 : 0]                 seq_ctr;
 
    localparam
      S_PASS = 1'b0,
@@ -74,4 +74,4 @@ module axis_data(
 
    assign ila_out = {seq_ctr, 1'b0, passthrough, state};
 
-endmodule // axis_data
+endmodule // pre

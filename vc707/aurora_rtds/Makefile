@@ -1,6 +1,6 @@
 RTL=./hdl/top.v
 
-IP=./ip/aurora_8b10b_0.xci ./ip/fifo_loop.xci ./ip/ila_aurora.xci
+IP=./ip/aurora_8b10b_0.xci ./ip/fifo_loop.xci ./ip/ila_aurora.xci ./ip/ila_pre.xci ./ip/ila_post.xci
 
 vivado: ip_vivado setup_vivado
 
@@ -25,4 +25,4 @@ bitstream: vivado ./build/.bitstream.done
 .PHONY: clean
 clean:
 	$(MAKE) -C ./ip/axi_pcie_intc clean
-	rm -rf ./vivado ./ip/aurora_8b10b_0 ./ip/fifo_loop ./ip/ila_aurora .Xil ./ip/.Xil ./build vivado.jou vivado.log vivado*.str
+	rm -rf ./vivado ./ip/aurora_8b10b_0 ./ip/fifo_loop ./ip/ila_aurora ./ip/ila_pre ./ip/ila_post .Xil ./ip/.Xil ./build vivado.jou vivado.log vivado*.str

@@ -25,10 +25,7 @@ module pre(
            output wire          m_axis_tvalid,
            output wire [31 : 0] m_axis_tdata,
            output wire          m_axis_tlast,
-           input wire           m_axis_tready,
-
-           // ILA probes
-           output wire [18 : 0] ila_out
+           input wire           m_axis_tready
            );
 
    reg                          state, passthrough, tvalid;
@@ -74,6 +71,12 @@ module pre(
    assign m_axis_tdata = (passthrough == 1'b1) ? s_axis_tdata : {16'h00_00, seq_ctr};
    assign m_axis_tlast = (passthrough == 1'b1) ? 1'b0 : 1'b1;
 
-   assign ila_out = {seq_ctr, 1'b0, passthrough, state};
+
+   ila_pre ila_pre (
+                    .clk    (m_axis_aclk),
+                    .probe0 (seq_ctr),
+                    .probe1 (passthrough),
+                    .probe2 (state)
+                    );
 
 endmodule // pre

@@ -27,10 +27,7 @@ module post(
             output wire          m_axis_tlast,
 
             // Control ports
-            input wire           ctrl_strip_seq_en,
-
-            // ILA probes
-            output wire [47 : 0] ila_out
+            input wire           ctrl_strip_seq_en
             );
 
    wire                          stat_cnt_pkts_rdy, // Indicates when the corresponding status register holds the correct count
@@ -90,6 +87,11 @@ module post(
    assign m_axis_tdata = (ctrl_strip_seq_en) ? s_axis_tdata & {32{data_pkts_window}} : s_axis_tdata;
 
 
-   assign ila_out = {stat_cnt_pkts_rdy, stat_cnt_pkts, data_pkts_window, 30'h00_00_00_00};
+   ila_post ila_post (
+                      .clk    (m_axis_aclk),
+                      .probe0 (stat_cnt_pkts_rdy),
+                      .probe1 (stat_cnt_pkts),
+                      .probe2 (data_pkts_window)
+                      );
 
 endmodule // post

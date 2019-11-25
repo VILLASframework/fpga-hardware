@@ -348,9 +348,7 @@ module aurora(
                           .probe0 ({m_axis_aurora_tdata, m_axis_aurora_tkeep, m_axis_aurora_tlast, m_axis_aurora_tvalid}),
                           .probe1 ({s_axis_aurora_tdata, s_axis_aurora_tkeep, s_axis_aurora_tlast, s_axis_aurora_tvalid, s_axis_aurora_tready}),
                           .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out}),
-                          .probe3 (pre_0_ila),
-                          .probe4 (post_0_ila),
-                          .probe5 ({m_axis_tvalid, m_axis_tdata, 1'b0})
+                          .probe3 ({m_axis_tvalid, m_axis_tdata, 1'b0})
                           );
 
 endmodule // aurora

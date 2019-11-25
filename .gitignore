@@ -25,7 +25,7 @@ vivado*.str
 vc707/aurora_rtds/ip/axi_pcie_intc/ip/
 vc707/aurora_rtds/ip/aurora_8b10b_0
 vc707/aurora_rtds/ip/fifo_loop
-vc707/aurora_rtds/ip/ila_0
+vc707/aurora_rtds/ip/ila_aurora
 
 # Vivado working directories
 vc707/aurora_rtds/vivado

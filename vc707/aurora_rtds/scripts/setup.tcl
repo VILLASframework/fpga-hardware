@@ -24,12 +24,13 @@ check_ip_cache -disable_cache
 update_ip_catalog
 
 add_files -norecurse $hdlRoot/top.v
+add_files -norecurse $hdlRoot/aurora.v
 add_files -norecurse $hdlRoot/pre.v
 add_files -norecurse $hdlRoot/post.v
 
 add_files -norecurse $ipRoot/aurora_8b10b_0/aurora_8b10b_0.xci
 add_files -norecurse $ipRoot/fifo_loop/fifo_loop.xci
-add_files -norecurse $ipRoot/ila_0/ila_0.xci
+add_files -norecurse $ipRoot/ila_aurora/ila_aurora.xci
 
 update_compile_order -fileset sources_1
 

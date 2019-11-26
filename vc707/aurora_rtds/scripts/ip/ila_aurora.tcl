@@ -11,7 +11,7 @@ create_ip -vendor xilinx.com -library ip -name ila -module_name ila_aurora -dir 
 set_property -dict [list \
     CONFIG.Component_Name {ila_aurora} \
     CONFIG.C_DATA_DEPTH {4096} \
-    CONFIG.C_NUM_OF_PROBES {6} \
+    CONFIG.C_NUM_OF_PROBES {4} \
     CONFIG.C_PROBE3_WIDTH {34} \
     CONFIG.C_PROBE2_WIDTH {6} \
     CONFIG.C_PROBE1_WIDTH {39} \

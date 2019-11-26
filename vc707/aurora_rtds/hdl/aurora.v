@@ -199,10 +199,7 @@ module aurora(
             .m_axis_tvalid  (m_axis_pre_tvalid),
             .m_axis_tdata   (m_axis_pre_tdata),
             .m_axis_tlast   (m_axis_pre_tlast),
-            .m_axis_tready  (s_axis_aurora_tready),
-
-            // ILA probes out
-            .ila_out        (pre_0_ila)
+            .m_axis_tready  (s_axis_aurora_tready)
             );
 
 
@@ -286,10 +283,7 @@ module aurora(
               .m_axis_tlast      (m_axis_tlast),
 
               // Control ports
-              .ctrl_strip_seq_en (1'b1), // TODO: ctrl_strip_seq_en should be exposed over AXI register interface for external control
-
-              // ILA probes out
-              .ila_out           (post_0_ila)
+              .ctrl_strip_seq_en (1'b1) // TODO: ctrl_strip_seq_en should be exposed over AXI register interface for external control
               );
 
 

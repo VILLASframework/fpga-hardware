@@ -18,12 +18,6 @@
 
 module aurora(
               // External ports, exposed through to physical pins
-              input wire           SYS_CLK_P,
-              input wire           SYS_CLK_N,
-              input wire           GT_REFCLK1_P,
-              input wire           GT_REFCLK1_N,
-              input wire           CLK156M_P,
-              input wire           CLK156M_N,
               input wire           SFP_RX_P,
               input wire           SFP_RX_N,
               output wire          SFP_TX_P,
@@ -42,15 +36,17 @@ module aurora(
               output wire          m_axis_tlast,
               input wire           m_axis_tready,
 
+              // Clock and reset interface
+              input wire           init_clk_in,
+              input wire           gt_refclk1,
+              input wire           drpclk_in,
               output wire          user_clk_out,
+              input wire           aur_reset,
+              input wire           gt_reset,
               output wire          sys_reset_out
               );
 
-   wire                            sys_clk_i1, sys_clk_i2, sys_clk,
-                                   clk156_i, clk156,
-                                   gt_refclk1,
-                                   flop_q0, flop_q1, flop_q2, flop_q3, rst_pulse, rst_d, rst_156,
-                                   channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out,
+   wire                            channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out,
                                    rx_resetdone_out, tx_resetdone_out, tx_lock,
                                    s_axis_aurora_tlast, s_axis_aurora_tvalid, s_axis_aurora_tready,
                                    m_axis_aurora_tlast, m_axis_aurora_tvalid,
@@ -59,128 +55,9 @@ module aurora(
    wire [0 : 3]                    s_axis_aurora_tkeep, m_axis_aurora_tkeep;
    wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
    wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata;
-   wire [18 : 0]                   pre_0_ila;
-   wire [47 : 0]                   post_0_ila;
 
-   reg                             rst_stretch, rtds_tx_pulse,
+   reg                             rtds_tx_pulse,
                                    ctrl_loopback; // Control register, assert for loopback mode
-   reg [31 : 0]                    rst_count;
-
-   // Clock Buffering
-   // ---------------
-   IBUFDS IBUFDS_0 (
-                    .I  (SYS_CLK_P),
-                    .IB (SYS_CLK_N),
-
-                    .O  (sys_clk_i1)
-                    );
-
-   BUFR #(
-          .BUFR_DIVIDE   ("4")
-          ) BUFR_0 (
-                    .CE  (1'b1),
-                    .CLR (1'b0),
-                    .I   (sys_clk_i1),
-
-                    .O   (sys_clk_i2)
-                    );
-
-   BUFG BUFG_0 (
-                .I (sys_clk_i2),
-
-                .O (sys_clk)
-                );
-
-
-   IBUFDS_GTE2 IBUFDS_GTE2_0 (
-                              .CEB   (1'b0),
-                              .I     (GT_REFCLK1_P),
-                              .IB    (GT_REFCLK1_N),
-
-                              .O     (gt_refclk1),
-                              .ODIV2 ()
-                              );
-
-
-   IBUFDS IBUFDS_1 (
-                    .I  (CLK156M_P),
-                    .IB (CLK156M_N),
-
-                    .O  (clk156_i)
-                    );
-
-   BUFG BUFG_1 (
-                .I (clk156_i),
-
-                .O (clk156)
-                );
-   // ---------------
-
-   // Reset Circuit
-   // -------------
-   // D-FF with synchronous set, high on power-up
-   FDS flop_0 (
-               .C (clk156),
-               .S (1'b0),
-               .D (1'b0),
-
-               .Q (flop_q0)
-               );
-
-   // D-FF with synchronous reset, low on power-up
-   FDR flop_1 (
-               .C (clk156),
-               .R (1'b0),
-               .D (flop_q0),
-
-               .Q (flop_q1)
-               );
-
-   // D-FF with synchronous reset, low on power-up
-   FDR flop_2 (
-               .C (clk156),
-               .R (1'b0),
-               .D (flop_q1),
-
-               .Q (flop_q2)
-               );
-
-   // D-FF with synchronous reset, low on power-up
-   FDR flop_3 (
-               .C (clk156),
-               .R (1'b0),
-               .D (flop_q2),
-
-               .Q (flop_q3)
-               );
-
-   // rst_pulse is asserted for 3 clock cycles
-   assign rst_pulse = flop_q1 || flop_q2 || flop_q3;
-
-   always @(posedge clk156) begin
-      if (rst_pulse == 1'b1) begin
-         rst_stretch <= 1'b1;
-         rst_count <= 32'h00_00_00_00;
-      end else if (rst_count[26] == 1'b1) begin
-         // Around 67,000,000 clock cycles at 156 MHz, 0.43 seconds
-         rst_stretch <= 1'b0;
-         rst_count <= rst_count;
-      end else begin
-         rst_count <= rst_count + 1;
-      end
-   end
-
-   assign rst_d = rst_pulse || rst_stretch || flop_q0;
-
-   // D-FF with synchronous set, high on power-up
-   FDS flop_rst156 (
-                    .C (clk156),
-                    .S (1'b0),
-                    .D (rst_d),
-
-                    .Q (rst_156)
-                    );
-   // -------------
 
    // This must be asserted for the RTDS to be able to detect the Aurora link
    assign SFP_TX_DISABLE_N = 1'b1;
@@ -205,8 +82,8 @@ module aurora(
 
    aurora_8b10b_0 aurora_0 (
                             // Status and control ports
-                            .reset                   (rst_156),
-                            .gt_reset                (rst_156),
+                            .reset                   (aur_reset),
+                            .gt_reset                (gt_reset),
 
                             .channel_up              (channel_up),
                             .lane_up                 (lane_up),
@@ -247,14 +124,14 @@ module aurora(
                             .sync_clk_out            (), // Same as user_clk_out
                             .sys_reset_out           (sys_reset_out), // Relative to user_clk_out
                             .gt_reset_out            (),
-                            .init_clk_in             (sys_clk),
+                            .init_clk_in             (init_clk_in),
                             .gt0_qplllock_out        (),
                             .gt0_qpllrefclklost_out  (),
                             .gt_qpllclk_quad1_out    (),
                             .gt_qpllrefclk_quad1_out (),
 
                             // Transceiver DRP ports
-                            .drpclk_in               (clk156),
+                            .drpclk_in               (drpclk_in),
                             .drpaddr_in              (9'h0),
                             .drpen_in                (1'b0),
                             .drpdi_in                (16'h0),

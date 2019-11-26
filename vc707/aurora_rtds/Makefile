@@ -1,7 +1,5 @@
 RTL=./hdl/top.v ./hdl/pre.v ./hdl/aurora.v ./hdl/post.v ./hdl/defines.vh
 
-IP=./ip/aurora_8b10b_0.xcix ./ip/fifo_loop.xcix ./ip/ila_aurora.xcix ./ip/ila_pre.xcix ./ip/ila_post.xcix
-
 vivado: ip_vivado setup_vivado
 
 setup_vivado: ./vivado/.setup_vivado.done
@@ -9,13 +7,10 @@ setup_vivado: ./vivado/.setup_vivado.done
 	mkdir -p ./vivado/top
 	vivado -mode batch -source ./scripts/setup.tcl -log ./vivado/top/setup.log -jou ./vivado/top/setup.jou
 
-ip_vivado: ./vivado/.ip_top_vivado.done $(IP)
+ip_vivado: ./vivado/.ip_top_vivado.done ./scripts/ip.tcl
 ./vivado/.ip_top_vivado.done:
-	$(MAKE) -C ./ip/axi_pcie_intc vivado
 	mkdir -p ./vivado/ip
-	vivado -mode batch -source ./scripts/ip_project.tcl -nolog -nojournal
-$(IP): ./vivado/.ip_top_vivado.done
-	vivado -mode batch -source ./scripts/$(@:.xcix=.tcl) -nolog -nojournal
+	vivado -mode batch -source ./scripts/ip.tcl -log ./vivado/ip/ip.log -jou ./vivado/ip/ip.jou
 
 bitstream: vivado ./build/.bitstream.done
 ./build/.bitstream.done:

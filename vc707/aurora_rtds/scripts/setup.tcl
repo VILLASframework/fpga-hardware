@@ -23,6 +23,7 @@ set_property "ip_repo_paths" "$ipRoot" $obj
 check_ip_cache -disable_cache
 update_ip_catalog
 
+add_files -norecurse $hdlRoot/defines.vh
 add_files -norecurse $hdlRoot/top.v
 add_files -norecurse $hdlRoot/aurora.v
 add_files -norecurse $hdlRoot/pre.v

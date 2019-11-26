@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`include "defines.vh"
 
 /* Wrapper module to generate and append a sequence number to incoming 
  * AXI-Stream data packets, which are then forwarded to the Aurora block.
@@ -72,11 +72,13 @@ module pre(
    assign m_axis_tlast = (passthrough == 1'b1) ? 1'b0 : 1'b1;
 
 
+`ifdef INCLUDE_ILA_AURORA_PRE
    ila_pre ila_pre (
                     .clk    (m_axis_aclk),
                     .probe0 (seq_ctr),
                     .probe1 (passthrough),
                     .probe2 (state)
                     );
+`endif
 
 endmodule // pre

@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`include "defines.vh"
 
 /* Count the number of incoming packets from RTDS over Aurora in a single 
  * transaction, and strip the trailing sequence number before forwarding to 
@@ -87,11 +87,13 @@ module post(
    assign m_axis_tdata = (ctrl_strip_seq_en) ? s_axis_tdata & {32{data_pkts_window}} : s_axis_tdata;
 
 
+`ifdef INCLUDE_ILA_AURORA_POST
    ila_post ila_post (
                       .clk    (m_axis_aclk),
                       .probe0 (stat_cnt_pkts_rdy),
                       .probe1 (stat_cnt_pkts),
                       .probe2 (data_pkts_window)
                       );
+`endif
 
 endmodule // post

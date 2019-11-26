@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`include "defines.vh"
 
 /* The "augmented-Aurora" module at the interface with RTDS. Contains the 
  * Aurora interface and the accompanying modules for additional functionality, 
@@ -337,6 +337,7 @@ module aurora(
    end
 
 
+`ifdef INCLUDE_ILA_AURORA
    ila_aurora ila_aurora (
                           .clk    (user_clk_out),
                           .probe0 ({m_axis_aurora_tdata, m_axis_aurora_tkeep, m_axis_aurora_tlast, m_axis_aurora_tvalid}),
@@ -344,5 +345,6 @@ module aurora(
                           .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out}),
                           .probe3 ({m_axis_tvalid, m_axis_tdata, 1'b0})
                           );
+`endif
 
 endmodule // aurora

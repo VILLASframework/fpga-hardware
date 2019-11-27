@@ -56,8 +56,7 @@ module aurora(
    wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
    wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata;
 
-   reg                             rtds_tx_pulse,
-                                   ctrl_loopback; // Control register, assert for loopback mode
+   reg                             ctrl_loopback; // Control register, assert for loopback mode
 
    // This must be asserted for the RTDS to be able to detect the Aurora link
    assign SFP_TX_DISABLE_N = 1'b1;
@@ -162,21 +161,6 @@ module aurora(
               // Control ports
               .ctrl_strip_seq_en (1'b1) // TODO: ctrl_strip_seq_en should be exposed over AXI register interface for external control
               );
-
-
-   // Generate a pulse after m_axis_aurora_tlast to instruct module to initiate data transfer to RTDS
-   // TODO: Induce packet delay? If, packet delay user configurable?
-   always @(posedge user_clk_out) begin
-      if (sys_reset_out == 1'b1) begin
-         rtds_tx_pulse <= 1'b0;
-      end else begin
-         if (m_axis_aurora_tlast == 1'b1) begin
-            rtds_tx_pulse <= 1'b1;
-         end else begin
-            rtds_tx_pulse <= 1'b0;
-         end
-      end
-   end
 
 
    fifo_loop fifo_loop_0 (

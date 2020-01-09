@@ -28,6 +28,7 @@ vc707/aurora_rtds/ip/fifo_loop
 vc707/aurora_rtds/ip/ila_aurora
 vc707/aurora_rtds/ip/ila_pre
 vc707/aurora_rtds/ip/ila_post
+vc707/aurora_rtds/ip/vio_aurora
 
 # Vivado working directories
 vc707/aurora_rtds/vivado

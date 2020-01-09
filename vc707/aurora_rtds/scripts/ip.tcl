@@ -162,11 +162,33 @@ export_simulation -of_objects [get_files ila_post.xci] -directory ./vivado/ip_us
 
 #############
 
+# VIO for augmented-Aurora registers
+create_ip -vendor xilinx.com -library ip -name vio -module_name vio_aurora -dir $ipDir -quiet
+
+set_property -dict [list \
+	CONFIG.C_PROBE_OUT0_WIDTH {32} \
+	CONFIG.C_PROBE_IN0_WIDTH {32} \
+	CONFIG.Component_Name {vio_aurora} \
+] [get_ips vio_aurora]
+
+generate_target all [get_files vio_aurora.xci] -quiet
+
+export_ip_user_files -of_objects [get_files vio_aurora.xci] -no_script -ip_user_files_dir ./vivado/ip_user_files -sync -force -quiet
+
+create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files */vio_aurora.xci]] -quiet
+
+launch_runs -jobs 16 ila_post_synth_1 -quiet
+
+export_simulation -of_objects [get_files vio_aurora.xci] -directory ./vivado/ip_user_files/sim_scripts -ip_user_files_dir ./vivado/ip_user_files -ipstatic_source_dir ./vivado/ip_user_files/ipstatic -use_ip_compiled_libs -force -quiet
+
+#############
+
 wait_on_run aurora_8b10b_0_synth_1 -quiet
 wait_on_run fifo_loop_synth_1 -quiet
 wait_on_run ila_aurora_synth_1 -quiet
 wait_on_run ila_pre_synth_1 -quiet
 wait_on_run ila_post_synth_1 -quiet
+wait_on_run vio_aurora_synth_1 -quiet
 
 close_project
 

@@ -76,7 +76,8 @@ module aurora(
                                    m_axis_pre_tvalid, m_axis_pre_tlast;
    wire [0 : 3]                    s_axis_aurora_tkeep, m_axis_aurora_tkeep;
    wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
-   wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata;
+   wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata,
+                                   vio_in0, vio_out0;
 
    reg                             slv_ctrl_loopback; // Control register, assert for loopback mode
 
@@ -116,7 +117,6 @@ module aurora(
    // and slave ready to accept write address and data
    assign slv_reg_wren = S_AXI_AWVALID & S_AXI_WVALID & S_AXI_AWREADY & S_AXI_WREADY;
 
-`ifndef USE_VIO_SLV_AURORA
    /* Memory mapped register select and write logic
     * Write data is accepted and written to memory mapped registers when
     * S_AXI_AWREADY, S_AXI_AWVALID, S_AXI_WREADY and S_AXI_WVALID are high
@@ -126,6 +126,7 @@ module aurora(
       if (S_AXI_ARESETN == 1'b0) begin
          slv_ctrl_loopback <= 1'b0;
       end else begin
+`ifndef USE_VIO_SLV_AURORA
          if (slv_reg_wren == 1'b1) begin
             case (s_axi_awaddr[5 : 2])
               ADDR_CTRL_LOOPBACK: begin
@@ -134,9 +135,11 @@ module aurora(
               end
             endcase
          end
+`else
+         slv_ctrl_loopback <= vio_out0[0 : 0];
+`endif
       end
    end
-`endif
 
    // Write response logic
    // S_AXI_BVALID asserted when S_AXI_AWREADY, S_AXI_AWVALID, S_AXI_WREADY, S_AXI_WVALID high
@@ -186,7 +189,7 @@ module aurora(
       end else begin
          case (s_axi_araddr[5 : 2])
            ADDR_CTRL_LOOPBACK: begin
-              S_AXI_RDATA <= { {31{1'b0}}, slv_ctrl_loopback};
+              S_AXI_RDATA <= { {31{1'b0}}, slv_ctrl_loopback };
            end
            default: begin
               S_AXI_RDATA <= 32'h00_00_00_00;
@@ -194,6 +197,15 @@ module aurora(
          endcase
       end
    end
+
+
+   assign vio_in0 = { {31{1'b0}}, slv_ctrl_loopback };
+
+   vio_aurora vio_aurora (
+                          .clk        (user_clk_out),
+                          .probe_in0  (vio_in0),
+                          .probe_out0 (vio_out0)
+                          );
 
 
    // This must be asserted for the RTDS to be able to detect the Aurora link

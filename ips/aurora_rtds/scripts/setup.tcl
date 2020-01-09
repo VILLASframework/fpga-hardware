@@ -42,6 +42,8 @@ add_files -norecurse $xdcRoot/top.xdc
 add_files -norecurse $miscRoot/component.xml
 set_property "file_type" "IP-XACT" [get_files "*component.xml"]
 
+set_property "top" "aurora" [get_filesets sources_1]
+
 update_compile_order -fileset sources_1
 
 # Need raw bit file to generate memory configuration for VC707's BPI flash

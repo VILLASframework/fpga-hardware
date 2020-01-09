@@ -1,7 +1,7 @@
 .Xil
 
 # Build directories
-vc707/aurora_rtds/build
+ips/aurora_rtds/build
 
 # Backup files
 *~
@@ -22,17 +22,12 @@ vivado*.str
 # Vivado IP files and other IP-related files generated from Tcl scripts
 *.xci
 *.xcix
-vc707/aurora_rtds/ip/axi_pcie_intc/ip/
-vc707/aurora_rtds/ip/aurora_8b10b_0
-vc707/aurora_rtds/ip/fifo_loop
-vc707/aurora_rtds/ip/ila_aurora
-vc707/aurora_rtds/ip/ila_pre
-vc707/aurora_rtds/ip/ila_post
-vc707/aurora_rtds/ip/vio_aurora
+ips/aurora_rtds/ip
+ips/rtds_axis/ip
+ips/rtds_axis/netlist/RTDS_InterfaceModule.ngc
 
 # Vivado working directories
-vc707/aurora_rtds/vivado
-vc707/aurora_rtds/ip/axi_pcie_intc/vivado
+ips/aurora_rtds/vivado
 vc707/vc707_pcie/work/
 vc707/vc707_villas/work/
 vc707/vc707_villas_simple/work/
@@ -40,4 +35,5 @@ vc707/vc707_prom_flasher/work/
 ips/hdl_multiply/work/
 ips/pcie_msi_requester/work/
 ips/axi_pcie_intc/work/
+ips/rtds_axis/work/
 

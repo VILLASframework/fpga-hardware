@@ -11,6 +11,7 @@
  * TODO: Register interface wrapper for use with VILLAS.
  * TODO: Check first TODO in post.v.
  * TODO: Handle {s, m}_axis_*_tkeep signals in pre and post modules.
+ * TOOD: Parametric data and address widths for AXI Slave register interface.
  * 
  * @author Hatim Kanchwala <hatim@hatimak.me>
  * @copyright 2019 Hatim Kanchwala
@@ -43,7 +44,28 @@ module aurora(
               output wire          user_clk_out,
               input wire           aur_reset,
               input wire           gt_reset,
-              output wire          sys_reset_out
+              output wire          sys_reset_out,
+
+              // AXI Slave register interface
+              input wire           S_AXI_ACLK, // Global clock signal
+              input wire           S_AXI_ARESETN, // Global reset signal, active LOW
+              input wire [5 : 0]   S_AXI_AWADDR, // Write address
+              input wire [2 : 0]   S_AXI_AWPROT, // Write protection type, TODO: unused for now.
+              input wire           S_AXI_AWVALID, // Write address valid
+              output reg           S_AXI_AWREADY, // Write address ready (slave ready to accept write address)
+              input wire [31 : 0]  S_AXI_WDATA, // Write data bus
+              input wire [3 : 0]   S_AXI_WSTRB, // Write strobes, per 8 bits of S_AXI_WDATA, indicating valid lane
+              input wire           S_AXI_WVALID, // Write valid
+              output reg           S_AXI_WREADY, // Write ready (slave ready to accept data)
+              output reg           S_AXI_BVALID, // Write response valid
+              input wire           S_AXI_BREADY, // Write response ready (master ready to accept write response)
+              input wire [5 : 0]   S_AXI_ARADDR, // Read address
+              input wire [2 : 0]   S_AXI_ARPROT, // Read protection type, TODO: unused for now.
+              input wire           S_AXI_ARVALID, // Read address valid
+              output reg           S_AXI_ARREADY, // Read address ready (slave ready to accept read address)
+              output reg [31 : 0]  S_AXI_RDATA, // Read data
+              output reg           S_AXI_RVALID, // Read valid
+              input wire           S_AXI_RREADY // Read ready (master ready to receive)
               );
 
    wire                            channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out,
@@ -56,7 +78,123 @@ module aurora(
    wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
    wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata;
 
-   reg                             ctrl_loopback; // Control register, assert for loopback mode
+   reg                             slv_ctrl_loopback; // Control register, assert for loopback mode
+
+   wire                            slv_reg_wren;
+   reg [5 : 0]                     s_axi_awaddr, s_axi_araddr;
+
+   // Addresses of slave registers
+   localparam
+     ADDR_CTRL_LOOPBACK = 4'b0000;
+
+   // S_AXI_AWREADY / S_AXI_WREADY asserted for one S_AXI_ACLK cycle and 
+   // S_AXI_AWADDR latched when both S_AXI_AWVALID and S_AXI_WVALID high
+   // TODO: Assuming no pending transactions (side: this logic may not be the best?)
+   always @(posedge S_AXI_ACLK) begin
+      if (S_AXI_ARESETN == 1'b0) begin
+         S_AXI_AWREADY <= 1'b0;
+         s_axi_awaddr <= 6'b00_0000;
+
+         S_AXI_WREADY <= 1'b0;
+      end else begin
+         if (S_AXI_AWREADY == 1'b0 && S_AXI_AWVALID == 1'b1 && S_AXI_WVALID == 1'b1) begin
+            S_AXI_AWREADY <= 1'b1;
+            s_axi_awaddr <= S_AXI_AWADDR;
+         end else begin
+            S_AXI_AWREADY <= 1'b0;
+         end
+
+         if (S_AXI_WREADY == 1'b0 && S_AXI_AWVALID == 1'b1 && S_AXI_WVALID == 1'b1) begin
+            S_AXI_WREADY <= 1'b1;
+         end else begin
+            S_AXI_WREADY <= 1'b0;
+         end
+      end
+   end
+
+   // Slave register write enable asserted when valid write address and data available, 
+   // and slave ready to accept write address and data
+   assign slv_reg_wren = S_AXI_AWVALID & S_AXI_WVALID & S_AXI_AWREADY & S_AXI_WREADY;
+
+`ifndef USE_VIO_SLV_AURORA
+   /* Memory mapped register select and write logic
+    * Write data is accepted and written to memory mapped registers when
+    * S_AXI_AWREADY, S_AXI_AWVALID, S_AXI_WREADY and S_AXI_WVALID are high
+    * TODO: Use write strobes
+    */
+   always @(posedge S_AXI_ACLK) begin
+      if (S_AXI_ARESETN == 1'b0) begin
+         slv_ctrl_loopback <= 1'b0;
+      end else begin
+         if (slv_reg_wren == 1'b1) begin
+            case (s_axi_awaddr[5 : 2])
+              ADDR_CTRL_LOOPBACK: begin
+                 // Only use LSB of incoming write data word 
+                 slv_ctrl_loopback <= S_AXI_WDATA[0 : 0];
+              end
+            endcase
+         end
+      end
+   end
+`endif
+
+   // Write response logic
+   // S_AXI_BVALID asserted when S_AXI_AWREADY, S_AXI_AWVALID, S_AXI_WREADY, S_AXI_WVALID high
+   always @(posedge S_AXI_ACLK) begin
+      if (S_AXI_ARESETN == 1'b0) begin
+         S_AXI_BVALID <= 1'b0;
+      end else begin
+         if (S_AXI_AWREADY == 1'b1 && S_AXI_AWVALID == 1'b1 && S_AXI_WREADY == 1'b1 && S_AXI_WVALID == 1'b1) begin
+            S_AXI_BVALID <= 1'b1;
+         end else if (S_AXI_BREADY == 1'b1 && S_AXI_BVALID == 1'b1) begin
+            S_AXI_BVALID <= 1'b0;
+         end
+      end
+   end
+
+
+   // S_AXI_ARREADY asserted for one S_AXI_ACLK cycle and S_AXI_ARADDR latched when S_AXI_ARVALID high
+   // TODO: this logic may not be the best?
+   always @(posedge S_AXI_ACLK) begin
+      if (S_AXI_ARESETN == 1'b0) begin
+         S_AXI_ARREADY <= 1'b0;
+         s_axi_araddr <= 6'b00_0000;
+
+         S_AXI_RVALID <= 1'b0;
+      end else begin
+         if (S_AXI_ARREADY == 1'b0 && S_AXI_ARVALID == 1'b1) begin
+            S_AXI_ARREADY <= 1'b1;
+            s_axi_araddr <= S_AXI_ARADDR;
+         end else begin
+            S_AXI_ARREADY <= 1'b0;
+         end
+
+         // S_AXI_RVALID asserted for one S_AXI_ACLK cycle when both S_AXI_ARREADY and S_AXI_ARVALID high
+         // Slave register data available and valid on S_AXI_RDATA at this instance
+         if (S_AXI_ARREADY == 1'b0 && S_AXI_ARVALID == 1'b1 && S_AXI_RVALID == 1'b0) begin
+            S_AXI_RVALID <= 1'b1;
+         end else if (S_AXI_RVALID == 1'b1 && S_AXI_RREADY == 1'b1) begin
+            S_AXI_RVALID <= 1'b0;
+         end
+      end
+   end
+
+   // Memory mapped register select and read logic
+   always @(posedge S_AXI_ACLK) begin
+      if (S_AXI_ARESETN == 1'b0) begin
+         S_AXI_RDATA <= 32'h00_00_00_00;
+      end else begin
+         case (s_axi_araddr[5 : 2])
+           ADDR_CTRL_LOOPBACK: begin
+              S_AXI_RDATA <= { {31{1'b0}}, slv_ctrl_loopback};
+           end
+           default: begin
+              S_AXI_RDATA <= 32'h00_00_00_00;
+           end
+         endcase
+      end
+   end
+
 
    // This must be asserted for the RTDS to be able to detect the Aurora link
    assign SFP_TX_DISABLE_N = 1'b1;
@@ -139,9 +277,9 @@ module aurora(
                             .drpwe_in                (1'b0)
                             );
 
-   assign s_axis_aurora_tvalid = (ctrl_loopback == 1'b1) ? s_axis_loop_tvalid : m_axis_pre_tvalid;
-   assign s_axis_aurora_tdata = (ctrl_loopback == 1'b1) ? s_axis_loop_tdata : m_axis_pre_tdata;
-   assign s_axis_aurora_tlast = (ctrl_loopback == 1'b1) ? s_axis_loop_tlast : m_axis_pre_tlast;
+   assign s_axis_aurora_tvalid = (slv_ctrl_loopback == 1'b1) ? s_axis_loop_tvalid : m_axis_pre_tvalid;
+   assign s_axis_aurora_tdata = (slv_ctrl_loopback == 1'b1) ? s_axis_loop_tdata : m_axis_pre_tdata;
+   assign s_axis_aurora_tlast = (slv_ctrl_loopback == 1'b1) ? s_axis_loop_tlast : m_axis_pre_tlast;
 
 
    post post (
@@ -185,17 +323,6 @@ module aurora(
 
                           .m_axis_tready (s_axis_aurora_tready)
                           );
-
-
-   // TODO: ctrl_loopback should be exposed over AXI register interface for 
-   // external control. The following temporary block is in place only for 
-   // testing the pre module. 
-   always @(posedge user_clk_out) begin
-      if (sys_reset_out == 1'b1) begin
-         ctrl_loopback <= 1'b0;
-      end else begin
-      end
-   end
 
 
 `ifdef INCLUDE_ILA_AURORA

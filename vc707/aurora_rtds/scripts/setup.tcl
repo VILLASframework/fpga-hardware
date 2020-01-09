@@ -34,6 +34,7 @@ add_files -norecurse $ipRoot/fifo_loop/fifo_loop.xci
 add_files -norecurse $ipRoot/ila_aurora/ila_aurora.xci
 add_files -norecurse $ipRoot/ila_pre/ila_pre.xci
 add_files -norecurse $ipRoot/ila_post/ila_post.xci
+add_files -norecurse $ipRoot/vio_aurora/vio_aurora.xci
 
 update_compile_order -fileset sources_1
 

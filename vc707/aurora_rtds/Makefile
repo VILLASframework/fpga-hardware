@@ -20,4 +20,4 @@ bitstream: vivado ./build/.bitstream.done
 .PHONY: clean
 clean:
 	$(MAKE) -C ./ip/axi_pcie_intc clean
-	rm -rf ./vivado ./ip/aurora_8b10b_0 ./ip/fifo_loop ./ip/ila_aurora ./ip/ila_pre ./ip/ila_post .Xil ./ip/.Xil ./build vivado.jou vivado.log vivado*.str
+	rm -rf ./vivado ./ip/aurora_8b10b_0 ./ip/fifo_loop ./ip/ila_aurora ./ip/ila_pre ./ip/ila_post ./ip/vio_aurora .Xil ./ip/.Xil ./build vivado.jou vivado.log vivado*.str

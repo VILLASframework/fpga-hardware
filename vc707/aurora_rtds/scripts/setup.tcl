@@ -7,6 +7,7 @@ source -notrace $thisDir/utils.tcl
 set hdlRoot ./hdl
 set xdcRoot ./xdc
 set ipRoot ./ip
+set miscRoot ./misc
 
 # Create project
 create_project -force top ./vivado/top -part xc7vx485tffg1761-2
@@ -36,9 +37,12 @@ add_files -norecurse $ipRoot/ila_pre/ila_pre.xci
 add_files -norecurse $ipRoot/ila_post/ila_post.xci
 add_files -norecurse $ipRoot/vio_aurora/vio_aurora.xci
 
-update_compile_order -fileset sources_1
+add_files -norecurse $xdcRoot/top.xdc
 
-add_files -fileset constrs_1 -norecurse $xdcRoot/top.xdc
+add_files -norecurse $miscRoot/component.xml
+set_property "file_type" "IP-XACT" [get_files "*component.xml"]
+
+update_compile_order -fileset sources_1
 
 # Need raw bit file to generate memory configuration for VC707's BPI flash
 set_property STEPS.WRITE_BITSTREAM.ARGS.RAW_BITFILE true [get_runs impl_1]

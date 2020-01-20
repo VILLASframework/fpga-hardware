@@ -42,8 +42,7 @@ module aurora(
               input wire           gt_refclk1,
               input wire           drpclk_in,
               output wire          user_clk_out,
-              input wire           aur_reset,
-              input wire           gt_reset,
+              input wire           reset,
               output wire          sys_reset_out,
 
               // AXI Slave register interface
@@ -231,8 +230,8 @@ module aurora(
 
    aurora_8b10b_0 aurora_0 (
                             // Status and control ports
-                            .reset                   (aur_reset),
-                            .gt_reset                (gt_reset),
+                            .reset                   (reset),
+                            .gt_reset                (reset),
 
                             .channel_up              (channel_up),
                             .lane_up                 (lane_up),

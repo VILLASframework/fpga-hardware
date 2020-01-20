@@ -227,8 +227,7 @@ module top(
                     .drpclk_in        (clk156),
                     .user_clk_out     (user_clk_out),
                     .sys_reset_out    (sys_reset_out),
-                    .aur_reset        (rst_156),
-                    .gt_reset         (rst_156)
+                    .reset            (rst_156)
    );
 
 endmodule // top

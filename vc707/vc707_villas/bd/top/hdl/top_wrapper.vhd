@@ -28,7 +28,9 @@ entity top_wrapper is
     sfp_txn : out STD_LOGIC;
     sfp_txp : out STD_LOGIC;
     sys_clk_clk_n : in STD_LOGIC;
-    sys_clk_clk_p : in STD_LOGIC
+    sys_clk_clk_p : in STD_LOGIC;
+    user_clk_clk_n : in STD_LOGIC;
+    user_clk_clk_p : in STD_LOGIC
   );
 end top_wrapper;
 
@@ -74,7 +76,7 @@ top_i: component top
       sfp_txp => sfp_txp,
       sys_clk_clk_n => sys_clk_clk_n,
       sys_clk_clk_p => sys_clk_clk_p,
-      user_clk_clk_n => sys_clk_clk_n,
-      user_clk_clk_p => sys_clk_clk_p
+      user_clk_clk_n => user_clk_clk_n,
+      user_clk_clk_p => user_clk_clk_p
     );
 end STRUCTURE;

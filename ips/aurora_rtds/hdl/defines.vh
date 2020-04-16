@@ -10,7 +10,7 @@
  `define DEFINES_VH
 
  //`define INCLUDE_ILA_AURORA_PRE
- `define INCLUDE_ILA_AURORA
+ //`define INCLUDE_ILA_AURORA
  //`define INCLUDE_ILA_AURORA_POST
 
  /* Use VIO module to write to slave registers of augmented-Aurora module. 

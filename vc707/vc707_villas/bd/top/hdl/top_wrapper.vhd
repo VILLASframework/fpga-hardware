@@ -22,7 +22,6 @@ entity top_wrapper is
     pcie_ref_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     pcie_ref_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     perstn : in STD_LOGIC;
-    sfp_rx_los : in STD_LOGIC;
     sfp_rxn : in STD_LOGIC;
     sfp_rxp : in STD_LOGIC;
     sfp_tx_disable : out STD_LOGIC;
@@ -38,6 +37,8 @@ architecture STRUCTURE of top_wrapper is
   port (
     sys_clk_clk_p : in STD_LOGIC;
     sys_clk_clk_n : in STD_LOGIC;
+    user_clk_clk_p : in STD_LOGIC;
+    user_clk_clk_n : in STD_LOGIC;
     perstn : in STD_LOGIC;
     pcie_mgt_rxn : in STD_LOGIC_VECTOR ( 3 downto 0 );
     pcie_mgt_rxp : in STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -50,7 +51,6 @@ architecture STRUCTURE of top_wrapper is
     sfp_txn : out STD_LOGIC;
     sfp_rxp : in STD_LOGIC;
     sfp_txp : out STD_LOGIC;
-    sfp_rx_los : in STD_LOGIC;
     clkbuf_clk_p : in STD_LOGIC;
     clkbuf_clk_n : in STD_LOGIC
   );
@@ -67,13 +67,14 @@ top_i: component top
       pcie_ref_clk_n(0) => pcie_ref_clk_n(0),
       pcie_ref_clk_p(0) => pcie_ref_clk_p(0),
       perstn => perstn,
-      sfp_rx_los => sfp_rx_los,
       sfp_rxn => sfp_rxn,
       sfp_rxp => sfp_rxp,
       sfp_tx_disable => sfp_tx_disable,
       sfp_txn => sfp_txn,
       sfp_txp => sfp_txp,
       sys_clk_clk_n => sys_clk_clk_n,
-      sys_clk_clk_p => sys_clk_clk_p
+      sys_clk_clk_p => sys_clk_clk_p,
+      user_clk_clk_n => sys_clk_clk_n,
+      user_clk_clk_p => sys_clk_clk_p
     );
 end STRUCTURE;

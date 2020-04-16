@@ -1,10 +1,10 @@
-// Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2016.1 (win64) Build 1538259 Fri Apr  8 15:45:27 MDT 2016
-// Date        : Sun Jun 26 14:07:00 2016
-// Host        : E265 running 64-bit Service Pack 1  (build 7601)
+// Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
+// Date        : Thu Apr 16 18:23:45 2020
+// Host        : ubuntu-svg-xilinx.acs-lab.eonerc.rwth-aachen.de running 64-bit Ubuntu 16.04.6 LTS
 // Command     : write_verilog -force -mode funcsim
-//               D:/svo/gtfpga/vc707/vc707_villas/bd/top/ip/top_util_ds_buf_0_1/top_util_ds_buf_0_1_sim_netlist.v
+//               /home/svg-hka/VILLASfpga-hardware/vc707/vc707_villas/bd/top/ip/top_util_ds_buf_0_1/top_util_ds_buf_0_1_sim_netlist.v
 // Design      : top_util_ds_buf_0_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,21 +12,21 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "top_util_ds_buf_0_1,util_ds_buf,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "util_ds_buf,Vivado 2016.1" *) 
+(* CHECK_LICENSE_TYPE = "top_util_ds_buf_0_1,util_ds_buf,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "util_ds_buf,Vivado 2018.3" *) 
 (* NotValidForBitStream *)
 module top_util_ds_buf_0_1
    (IBUF_DS_P,
     IBUF_DS_N,
     IBUF_OUT,
     IBUF_DS_ODIV2);
-  (* x_interface_info = "xilinx.com:interface:diff_clock:1.0 CLK_IN_D CLK_P" *) input [0:0]IBUF_DS_P;
+  (* x_interface_info = "xilinx.com:interface:diff_clock:1.0 CLK_IN_D CLK_P" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK_IN_D, BOARD.ASSOCIATED_PARAM DIFF_CLK_IN_BOARD_INTERFACE, CAN_DEBUG false, FREQ_HZ 100000000" *) input [0:0]IBUF_DS_P;
   (* x_interface_info = "xilinx.com:interface:diff_clock:1.0 CLK_IN_D CLK_N" *) input [0:0]IBUF_DS_N;
-  output [0:0]IBUF_OUT;
-  output [0:0]IBUF_DS_ODIV2;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 IBUF_OUT CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME IBUF_OUT, FREQ_HZ 100000000, CLK_DOMAIN top_util_ds_buf_0_1_IBUF_OUT, INSERT_VIP 0" *) output [0:0]IBUF_OUT;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 IBUF_DS_ODIV2 CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME IBUF_DS_ODIV2, FREQ_HZ 100000000, CLK_DOMAIN top_util_ds_buf_0_1_IBUF_DS_ODIV2, INSERT_VIP 0" *) output [0:0]IBUF_DS_ODIV2;
 
-  wire [0:0]IBUF_DS_N;
+  (* IBUF_LOW_PWR *) wire [0:0]IBUF_DS_N;
   wire [0:0]IBUF_DS_ODIV2;
-  wire [0:0]IBUF_DS_P;
+  (* IBUF_LOW_PWR *) wire [0:0]IBUF_DS_P;
   wire [0:0]IBUF_OUT;
   wire [0:0]NLW_U0_BUFGCE_O_UNCONNECTED;
   wire [0:0]NLW_U0_BUFG_GT_O_UNCONNECTED;
@@ -35,10 +35,12 @@ module top_util_ds_buf_0_1
   wire [0:0]NLW_U0_BUFH_O_UNCONNECTED;
   wire [0:0]NLW_U0_IOBUF_DS_N_UNCONNECTED;
   wire [0:0]NLW_U0_IOBUF_DS_P_UNCONNECTED;
+  wire [0:0]NLW_U0_IOBUF_IO_IO_UNCONNECTED;
   wire [0:0]NLW_U0_IOBUF_IO_O_UNCONNECTED;
   wire [0:0]NLW_U0_OBUF_DS_N_UNCONNECTED;
   wire [0:0]NLW_U0_OBUF_DS_P_UNCONNECTED;
 
+  (* C_BUFGCE_DIV = "1" *) 
   (* C_BUF_TYPE = "ibufdsgte2" *) 
   (* C_SIZE = "1" *) 
   top_util_ds_buf_0_1_util_ds_buf U0
@@ -66,6 +68,7 @@ module top_util_ds_buf_0_1
         .IOBUF_DS_N(NLW_U0_IOBUF_DS_N_UNCONNECTED[0]),
         .IOBUF_DS_P(NLW_U0_IOBUF_DS_P_UNCONNECTED[0]),
         .IOBUF_IO_I(1'b0),
+        .IOBUF_IO_IO(NLW_U0_IOBUF_IO_IO_UNCONNECTED[0]),
         .IOBUF_IO_O(NLW_U0_IOBUF_IO_O_UNCONNECTED[0]),
         .IOBUF_IO_T(1'b0),
         .OBUF_DS_N(NLW_U0_OBUF_DS_N_UNCONNECTED[0]),
@@ -73,7 +76,8 @@ module top_util_ds_buf_0_1
         .OBUF_IN(1'b0));
 endmodule
 
-(* C_BUF_TYPE = "ibufdsgte2" *) (* C_SIZE = "1" *) (* ORIG_REF_NAME = "util_ds_buf" *) 
+(* C_BUFGCE_DIV = "1" *) (* C_BUF_TYPE = "ibufdsgte2" *) (* C_SIZE = "1" *) 
+(* ORIG_REF_NAME = "util_ds_buf" *) 
 module top_util_ds_buf_0_1_util_ds_buf
    (IBUF_DS_P,
     IBUF_DS_N,
@@ -87,6 +91,7 @@ module top_util_ds_buf_0_1_util_ds_buf
     IOBUF_IO_T,
     IOBUF_IO_I,
     IOBUF_IO_O,
+    IOBUF_IO_IO,
     BUFG_I,
     BUFG_O,
     BUFGCE_I,
@@ -116,6 +121,7 @@ module top_util_ds_buf_0_1_util_ds_buf
   input [0:0]IOBUF_IO_T;
   input [0:0]IOBUF_IO_I;
   output [0:0]IOBUF_IO_O;
+  inout [0:0]IOBUF_IO_IO;
   input [0:0]BUFG_I;
   output [0:0]BUFG_O;
   input [0:0]BUFGCE_I;
@@ -135,10 +141,12 @@ module top_util_ds_buf_0_1_util_ds_buf
   output [0:0]BUFG_GT_O;
 
   wire \<const0> ;
+  wire IB;
   wire [0:0]IBUF_DS_N;
   wire [0:0]IBUF_DS_ODIV2;
   wire [0:0]IBUF_DS_P;
   wire [0:0]IBUF_OUT;
+  wire O;
 
   assign BUFGCE_O[0] = IOBUF_DS_P[0];
   assign BUFG_GT_O[0] = IOBUF_DS_P[0];
@@ -158,10 +166,28 @@ module top_util_ds_buf_0_1_util_ds_buf
     .CLKSWING_CFG(2'b11)) 
     \USE_IBUFDS_GTE2.GEN_IBUFDS_GTE2[0].IBUFDS_GTE2_I 
        (.CEB(IOBUF_DS_P[0]),
-        .I(IBUF_DS_P),
-        .IB(IBUF_DS_N),
+        .I(O),
+        .IB(IB),
         .O(IBUF_OUT),
         .ODIV2(IBUF_DS_ODIV2));
+  (* CAPACITANCE = "DONT_CARE" *) 
+  (* IBUF_DELAY_VALUE = "0" *) 
+  (* IFD_DELAY_VALUE = "AUTO" *) 
+  (* box_type = "PRIMITIVE" *) 
+  IBUF #(
+    .IOSTANDARD("DEFAULT")) 
+    \USE_IBUFDS_GTE2.GEN_IBUFDS_GTE2[0].IBUF_N_I 
+       (.I(IBUF_DS_N),
+        .O(IB));
+  (* CAPACITANCE = "DONT_CARE" *) 
+  (* IBUF_DELAY_VALUE = "0" *) 
+  (* IFD_DELAY_VALUE = "AUTO" *) 
+  (* box_type = "PRIMITIVE" *) 
+  IBUF #(
+    .IOSTANDARD("DEFAULT")) 
+    \USE_IBUFDS_GTE2.GEN_IBUFDS_GTE2[0].IBUF_P_I 
+       (.I(IBUF_DS_P),
+        .O(O));
 endmodule
 module xVIA(.a(w),.b(w));
 inout w;
@@ -216,8 +242,8 @@ module glbl ();
     reg JTAG_USER_TDO3_GLBL = 1'bz;
     reg JTAG_USER_TDO4_GLBL = 1'bz;
 
-    assign (weak1, weak0) GSR = GSR_int;
-    assign (weak1, weak0) GTS = GTS_int;
+    assign (strong1, weak0) GSR = GSR_int;
+    assign (strong1, weak0) GTS = GTS_int;
     assign (weak1, weak0) PRLD = PRLD_int;
 
     initial begin

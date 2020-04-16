@@ -12,19 +12,19 @@ preplace port M04_ACLK -pg 1 -y 310 -defaultsOSRD
 preplace port M00_AXI -pg 1 -y 160 -defaultsOSRD
 preplace portBus S00_ARESETN -pg 1 -y 90 -defaultsOSRD
 preplace portBus M04_ARESETN -pg 1 -y 330 -defaultsOSRD
-preplace inst axi_interconnect_0 -pg 1 -lvl 1 -y 210 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 1 -y 270 -defaultsOSRD
 preplace netloc Conn1 1 0 1 NJ
 preplace netloc Conn2 1 1 1 NJ
-preplace netloc s_axi_aclk_1 1 0 1 30
+preplace netloc s_axi_aclk_1 1 0 1 -30
 preplace netloc Conn3 1 1 1 NJ
 preplace netloc S_AXI_CTRL_1 1 1 1 NJ
 preplace netloc M04_ACLK_1 1 0 1 NJ
 preplace netloc axi_interconnect_0_M00_AXI 1 1 1 NJ
 preplace netloc axi_interconnect_0_M01_AXI 1 1 1 NJ
 preplace netloc M04_ARESETN_1 1 0 1 NJ
-preplace netloc pcie_0_peripheral_aresetn 1 0 1 20
+preplace netloc pcie_0_peripheral_aresetn 1 0 1 -40
 preplace netloc axi_interconnect_0_M03_AXI 1 1 1 NJ
-levelinfo -pg 1 0 180 350 -top 0 -bot 430
+levelinfo -pg 1 -80 180 440 -top 0 -bot 550
 ",
 }
 0

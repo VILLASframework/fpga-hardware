@@ -23,17 +23,18 @@ vivado*.str
 *.xci
 *.xcix
 ips/aurora_rtds/ip
+ips/axi_pcie_intc/ip
 ips/rtds_axis/ip
 ips/rtds_axis/netlist/RTDS_InterfaceModule.ngc
 
 # Vivado working directories
 ips/aurora_rtds/vivado
+ips/axi_pcie_intc/vivado
 vc707/vc707_pcie/work/
 vc707/vc707_villas/work/
 vc707/vc707_villas_simple/work/
 vc707/vc707_prom_flasher/work/
 ips/hdl_multiply/work/
 ips/pcie_msi_requester/work/
-ips/axi_pcie_intc/work/
 ips/rtds_axis/work/
 

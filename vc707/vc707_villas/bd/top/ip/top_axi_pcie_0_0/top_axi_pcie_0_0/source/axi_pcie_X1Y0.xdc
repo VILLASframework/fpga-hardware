@@ -127,6 +127,55 @@ create_generated_clock -name clk_250mhz_mux_X1Y0 \
 #
 set_clock_groups -name pcieclkmux -physically_exclusive -group clk_125mhz_mux_X1Y0 -group clk_250mhz_mux_X1Y0
 #
+create_generated_clock -name oobclk_125mhz_master_lane0_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[0].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 2 -add \
+                       -master_clock clk_125mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[0].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+create_generated_clock -name oobclk_250mhz_master_lane0_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[0].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 4 -add \
+                       -master_clock clk_250mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[0].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+create_generated_clock -name oobclk_125mhz_master_lane1_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[1].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 2 -add \
+                       -master_clock clk_125mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[1].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+create_generated_clock -name oobclk_250mhz_master_lane1_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[1].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 4 -add \
+                       -master_clock clk_250mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[1].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+create_generated_clock -name oobclk_125mhz_master_lane2_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[2].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 2 -add \
+                       -master_clock clk_125mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[2].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+create_generated_clock -name oobclk_250mhz_master_lane2_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[2].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 4 -add \
+                       -master_clock clk_250mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[2].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+create_generated_clock -name oobclk_125mhz_master_lane3_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[3].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 2 -add \
+                       -master_clock clk_125mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[3].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+create_generated_clock -name oobclk_250mhz_master_lane3_X1Y0 \
+                       -source [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[3].pipe_user_i/oobclk_div.oobclk_reg/C}] \
+                       -divide_by 4 -add \
+                       -master_clock clk_250mhz_mux_X1Y0 \
+                       [get_pins {comp_axi_enhanced_pcie/comp_enhanced_core_top_wrap/axi_pcie_enhanced_core_top_i/pcie_7x_v2_0_2_inst/pcie_top_with_gt_top.gt_ges.gt_top_i/pipe_wrapper_i/pipe_lane[3].pipe_user_i/oobclk_div.oobclk_reg/Q}]
+#
+
 #
 ###############################################################################
 # Physical Constraints
@@ -136,16 +185,16 @@ set_clock_groups -name pcieclkmux -physically_exclusive -group clk_125mhz_mux_X1
 #------------------------------------------------------------------------------
 
 
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/RXELECIDLE}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/TXPHINITDONE}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/TXPHALIGNDONE}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/TXDLYSRESETDONE}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/RXDLYSRESETDONE}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/RXPHALIGNDONE}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/RXCDRLOCK}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/CFGMSGRECEIVEDPMETO}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/CPLLLOCK}]
-set_false_path -through [get_pins -hierarchical -filter {NAME=~*/QPLLLOCK}]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~RXELECIDLE} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~TXPHINITDONE} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~TXPHALIGNDONE} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~TXDLYSRESETDONE} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~RXDLYSRESETDONE} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~RXPHALIGNDONE} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~RXCDRLOCK} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~CFGMSGRECEIVEDPMETO} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ * }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~CPLLLOCK} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
+set_false_path -through [get_pins -filter {REF_PIN_NAME=~QPLLLOCK} -of_objects [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ IO.gt.* }]]
 
 ###############################################################################
 # End

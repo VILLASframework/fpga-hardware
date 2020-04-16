@@ -7,14 +7,13 @@ source -notrace $thisDir/utils.tcl
 set hdlRoot ./hdl
 set xdcRoot ./xdc
 set ipRoot ./ip
-set miscRoot ./misc
 
 # Create project
 create_project -force top ./vivado/top -part xc7vx485tffg1761-2
 
 # Set project properties
 set obj [get_projects top]
-set_property "board_part" "xilinx.com:vc707:part0:1.3" $obj
+set_property "board_part" "xilinx.com:vc707:part0:1.4" $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "Verilog" $obj
 
@@ -39,7 +38,7 @@ add_files -norecurse $ipRoot/vio_aurora/vio_aurora.xci
 
 add_files -norecurse $xdcRoot/top.xdc
 
-add_files -norecurse $miscRoot/component.xml
+add_files -norecurse ./component.xml
 set_property "file_type" "IP-XACT" [get_files "*component.xml"]
 
 set_property "top" "aurora" [get_filesets sources_1]

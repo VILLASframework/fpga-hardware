@@ -12,7 +12,7 @@ create_project -force ip ./vivado/ip -part xc7vx485tffg1761-2 -ip
 
 # Set project properties
 set obj [get_projects ip]
-set_property "board_part" "xilinx.com:vc707:part0:1.3" $obj
+set_property "board_part" "xilinx.com:vc707:part0:1.4" $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "Verilog" $obj
 

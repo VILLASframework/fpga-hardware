@@ -29,7 +29,7 @@ entity axi_pcie_intc is
     s_axi_rvalid                        : out   std_logic;
     s_axi_rready                        : in    std_logic;
 
-    intr                                : in    std_logic_vector(7 downto 0);
+    intr                                : in    std_logic_vector(3 downto 0);
     INTX_MSI_Request                    : out   std_logic;
     INTX_MSI_Grant                      : in    std_logic;
     MSI_Vector_Num                      : out   std_logic_vector(4 downto 0);
@@ -64,7 +64,7 @@ architecture structural of axi_pcie_intc is
       s_axi_rvalid              : out   std_logic;
       s_axi_rready              : in    std_logic;
 
-      intr                      : in    std_logic_vector(7 downto 0);
+      intr                      : in    std_logic_vector(3 downto 0);
       processor_clk             : in    std_logic;
       processor_rst             : in    std_logic;
       irq                       : out   std_logic;

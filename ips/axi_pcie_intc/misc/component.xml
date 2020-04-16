@@ -3,7 +3,7 @@
   <spirit:vendor>acs.eonerc.rwth-aachen.de</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>axi_pcie_intc</spirit:name>
-  <spirit:version>1.0</spirit:version>
+  <spirit:version>1.3</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>s_axi</spirit:name>
@@ -251,7 +251,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>92b49dcd</spirit:value>
+            <spirit:value>65354487</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -270,7 +270,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>92b49dcd</spirit:value>
+            <spirit:value>65354487</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -284,7 +284,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f92e9879</spirit:value>
+            <spirit:value>b35ac0f6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -594,7 +594,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">7</spirit:left>
+            <spirit:left spirit:format="long">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -705,7 +705,7 @@
       <spirit:file>
         <spirit:name>../hdl/axi_pcie_intc.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_427f832c</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_516c591d</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -749,7 +749,7 @@
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>axi_pcie_intc_v1_0 (simple-bd-1)</spirit:description>
+  <spirit:description>axi_pcie_intc_v1_0</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -768,8 +768,8 @@
       <xilinx:displayName>MSI Interrupt controller for AXI PCIe bridge</xilinx:displayName>
       <xilinx:vendorDisplayName>Institute for Automation of Complex Power Systems, RWTH Aachen University</xilinx:vendorDisplayName>
       <xilinx:vendorURL>http://www.acs.eonerc.rwth-aachen.de</xilinx:vendorURL>
-      <xilinx:coreRevision>11</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2019-11-19T00:58:39Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>17</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2020-04-16T18:17:08Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="acs.eonerc.rwth-aachen.de:user:axi_pcie_intc:1.0_ARCHIVE_LOCATION">D:/svo/gtfpga/axi_pcie_intc</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@5e8659b8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
@@ -803,14 +803,92 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@73c3c99a_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/vc707/aurora_rtds/ip/axi_pcie_intc/misc</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@346bd670_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/vc707/aurora_rtds/ip/axi_pcie_intc/misc</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@402d2aad_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/vc707/aurora_rtds/ip/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c7681c5_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10c5818_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c434dab_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55bde1ae_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37a19697_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41b8828f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f97b565_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b8213d6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@db472af_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55f70180_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b4c6795_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b3bf99c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f54c3f5_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44a9b0a6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a761856_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3800af1d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30fa43f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3347ce6a_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77d9a11b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@551ce255_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@85fd728_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ed8b23_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6473e48f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68075e66_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@184f7679_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c6843e4_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fe552e2_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68b5e253_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b0e0213_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79c07a27_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@788de233_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21cbd099_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c87b0df_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34c022a2_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48a6858d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f52a0d8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45f6e988_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69f2823d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e6604d2_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@660a575d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@560d6919_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33baa6a4_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@791450ba_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48bf3c33_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bb8d3eb_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ef918bd_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12981bfe_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12622cd6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7671af95_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ad36560_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7205d9d7_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22967a8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4022865_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69cc5c74_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@158f37fc_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13a6e014_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ef72b1d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bf2e08d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7972ba9c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a34a0cf_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14558b51_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6354f74f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e709c4b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66960b0a_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@194c93df_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5112432e_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2aad263c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29841513_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4257afd8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7662caae_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a88228d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54daaa35_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73ca9d79_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17deb92b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@537af14_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@447661c3_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64cfecbf_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ba1b35b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="51025d61"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="2cb0d1b0"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="01ad44be"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="48d2e44c"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="14e42e46"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="a7a2fa18"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="20fdd6c9"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

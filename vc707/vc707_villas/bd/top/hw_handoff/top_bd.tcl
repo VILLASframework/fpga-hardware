@@ -707,7 +707,7 @@ proc create_hier_cell_hier_0 { parentCell nameHier } {
   create_bd_pin -dir I -from 0 -to 0 user_clk
 
   # Create instance: aurora_0, and set properties
-  set aurora_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora:1.6 aurora_0 ]
+  set aurora_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora:1.7 aurora_0 ]
 
   # Create instance: aurora_reset_0, and set properties
   set block_name aurora_reset

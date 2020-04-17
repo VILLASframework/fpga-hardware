@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-// Date        : Thu Apr 16 22:26:38 2020
+// Date        : Fri Apr 17 01:42:25 2020
 // Host        : ubuntu-svg-xilinx.acs-lab.eonerc.rwth-aachen.de running 64-bit Ubuntu 16.04.6 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/svg-hka/VILLASfpga-hardware/vc707/vc707_villas/bd/top/ip/top_aurora_0_0/top_aurora_0_0_stub.v

@@ -1232,6 +1232,25 @@
   <spirit:model>
     <spirit:views>
       <spirit:view>
+        <spirit:name>xilinx_veriloginstantiationtemplate</spirit:name>
+        <spirit:displayName>Verilog Instantiation Template</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis.template</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_veriloginstantiationtemplate_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Thu Apr 16 23:38:50 UTC 2020</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:69c61268</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
         <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
         <spirit:displayName>Synthesis</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
@@ -1242,11 +1261,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Apr 16 18:18:20 UTC 2020</spirit:value>
+            <spirit:value>Thu Apr 16 23:38:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f1b15b62</spirit:value>
+            <spirit:value>9:69c61268</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1262,11 +1281,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Apr 16 18:18:20 UTC 2020</spirit:value>
+            <spirit:value>Thu Apr 16 23:38:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f1b15b62</spirit:value>
+            <spirit:value>9:69c61268</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1281,11 +1300,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Apr 16 18:18:20 UTC 2020</spirit:value>
+            <spirit:value>Thu Apr 16 23:38:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a1406025</spirit:value>
+            <spirit:value>9:244ed520</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1301,30 +1320,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Apr 16 18:18:20 UTC 2020</spirit:value>
+            <spirit:value>Thu Apr 16 23:38:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a1406025</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_implementation</spirit:name>
-        <spirit:displayName>Implementation</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:implementation</spirit:envIdentifier>
-        <spirit:modelName>aurora</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_implementation_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Apr 16 18:18:20 UTC 2020</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f1b15b62</spirit:value>
+            <spirit:value>9:244ed520</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1338,11 +1338,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Apr 16 20:26:39 UTC 2020</spirit:value>
+            <spirit:value>Thu Apr 16 23:42:26 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f1b15b62</spirit:value>
+            <spirit:value>9:69c61268</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1931,11 +1931,18 @@
   </spirit:choices>
   <spirit:fileSets>
     <spirit:fileSet>
-      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
+      <spirit:name>xilinx_veriloginstantiationtemplate_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>ip/ila_aurora/ila_aurora.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:name>top_aurora_0_0.vho</spirit:name>
+        <spirit:userFileType>vhdlTemplate</spirit:userFileType>
       </spirit:file>
+      <spirit:file>
+        <spirit:name>top_aurora_0_0.veo</spirit:name>
+        <spirit:userFileType>verilogTemplate</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
         <spirit:name>ip/fifo_loop/fifo_loop.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
@@ -1949,16 +1956,16 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/defines.vh</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/defines.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/post.v</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/post.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/pre.v</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/pre.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1966,7 +1973,7 @@
         <spirit:userFileType>xdc</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/aurora.v</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/aurora.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1981,10 +1988,6 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>ip/ila_aurora/ila_aurora.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>ip/fifo_loop/fifo_loop.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
@@ -1997,20 +2000,20 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/defines.vh</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/defines.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/post.v</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/post.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/pre.v</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/pre.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/7cbd/hdl/aurora.v</spirit:name>
+        <spirit:name>../../ipshared/eca2/hdl/aurora.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -2020,13 +2023,6 @@
         <spirit:name>sim/top_aurora_0_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_implementation_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>ip/ila_aurora/ila_aurora.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -2081,7 +2077,7 @@
         <xilinx:xpmLibrary>XPM_CDC</xilinx:xpmLibrary>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>16</xilinx:coreRevision>
+      <xilinx:coreRevision>17</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@55147c9c_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@76271a54_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
@@ -2300,6 +2296,28 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4bc2dd91_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@37bdf402_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@77a56c7a_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c72a91f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42b03a47_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1911d962_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22b6bd8b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b44770d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e6b51e_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@771885b9_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36b046bc_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@503b05ed_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@695332a5_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fb50331_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@141c0276_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f6e8b46_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7944d7f6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6db32160_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d84579c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43ed6ebc_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cbef45d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d4be4a6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@450eb40b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50acd41c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56a7fc5b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.DRPCLK_IN.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
@@ -2359,7 +2377,7 @@
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="76b1f7dd"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="509d916e"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="5b8e46a7"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="7c115739"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="8a5ee11e"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="771eb76a"/>
     </xilinx:packagingInfo>

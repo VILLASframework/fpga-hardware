@@ -47,8 +47,8 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.6
-// IP Revision: 16
+// IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.7
+// IP Revision: 17
 
 `timescale 1ns/1ps
 

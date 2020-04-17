@@ -6,4 +6,6 @@ set_disable_timing [get_ports perstn]
 #set_disable_timing [get_ports reset]
 set_disable_timing [get_ports sfp_tx_disable]
 
-set_max_delay -datapath_only -from [get_clocks user_clk] -to [get_clocks top_i/hier_0/aurora_0/inst/aurora_0/inst/aurora_8b10b_0_core_i/gt_wrapper_i/aurora_8b10b_2g_multi_gt_i/gt0_aurora_8b10b_2g_i/gtxe2_i/TXOUTCLK] 10.0
+set_max_delay -datapath_only -from [get_clocks user_clk] -to [get_clocks top_i/hier_0/aurora_0/inst/aurora_0/inst/aurora_8b10b_0_core_i/gt_wrapper_i/aurora_8b10b_0_multi_gt_i/gt0_aurora_8b10b_0_i/gtxe2_i/TXOUTCLK] 10.0
+
+set_false_path -to [get_pins -filter {REF_PIN_NAME=~*D} -of_objects [get_cells -hierarchical -filter {NAME =~ *aurora_8b10b_0_cdc_to*}]]

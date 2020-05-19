@@ -703,11 +703,10 @@ proc create_hier_cell_hier_0 { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 -type intr irq_dma_mm2s
   create_bd_pin -dir O -from 0 -to 0 -type intr irq_dma_s2mm
   create_bd_pin -dir O -type intr irq_fifo
-  create_bd_pin -dir I -from 0 -to 0 sys_clk
   create_bd_pin -dir I -from 0 -to 0 user_clk
 
   # Create instance: aurora_0, and set properties
-  set aurora_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora:1.7 aurora_0 ]
+  set aurora_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora:1.9 aurora_0 ]
 
   # Create instance: aurora_reset_0, and set properties
   set block_name aurora_reset
@@ -808,16 +807,15 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets axis_interconnect
   connect_bd_intf_net -intf_net clkbuf_1 [get_bd_intf_pins clkbuf] [get_bd_intf_pins util_ds_buf_0/CLK_IN_D]
 
   # Create port connections
-  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins aurora_0/user_clk_out] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
+  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins aurora_0/user_clk_out] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
   connect_bd_net -net S00_AXIS_ARESETN_1 [get_bd_pins axis_interconnect_0/S00_AXIS_ARESETN] [get_bd_pins util_vector_logic_0/Res]
   connect_bd_net -net aurora_0_sys_reset_out [get_bd_pins aurora_0/sys_reset_out] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net aurora_reset_0_reset [get_bd_pins aurora_0/reset] [get_bd_pins aurora_reset_0/reset]
   connect_bd_net -net axi_dma_0_mm2s_introut [get_bd_pins irq_dma_mm2s] [get_bd_pins axi_dma/mm2s_introut]
   connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins irq_dma_s2mm] [get_bd_pins axi_dma/s2mm_introut]
   connect_bd_net -net pcie_0_peripheral_aresetn [get_bd_pins aresetn] [get_bd_pins aurora_0/S_AXI_ARESETN] [get_bd_pins axi_dma/axi_resetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_interconnect_mm_0/M04_ARESETN] [get_bd_pins axi_interconnect_mm_0/S00_ARESETN] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins axis_data_fifo_1/s_axis_aresetn] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ARESETN]
-  connect_bd_net -net s_axi_aclk_1 [get_bd_pins clk] [get_bd_pins aurora_0/S_AXI_ACLK] [get_bd_pins axi_dma/m_axi_sg_aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axi_interconnect_mm_0/S00_ACLK] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins axis_data_fifo_1/s_axis_aclk] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK]
-  connect_bd_net -net sys_clk_1 [get_bd_pins sys_clk] [get_bd_pins aurora_0/init_clk_in]
-  connect_bd_net -net user_clk_1 [get_bd_pins user_clk] [get_bd_pins aurora_0/drpclk_in] [get_bd_pins aurora_reset_0/clk156]
+  connect_bd_net -net s_axi_aclk_1 [get_bd_pins clk] [get_bd_pins axi_dma/m_axi_sg_aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_interconnect_mm_0/S00_ACLK] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins axis_data_fifo_1/s_axis_aclk] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK]
+  connect_bd_net -net user_clk_1 [get_bd_pins user_clk] [get_bd_pins aurora_0/free_clk_in] [get_bd_pins aurora_reset_0/clk156]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins aurora_0/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
   connect_bd_net -net xsg_pio_interrupt [get_bd_pins irq_fifo] [get_bd_pins axi_fifo_mm_s_0/interrupt]
 
@@ -866,10 +864,6 @@ proc create_root_design { parentCell } {
   set pcie_mgt [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:pcie_7x_mgt_rtl:1.0 pcie_mgt ]
   set pcie_ref [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_clock_rtl:1.0 pcie_ref ]
   set sfp [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:sfp_rtl:1.0 sfp ]
-  set sys_clk [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_clock_rtl:1.0 sys_clk ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {50000000} \
-   ] $sys_clk
   set user_clk [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_clock_rtl:1.0 user_clk ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {156000000} \
@@ -901,13 +895,6 @@ proc create_root_design { parentCell } {
   # Create instance: timer_0
   create_hier_cell_timer_0 [current_bd_instance .] timer_0
 
-  # Create instance: util_ds_buf_0, and set properties
-  set util_ds_buf_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_0 ]
-  set_property -dict [ list \
-   CONFIG.DIFF_CLK_IN_BOARD_INTERFACE {sys_diff_clock} \
-   CONFIG.USE_BOARD_FLOW {true} \
- ] $util_ds_buf_0
-
   # Create instance: util_ds_buf_1, and set properties
   set util_ds_buf_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_1 ]
 
@@ -924,7 +911,6 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets hier_0_M_AXI_DMA_
 set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets pcie_M_AXI]
   connect_bd_intf_net -intf_net pcie_PCIE_MGT [get_bd_intf_ports pcie_mgt] [get_bd_intf_pins pcie_0/PCIE_MGT]
   connect_bd_intf_net -intf_net pcie_ref_1 [get_bd_intf_ports pcie_ref] [get_bd_intf_pins pcie_0/PCIE_REFCLK]
-  connect_bd_intf_net -intf_net sys_diff_clock_1 [get_bd_intf_ports sys_clk] [get_bd_intf_pins util_ds_buf_0/CLK_IN_D]
   connect_bd_intf_net -intf_net user_clk_2 [get_bd_intf_ports user_clk] [get_bd_intf_pins util_ds_buf_1/CLK_IN_D]
 
   # Create port connections
@@ -938,7 +924,6 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets pcie_M_AXI]
   connect_bd_net -net s_axi_aclk_1 [get_bd_pins hier_0/clk] [get_bd_pins mm_interconnect_0/S00_ACLK] [get_bd_pins pcie_0/axi_aclk_out] [get_bd_pins timer_0/s_axi_aclk]
   connect_bd_net -net timer_0_irq_timer_0 [get_bd_pins concat_0/in0] [get_bd_pins timer_0/irq_timer_0]
   connect_bd_net -net user_clk_1 [get_bd_pins hier_0/user_clk] [get_bd_pins util_ds_buf_1/IBUF_OUT]
-  connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins hier_0/sys_clk] [get_bd_pins util_ds_buf_0/IBUF_OUT]
 
   # Create address segments
   create_bd_addr_seg -range 0x00001000 -offset 0x00006000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/aurora_0/S_AXI/reg0] SEG_aurora_0_reg0

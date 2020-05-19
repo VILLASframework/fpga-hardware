@@ -2,19 +2,11 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="top" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1587080401"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1587080401"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1587080401"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1587080401"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1589366748"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1589366748"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1589366748"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1589366748"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
-      <File Name="ip/top_util_ds_buf_0_0/top_util_ds_buf_0_0.xci" Type="IP">
-        <Instance HierarchyPath="util_ds_buf_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip/top_axi_reset_0_0/top_axi_reset_0_0.xci" Type="IP">
         <Instance HierarchyPath="pcie_0/axi_reset_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -394,6 +386,14 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
+      <File Name="ip/top_auto_cc_2_1/top_auto_cc_2.xci" Type="IP">
+        <Instance HierarchyPath="hier_0/axi_interconnect_mm_0/axi_interconnect_0/m04_couplers/auto_cc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="ip/top_auto_pc_3/top_auto_pc_3.xci" Type="IP">
         <Instance HierarchyPath="hier_0/axi_interconnect_mm_0/axi_interconnect_0/m04_couplers/auto_pc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -426,7 +426,7 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/top_auto_cc_2_1/top_auto_cc_2.xci" Type="IP">
+      <File Name="ip/top_auto_cc_3/top_auto_cc_3.xci" Type="IP">
         <Instance HierarchyPath="pcie_0/axi_interconnect_0/m00_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>

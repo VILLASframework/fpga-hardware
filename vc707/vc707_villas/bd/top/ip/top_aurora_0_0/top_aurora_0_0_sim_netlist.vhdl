@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
--- Date        : Fri Apr 17 01:42:26 2020
+-- Date        : Wed May 13 12:48:15 2020
 -- Host        : ubuntu-svg-xilinx.acs-lab.eonerc.rwth-aachen.de running 64-bit Ubuntu 16.04.6 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/svg-hka/VILLASfpga-hardware/vc707/vc707_villas/bd/top/ip/top_aurora_0_0/top_aurora_0_0_sim_netlist.vhdl
@@ -1032,7 +1032,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity top_aurora_0_0_aurora_8b10b_0_CLOCK_MODULE is
   port (
-    init_clk_in : out STD_LOGIC;
+    free_clk_in : out STD_LOGIC;
     tx_out_clk : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
@@ -1046,7 +1046,7 @@ begin
 user_clk_buf_i: unisim.vcomponents.BUFG
      port map (
       I => tx_out_clk,
-      O => init_clk_in
+      O => free_clk_in
     );
 end STRUCTURE;
 library IEEE;
@@ -17889,9 +17889,9 @@ entity top_aurora_0_0_aurora_8b10b_0_gt is
     txn : out STD_LOGIC;
     txp : out STD_LOGIC;
     rx_realign_i : out STD_LOGIC;
-    init_clk_in_0 : out STD_LOGIC;
+    free_clk_in : out STD_LOGIC;
     tx_out_clk : out STD_LOGIC;
-    init_clk_in_1 : out STD_LOGIC;
+    free_clk_in_0 : out STD_LOGIC;
     drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     RXDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     D : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -17900,7 +17900,7 @@ entity top_aurora_0_0_aurora_8b10b_0_gt is
     pll_not_locked_out : out STD_LOGIC;
     ENABLE_ERR_DETECT_reg : out STD_LOGIC_VECTOR ( 3 downto 0 );
     consecutive_commas_r_reg : out STD_LOGIC;
-    init_clk_in_2 : out STD_LOGIC;
+    free_clk_in_1 : out STD_LOGIC;
     \previous_cycle_data_r_reg[7]\ : out STD_LOGIC_VECTOR ( 5 downto 0 );
     \left_align_select_r_reg[0]\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
     \previous_cycle_control_r_reg[0]\ : out STD_LOGIC;
@@ -18852,7 +18852,7 @@ gtxe2_i: unisim.vcomponents.GTXE2_CHANNEL
       RXQPISENP => NLW_gtxe2_i_RXQPISENP_UNCONNECTED,
       RXRATE(2 downto 0) => B"000",
       RXRATEDONE => NLW_gtxe2_i_RXRATEDONE_UNCONNECTED,
-      RXRESETDONE => init_clk_in_0,
+      RXRESETDONE => free_clk_in,
       RXSLIDE => '0',
       RXSTARTOFSEQ => NLW_gtxe2_i_RXSTARTOFSEQ_UNCONNECTED,
       RXSTATUS(2 downto 0) => NLW_gtxe2_i_RXSTATUS_UNCONNECTED(2 downto 0),
@@ -18929,7 +18929,7 @@ gtxe2_i: unisim.vcomponents.GTXE2_CHANNEL
       TXQPIWEAKPUP => '0',
       TXRATE(2 downto 0) => B"000",
       TXRATEDONE => NLW_gtxe2_i_TXRATEDONE_UNCONNECTED,
-      TXRESETDONE => init_clk_in_1,
+      TXRESETDONE => free_clk_in_0,
       TXSEQUENCE(6 downto 0) => B"0000000",
       TXSTARTSEQ => '0',
       TXSWING => '0',
@@ -18967,7 +18967,7 @@ reset_count_r_i_2: unisim.vcomponents.LUT6
       I3 => rx_disp_err_i(1),
       I4 => rx_disp_err_i(0),
       I5 => rx_disp_err_i(2),
-      O => init_clk_in_2
+      O => free_clk_in_1
     );
 reset_count_r_i_3: unisim.vcomponents.LUT4
     generic map(
@@ -19326,7 +19326,7 @@ entity top_aurora_0_0_post is
   port (
     m_axis_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     sys_reset_out : in STD_LOGIC;
-    user_clk_out : in STD_LOGIC;
+    CLK : in STD_LOGIC;
     m_axi_rx_tlast : in STD_LOGIC;
     m_axi_rx_tvalid : in STD_LOGIC;
     m_axi_rx_tdata : in STD_LOGIC_VECTOR ( 0 to 31 )
@@ -19740,7 +19740,7 @@ stat_cnt_pkts_rdy_i_i_1: unisim.vcomponents.LUT3
     );
 stat_cnt_pkts_rdy_i_reg: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => '1',
       D => stat_cnt_pkts_rdy_i_i_1_n_0,
       Q => stat_cnt_pkts_rdy_i_reg_n_0,
@@ -19758,7 +19758,7 @@ state_cnt_pkts_i_1: unisim.vcomponents.LUT3
     );
 state_cnt_pkts_reg: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => '1',
       D => state_cnt_pkts_i_1_n_0,
       Q => state_cnt_pkts,
@@ -19776,7 +19776,7 @@ entity top_aurora_0_0_pre is
     s_axi_tx_tlast : out STD_LOGIC;
     s_axi_tx_tdata : out STD_LOGIC_VECTOR ( 0 to 31 );
     sys_reset_out : in STD_LOGIC;
-    user_clk_out : in STD_LOGIC;
+    CLK : in STD_LOGIC;
     m_axis_tvalid : in STD_LOGIC;
     \storage_r_reg[15]\ : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC;
@@ -20236,7 +20236,7 @@ passthrough_i_1: unisim.vcomponents.LUT4
     );
 passthrough_reg: unisim.vcomponents.FDSE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => '1',
       D => passthrough_i_1_n_0,
       Q => \^passthrough_reg_0\,
@@ -20262,7 +20262,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[0]\: unisim.vcomponents.FDSE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[0]_i_2_n_7\,
       Q => seq_ctr_reg(0),
@@ -20286,7 +20286,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[10]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[8]_i_1_n_5\,
       Q => seq_ctr_reg(10),
@@ -20294,7 +20294,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[11]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[8]_i_1_n_4\,
       Q => seq_ctr_reg(11),
@@ -20302,7 +20302,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[12]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[12]_i_1_n_7\,
       Q => seq_ctr_reg(12),
@@ -20325,7 +20325,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[13]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[12]_i_1_n_6\,
       Q => seq_ctr_reg(13),
@@ -20333,7 +20333,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[14]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[12]_i_1_n_5\,
       Q => seq_ctr_reg(14),
@@ -20341,7 +20341,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[15]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[12]_i_1_n_4\,
       Q => seq_ctr_reg(15),
@@ -20349,7 +20349,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[1]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[0]_i_2_n_6\,
       Q => seq_ctr_reg(1),
@@ -20357,7 +20357,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[0]_i_2_n_5\,
       Q => seq_ctr_reg(2),
@@ -20365,7 +20365,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[0]_i_2_n_4\,
       Q => seq_ctr_reg(3),
@@ -20373,7 +20373,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[4]_i_1_n_7\,
       Q => seq_ctr_reg(4),
@@ -20396,7 +20396,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[4]_i_1_n_6\,
       Q => seq_ctr_reg(5),
@@ -20404,7 +20404,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[6]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[4]_i_1_n_5\,
       Q => seq_ctr_reg(6),
@@ -20412,7 +20412,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[7]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[4]_i_1_n_4\,
       Q => seq_ctr_reg(7),
@@ -20420,7 +20420,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[8]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[8]_i_1_n_7\,
       Q => seq_ctr_reg(8),
@@ -20443,7 +20443,7 @@ passthrough_reg: unisim.vcomponents.FDSE
     );
 \seq_ctr_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => \seq_ctr[0]_i_1_n_0\,
       D => \seq_ctr_reg[8]_i_1_n_6\,
       Q => seq_ctr_reg(9),
@@ -20461,7 +20461,7 @@ state_i_1: unisim.vcomponents.LUT3
     );
 state_reg: unisim.vcomponents.FDRE
      port map (
-      C => user_clk_out,
+      C => CLK,
       CE => '1',
       D => state_i_1_n_0,
       Q => state_reg_n_0,
@@ -33587,9 +33587,9 @@ entity top_aurora_0_0_aurora_8b10b_0_multi_gt is
     txn : out STD_LOGIC;
     txp : out STD_LOGIC;
     rx_realign_i : out STD_LOGIC;
-    init_clk_in_0 : out STD_LOGIC;
+    free_clk_in : out STD_LOGIC;
     tx_out_clk : out STD_LOGIC;
-    init_clk_in_1 : out STD_LOGIC;
+    free_clk_in_0 : out STD_LOGIC;
     drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     RXDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     D : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -33598,7 +33598,7 @@ entity top_aurora_0_0_aurora_8b10b_0_multi_gt is
     pll_not_locked_out : out STD_LOGIC;
     ENABLE_ERR_DETECT_reg : out STD_LOGIC_VECTOR ( 3 downto 0 );
     consecutive_commas_r_reg : out STD_LOGIC;
-    init_clk_in_2 : out STD_LOGIC;
+    free_clk_in_1 : out STD_LOGIC;
     \previous_cycle_data_r_reg[7]\ : out STD_LOGIC_VECTOR ( 5 downto 0 );
     \left_align_select_r_reg[0]\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
     \previous_cycle_control_r_reg[0]\ : out STD_LOGIC;
@@ -33670,6 +33670,9 @@ gt0_aurora_8b10b_0_i: entity work.top_aurora_0_0_aurora_8b10b_0_gt
       ena_comma_align_i => ena_comma_align_i,
       enable_err_detect_i => enable_err_detect_i,
       flag2_reg_0 => flag2_reg,
+      free_clk_in => free_clk_in,
+      free_clk_in_0 => free_clk_in_0,
+      free_clk_in_1 => free_clk_in_1,
       gt_qpllclk_quad1_out => gt_qpllclk_quad1_out,
       gt_qpllrefclk_quad1_out => gt_qpllrefclk_quad1_out,
       gt_refclk1 => gt_refclk1,
@@ -33680,9 +33683,6 @@ gt0_aurora_8b10b_0_i: entity work.top_aurora_0_0_aurora_8b10b_0_gt
       hard_err_gt0 => hard_err_gt0,
       in0 => in0,
       init_clk_in => init_clk_in,
-      init_clk_in_0 => init_clk_in_0,
-      init_clk_in_1 => init_clk_in_1,
-      init_clk_in_2 => init_clk_in_2,
       \left_align_select_r_reg[0]\(7 downto 0) => \left_align_select_r_reg[0]\(7 downto 0),
       \left_align_select_r_reg[0]_0\ => \left_align_select_r_reg[0]_0\,
       \left_align_select_r_reg[0]_1\ => \left_align_select_r_reg[0]_1\,
@@ -40566,7 +40566,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER is
   port (
     \out\ : out STD_LOGIC;
-    init_clk_in_0 : out STD_LOGIC;
+    free_clk_in : out STD_LOGIC;
     drprdy_out : out STD_LOGIC;
     txn : out STD_LOGIC;
     txp : out STD_LOGIC;
@@ -40581,7 +40581,7 @@ entity top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER is
     pll_not_locked_out : out STD_LOGIC;
     ENABLE_ERR_DETECT_reg : out STD_LOGIC_VECTOR ( 3 downto 0 );
     consecutive_commas_r_reg : out STD_LOGIC;
-    init_clk_in_1 : out STD_LOGIC;
+    free_clk_in_0 : out STD_LOGIC;
     \previous_cycle_data_r_reg[7]\ : out STD_LOGIC_VECTOR ( 5 downto 0 );
     \left_align_select_r_reg[0]\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
     \previous_cycle_control_r_reg[0]\ : out STD_LOGIC;
@@ -40630,6 +40630,7 @@ architecture STRUCTURE of top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER is
   signal aurora_8b10b_0_multi_gt_i_n_7 : STD_LOGIC;
   signal cpll_reset_i : STD_LOGIC;
   signal data0 : STD_LOGIC_VECTOR ( 31 downto 1 );
+  signal \^free_clk_in\ : STD_LOGIC;
   signal \gt0_aurora_8b10b_0_i/ack_flag\ : STD_LOGIC;
   signal gt0_rxresetdone_r3_reg_srl3_n_0 : STD_LOGIC;
   signal gt0_txresetdone_r3_reg_srl3_n_0 : STD_LOGIC;
@@ -40646,7 +40647,6 @@ architecture STRUCTURE of top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER is
   signal gtrxreset_r2 : STD_LOGIC;
   signal gtrxreset_r3 : STD_LOGIC;
   signal gtrxreset_sync : STD_LOGIC;
-  signal \^init_clk_in_0\ : STD_LOGIC;
   signal \^link_reset_r\ : STD_LOGIC;
   signal link_reset_r2 : STD_LOGIC;
   signal rx_cdrlock_counter : STD_LOGIC_VECTOR ( 31 downto 1 );
@@ -40738,7 +40738,7 @@ architecture STRUCTURE of top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER is
   attribute equivalent_register_removal of gtrxreset_r1_reg : label is "no";
   attribute equivalent_register_removal of rxfsm_rxresetdone_r2_reg : label is "no";
 begin
-  init_clk_in_0 <= \^init_clk_in_0\;
+  free_clk_in <= \^free_clk_in\;
   link_reset_r <= \^link_reset_r\;
   rx_resetdone_out <= \^rx_resetdone_out\;
 aurora_8b10b_0_multi_gt_i: entity work.top_aurora_0_0_aurora_8b10b_0_multi_gt
@@ -40765,6 +40765,9 @@ aurora_8b10b_0_multi_gt_i: entity work.top_aurora_0_0_aurora_8b10b_0_multi_gt
       ena_comma_align_i => ena_comma_align_i,
       enable_err_detect_i => enable_err_detect_i,
       flag2_reg => gt_txresetfsm_i_n_4,
+      free_clk_in => aurora_8b10b_0_multi_gt_i_n_5,
+      free_clk_in_0 => aurora_8b10b_0_multi_gt_i_n_7,
+      free_clk_in_1 => free_clk_in_0,
       gt_qpllclk_quad1_out => gt_qpllclk_quad1_out,
       gt_qpllrefclk_quad1_out => gt_qpllrefclk_quad1_out,
       gt_refclk1 => gt_refclk1,
@@ -40773,11 +40776,8 @@ aurora_8b10b_0_multi_gt_i: entity work.top_aurora_0_0_aurora_8b10b_0_multi_gt
       gt_tx_reset_i => gt_tx_reset_i,
       gt_txuserrdy_i => gt_txuserrdy_i,
       hard_err_gt0 => hard_err_gt0,
-      in0 => \^init_clk_in_0\,
+      in0 => \^free_clk_in\,
       init_clk_in => init_clk_in,
-      init_clk_in_0 => aurora_8b10b_0_multi_gt_i_n_5,
-      init_clk_in_1 => aurora_8b10b_0_multi_gt_i_n_7,
-      init_clk_in_2 => init_clk_in_1,
       \left_align_select_r_reg[0]\(7 downto 0) => \left_align_select_r_reg[0]\(7 downto 0),
       \left_align_select_r_reg[0]_0\ => \left_align_select_r_reg[0]_0\,
       \left_align_select_r_reg[0]_1\ => \left_align_select_r_reg[0]_1\,
@@ -40850,7 +40850,7 @@ gt_rxresetfsm_i: entity work.top_aurora_0_0_aurora_8b10b_0_rx_startup_fsm
       p_level_in_d1_cdc_from_reg => p_level_in_d1_cdc_from_reg,
       reset_time_out_reg_0 => rx_cdrlocked_reg_n_0,
       rxfsm_rxresetdone_r => rxfsm_rxresetdone_r,
-      s_level_out_d1_aurora_8b10b_0_cdc_to_reg => \^init_clk_in_0\
+      s_level_out_d1_aurora_8b10b_0_cdc_to_reg => \^free_clk_in\
     );
 gt_txresetfsm_i: entity work.top_aurora_0_0_aurora_8b10b_0_tx_startup_fsm
      port map (
@@ -40862,7 +40862,7 @@ gt_txresetfsm_i: entity work.top_aurora_0_0_aurora_8b10b_0_tx_startup_fsm
       init_clk_in => init_clk_in,
       \init_wait_count_reg[7]_0\ => \init_wait_count_reg[7]\,
       \out\ => \out\,
-      s_level_out_d1_aurora_8b10b_0_cdc_to_reg => \^init_clk_in_0\,
+      s_level_out_d1_aurora_8b10b_0_cdc_to_reg => \^free_clk_in\,
       s_level_out_d3_reg => s_level_out_d3_reg,
       s_level_out_d5_reg => p_level_in_d1_cdc_from_reg,
       txfsm_txresetdone_r => txfsm_txresetdone_r
@@ -46984,14 +46984,14 @@ gt_wrapper_i: entity work.top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
       drpwe_in => drpwe_in,
       ena_comma_align_i => ena_comma_align_i,
       enable_err_detect_i => enable_err_detect_i,
+      free_clk_in => \^tx_lock\,
+      free_clk_in_0 => gt_wrapper_i_n_71,
       gt_qpllclk_quad1_out => gt_qpllclk_quad1_out,
       gt_qpllrefclk_quad1_out => gt_qpllrefclk_quad1_out,
       gt_refclk1 => gt_refclk1,
       gtrxreset_i => gtrxreset_i,
       hard_err_gt0 => \aurora_8b10b_0_err_detect_4byte_i/hard_err_gt0\,
       init_clk_in => init_clk_in,
-      init_clk_in_0 => \^tx_lock\,
-      init_clk_in_1 => gt_wrapper_i_n_71,
       \init_wait_count_reg[7]\ => \init_wait_count_reg[7]\,
       \left_align_select_r_reg[0]\(7) => gt_wrapper_i_n_78,
       \left_align_select_r_reg[0]\(6) => gt_wrapper_i_n_79,
@@ -50646,7 +50646,7 @@ aurora_8b10b_0_core_i: entity work.top_aurora_0_0_aurora_8b10b_0_core
     );
 clock_module_i: entity work.top_aurora_0_0_aurora_8b10b_0_CLOCK_MODULE
      port map (
-      init_clk_in => \^user_clk_out\,
+      free_clk_in => \^user_clk_out\,
       tx_out_clk => tx_out_clk_i
     );
 gt_common_support: entity work.top_aurora_0_0_aurora_8b10b_0_gt_common_wrapper
@@ -53958,13 +53958,11 @@ entity top_aurora_0_0_aurora is
     m_axis_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axis_tlast : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
-    init_clk_in : in STD_LOGIC;
+    free_clk_in : in STD_LOGIC;
     gt_refclk1 : in STD_LOGIC;
-    drpclk_in : in STD_LOGIC;
     user_clk_out : out STD_LOGIC;
     reset : in STD_LOGIC;
     sys_reset_out : out STD_LOGIC;
-    S_AXI_ACLK : in STD_LOGIC;
     S_AXI_ARESETN : in STD_LOGIC;
     S_AXI_AWADDR : in STD_LOGIC_VECTOR ( 5 downto 0 );
     S_AXI_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -54115,7 +54113,7 @@ S_AXI_ARREADY_i_1: unisim.vcomponents.LUT2
     );
 S_AXI_ARREADY_reg: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => '1',
       D => S_AXI_ARREADY0,
       Q => \^s_axi_arready\,
@@ -54141,7 +54139,7 @@ S_AXI_AWREADY_i_2: unisim.vcomponents.LUT3
     );
 S_AXI_AWREADY_reg: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => '1',
       D => S_AXI_AWREADY0,
       Q => \^s_axi_awready\,
@@ -54162,7 +54160,7 @@ S_AXI_BVALID_i_1: unisim.vcomponents.LUT6
     );
 S_AXI_BVALID_reg: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => '1',
       D => S_AXI_BVALID_i_1_n_0,
       Q => \^s_axi_bvalid\,
@@ -54183,7 +54181,7 @@ S_AXI_BVALID_reg: unisim.vcomponents.FDRE
     );
 \S_AXI_RDATA_reg[0]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => '1',
       D => \S_AXI_RDATA[0]_i_1_n_0\,
       Q => \^s_axi_rdata\(0),
@@ -54202,7 +54200,7 @@ S_AXI_RVALID_i_1: unisim.vcomponents.LUT4
     );
 S_AXI_RVALID_reg: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => '1',
       D => S_AXI_RVALID_i_1_n_0,
       Q => \^s_axi_rvalid\,
@@ -54220,7 +54218,7 @@ S_AXI_WREADY_i_1: unisim.vcomponents.LUT3
     );
 S_AXI_WREADY_reg: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => '1',
       D => S_AXI_WREADY0,
       Q => \^s_axi_wready\,
@@ -54234,7 +54232,7 @@ aurora_0: entity work.top_aurora_0_0_aurora_8b10b_0
      port map (
       channel_up => NLW_aurora_0_channel_up_UNCONNECTED,
       drpaddr_in(8 downto 0) => B"000000000",
-      drpclk_in => drpclk_in,
+      drpclk_in => free_clk_in,
       drpdi_in(15 downto 0) => B"0000000000000000",
       drpdo_out(15 downto 0) => NLW_aurora_0_drpdo_out_UNCONNECTED(15 downto 0),
       drpen_in => '0',
@@ -54249,7 +54247,7 @@ aurora_0: entity work.top_aurora_0_0_aurora_8b10b_0
       gt_reset => reset,
       gt_reset_out => NLW_aurora_0_gt_reset_out_UNCONNECTED,
       hard_err => NLW_aurora_0_hard_err_UNCONNECTED,
-      init_clk_in => init_clk_in,
+      init_clk_in => free_clk_in,
       lane_up => NLW_aurora_0_lane_up_UNCONNECTED,
       link_reset_out => NLW_aurora_0_link_reset_out_UNCONNECTED,
       loopback(2 downto 0) => B"000",
@@ -54590,15 +54588,16 @@ m_axis_tvalid_INST_0: unisim.vcomponents.LUT2
     );
 post: entity work.top_aurora_0_0_post
      port map (
+      CLK => \^user_clk_out\,
       m_axi_rx_tdata(0 to 31) => m_axis_aurora_tdata(0 to 31),
       m_axi_rx_tlast => m_axis_aurora_tlast,
       m_axi_rx_tvalid => m_axis_aurora_tvalid,
       m_axis_tdata(31 downto 0) => m_axis_tdata(31 downto 0),
-      sys_reset_out => \^sys_reset_out\,
-      user_clk_out => \^user_clk_out\
+      sys_reset_out => \^sys_reset_out\
     );
 pre: entity work.top_aurora_0_0_pre
      port map (
+      CLK => \^user_clk_out\,
       m_axis_tdata(31 downto 0) => s_axis_loop_tdata(31 downto 0),
       m_axis_tlast => s_axis_loop_tlast,
       m_axis_tvalid => s_axis_loop_tvalid,
@@ -54610,12 +54609,11 @@ pre: entity work.top_aurora_0_0_pre
       s_axis_tlast => s_axis_tlast,
       s_axis_tvalid => s_axis_tvalid,
       \storage_r_reg[15]\ => vio_in0(0),
-      sys_reset_out => \^sys_reset_out\,
-      user_clk_out => \^user_clk_out\
+      sys_reset_out => \^sys_reset_out\
     );
 \s_axi_araddr_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_ARREADY0,
       D => S_AXI_ARADDR(2),
       Q => \^s_axi_araddr\(2),
@@ -54623,7 +54621,7 @@ pre: entity work.top_aurora_0_0_pre
     );
 \s_axi_araddr_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_ARREADY0,
       D => S_AXI_ARADDR(3),
       Q => \^s_axi_araddr\(3),
@@ -54631,7 +54629,7 @@ pre: entity work.top_aurora_0_0_pre
     );
 \s_axi_araddr_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_ARREADY0,
       D => S_AXI_ARADDR(4),
       Q => \^s_axi_araddr\(4),
@@ -54639,7 +54637,7 @@ pre: entity work.top_aurora_0_0_pre
     );
 \s_axi_araddr_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_ARREADY0,
       D => S_AXI_ARADDR(5),
       Q => \^s_axi_araddr\(5),
@@ -54647,7 +54645,7 @@ pre: entity work.top_aurora_0_0_pre
     );
 \s_axi_awaddr_reg[2]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_AWREADY0,
       D => S_AXI_AWADDR(2),
       Q => p_0_in(0),
@@ -54655,7 +54653,7 @@ pre: entity work.top_aurora_0_0_pre
     );
 \s_axi_awaddr_reg[3]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_AWREADY0,
       D => S_AXI_AWADDR(3),
       Q => p_0_in(1),
@@ -54663,7 +54661,7 @@ pre: entity work.top_aurora_0_0_pre
     );
 \s_axi_awaddr_reg[4]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_AWREADY0,
       D => S_AXI_AWADDR(4),
       Q => p_0_in(2),
@@ -54671,7 +54669,7 @@ pre: entity work.top_aurora_0_0_pre
     );
 \s_axi_awaddr_reg[5]\: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => S_AXI_AWREADY0,
       D => S_AXI_AWADDR(5),
       Q => p_0_in(3),
@@ -54704,7 +54702,7 @@ slv_ctrl_loopback_i_2: unisim.vcomponents.LUT6
     );
 slv_ctrl_loopback_reg: unisim.vcomponents.FDRE
      port map (
-      C => S_AXI_ACLK,
+      C => \^user_clk_out\,
       CE => '1',
       D => slv_ctrl_loopback_i_1_n_0,
       Q => vio_in0(0),
@@ -54736,13 +54734,11 @@ entity top_aurora_0_0 is
     m_axis_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axis_tlast : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
-    init_clk_in : in STD_LOGIC;
+    free_clk_in : in STD_LOGIC;
     gt_refclk1 : in STD_LOGIC;
-    drpclk_in : in STD_LOGIC;
     user_clk_out : out STD_LOGIC;
     reset : in STD_LOGIC;
     sys_reset_out : out STD_LOGIC;
-    S_AXI_ACLK : in STD_LOGIC;
     S_AXI_ARESETN : in STD_LOGIC;
     S_AXI_AWADDR : in STD_LOGIC_VECTOR ( 5 downto 0 );
     S_AXI_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -54783,10 +54779,8 @@ architecture STRUCTURE of top_aurora_0_0 is
   attribute X_INTERFACE_INFO of SFP_TX_DISABLE_N : signal is "xilinx.com:interface:sfp:1.0 SFP TX_DISABLE";
   attribute X_INTERFACE_INFO of SFP_TX_N : signal is "xilinx.com:interface:sfp:1.0 SFP TXN";
   attribute X_INTERFACE_INFO of SFP_TX_P : signal is "xilinx.com:interface:sfp:1.0 SFP TXP";
-  attribute X_INTERFACE_INFO of S_AXI_ACLK : signal is "xilinx.com:signal:clock:1.0 S_AXI_ACLK CLK";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of S_AXI_ACLK : signal is "XIL_INTERFACENAME S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN top_axi_pcie_0_0_axi_aclk_out, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of S_AXI_ARESETN : signal is "xilinx.com:signal:reset:1.0 S_AXI_ARESETN RST";
+  attribute X_INTERFACE_PARAMETER : string;
   attribute X_INTERFACE_PARAMETER of S_AXI_ARESETN : signal is "XIL_INTERFACENAME S_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of S_AXI_ARREADY : signal is "xilinx.com:interface:aximm:1.0 S_AXI ARREADY";
   attribute X_INTERFACE_INFO of S_AXI_ARVALID : signal is "xilinx.com:interface:aximm:1.0 S_AXI ARVALID";
@@ -54795,16 +54789,14 @@ architecture STRUCTURE of top_aurora_0_0 is
   attribute X_INTERFACE_INFO of S_AXI_BREADY : signal is "xilinx.com:interface:aximm:1.0 S_AXI BREADY";
   attribute X_INTERFACE_INFO of S_AXI_BVALID : signal is "xilinx.com:interface:aximm:1.0 S_AXI BVALID";
   attribute X_INTERFACE_INFO of S_AXI_RREADY : signal is "xilinx.com:interface:aximm:1.0 S_AXI RREADY";
-  attribute X_INTERFACE_PARAMETER of S_AXI_RREADY : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 6, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 0, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN top_axi_pcie_0_0_axi_aclk_out, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of S_AXI_RREADY : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, ID_WIDTH 0, ADDR_WIDTH 6, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 0, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of S_AXI_RVALID : signal is "xilinx.com:interface:aximm:1.0 S_AXI RVALID";
   attribute X_INTERFACE_INFO of S_AXI_WREADY : signal is "xilinx.com:interface:aximm:1.0 S_AXI WREADY";
   attribute X_INTERFACE_INFO of S_AXI_WVALID : signal is "xilinx.com:interface:aximm:1.0 S_AXI WVALID";
-  attribute X_INTERFACE_INFO of drpclk_in : signal is "xilinx.com:signal:clock:1.0 drpclk_in CLK";
-  attribute X_INTERFACE_PARAMETER of drpclk_in : signal is "XIL_INTERFACENAME drpclk_in, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_1_1_IBUF_OUT, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of free_clk_in : signal is "xilinx.com:signal:clock:1.0 free_clk_in CLK";
+  attribute X_INTERFACE_PARAMETER of free_clk_in : signal is "XIL_INTERFACENAME free_clk_in, FREQ_HZ 156000000, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_1_1_IBUF_OUT, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of gt_refclk1 : signal is "xilinx.com:signal:clock:1.0 gt_refclk1 CLK";
-  attribute X_INTERFACE_PARAMETER of gt_refclk1 : signal is "XIL_INTERFACENAME gt_refclk1, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_2_IBUF_OUT, INSERT_VIP 0";
-  attribute X_INTERFACE_INFO of init_clk_in : signal is "xilinx.com:signal:clock:1.0 init_clk_in CLK";
-  attribute X_INTERFACE_PARAMETER of init_clk_in : signal is "XIL_INTERFACENAME init_clk_in, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_0_IBUF_OUT, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of gt_refclk1 : signal is "XIL_INTERFACENAME gt_refclk1, ASSOCIATED_RESET reset, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_2_IBUF_OUT, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of m_axis_tlast : signal is "xilinx.com:interface:axis:1.0 m_axis TLAST";
   attribute X_INTERFACE_INFO of m_axis_tready : signal is "xilinx.com:interface:axis:1.0 m_axis TREADY";
   attribute X_INTERFACE_PARAMETER of m_axis_tready : signal is "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, LAYERED_METADATA undef, INSERT_VIP 0";
@@ -54818,7 +54810,7 @@ architecture STRUCTURE of top_aurora_0_0 is
   attribute X_INTERFACE_INFO of sys_reset_out : signal is "xilinx.com:signal:reset:1.0 sys_reset_out RST";
   attribute X_INTERFACE_PARAMETER of sys_reset_out : signal is "XIL_INTERFACENAME sys_reset_out, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of user_clk_out : signal is "xilinx.com:signal:clock:1.0 usr_clk_out CLK";
-  attribute X_INTERFACE_PARAMETER of user_clk_out : signal is "XIL_INTERFACENAME usr_clk_out, ASSOCIATED_BUSIF m_axis:s_axis, ASSOCIATED_RESET sys_reset_out, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of user_clk_out : signal is "XIL_INTERFACENAME usr_clk_out, ASSOCIATED_BUSIF m_axis:s_axis:S_AXI, ASSOCIATED_RESET sys_reset_out:S_AXI_ARESETN, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of S_AXI_ARADDR : signal is "xilinx.com:interface:aximm:1.0 S_AXI ARADDR";
   attribute X_INTERFACE_INFO of S_AXI_ARPROT : signal is "xilinx.com:interface:aximm:1.0 S_AXI ARPROT";
   attribute X_INTERFACE_INFO of S_AXI_AWADDR : signal is "xilinx.com:interface:aximm:1.0 S_AXI AWADDR";
@@ -54836,7 +54828,6 @@ inst: entity work.top_aurora_0_0_aurora
       SFP_TX_DISABLE_N => SFP_TX_DISABLE_N,
       SFP_TX_N => SFP_TX_N,
       SFP_TX_P => SFP_TX_P,
-      S_AXI_ACLK => S_AXI_ACLK,
       S_AXI_ARADDR(5 downto 0) => S_AXI_ARADDR(5 downto 0),
       S_AXI_ARESETN => S_AXI_ARESETN,
       S_AXI_ARPROT(2 downto 0) => S_AXI_ARPROT(2 downto 0),
@@ -54855,9 +54846,8 @@ inst: entity work.top_aurora_0_0_aurora
       S_AXI_WREADY => S_AXI_WREADY,
       S_AXI_WSTRB(3 downto 0) => S_AXI_WSTRB(3 downto 0),
       S_AXI_WVALID => S_AXI_WVALID,
-      drpclk_in => drpclk_in,
+      free_clk_in => free_clk_in,
       gt_refclk1 => gt_refclk1,
-      init_clk_in => init_clk_in,
       m_axis_tdata(31 downto 0) => m_axis_tdata(31 downto 0),
       m_axis_tlast => m_axis_tlast,
       m_axis_tready => m_axis_tready,

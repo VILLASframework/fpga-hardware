@@ -3,7 +3,7 @@
   <spirit:vendor>acs.eonerc.rwth-aachen.de</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>aurora</spirit:name>
-  <spirit:version>1.7</spirit:version>
+  <spirit:version>1.9</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>m_axis</spirit:name>
@@ -254,32 +254,6 @@
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>S_AXI_ACLK</spirit:name>
-      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
-      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>CLK</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>S_AXI_ACLK</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-      <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_ACLK.ASSOCIATED_BUSIF">S_AXI</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>ASSOCIATED_RESET</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_ACLK.ASSOCIATED_RESET">S_AXI_ARESETN</spirit:value>
-        </spirit:parameter>
-      </spirit:parameters>
-    </spirit:busInterface>
-    <spirit:busInterface>
       <spirit:name>SFP</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="sfp" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="sfp_rtl" spirit:version="1.0"/>
@@ -372,11 +346,11 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>ASSOCIATED_BUSIF</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.USR_CLK_OUT.ASSOCIATED_BUSIF">m_axis:s_axis</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.USR_CLK_OUT.ASSOCIATED_BUSIF">m_axis:s_axis:S_AXI</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>ASSOCIATED_RESET</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.USR_CLK_OUT.ASSOCIATED_RESET">sys_reset_out</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.USR_CLK_OUT.ASSOCIATED_RESET">sys_reset_out:S_AXI_ARESETN</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -424,34 +398,14 @@
           <spirit:name>FREQ_HZ</spirit:name>
           <spirit:value spirit:id="BUSIFPARAM_VALUE.GT_REFCLK1.FREQ_HZ"/>
         </spirit:parameter>
-      </spirit:parameters>
-    </spirit:busInterface>
-    <spirit:busInterface>
-      <spirit:name>init_clk_in</spirit:name>
-      <spirit:description>Initial free-running clock for Aurora IP</spirit:description>
-      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
-      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>CLK</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>init_clk_in</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-      <spirit:parameters>
         <spirit:parameter>
-          <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.INIT_CLK_IN.FREQ_HZ"/>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.GT_REFCLK1.ASSOCIATED_RESET">reset</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>drpclk_in</spirit:name>
-      <spirit:description>Transceiver DRP clock for the Aurora IP</spirit:description>
+      <spirit:name>free_clk_in</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
       <spirit:slave/>
@@ -461,14 +415,18 @@
             <spirit:name>CLK</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>drpclk_in</spirit:name>
+            <spirit:name>free_clk_in</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
       <spirit:parameters>
         <spirit:parameter>
-          <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.DRPCLK_IN.FREQ_HZ"/>
+          <spirit:name>NUM_READ_OUTSTANDING</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.FREE_CLK_IN.NUM_READ_OUTSTANDING"/>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>NUM_WRITE_OUTSTANDING</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.FREE_CLK_IN.NUM_WRITE_OUTSTANDING"/>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -511,7 +469,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>79e8510a</spirit:value>
+            <spirit:value>97482cf1</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -539,7 +497,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>12521d5a</spirit:value>
+            <spirit:value>da09b553</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -746,7 +704,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>init_clk_in</spirit:name>
+        <spirit:name>free_clk_in</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -760,19 +718,6 @@
       </spirit:port>
       <spirit:port>
         <spirit:name>gt_refclk1</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>drpclk_in</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -814,19 +759,6 @@
         <spirit:name>sys_reset_out</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>S_AXI_ACLK</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
@@ -1144,15 +1076,15 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
+        <spirit:name>ip/vio_aurora/vio_aurora.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>ip/fifo_loop/fifo_loop.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>ip/aurora_8b10b_0/aurora_8b10b_0.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>ip/vio_aurora/vio_aurora.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
@@ -1175,7 +1107,7 @@
       <spirit:file>
         <spirit:name>hdl/aurora.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_66403ee1</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_d47b281b</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1221,15 +1153,15 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
+        <spirit:name>ip/vio_aurora/vio_aurora.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>ip/fifo_loop/fifo_loop.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>ip/aurora_8b10b_0/aurora_8b10b_0.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>ip/vio_aurora/vio_aurora.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
@@ -1293,7 +1225,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/aurora_v1_7.tcl</spirit:name>
+        <spirit:name>xgui/aurora_v1_9.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_f92e9879</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -1323,8 +1255,8 @@
       </xilinx:xpmLibraries>
       <xilinx:vendorDisplayName>Institute for Automation of Complex Power Systems, RWTH Aachen</xilinx:vendorDisplayName>
       <xilinx:vendorURL>http://www.acs.eonerc.rwth-aachen.de</xilinx:vendorURL>
-      <xilinx:coreRevision>17</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-04-16T23:36:27Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>20</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2020-05-13T10:40:23Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@55147c9c_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@76271a54_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
@@ -1565,14 +1497,51 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@450eb40b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@50acd41c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@56a7fc5b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79cee061_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29f12e3f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@711e21e8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43b14055_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d684017_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65f8d581_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e62135c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43803756_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69f5a704_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d2bcb4c_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e40f969_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1de41b56_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58d4a9ca_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2279c4b7_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@782b0c50_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a5527c4_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f3028f3_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55be702d_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f8dc4bd_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@622d1ee0_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fda0425_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fb2f466_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4200c11a_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f26efc4_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@415acf1a_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f3f2bf5_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23593396_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@593683c5_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b0113a7_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d1dd6b6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52e47d71_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fa651eb_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@90e62b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d7d7388_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a4b7a89_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2824ed69_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@514e03af_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/aurora_rtds</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="76b1f7dd"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="331ce024"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="509d916e"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="7c115739"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="8a5ee11e"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="3a66df86"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="a4f735b4"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="771eb76a"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

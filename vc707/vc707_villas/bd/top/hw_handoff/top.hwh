@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr 17 01:40:00 2020" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May 13 12:45:47 2020" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="virtex7" BOARD="xilinx.com:vc707:part0:1.4" DEVICE="7vx485t" NAME="top" PACKAGE="ffg1761" SPEEDGRADE="-2"/>
 
@@ -52,16 +52,6 @@
     <PORT DIR="O" LEFT="3" NAME="pcie_mgt_txp" RIGHT="0" SIGIS="undef" SIGNAME="pcie_0_axi_pcie_0_pci_exp_txp">
       <CONNECTIONS>
         <CONNECTION INSTANCE="pcie_0_axi_pcie_0" PORT="pci_exp_txp"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clk_clk_p" SIGIS="clk" SIGNAME="util_ds_buf_0_IBUF_DS_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="util_ds_buf_0" PORT="IBUF_DS_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clk_clk_n" SIGIS="clk" SIGNAME="util_ds_buf_0_IBUF_DS_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="util_ds_buf_0" PORT="IBUF_DS_N"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="user_clk_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="util_ds_buf_1_IBUF_DS_P">
@@ -122,14 +112,6 @@
         <PORTMAP LOGICAL="CLK_N" PHYSICAL="clkbuf_clk_n"/>
       </PORTMAPS>
     </BUSINTERFACE>
-    <BUSINTERFACE BUSNAME="External_Interface_sys_clk" NAME="sys_clk" TYPE="TARGET">
-      <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
-      <PARAMETER NAME="FREQ_HZ" VALUE="50000000"/>
-      <PORTMAPS>
-        <PORTMAP LOGICAL="CLK_P" PHYSICAL="sys_clk_clk_p"/>
-        <PORTMAP LOGICAL="CLK_N" PHYSICAL="sys_clk_clk_n"/>
-      </PORTMAPS>
-    </BUSINTERFACE>
     <BUSINTERFACE BUSNAME="pcie_0_axi_pcie_0_pcie_7x_mgt" NAME="pcie_mgt" TYPE="INITIATOR">
       <PORTMAPS>
         <PORTMAP LOGICAL="rxn" PHYSICAL="pcie_mgt_rxn"/>
@@ -184,7 +166,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="17" FULLNAME="/hier_0/aurora_0" HWVERSION="1.7" INSTANCE="hier_0_aurora_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="aurora" VLNV="acs.eonerc.rwth-aachen.de:user:aurora:1.7">
+    <MODULE COREREVISION="20" FULLNAME="/hier_0/aurora_0" HWVERSION="1.9" INSTANCE="hier_0_aurora_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="aurora" VLNV="acs.eonerc.rwth-aachen.de:user:aurora:1.9">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI" NAME="reg0" RANGE="4096" USAGE="register"/>
@@ -261,19 +243,14 @@
             <CONNECTION INSTANCE="hier_0_axis_interconnect_0_axis_interconnect_0_s00_couplers_auto_cc" PORT="s_axis_tready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="init_clk_in" SIGIS="clk" SIGNAME="util_ds_buf_0_IBUF_OUT">
+        <PORT CLKFREQUENCY="156000000" DIR="I" NAME="free_clk_in" SIGIS="clk" SIGNAME="util_ds_buf_1_IBUF_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="util_ds_buf_0" PORT="IBUF_OUT"/>
+            <CONNECTION INSTANCE="util_ds_buf_1" PORT="IBUF_OUT"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="gt_refclk1" SIGIS="clk" SIGNAME="hier_0_util_ds_buf_0_IBUF_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_0_util_ds_buf_0" PORT="IBUF_OUT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="drpclk_in" SIGIS="clk" SIGNAME="util_ds_buf_1_IBUF_OUT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="util_ds_buf_1" PORT="IBUF_OUT"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="user_clk_out" SIGIS="clk" SIGNAME="hier_0_aurora_0_user_clk_out">
@@ -282,6 +259,7 @@
             <CONNECTION INSTANCE="hier_0_axis_interconnect_0_axis_interconnect_0_m00_couplers_auto_cc" PORT="m_axis_aclk"/>
             <CONNECTION INSTANCE="hier_0_axis_interconnect_0_axis_interconnect_0_m00_couplers_auto_ss_k" PORT="aclk"/>
             <CONNECTION INSTANCE="hier_0_axis_interconnect_0_axis_interconnect_0_m00_couplers_auto_ss_slidr" PORT="aclk"/>
+            <CONNECTION INSTANCE="hier_0_axi_interconnect_mm_0_axi_interconnect_0" PORT="M04_ACLK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="hier_0_aurora_reset_0_reset">
@@ -292,11 +270,6 @@
         <PORT DIR="O" NAME="sys_reset_out" SIGIS="rst" SIGNAME="hier_0_aurora_0_sys_reset_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_0_util_vector_logic_0" PORT="Op1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="125000000" DIR="I" NAME="S_AXI_ACLK" SIGIS="clk" SIGNAME="pcie_0_axi_pcie_0_axi_aclk_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="pcie_0_axi_pcie_0" PORT="axi_aclk_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="S_AXI_ARESETN" SIGIS="rst" SIGNAME="pcie_0_rst_axi_pcie_0_125M_peripheral_aresetn">
@@ -436,7 +409,7 @@
         <BUSINTERFACE BUSNAME="hier_0_axi_interconnect_mm_0_axi_interconnect_0_M04_AXI" DATAWIDTH="32" NAME="S_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="125000000"/>
+          <PARAMETER NAME="FREQ_HZ"/>
           <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="ADDR_WIDTH" VALUE="6"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
@@ -459,7 +432,7 @@
           <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
           <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="top_axi_pcie_0_0_axi_aclk_out"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="top_aurora_0_0_user_clk_out"/>
           <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
           <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
           <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
@@ -4197,9 +4170,9 @@
             <CONNECTION INSTANCE="pcie_0_rst_axi_pcie_0_125M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M04_ACLK" SIGIS="clk" SIGNAME="pcie_0_axi_pcie_0_axi_aclk_out">
+        <PORT DIR="I" NAME="M04_ACLK" SIGIS="clk" SIGNAME="hier_0_aurora_0_user_clk_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="pcie_0_axi_pcie_0" PORT="axi_aclk_out"/>
+            <CONNECTION INSTANCE="hier_0_aurora_0" PORT="user_clk_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="M04_ARESETN" SIGIS="rst" SIGNAME="pcie_0_rst_axi_pcie_0_125M_peripheral_aresetn">
@@ -12393,11 +12366,9 @@
             <CONNECTION INSTANCE="hier_0_axi_dma_axi_interconnect_0" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="hier_0_axi_dma_axi_interconnect_0" PORT="S01_ACLK"/>
             <CONNECTION INSTANCE="hier_0_axi_dma_axi_interconnect_0" PORT="M00_ACLK"/>
-            <CONNECTION INSTANCE="hier_0_axi_interconnect_mm_0_axi_interconnect_0" PORT="M04_ACLK"/>
             <CONNECTION INSTANCE="hier_0_axi_fifo_mm_s_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="hier_0_axis_data_fifo_0" PORT="s_axis_aclk"/>
             <CONNECTION INSTANCE="hier_0_axis_data_fifo_1" PORT="s_axis_aclk"/>
-            <CONNECTION INSTANCE="hier_0_aurora_0" PORT="S_AXI_ACLK"/>
             <CONNECTION INSTANCE="mm_interconnect_0_axi_interconnect_0" PORT="ACLK"/>
             <CONNECTION INSTANCE="mm_interconnect_0_axi_interconnect_0" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="mm_interconnect_0_axi_interconnect_0" PORT="M00_ACLK"/>
@@ -14327,45 +14298,6 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="12" FULLNAME="/util_ds_buf_0" HWVERSION="2.1" INSTANCE="util_ds_buf_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_ds_buf" VLNV="xilinx.com:ip:util_ds_buf:2.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_BUF_TYPE" VALUE="IBUFDS"/>
-        <PARAMETER NAME="C_SIZE" VALUE="1"/>
-        <PARAMETER NAME="C_BUFGCE_DIV" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="top_util_ds_buf_0_0"/>
-        <PARAMETER NAME="USE_BOARD_FLOW" VALUE="true"/>
-        <PARAMETER NAME="DIFF_CLK_IN_BOARD_INTERFACE" VALUE="sys_diff_clock"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="IBUF_DS_P" RIGHT="0" SIGIS="clk" SIGNAME="util_ds_buf_0_IBUF_DS_P">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="top_imp" PORT="sys_clk_clk_p"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="IBUF_DS_N" RIGHT="0" SIGIS="clk" SIGNAME="util_ds_buf_0_IBUF_DS_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="top_imp" PORT="sys_clk_clk_n"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="50000000" DIR="O" LEFT="0" NAME="IBUF_OUT" RIGHT="0" SIGIS="clk" SIGNAME="util_ds_buf_0_IBUF_OUT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_0_aurora_0" PORT="init_clk_in"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="External_Interface_sys_clk" NAME="CLK_IN_D" TYPE="TARGET" VLNV="xilinx.com:interface:diff_clock:1.0">
-          <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="50000000"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="CLK_P" PHYSICAL="IBUF_DS_P"/>
-            <PORTMAP LOGICAL="CLK_N" PHYSICAL="IBUF_DS_N"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-      </BUSINTERFACES>
-    </MODULE>
     <MODULE COREREVISION="12" FULLNAME="/util_ds_buf_1" HWVERSION="2.1" INSTANCE="util_ds_buf_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_ds_buf" VLNV="xilinx.com:ip:util_ds_buf:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -14391,7 +14323,7 @@
         <PORT CLKFREQUENCY="156000000" DIR="O" LEFT="0" NAME="IBUF_OUT" RIGHT="0" SIGIS="clk" SIGNAME="util_ds_buf_1_IBUF_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_0_aurora_reset_0" PORT="clk156"/>
-            <CONNECTION INSTANCE="hier_0_aurora_0" PORT="drpclk_in"/>
+            <CONNECTION INSTANCE="hier_0_aurora_0" PORT="free_clk_in"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

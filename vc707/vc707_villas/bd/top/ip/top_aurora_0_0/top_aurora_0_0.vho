@@ -46,8 +46,8 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.7
--- IP Revision: 17
+-- IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.9
+-- IP Revision: 20
 
 -- The following code must appear in the VHDL architecture header.
 
@@ -67,13 +67,11 @@ COMPONENT top_aurora_0_0
     m_axis_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     m_axis_tlast : OUT STD_LOGIC;
     m_axis_tready : IN STD_LOGIC;
-    init_clk_in : IN STD_LOGIC;
+    free_clk_in : IN STD_LOGIC;
     gt_refclk1 : IN STD_LOGIC;
-    drpclk_in : IN STD_LOGIC;
     user_clk_out : OUT STD_LOGIC;
     reset : IN STD_LOGIC;
     sys_reset_out : OUT STD_LOGIC;
-    S_AXI_ACLK : IN STD_LOGIC;
     S_AXI_ARESETN : IN STD_LOGIC;
     S_AXI_AWADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
     S_AXI_AWPROT : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -115,13 +113,11 @@ your_instance_name : top_aurora_0_0
     m_axis_tdata => m_axis_tdata,
     m_axis_tlast => m_axis_tlast,
     m_axis_tready => m_axis_tready,
-    init_clk_in => init_clk_in,
+    free_clk_in => free_clk_in,
     gt_refclk1 => gt_refclk1,
-    drpclk_in => drpclk_in,
     user_clk_out => user_clk_out,
     reset => reset,
     sys_reset_out => sys_reset_out,
-    S_AXI_ACLK => S_AXI_ACLK,
     S_AXI_ARESETN => S_AXI_ARESETN,
     S_AXI_AWADDR => S_AXI_AWADDR,
     S_AXI_AWPROT => S_AXI_AWPROT,

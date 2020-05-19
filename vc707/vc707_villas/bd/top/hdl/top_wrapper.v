@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-//Date        : Fri Apr 17 01:38:49 2020
+//Date        : Wed May 13 12:44:27 2020
 //Host        : ubuntu-svg-xilinx.acs-lab.eonerc.rwth-aachen.de running 64-bit Ubuntu 16.04.6 LTS
 //Command     : generate_target top_wrapper.bd
 //Design      : top_wrapper
@@ -24,8 +24,6 @@ module top_wrapper
     sfp_tx_disable,
     sfp_txn,
     sfp_txp,
-    sys_clk_clk_n,
-    sys_clk_clk_p,
     user_clk_clk_n,
     user_clk_clk_p);
   input [0:0]clkbuf_clk_n;
@@ -42,8 +40,6 @@ module top_wrapper
   output sfp_tx_disable;
   output sfp_txn;
   output sfp_txp;
-  input sys_clk_clk_n;
-  input sys_clk_clk_p;
   input [0:0]user_clk_clk_n;
   input [0:0]user_clk_clk_p;
 
@@ -61,8 +57,6 @@ module top_wrapper
   wire sfp_tx_disable;
   wire sfp_txn;
   wire sfp_txp;
-  wire sys_clk_clk_n;
-  wire sys_clk_clk_p;
   wire [0:0]user_clk_clk_n;
   wire [0:0]user_clk_clk_p;
 
@@ -81,8 +75,6 @@ module top_wrapper
         .sfp_tx_disable(sfp_tx_disable),
         .sfp_txn(sfp_txn),
         .sfp_txp(sfp_txp),
-        .sys_clk_clk_n(sys_clk_clk_n),
-        .sys_clk_clk_p(sys_clk_clk_p),
         .user_clk_clk_n(user_clk_clk_n),
         .user_clk_clk_p(user_clk_clk_p));
 endmodule

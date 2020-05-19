@@ -8,7 +8,6 @@
 ################################################################################
 create_clock -name pcie_ref_clk_p -period 10 [get_ports pcie_ref_clk_p]
 create_clock -name clkbuf_clk_p -period 8 [get_ports clkbuf_clk_p]
-create_clock -name sys_clk_clk_p -period 20 [get_ports sys_clk_clk_p]
 create_clock -name user_clk_clk_p -period 6.410 [get_ports user_clk_clk_p]
 
 ################################################################################

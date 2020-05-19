@@ -47,8 +47,8 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.7
-// IP Revision: 17
+// IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.9
+// IP Revision: 20
 
 (* X_CORE_INFO = "aurora,Vivado 2018.3" *)
 (* CHECK_LICENSE_TYPE = "top_aurora_0_0,aurora,{}" *)
@@ -68,13 +68,11 @@ module top_aurora_0_0 (
   m_axis_tdata,
   m_axis_tlast,
   m_axis_tready,
-  init_clk_in,
+  free_clk_in,
   gt_refclk1,
-  drpclk_in,
   user_clk_out,
   reset,
   sys_reset_out,
-  S_AXI_ACLK,
   S_AXI_ARESETN,
   S_AXI_AWADDR,
   S_AXI_AWPROT,
@@ -123,16 +121,13 @@ output wire m_axis_tlast;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TREADY" *)
 input wire m_axis_tready;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME init_clk_in, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_0_IBUF_OUT, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 init_clk_in CLK" *)
-input wire init_clk_in;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME gt_refclk1, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_2_IBUF_OUT, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME free_clk_in, FREQ_HZ 156000000, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_1_1_IBUF_OUT, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 free_clk_in CLK" *)
+input wire free_clk_in;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME gt_refclk1, ASSOCIATED_RESET reset, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_2_IBUF_OUT, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 gt_refclk1 CLK" *)
 input wire gt_refclk1;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME drpclk_in, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_1_1_IBUF_OUT, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 drpclk_in CLK" *)
-input wire drpclk_in;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME usr_clk_out, ASSOCIATED_BUSIF m_axis:s_axis, ASSOCIATED_RESET sys_reset_out, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME usr_clk_out, ASSOCIATED_BUSIF m_axis:s_axis:S_AXI, ASSOCIATED_RESET sys_reset_out:S_AXI_ARESETN, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 usr_clk_out CLK" *)
 output wire user_clk_out;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
@@ -141,9 +136,6 @@ input wire reset;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset_out, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_reset_out RST" *)
 output wire sys_reset_out;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN top_axi_pcie_0_0_axi_aclk_out, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 S_AXI_ACLK CLK" *)
-input wire S_AXI_ACLK;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S_AXI_ARESETN RST" *)
 input wire S_AXI_ARESETN;
@@ -179,8 +171,8 @@ output wire S_AXI_ARREADY;
 output wire [31 : 0] S_AXI_RDATA;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RVALID" *)
 output wire S_AXI_RVALID;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 6, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 0, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN top_axi_pcie_0_0_axi_aclk_out, NUM_READ_THREADS 1, NUM_WRIT\
-E_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, ID_WIDTH 0, ADDR_WIDTH 6, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 0, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BI\
+TS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RREADY" *)
 input wire S_AXI_RREADY;
 
@@ -198,13 +190,11 @@ input wire S_AXI_RREADY;
     .m_axis_tdata(m_axis_tdata),
     .m_axis_tlast(m_axis_tlast),
     .m_axis_tready(m_axis_tready),
-    .init_clk_in(init_clk_in),
+    .free_clk_in(free_clk_in),
     .gt_refclk1(gt_refclk1),
-    .drpclk_in(drpclk_in),
     .user_clk_out(user_clk_out),
     .reset(reset),
     .sys_reset_out(sys_reset_out),
-    .S_AXI_ACLK(S_AXI_ACLK),
     .S_AXI_ARESETN(S_AXI_ARESETN),
     .S_AXI_AWADDR(S_AXI_AWADDR),
     .S_AXI_AWPROT(S_AXI_AWPROT),

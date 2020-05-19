@@ -74,8 +74,6 @@ top_i: component top
       sfp_tx_disable => sfp_tx_disable,
       sfp_txn => sfp_txn,
       sfp_txp => sfp_txp,
-      sys_clk_clk_n => sys_clk_clk_n,
-      sys_clk_clk_p => sys_clk_clk_p,
       user_clk_clk_n => user_clk_clk_n,
       user_clk_clk_p => user_clk_clk_p
     );

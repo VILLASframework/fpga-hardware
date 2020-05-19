@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-//Date        : Fri Apr 17 01:38:48 2020
+//Date        : Wed May 13 12:44:26 2020
 //Host        : ubuntu-svg-xilinx.acs-lab.eonerc.rwth-aachen.de running 64-bit Ubuntu 16.04.6 LTS
 //Command     : generate_target top.bd
 //Design      : top
@@ -1765,7 +1765,6 @@ module hier_0_imp_I4NTNW
     sfp_tx_disable,
     sfp_txn,
     sfp_txp,
-    sys_clk,
     user_clk);
   output [31:0]M_AXI_DMA_PCIE_araddr;
   output [1:0]M_AXI_DMA_PCIE_arburst;
@@ -1874,7 +1873,6 @@ module hier_0_imp_I4NTNW
   output sfp_tx_disable;
   output sfp_txn;
   output sfp_txp;
-  input [0:0]sys_clk;
   input [0:0]user_clk;
 
   wire [31:0]Conn1_ARADDR;
@@ -2099,7 +2097,6 @@ module hier_0_imp_I4NTNW
   wire [0:0]clkbuf_1_CLK_P;
   wire [0:0]pcie_0_peripheral_aresetn;
   wire s_axi_aclk_1;
-  wire [0:0]sys_clk_1;
   wire [0:0]user_clk_1;
   wire [0:0]util_ds_buf_0_IBUF_OUT;
   wire xsg_pio_interrupt;
@@ -2211,7 +2208,6 @@ module hier_0_imp_I4NTNW
   assign sfp_tx_disable = aurora_0_SFP_TX_DISABLE;
   assign sfp_txn = aurora_0_SFP_TXN;
   assign sfp_txp = aurora_0_SFP_TXP;
-  assign sys_clk_1 = sys_clk[0];
   assign user_clk_1 = user_clk[0];
   top_aurora_0_0 aurora_0
        (.SFP_RX_N(aurora_0_SFP_RXN),
@@ -2219,7 +2215,6 @@ module hier_0_imp_I4NTNW
         .SFP_TX_DISABLE_N(aurora_0_SFP_TX_DISABLE),
         .SFP_TX_N(aurora_0_SFP_TXN),
         .SFP_TX_P(aurora_0_SFP_TXP),
-        .S_AXI_ACLK(s_axi_aclk_1),
         .S_AXI_ARADDR(axi_interconnect_mm_0_M04_AXI_ARADDR[5:0]),
         .S_AXI_ARESETN(pcie_0_peripheral_aresetn),
         .S_AXI_ARPROT(axi_interconnect_mm_0_M04_AXI_ARPROT),
@@ -2238,9 +2233,8 @@ module hier_0_imp_I4NTNW
         .S_AXI_WREADY(axi_interconnect_mm_0_M04_AXI_WREADY),
         .S_AXI_WSTRB(axi_interconnect_mm_0_M04_AXI_WSTRB),
         .S_AXI_WVALID(axi_interconnect_mm_0_M04_AXI_WVALID),
-        .drpclk_in(user_clk_1),
+        .free_clk_in(user_clk_1),
         .gt_refclk1(util_ds_buf_0_IBUF_OUT),
-        .init_clk_in(sys_clk_1),
         .m_axis_tdata(aurora_0_m_axis_TDATA),
         .m_axis_tlast(aurora_0_m_axis_TLAST),
         .m_axis_tready(aurora_0_m_axis_TREADY),
@@ -2438,7 +2432,7 @@ module hier_0_imp_I4NTNW
         .M03_AXI_wdata(axi_interconnect_mm_M03_AXI_WDATA),
         .M03_AXI_wready(axi_interconnect_mm_M03_AXI_WREADY),
         .M03_AXI_wvalid(axi_interconnect_mm_M03_AXI_WVALID),
-        .M04_ACLK(s_axi_aclk_1),
+        .M04_ACLK(S00_AXIS_ACLK1_1),
         .M04_ARESETN(pcie_0_peripheral_aresetn),
         .M04_AXI_araddr(axi_interconnect_mm_0_M04_AXI_ARADDR),
         .M04_AXI_arprot(axi_interconnect_mm_0_M04_AXI_ARPROT),
@@ -3551,7 +3545,7 @@ module m00_couplers_imp_L6Q0P4
   assign m00_couplers_to_auto_cc_WDATA = S_AXI_wdata[31:0];
   assign m00_couplers_to_auto_cc_WSTRB = S_AXI_wstrb[3:0];
   assign m00_couplers_to_auto_cc_WVALID = S_AXI_wvalid;
-  top_auto_cc_2 auto_cc
+  top_auto_cc_3 auto_cc
        (.m_axi_aclk(M_ACLK_1),
         .m_axi_araddr(auto_cc_to_m00_couplers_ARADDR),
         .m_axi_aresetn(M_ARESETN_1),
@@ -6235,8 +6229,45 @@ module m04_couplers_imp_A1MC5T
   input [3:0]S_AXI_wstrb;
   input S_AXI_wvalid;
 
+  wire M_ACLK_1;
+  wire M_ARESETN_1;
   wire S_ACLK_1;
   wire S_ARESETN_1;
+  wire [31:0]auto_cc_to_auto_pc_ARADDR;
+  wire [1:0]auto_cc_to_auto_pc_ARBURST;
+  wire [3:0]auto_cc_to_auto_pc_ARCACHE;
+  wire [7:0]auto_cc_to_auto_pc_ARLEN;
+  wire [0:0]auto_cc_to_auto_pc_ARLOCK;
+  wire [2:0]auto_cc_to_auto_pc_ARPROT;
+  wire [3:0]auto_cc_to_auto_pc_ARQOS;
+  wire auto_cc_to_auto_pc_ARREADY;
+  wire [3:0]auto_cc_to_auto_pc_ARREGION;
+  wire [2:0]auto_cc_to_auto_pc_ARSIZE;
+  wire auto_cc_to_auto_pc_ARVALID;
+  wire [31:0]auto_cc_to_auto_pc_AWADDR;
+  wire [1:0]auto_cc_to_auto_pc_AWBURST;
+  wire [3:0]auto_cc_to_auto_pc_AWCACHE;
+  wire [7:0]auto_cc_to_auto_pc_AWLEN;
+  wire [0:0]auto_cc_to_auto_pc_AWLOCK;
+  wire [2:0]auto_cc_to_auto_pc_AWPROT;
+  wire [3:0]auto_cc_to_auto_pc_AWQOS;
+  wire auto_cc_to_auto_pc_AWREADY;
+  wire [3:0]auto_cc_to_auto_pc_AWREGION;
+  wire [2:0]auto_cc_to_auto_pc_AWSIZE;
+  wire auto_cc_to_auto_pc_AWVALID;
+  wire auto_cc_to_auto_pc_BREADY;
+  wire [1:0]auto_cc_to_auto_pc_BRESP;
+  wire auto_cc_to_auto_pc_BVALID;
+  wire [31:0]auto_cc_to_auto_pc_RDATA;
+  wire auto_cc_to_auto_pc_RLAST;
+  wire auto_cc_to_auto_pc_RREADY;
+  wire [1:0]auto_cc_to_auto_pc_RRESP;
+  wire auto_cc_to_auto_pc_RVALID;
+  wire [31:0]auto_cc_to_auto_pc_WDATA;
+  wire auto_cc_to_auto_pc_WLAST;
+  wire auto_cc_to_auto_pc_WREADY;
+  wire [3:0]auto_cc_to_auto_pc_WSTRB;
+  wire auto_cc_to_auto_pc_WVALID;
   wire [31:0]auto_pc_to_m04_couplers_ARADDR;
   wire [2:0]auto_pc_to_m04_couplers_ARPROT;
   wire auto_pc_to_m04_couplers_ARREADY;
@@ -6254,42 +6285,44 @@ module m04_couplers_imp_A1MC5T
   wire auto_pc_to_m04_couplers_WREADY;
   wire [3:0]auto_pc_to_m04_couplers_WSTRB;
   wire auto_pc_to_m04_couplers_WVALID;
-  wire [31:0]m04_couplers_to_auto_pc_ARADDR;
-  wire [1:0]m04_couplers_to_auto_pc_ARBURST;
-  wire [3:0]m04_couplers_to_auto_pc_ARCACHE;
-  wire [7:0]m04_couplers_to_auto_pc_ARLEN;
-  wire [0:0]m04_couplers_to_auto_pc_ARLOCK;
-  wire [2:0]m04_couplers_to_auto_pc_ARPROT;
-  wire [3:0]m04_couplers_to_auto_pc_ARQOS;
-  wire m04_couplers_to_auto_pc_ARREADY;
-  wire [3:0]m04_couplers_to_auto_pc_ARREGION;
-  wire [2:0]m04_couplers_to_auto_pc_ARSIZE;
-  wire m04_couplers_to_auto_pc_ARVALID;
-  wire [31:0]m04_couplers_to_auto_pc_AWADDR;
-  wire [1:0]m04_couplers_to_auto_pc_AWBURST;
-  wire [3:0]m04_couplers_to_auto_pc_AWCACHE;
-  wire [7:0]m04_couplers_to_auto_pc_AWLEN;
-  wire [0:0]m04_couplers_to_auto_pc_AWLOCK;
-  wire [2:0]m04_couplers_to_auto_pc_AWPROT;
-  wire [3:0]m04_couplers_to_auto_pc_AWQOS;
-  wire m04_couplers_to_auto_pc_AWREADY;
-  wire [3:0]m04_couplers_to_auto_pc_AWREGION;
-  wire [2:0]m04_couplers_to_auto_pc_AWSIZE;
-  wire m04_couplers_to_auto_pc_AWVALID;
-  wire m04_couplers_to_auto_pc_BREADY;
-  wire [1:0]m04_couplers_to_auto_pc_BRESP;
-  wire m04_couplers_to_auto_pc_BVALID;
-  wire [31:0]m04_couplers_to_auto_pc_RDATA;
-  wire m04_couplers_to_auto_pc_RLAST;
-  wire m04_couplers_to_auto_pc_RREADY;
-  wire [1:0]m04_couplers_to_auto_pc_RRESP;
-  wire m04_couplers_to_auto_pc_RVALID;
-  wire [31:0]m04_couplers_to_auto_pc_WDATA;
-  wire m04_couplers_to_auto_pc_WLAST;
-  wire m04_couplers_to_auto_pc_WREADY;
-  wire [3:0]m04_couplers_to_auto_pc_WSTRB;
-  wire m04_couplers_to_auto_pc_WVALID;
+  wire [31:0]m04_couplers_to_auto_cc_ARADDR;
+  wire [1:0]m04_couplers_to_auto_cc_ARBURST;
+  wire [3:0]m04_couplers_to_auto_cc_ARCACHE;
+  wire [7:0]m04_couplers_to_auto_cc_ARLEN;
+  wire [0:0]m04_couplers_to_auto_cc_ARLOCK;
+  wire [2:0]m04_couplers_to_auto_cc_ARPROT;
+  wire [3:0]m04_couplers_to_auto_cc_ARQOS;
+  wire m04_couplers_to_auto_cc_ARREADY;
+  wire [3:0]m04_couplers_to_auto_cc_ARREGION;
+  wire [2:0]m04_couplers_to_auto_cc_ARSIZE;
+  wire m04_couplers_to_auto_cc_ARVALID;
+  wire [31:0]m04_couplers_to_auto_cc_AWADDR;
+  wire [1:0]m04_couplers_to_auto_cc_AWBURST;
+  wire [3:0]m04_couplers_to_auto_cc_AWCACHE;
+  wire [7:0]m04_couplers_to_auto_cc_AWLEN;
+  wire [0:0]m04_couplers_to_auto_cc_AWLOCK;
+  wire [2:0]m04_couplers_to_auto_cc_AWPROT;
+  wire [3:0]m04_couplers_to_auto_cc_AWQOS;
+  wire m04_couplers_to_auto_cc_AWREADY;
+  wire [3:0]m04_couplers_to_auto_cc_AWREGION;
+  wire [2:0]m04_couplers_to_auto_cc_AWSIZE;
+  wire m04_couplers_to_auto_cc_AWVALID;
+  wire m04_couplers_to_auto_cc_BREADY;
+  wire [1:0]m04_couplers_to_auto_cc_BRESP;
+  wire m04_couplers_to_auto_cc_BVALID;
+  wire [31:0]m04_couplers_to_auto_cc_RDATA;
+  wire m04_couplers_to_auto_cc_RLAST;
+  wire m04_couplers_to_auto_cc_RREADY;
+  wire [1:0]m04_couplers_to_auto_cc_RRESP;
+  wire m04_couplers_to_auto_cc_RVALID;
+  wire [31:0]m04_couplers_to_auto_cc_WDATA;
+  wire m04_couplers_to_auto_cc_WLAST;
+  wire m04_couplers_to_auto_cc_WREADY;
+  wire [3:0]m04_couplers_to_auto_cc_WSTRB;
+  wire m04_couplers_to_auto_cc_WVALID;
 
+  assign M_ACLK_1 = M_ACLK;
+  assign M_ARESETN_1 = M_ARESETN;
   assign M_AXI_araddr[31:0] = auto_pc_to_m04_couplers_ARADDR;
   assign M_AXI_arprot[2:0] = auto_pc_to_m04_couplers_ARPROT;
   assign M_AXI_arvalid = auto_pc_to_m04_couplers_ARVALID;
@@ -6303,50 +6336,125 @@ module m04_couplers_imp_A1MC5T
   assign M_AXI_wvalid = auto_pc_to_m04_couplers_WVALID;
   assign S_ACLK_1 = S_ACLK;
   assign S_ARESETN_1 = S_ARESETN;
-  assign S_AXI_arready = m04_couplers_to_auto_pc_ARREADY;
-  assign S_AXI_awready = m04_couplers_to_auto_pc_AWREADY;
-  assign S_AXI_bresp[1:0] = m04_couplers_to_auto_pc_BRESP;
-  assign S_AXI_bvalid = m04_couplers_to_auto_pc_BVALID;
-  assign S_AXI_rdata[31:0] = m04_couplers_to_auto_pc_RDATA;
-  assign S_AXI_rlast = m04_couplers_to_auto_pc_RLAST;
-  assign S_AXI_rresp[1:0] = m04_couplers_to_auto_pc_RRESP;
-  assign S_AXI_rvalid = m04_couplers_to_auto_pc_RVALID;
-  assign S_AXI_wready = m04_couplers_to_auto_pc_WREADY;
+  assign S_AXI_arready = m04_couplers_to_auto_cc_ARREADY;
+  assign S_AXI_awready = m04_couplers_to_auto_cc_AWREADY;
+  assign S_AXI_bresp[1:0] = m04_couplers_to_auto_cc_BRESP;
+  assign S_AXI_bvalid = m04_couplers_to_auto_cc_BVALID;
+  assign S_AXI_rdata[31:0] = m04_couplers_to_auto_cc_RDATA;
+  assign S_AXI_rlast = m04_couplers_to_auto_cc_RLAST;
+  assign S_AXI_rresp[1:0] = m04_couplers_to_auto_cc_RRESP;
+  assign S_AXI_rvalid = m04_couplers_to_auto_cc_RVALID;
+  assign S_AXI_wready = m04_couplers_to_auto_cc_WREADY;
   assign auto_pc_to_m04_couplers_ARREADY = M_AXI_arready;
   assign auto_pc_to_m04_couplers_AWREADY = M_AXI_awready;
   assign auto_pc_to_m04_couplers_BVALID = M_AXI_bvalid;
   assign auto_pc_to_m04_couplers_RDATA = M_AXI_rdata[31:0];
   assign auto_pc_to_m04_couplers_RVALID = M_AXI_rvalid;
   assign auto_pc_to_m04_couplers_WREADY = M_AXI_wready;
-  assign m04_couplers_to_auto_pc_ARADDR = S_AXI_araddr[31:0];
-  assign m04_couplers_to_auto_pc_ARBURST = S_AXI_arburst[1:0];
-  assign m04_couplers_to_auto_pc_ARCACHE = S_AXI_arcache[3:0];
-  assign m04_couplers_to_auto_pc_ARLEN = S_AXI_arlen[7:0];
-  assign m04_couplers_to_auto_pc_ARLOCK = S_AXI_arlock[0];
-  assign m04_couplers_to_auto_pc_ARPROT = S_AXI_arprot[2:0];
-  assign m04_couplers_to_auto_pc_ARQOS = S_AXI_arqos[3:0];
-  assign m04_couplers_to_auto_pc_ARREGION = S_AXI_arregion[3:0];
-  assign m04_couplers_to_auto_pc_ARSIZE = S_AXI_arsize[2:0];
-  assign m04_couplers_to_auto_pc_ARVALID = S_AXI_arvalid;
-  assign m04_couplers_to_auto_pc_AWADDR = S_AXI_awaddr[31:0];
-  assign m04_couplers_to_auto_pc_AWBURST = S_AXI_awburst[1:0];
-  assign m04_couplers_to_auto_pc_AWCACHE = S_AXI_awcache[3:0];
-  assign m04_couplers_to_auto_pc_AWLEN = S_AXI_awlen[7:0];
-  assign m04_couplers_to_auto_pc_AWLOCK = S_AXI_awlock[0];
-  assign m04_couplers_to_auto_pc_AWPROT = S_AXI_awprot[2:0];
-  assign m04_couplers_to_auto_pc_AWQOS = S_AXI_awqos[3:0];
-  assign m04_couplers_to_auto_pc_AWREGION = S_AXI_awregion[3:0];
-  assign m04_couplers_to_auto_pc_AWSIZE = S_AXI_awsize[2:0];
-  assign m04_couplers_to_auto_pc_AWVALID = S_AXI_awvalid;
-  assign m04_couplers_to_auto_pc_BREADY = S_AXI_bready;
-  assign m04_couplers_to_auto_pc_RREADY = S_AXI_rready;
-  assign m04_couplers_to_auto_pc_WDATA = S_AXI_wdata[31:0];
-  assign m04_couplers_to_auto_pc_WLAST = S_AXI_wlast;
-  assign m04_couplers_to_auto_pc_WSTRB = S_AXI_wstrb[3:0];
-  assign m04_couplers_to_auto_pc_WVALID = S_AXI_wvalid;
+  assign m04_couplers_to_auto_cc_ARADDR = S_AXI_araddr[31:0];
+  assign m04_couplers_to_auto_cc_ARBURST = S_AXI_arburst[1:0];
+  assign m04_couplers_to_auto_cc_ARCACHE = S_AXI_arcache[3:0];
+  assign m04_couplers_to_auto_cc_ARLEN = S_AXI_arlen[7:0];
+  assign m04_couplers_to_auto_cc_ARLOCK = S_AXI_arlock[0];
+  assign m04_couplers_to_auto_cc_ARPROT = S_AXI_arprot[2:0];
+  assign m04_couplers_to_auto_cc_ARQOS = S_AXI_arqos[3:0];
+  assign m04_couplers_to_auto_cc_ARREGION = S_AXI_arregion[3:0];
+  assign m04_couplers_to_auto_cc_ARSIZE = S_AXI_arsize[2:0];
+  assign m04_couplers_to_auto_cc_ARVALID = S_AXI_arvalid;
+  assign m04_couplers_to_auto_cc_AWADDR = S_AXI_awaddr[31:0];
+  assign m04_couplers_to_auto_cc_AWBURST = S_AXI_awburst[1:0];
+  assign m04_couplers_to_auto_cc_AWCACHE = S_AXI_awcache[3:0];
+  assign m04_couplers_to_auto_cc_AWLEN = S_AXI_awlen[7:0];
+  assign m04_couplers_to_auto_cc_AWLOCK = S_AXI_awlock[0];
+  assign m04_couplers_to_auto_cc_AWPROT = S_AXI_awprot[2:0];
+  assign m04_couplers_to_auto_cc_AWQOS = S_AXI_awqos[3:0];
+  assign m04_couplers_to_auto_cc_AWREGION = S_AXI_awregion[3:0];
+  assign m04_couplers_to_auto_cc_AWSIZE = S_AXI_awsize[2:0];
+  assign m04_couplers_to_auto_cc_AWVALID = S_AXI_awvalid;
+  assign m04_couplers_to_auto_cc_BREADY = S_AXI_bready;
+  assign m04_couplers_to_auto_cc_RREADY = S_AXI_rready;
+  assign m04_couplers_to_auto_cc_WDATA = S_AXI_wdata[31:0];
+  assign m04_couplers_to_auto_cc_WLAST = S_AXI_wlast;
+  assign m04_couplers_to_auto_cc_WSTRB = S_AXI_wstrb[3:0];
+  assign m04_couplers_to_auto_cc_WVALID = S_AXI_wvalid;
+  top_auto_cc_2 auto_cc
+       (.m_axi_aclk(M_ACLK_1),
+        .m_axi_araddr(auto_cc_to_auto_pc_ARADDR),
+        .m_axi_arburst(auto_cc_to_auto_pc_ARBURST),
+        .m_axi_arcache(auto_cc_to_auto_pc_ARCACHE),
+        .m_axi_aresetn(M_ARESETN_1),
+        .m_axi_arlen(auto_cc_to_auto_pc_ARLEN),
+        .m_axi_arlock(auto_cc_to_auto_pc_ARLOCK),
+        .m_axi_arprot(auto_cc_to_auto_pc_ARPROT),
+        .m_axi_arqos(auto_cc_to_auto_pc_ARQOS),
+        .m_axi_arready(auto_cc_to_auto_pc_ARREADY),
+        .m_axi_arregion(auto_cc_to_auto_pc_ARREGION),
+        .m_axi_arsize(auto_cc_to_auto_pc_ARSIZE),
+        .m_axi_arvalid(auto_cc_to_auto_pc_ARVALID),
+        .m_axi_awaddr(auto_cc_to_auto_pc_AWADDR),
+        .m_axi_awburst(auto_cc_to_auto_pc_AWBURST),
+        .m_axi_awcache(auto_cc_to_auto_pc_AWCACHE),
+        .m_axi_awlen(auto_cc_to_auto_pc_AWLEN),
+        .m_axi_awlock(auto_cc_to_auto_pc_AWLOCK),
+        .m_axi_awprot(auto_cc_to_auto_pc_AWPROT),
+        .m_axi_awqos(auto_cc_to_auto_pc_AWQOS),
+        .m_axi_awready(auto_cc_to_auto_pc_AWREADY),
+        .m_axi_awregion(auto_cc_to_auto_pc_AWREGION),
+        .m_axi_awsize(auto_cc_to_auto_pc_AWSIZE),
+        .m_axi_awvalid(auto_cc_to_auto_pc_AWVALID),
+        .m_axi_bready(auto_cc_to_auto_pc_BREADY),
+        .m_axi_bresp(auto_cc_to_auto_pc_BRESP),
+        .m_axi_bvalid(auto_cc_to_auto_pc_BVALID),
+        .m_axi_rdata(auto_cc_to_auto_pc_RDATA),
+        .m_axi_rlast(auto_cc_to_auto_pc_RLAST),
+        .m_axi_rready(auto_cc_to_auto_pc_RREADY),
+        .m_axi_rresp(auto_cc_to_auto_pc_RRESP),
+        .m_axi_rvalid(auto_cc_to_auto_pc_RVALID),
+        .m_axi_wdata(auto_cc_to_auto_pc_WDATA),
+        .m_axi_wlast(auto_cc_to_auto_pc_WLAST),
+        .m_axi_wready(auto_cc_to_auto_pc_WREADY),
+        .m_axi_wstrb(auto_cc_to_auto_pc_WSTRB),
+        .m_axi_wvalid(auto_cc_to_auto_pc_WVALID),
+        .s_axi_aclk(S_ACLK_1),
+        .s_axi_araddr(m04_couplers_to_auto_cc_ARADDR),
+        .s_axi_arburst(m04_couplers_to_auto_cc_ARBURST),
+        .s_axi_arcache(m04_couplers_to_auto_cc_ARCACHE),
+        .s_axi_aresetn(S_ARESETN_1),
+        .s_axi_arlen(m04_couplers_to_auto_cc_ARLEN),
+        .s_axi_arlock(m04_couplers_to_auto_cc_ARLOCK),
+        .s_axi_arprot(m04_couplers_to_auto_cc_ARPROT),
+        .s_axi_arqos(m04_couplers_to_auto_cc_ARQOS),
+        .s_axi_arready(m04_couplers_to_auto_cc_ARREADY),
+        .s_axi_arregion(m04_couplers_to_auto_cc_ARREGION),
+        .s_axi_arsize(m04_couplers_to_auto_cc_ARSIZE),
+        .s_axi_arvalid(m04_couplers_to_auto_cc_ARVALID),
+        .s_axi_awaddr(m04_couplers_to_auto_cc_AWADDR),
+        .s_axi_awburst(m04_couplers_to_auto_cc_AWBURST),
+        .s_axi_awcache(m04_couplers_to_auto_cc_AWCACHE),
+        .s_axi_awlen(m04_couplers_to_auto_cc_AWLEN),
+        .s_axi_awlock(m04_couplers_to_auto_cc_AWLOCK),
+        .s_axi_awprot(m04_couplers_to_auto_cc_AWPROT),
+        .s_axi_awqos(m04_couplers_to_auto_cc_AWQOS),
+        .s_axi_awready(m04_couplers_to_auto_cc_AWREADY),
+        .s_axi_awregion(m04_couplers_to_auto_cc_AWREGION),
+        .s_axi_awsize(m04_couplers_to_auto_cc_AWSIZE),
+        .s_axi_awvalid(m04_couplers_to_auto_cc_AWVALID),
+        .s_axi_bready(m04_couplers_to_auto_cc_BREADY),
+        .s_axi_bresp(m04_couplers_to_auto_cc_BRESP),
+        .s_axi_bvalid(m04_couplers_to_auto_cc_BVALID),
+        .s_axi_rdata(m04_couplers_to_auto_cc_RDATA),
+        .s_axi_rlast(m04_couplers_to_auto_cc_RLAST),
+        .s_axi_rready(m04_couplers_to_auto_cc_RREADY),
+        .s_axi_rresp(m04_couplers_to_auto_cc_RRESP),
+        .s_axi_rvalid(m04_couplers_to_auto_cc_RVALID),
+        .s_axi_wdata(m04_couplers_to_auto_cc_WDATA),
+        .s_axi_wlast(m04_couplers_to_auto_cc_WLAST),
+        .s_axi_wready(m04_couplers_to_auto_cc_WREADY),
+        .s_axi_wstrb(m04_couplers_to_auto_cc_WSTRB),
+        .s_axi_wvalid(m04_couplers_to_auto_cc_WVALID));
   top_auto_pc_3 auto_pc
-       (.aclk(S_ACLK_1),
-        .aresetn(S_ARESETN_1),
+       (.aclk(M_ACLK_1),
+        .aresetn(M_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m04_couplers_ARADDR),
         .m_axi_arprot(auto_pc_to_m04_couplers_ARPROT),
         .m_axi_arready(auto_pc_to_m04_couplers_ARREADY),
@@ -6366,41 +6474,41 @@ module m04_couplers_imp_A1MC5T
         .m_axi_wready(auto_pc_to_m04_couplers_WREADY),
         .m_axi_wstrb(auto_pc_to_m04_couplers_WSTRB),
         .m_axi_wvalid(auto_pc_to_m04_couplers_WVALID),
-        .s_axi_araddr(m04_couplers_to_auto_pc_ARADDR),
-        .s_axi_arburst(m04_couplers_to_auto_pc_ARBURST),
-        .s_axi_arcache(m04_couplers_to_auto_pc_ARCACHE),
-        .s_axi_arlen(m04_couplers_to_auto_pc_ARLEN),
-        .s_axi_arlock(m04_couplers_to_auto_pc_ARLOCK),
-        .s_axi_arprot(m04_couplers_to_auto_pc_ARPROT),
-        .s_axi_arqos(m04_couplers_to_auto_pc_ARQOS),
-        .s_axi_arready(m04_couplers_to_auto_pc_ARREADY),
-        .s_axi_arregion(m04_couplers_to_auto_pc_ARREGION),
-        .s_axi_arsize(m04_couplers_to_auto_pc_ARSIZE),
-        .s_axi_arvalid(m04_couplers_to_auto_pc_ARVALID),
-        .s_axi_awaddr(m04_couplers_to_auto_pc_AWADDR),
-        .s_axi_awburst(m04_couplers_to_auto_pc_AWBURST),
-        .s_axi_awcache(m04_couplers_to_auto_pc_AWCACHE),
-        .s_axi_awlen(m04_couplers_to_auto_pc_AWLEN),
-        .s_axi_awlock(m04_couplers_to_auto_pc_AWLOCK),
-        .s_axi_awprot(m04_couplers_to_auto_pc_AWPROT),
-        .s_axi_awqos(m04_couplers_to_auto_pc_AWQOS),
-        .s_axi_awready(m04_couplers_to_auto_pc_AWREADY),
-        .s_axi_awregion(m04_couplers_to_auto_pc_AWREGION),
-        .s_axi_awsize(m04_couplers_to_auto_pc_AWSIZE),
-        .s_axi_awvalid(m04_couplers_to_auto_pc_AWVALID),
-        .s_axi_bready(m04_couplers_to_auto_pc_BREADY),
-        .s_axi_bresp(m04_couplers_to_auto_pc_BRESP),
-        .s_axi_bvalid(m04_couplers_to_auto_pc_BVALID),
-        .s_axi_rdata(m04_couplers_to_auto_pc_RDATA),
-        .s_axi_rlast(m04_couplers_to_auto_pc_RLAST),
-        .s_axi_rready(m04_couplers_to_auto_pc_RREADY),
-        .s_axi_rresp(m04_couplers_to_auto_pc_RRESP),
-        .s_axi_rvalid(m04_couplers_to_auto_pc_RVALID),
-        .s_axi_wdata(m04_couplers_to_auto_pc_WDATA),
-        .s_axi_wlast(m04_couplers_to_auto_pc_WLAST),
-        .s_axi_wready(m04_couplers_to_auto_pc_WREADY),
-        .s_axi_wstrb(m04_couplers_to_auto_pc_WSTRB),
-        .s_axi_wvalid(m04_couplers_to_auto_pc_WVALID));
+        .s_axi_araddr(auto_cc_to_auto_pc_ARADDR),
+        .s_axi_arburst(auto_cc_to_auto_pc_ARBURST),
+        .s_axi_arcache(auto_cc_to_auto_pc_ARCACHE),
+        .s_axi_arlen(auto_cc_to_auto_pc_ARLEN),
+        .s_axi_arlock(auto_cc_to_auto_pc_ARLOCK),
+        .s_axi_arprot(auto_cc_to_auto_pc_ARPROT),
+        .s_axi_arqos(auto_cc_to_auto_pc_ARQOS),
+        .s_axi_arready(auto_cc_to_auto_pc_ARREADY),
+        .s_axi_arregion(auto_cc_to_auto_pc_ARREGION),
+        .s_axi_arsize(auto_cc_to_auto_pc_ARSIZE),
+        .s_axi_arvalid(auto_cc_to_auto_pc_ARVALID),
+        .s_axi_awaddr(auto_cc_to_auto_pc_AWADDR),
+        .s_axi_awburst(auto_cc_to_auto_pc_AWBURST),
+        .s_axi_awcache(auto_cc_to_auto_pc_AWCACHE),
+        .s_axi_awlen(auto_cc_to_auto_pc_AWLEN),
+        .s_axi_awlock(auto_cc_to_auto_pc_AWLOCK),
+        .s_axi_awprot(auto_cc_to_auto_pc_AWPROT),
+        .s_axi_awqos(auto_cc_to_auto_pc_AWQOS),
+        .s_axi_awready(auto_cc_to_auto_pc_AWREADY),
+        .s_axi_awregion(auto_cc_to_auto_pc_AWREGION),
+        .s_axi_awsize(auto_cc_to_auto_pc_AWSIZE),
+        .s_axi_awvalid(auto_cc_to_auto_pc_AWVALID),
+        .s_axi_bready(auto_cc_to_auto_pc_BREADY),
+        .s_axi_bresp(auto_cc_to_auto_pc_BRESP),
+        .s_axi_bvalid(auto_cc_to_auto_pc_BVALID),
+        .s_axi_rdata(auto_cc_to_auto_pc_RDATA),
+        .s_axi_rlast(auto_cc_to_auto_pc_RLAST),
+        .s_axi_rready(auto_cc_to_auto_pc_RREADY),
+        .s_axi_rresp(auto_cc_to_auto_pc_RRESP),
+        .s_axi_rvalid(auto_cc_to_auto_pc_RVALID),
+        .s_axi_wdata(auto_cc_to_auto_pc_WDATA),
+        .s_axi_wlast(auto_cc_to_auto_pc_WLAST),
+        .s_axi_wready(auto_cc_to_auto_pc_WREADY),
+        .s_axi_wstrb(auto_cc_to_auto_pc_WSTRB),
+        .s_axi_wvalid(auto_cc_to_auto_pc_WVALID));
 endmodule
 
 module m05_couplers_imp_1X9MW7O
@@ -9705,8 +9813,6 @@ module top
     sfp_tx_disable,
     sfp_txn,
     sfp_txp,
-    sys_clk_clk_n,
-    sys_clk_clk_p,
     user_clk_clk_n,
     user_clk_clk_p);
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 clkbuf CLK_N" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clkbuf, CAN_DEBUG false, FREQ_HZ 125000000" *) input [0:0]clkbuf_clk_n;
@@ -9723,8 +9829,6 @@ module top
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp TX_DISABLE" *) output sfp_tx_disable;
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp TXN" *) output sfp_txn;
   (* X_INTERFACE_INFO = "xilinx.com:interface:sfp:1.0 sfp TXP" *) output sfp_txp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 sys_clk CLK_N" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_clk, CAN_DEBUG false, FREQ_HZ 50000000" *) input sys_clk_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 sys_clk CLK_P" *) input sys_clk_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 user_clk CLK_N" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME user_clk, CAN_DEBUG false, FREQ_HZ 156000000" *) input [0:0]user_clk_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 user_clk CLK_P" *) input [0:0]user_clk_clk_p;
 
@@ -9911,13 +10015,10 @@ module top
   wire [0:0]pcie_ref_1_CLK_P;
   wire perstn_1;
   wire s_axi_aclk_1;
-  wire sys_diff_clock_1_CLK_N;
-  wire sys_diff_clock_1_CLK_P;
   wire timer_0_irq_timer_0;
   wire [0:0]user_clk_1;
   wire [0:0]user_clk_2_CLK_N;
   wire [0:0]user_clk_2_CLK_P;
-  wire [0:0]util_ds_buf_0_IBUF_OUT;
 
   assign clkbuf_1_CLK_N = clkbuf_clk_n[0];
   assign clkbuf_1_CLK_P = clkbuf_clk_p[0];
@@ -9933,8 +10034,6 @@ module top
   assign sfp_tx_disable = hier_0_sfp_TX_DISABLE;
   assign sfp_txn = hier_0_sfp_TXN;
   assign sfp_txp = hier_0_sfp_TXP;
-  assign sys_diff_clock_1_CLK_N = sys_clk_clk_n;
-  assign sys_diff_clock_1_CLK_P = sys_clk_clk_p;
   assign user_clk_2_CLK_N = user_clk_clk_n[0];
   assign user_clk_2_CLK_P = user_clk_clk_p[0];
   top_concat_0_0 concat_0
@@ -10051,7 +10150,6 @@ module top
         .sfp_tx_disable(hier_0_sfp_TX_DISABLE),
         .sfp_txn(hier_0_sfp_TXN),
         .sfp_txp(hier_0_sfp_TXP),
-        .sys_clk(util_ds_buf_0_IBUF_OUT),
         .user_clk(user_clk_1));
   mm_interconnect_0_imp_1ELWD51 mm_interconnect_0
        (.M00_AXI_araddr(mm_interconnect_M00_AXI_ARADDR),
@@ -10310,10 +10408,6 @@ module top
         .irq_timer_0(timer_0_irq_timer_0),
         .s_axi_aclk(s_axi_aclk_1),
         .s_axi_aresetn(pcie_0_peripheral_aresetn));
-  top_util_ds_buf_0_0 util_ds_buf_0
-       (.IBUF_DS_N(sys_diff_clock_1_CLK_N),
-        .IBUF_DS_P(sys_diff_clock_1_CLK_P),
-        .IBUF_OUT(util_ds_buf_0_IBUF_OUT));
   top_util_ds_buf_1_1 util_ds_buf_1
        (.IBUF_DS_N(user_clk_2_CLK_N),
         .IBUF_DS_P(user_clk_2_CLK_P),
@@ -13199,6 +13293,20 @@ module top_axi_interconnect_0_3
   input [3:0]S00_AXI_wstrb;
   input [0:0]S00_AXI_wvalid;
 
+  wire M00_ACLK_1;
+  wire M00_ARESETN_1;
+  wire M01_ACLK_1;
+  wire M01_ARESETN_1;
+  wire M02_ACLK_1;
+  wire M02_ARESETN_1;
+  wire M03_ACLK_1;
+  wire M03_ARESETN_1;
+  wire M04_ACLK_1;
+  wire M04_ARESETN_1;
+  wire M05_ACLK_1;
+  wire M05_ARESETN_1;
+  wire S00_ACLK_1;
+  wire S00_ARESETN_1;
   wire axi_interconnect_0_ACLK_net;
   wire axi_interconnect_0_ARESETN_net;
   wire [31:0]axi_interconnect_0_to_s00_couplers_ARADDR;
@@ -13614,6 +13722,8 @@ module top_axi_interconnect_0_3
   wire [23:20]xbar_to_m05_couplers_WSTRB;
   wire [5:5]xbar_to_m05_couplers_WVALID;
 
+  assign M00_ACLK_1 = M00_ACLK;
+  assign M00_ARESETN_1 = M00_ARESETN;
   assign M00_AXI_araddr[31:0] = m00_couplers_to_axi_interconnect_0_ARADDR;
   assign M00_AXI_arvalid = m00_couplers_to_axi_interconnect_0_ARVALID;
   assign M00_AXI_awaddr[31:0] = m00_couplers_to_axi_interconnect_0_AWADDR;
@@ -13622,6 +13732,8 @@ module top_axi_interconnect_0_3
   assign M00_AXI_rready = m00_couplers_to_axi_interconnect_0_RREADY;
   assign M00_AXI_wdata[31:0] = m00_couplers_to_axi_interconnect_0_WDATA;
   assign M00_AXI_wvalid = m00_couplers_to_axi_interconnect_0_WVALID;
+  assign M01_ACLK_1 = M01_ACLK;
+  assign M01_ARESETN_1 = M01_ARESETN;
   assign M01_AXI_araddr = m01_couplers_to_axi_interconnect_0_ARADDR;
   assign M01_AXI_arburst = m01_couplers_to_axi_interconnect_0_ARBURST;
   assign M01_AXI_arcache = m01_couplers_to_axi_interconnect_0_ARCACHE;
@@ -13648,6 +13760,8 @@ module top_axi_interconnect_0_3
   assign M01_AXI_wlast = m01_couplers_to_axi_interconnect_0_WLAST;
   assign M01_AXI_wstrb = m01_couplers_to_axi_interconnect_0_WSTRB;
   assign M01_AXI_wvalid = m01_couplers_to_axi_interconnect_0_WVALID;
+  assign M02_ACLK_1 = M02_ACLK;
+  assign M02_ARESETN_1 = M02_ARESETN;
   assign M02_AXI_araddr[31:0] = m02_couplers_to_axi_interconnect_0_ARADDR;
   assign M02_AXI_arvalid = m02_couplers_to_axi_interconnect_0_ARVALID;
   assign M02_AXI_awaddr[31:0] = m02_couplers_to_axi_interconnect_0_AWADDR;
@@ -13657,6 +13771,8 @@ module top_axi_interconnect_0_3
   assign M02_AXI_wdata[31:0] = m02_couplers_to_axi_interconnect_0_WDATA;
   assign M02_AXI_wstrb[3:0] = m02_couplers_to_axi_interconnect_0_WSTRB;
   assign M02_AXI_wvalid = m02_couplers_to_axi_interconnect_0_WVALID;
+  assign M03_ACLK_1 = M03_ACLK;
+  assign M03_ARESETN_1 = M03_ARESETN;
   assign M03_AXI_araddr[31:0] = m03_couplers_to_axi_interconnect_0_ARADDR;
   assign M03_AXI_arvalid = m03_couplers_to_axi_interconnect_0_ARVALID;
   assign M03_AXI_awaddr[31:0] = m03_couplers_to_axi_interconnect_0_AWADDR;
@@ -13665,6 +13781,8 @@ module top_axi_interconnect_0_3
   assign M03_AXI_rready = m03_couplers_to_axi_interconnect_0_RREADY;
   assign M03_AXI_wdata[31:0] = m03_couplers_to_axi_interconnect_0_WDATA;
   assign M03_AXI_wvalid = m03_couplers_to_axi_interconnect_0_WVALID;
+  assign M04_ACLK_1 = M04_ACLK;
+  assign M04_ARESETN_1 = M04_ARESETN;
   assign M04_AXI_araddr[31:0] = m04_couplers_to_axi_interconnect_0_ARADDR;
   assign M04_AXI_arprot[2:0] = m04_couplers_to_axi_interconnect_0_ARPROT;
   assign M04_AXI_arvalid = m04_couplers_to_axi_interconnect_0_ARVALID;
@@ -13676,6 +13794,8 @@ module top_axi_interconnect_0_3
   assign M04_AXI_wdata[31:0] = m04_couplers_to_axi_interconnect_0_WDATA;
   assign M04_AXI_wstrb[3:0] = m04_couplers_to_axi_interconnect_0_WSTRB;
   assign M04_AXI_wvalid = m04_couplers_to_axi_interconnect_0_WVALID;
+  assign M05_ACLK_1 = M05_ACLK;
+  assign M05_ARESETN_1 = M05_ARESETN;
   assign M05_AXI_araddr = m05_couplers_to_axi_interconnect_0_ARADDR;
   assign M05_AXI_arburst = m05_couplers_to_axi_interconnect_0_ARBURST;
   assign M05_AXI_arcache = m05_couplers_to_axi_interconnect_0_ARCACHE;
@@ -13702,6 +13822,8 @@ module top_axi_interconnect_0_3
   assign M05_AXI_wlast = m05_couplers_to_axi_interconnect_0_WLAST;
   assign M05_AXI_wstrb = m05_couplers_to_axi_interconnect_0_WSTRB;
   assign M05_AXI_wvalid = m05_couplers_to_axi_interconnect_0_WVALID;
+  assign S00_ACLK_1 = S00_ACLK;
+  assign S00_ARESETN_1 = S00_ARESETN;
   assign S00_AXI_arready[0] = axi_interconnect_0_to_s00_couplers_ARREADY;
   assign S00_AXI_awready[0] = axi_interconnect_0_to_s00_couplers_AWREADY;
   assign S00_AXI_bresp[1:0] = axi_interconnect_0_to_s00_couplers_BRESP;
@@ -13786,8 +13908,8 @@ module top_axi_interconnect_0_3
   assign m05_couplers_to_axi_interconnect_0_RVALID = M05_AXI_rvalid;
   assign m05_couplers_to_axi_interconnect_0_WREADY = M05_AXI_wready;
   m00_couplers_imp_1REU45J m00_couplers
-       (.M_ACLK(axi_interconnect_0_ACLK_net),
-        .M_ARESETN(axi_interconnect_0_ARESETN_net),
+       (.M_ACLK(M00_ACLK_1),
+        .M_ARESETN(M00_ARESETN_1),
         .M_AXI_araddr(m00_couplers_to_axi_interconnect_0_ARADDR),
         .M_AXI_arready(m00_couplers_to_axi_interconnect_0_ARREADY),
         .M_AXI_arvalid(m00_couplers_to_axi_interconnect_0_ARVALID),
@@ -13842,8 +13964,8 @@ module top_axi_interconnect_0_3
         .S_AXI_wstrb(xbar_to_m00_couplers_WSTRB),
         .S_AXI_wvalid(xbar_to_m00_couplers_WVALID));
   m01_couplers_imp_FUGJYA m01_couplers
-       (.M_ACLK(axi_interconnect_0_ACLK_net),
-        .M_ARESETN(axi_interconnect_0_ARESETN_net),
+       (.M_ACLK(M01_ACLK_1),
+        .M_ARESETN(M01_ARESETN_1),
         .M_AXI_araddr(m01_couplers_to_axi_interconnect_0_ARADDR),
         .M_AXI_arburst(m01_couplers_to_axi_interconnect_0_ARBURST),
         .M_AXI_arcache(m01_couplers_to_axi_interconnect_0_ARCACHE),
@@ -13917,8 +14039,8 @@ module top_axi_interconnect_0_3
         .S_AXI_wstrb(xbar_to_m01_couplers_WSTRB[4]),
         .S_AXI_wvalid(xbar_to_m01_couplers_WVALID));
   m02_couplers_imp_10UV9HO m02_couplers
-       (.M_ACLK(axi_interconnect_0_ACLK_net),
-        .M_ARESETN(axi_interconnect_0_ARESETN_net),
+       (.M_ACLK(M02_ACLK_1),
+        .M_ARESETN(M02_ARESETN_1),
         .M_AXI_araddr(m02_couplers_to_axi_interconnect_0_ARADDR),
         .M_AXI_arready(m02_couplers_to_axi_interconnect_0_ARREADY),
         .M_AXI_arvalid(m02_couplers_to_axi_interconnect_0_ARVALID),
@@ -13974,8 +14096,8 @@ module top_axi_interconnect_0_3
         .S_AXI_wstrb(xbar_to_m02_couplers_WSTRB),
         .S_AXI_wvalid(xbar_to_m02_couplers_WVALID));
   m03_couplers_imp_ORJ421 m03_couplers
-       (.M_ACLK(axi_interconnect_0_ACLK_net),
-        .M_ARESETN(axi_interconnect_0_ARESETN_net),
+       (.M_ACLK(M03_ACLK_1),
+        .M_ARESETN(M03_ARESETN_1),
         .M_AXI_araddr(m03_couplers_to_axi_interconnect_0_ARADDR),
         .M_AXI_arready(m03_couplers_to_axi_interconnect_0_ARREADY),
         .M_AXI_arvalid(m03_couplers_to_axi_interconnect_0_ARVALID),
@@ -14030,8 +14152,8 @@ module top_axi_interconnect_0_3
         .S_AXI_wstrb(xbar_to_m03_couplers_WSTRB),
         .S_AXI_wvalid(xbar_to_m03_couplers_WVALID));
   m04_couplers_imp_A1MC5T m04_couplers
-       (.M_ACLK(axi_interconnect_0_ACLK_net),
-        .M_ARESETN(axi_interconnect_0_ARESETN_net),
+       (.M_ACLK(M04_ACLK_1),
+        .M_ARESETN(M04_ARESETN_1),
         .M_AXI_araddr(m04_couplers_to_axi_interconnect_0_ARADDR),
         .M_AXI_arprot(m04_couplers_to_axi_interconnect_0_ARPROT),
         .M_AXI_arready(m04_couplers_to_axi_interconnect_0_ARREADY),
@@ -14087,8 +14209,8 @@ module top_axi_interconnect_0_3
         .S_AXI_wstrb(xbar_to_m04_couplers_WSTRB),
         .S_AXI_wvalid(xbar_to_m04_couplers_WVALID));
   m05_couplers_imp_1X9MW7O m05_couplers
-       (.M_ACLK(axi_interconnect_0_ACLK_net),
-        .M_ARESETN(axi_interconnect_0_ARESETN_net),
+       (.M_ACLK(M05_ACLK_1),
+        .M_ARESETN(M05_ARESETN_1),
         .M_AXI_araddr(m05_couplers_to_axi_interconnect_0_ARADDR),
         .M_AXI_arburst(m05_couplers_to_axi_interconnect_0_ARBURST),
         .M_AXI_arcache(m05_couplers_to_axi_interconnect_0_ARCACHE),
@@ -14197,8 +14319,8 @@ module top_axi_interconnect_0_3
         .M_AXI_wready(s00_couplers_to_xbar_WREADY),
         .M_AXI_wstrb(s00_couplers_to_xbar_WSTRB),
         .M_AXI_wvalid(s00_couplers_to_xbar_WVALID),
-        .S_ACLK(axi_interconnect_0_ACLK_net),
-        .S_ARESETN(axi_interconnect_0_ARESETN_net),
+        .S_ACLK(S00_ACLK_1),
+        .S_ARESETN(S00_ARESETN_1),
         .S_AXI_araddr(axi_interconnect_0_to_s00_couplers_ARADDR),
         .S_AXI_arburst(axi_interconnect_0_to_s00_couplers_ARBURST),
         .S_AXI_arcache(axi_interconnect_0_to_s00_couplers_ARCACHE),

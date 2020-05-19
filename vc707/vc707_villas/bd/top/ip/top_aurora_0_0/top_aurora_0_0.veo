@@ -46,8 +46,8 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
-// IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.7
-// IP Revision: 17
+// IP VLNV: acs.eonerc.rwth-aachen.de:user:aurora:1.9
+// IP Revision: 20
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -68,13 +68,11 @@ top_aurora_0_0 your_instance_name (
   .m_axis_tdata(m_axis_tdata),          // output wire [31 : 0] m_axis_tdata
   .m_axis_tlast(m_axis_tlast),          // output wire m_axis_tlast
   .m_axis_tready(m_axis_tready),        // input wire m_axis_tready
-  .init_clk_in(init_clk_in),            // input wire init_clk_in
+  .free_clk_in(free_clk_in),            // input wire free_clk_in
   .gt_refclk1(gt_refclk1),              // input wire gt_refclk1
-  .drpclk_in(drpclk_in),                // input wire drpclk_in
   .user_clk_out(user_clk_out),          // output wire user_clk_out
   .reset(reset),                        // input wire reset
   .sys_reset_out(sys_reset_out),        // output wire sys_reset_out
-  .S_AXI_ACLK(S_AXI_ACLK),              // input wire S_AXI_ACLK
   .S_AXI_ARESETN(S_AXI_ARESETN),        // input wire S_AXI_ARESETN
   .S_AXI_AWADDR(S_AXI_AWADDR),          // input wire [5 : 0] S_AXI_AWADDR
   .S_AXI_AWPROT(S_AXI_AWPROT),          // input wire [2 : 0] S_AXI_AWPROT

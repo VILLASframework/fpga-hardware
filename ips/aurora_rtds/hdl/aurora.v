@@ -38,15 +38,13 @@ module aurora(
               input wire           m_axis_tready,
 
               // Clock and reset interface
-              input wire           init_clk_in,
+              input wire           free_clk_in,
               input wire           gt_refclk1,
-              input wire           drpclk_in,
               output wire          user_clk_out,
               input wire           reset,
               output wire          sys_reset_out,
 
               // AXI Slave register interface
-              input wire           S_AXI_ACLK, // Global clock signal
               input wire           S_AXI_ARESETN, // Global reset signal, active LOW
               input wire [5 : 0]   S_AXI_AWADDR, // Write address
               input wire [2 : 0]   S_AXI_AWPROT, // Write protection type, TODO: unused for now.
@@ -72,7 +70,8 @@ module aurora(
                                    s_axis_aurora_tlast, s_axis_aurora_tvalid, s_axis_aurora_tready,
                                    m_axis_aurora_tlast, m_axis_aurora_tvalid,
                                    s_axis_loop_tlast, s_axis_loop_tvalid,
-                                   m_axis_pre_tvalid, m_axis_pre_tlast;
+                                   m_axis_pre_tvalid, m_axis_pre_tlast,
+                                   usr_clk;
    wire [0 : 3]                    s_axis_aurora_tkeep, m_axis_aurora_tkeep;
    wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
    wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata,
@@ -83,6 +82,8 @@ module aurora(
    wire                            slv_reg_wren;
    reg [5 : 0]                     s_axi_awaddr, s_axi_araddr;
 
+   assign user_clk_out = usr_clk;
+
    // Addresses of slave registers
    localparam
      ADDR_CTRL_LOOPBACK = 4'b0000;
@@ -90,7 +91,7 @@ module aurora(
    // S_AXI_AWREADY / S_AXI_WREADY asserted for one S_AXI_ACLK cycle and 
    // S_AXI_AWADDR latched when both S_AXI_AWVALID and S_AXI_WVALID high
    // TODO: Assuming no pending transactions (side: this logic may not be the best?)
-   always @(posedge S_AXI_ACLK) begin
+   always @(posedge usr_clk) begin
       if (S_AXI_ARESETN == 1'b0) begin
          S_AXI_AWREADY <= 1'b0;
          s_axi_awaddr <= 6'b00_0000;
@@ -121,7 +122,7 @@ module aurora(
     * S_AXI_AWREADY, S_AXI_AWVALID, S_AXI_WREADY and S_AXI_WVALID are high
     * TODO: Use write strobes
     */
-   always @(posedge S_AXI_ACLK) begin
+   always @(posedge usr_clk) begin
       if (S_AXI_ARESETN == 1'b0) begin
          slv_ctrl_loopback <= 1'b0;
       end else begin
@@ -142,7 +143,7 @@ module aurora(
 
    // Write response logic
    // S_AXI_BVALID asserted when S_AXI_AWREADY, S_AXI_AWVALID, S_AXI_WREADY, S_AXI_WVALID high
-   always @(posedge S_AXI_ACLK) begin
+   always @(posedge usr_clk) begin
       if (S_AXI_ARESETN == 1'b0) begin
          S_AXI_BVALID <= 1'b0;
       end else begin
@@ -157,7 +158,7 @@ module aurora(
 
    // S_AXI_ARREADY asserted for one S_AXI_ACLK cycle and S_AXI_ARADDR latched when S_AXI_ARVALID high
    // TODO: this logic may not be the best?
-   always @(posedge S_AXI_ACLK) begin
+   always @(posedge usr_clk) begin
       if (S_AXI_ARESETN == 1'b0) begin
          S_AXI_ARREADY <= 1'b0;
          s_axi_araddr <= 6'b00_0000;
@@ -182,7 +183,7 @@ module aurora(
    end
 
    // Memory mapped register select and read logic
-   always @(posedge S_AXI_ACLK) begin
+   always @(posedge usr_clk) begin
       if (S_AXI_ARESETN == 1'b0) begin
          S_AXI_RDATA <= 32'h00_00_00_00;
       end else begin
@@ -268,18 +269,18 @@ module aurora(
                             // Clock interface
                             .pll_not_locked_out      (),
                             .gt_refclk1              (gt_refclk1),
-                            .user_clk_out            (user_clk_out),
+                            .user_clk_out            (usr_clk),
                             .sync_clk_out            (), // Same as user_clk_out
                             .sys_reset_out           (sys_reset_out), // Relative to user_clk_out
                             .gt_reset_out            (),
-                            .init_clk_in             (init_clk_in),
+                            .init_clk_in             (free_clk_in),
                             .gt0_qplllock_out        (),
                             .gt0_qpllrefclklost_out  (),
                             .gt_qpllclk_quad1_out    (),
                             .gt_qpllrefclk_quad1_out (),
 
                             // Transceiver DRP ports
-                            .drpclk_in               (drpclk_in),
+                            .drpclk_in               (free_clk_in),
                             .drpaddr_in              (9'h0),
                             .drpen_in                (1'b0),
                             .drpdi_in                (16'h0),

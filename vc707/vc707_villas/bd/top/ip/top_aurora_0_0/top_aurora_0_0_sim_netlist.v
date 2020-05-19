@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-// Date        : Fri Apr 17 01:42:26 2020
+// Date        : Wed May 13 12:48:15 2020
 // Host        : ubuntu-svg-xilinx.acs-lab.eonerc.rwth-aachen.de running 64-bit Ubuntu 16.04.6 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/svg-hka/VILLASfpga-hardware/vc707/vc707_villas/bd/top/ip/top_aurora_0_0/top_aurora_0_0_sim_netlist.v
@@ -29,13 +29,11 @@ module top_aurora_0_0
     m_axis_tdata,
     m_axis_tlast,
     m_axis_tready,
-    init_clk_in,
+    free_clk_in,
     gt_refclk1,
-    drpclk_in,
     user_clk_out,
     reset,
     sys_reset_out,
-    S_AXI_ACLK,
     S_AXI_ARESETN,
     S_AXI_AWADDR,
     S_AXI_AWPROT,
@@ -67,13 +65,11 @@ module top_aurora_0_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TDATA" *) output [31:0]m_axis_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TLAST" *) output m_axis_tlast;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis TREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, LAYERED_METADATA undef, INSERT_VIP 0" *) input m_axis_tready;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 init_clk_in CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME init_clk_in, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_0_IBUF_OUT, INSERT_VIP 0" *) input init_clk_in;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 gt_refclk1 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME gt_refclk1, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_2_IBUF_OUT, INSERT_VIP 0" *) input gt_refclk1;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 drpclk_in CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME drpclk_in, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_1_1_IBUF_OUT, INSERT_VIP 0" *) input drpclk_in;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 usr_clk_out CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME usr_clk_out, ASSOCIATED_BUSIF m_axis:s_axis, ASSOCIATED_RESET sys_reset_out, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, INSERT_VIP 0" *) output user_clk_out;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 free_clk_in CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME free_clk_in, FREQ_HZ 156000000, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_1_1_IBUF_OUT, INSERT_VIP 0" *) input free_clk_in;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 gt_refclk1 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME gt_refclk1, ASSOCIATED_RESET reset, PHASE 0.000, CLK_DOMAIN top_util_ds_buf_0_2_IBUF_OUT, INSERT_VIP 0" *) input gt_refclk1;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 usr_clk_out CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME usr_clk_out, ASSOCIATED_BUSIF m_axis:s_axis:S_AXI, ASSOCIATED_RESET sys_reset_out:S_AXI_ARESETN, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, INSERT_VIP 0" *) output user_clk_out;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 sys_reset_out RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME sys_reset_out, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) output sys_reset_out;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 S_AXI_ACLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 125000000, PHASE 0.000, CLK_DOMAIN top_axi_pcie_0_0_axi_aclk_out, INSERT_VIP 0" *) input S_AXI_ACLK;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S_AXI_ARESETN RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input S_AXI_ARESETN;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *) input [5:0]S_AXI_AWADDR;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWPROT" *) input [2:0]S_AXI_AWPROT;
@@ -91,14 +87,13 @@ module top_aurora_0_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI ARREADY" *) output S_AXI_ARREADY;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RDATA" *) output [31:0]S_AXI_RDATA;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RVALID" *) output S_AXI_RVALID;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 6, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 0, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN top_axi_pcie_0_0_axi_aclk_out, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input S_AXI_RREADY;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, ID_WIDTH 0, ADDR_WIDTH 6, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 0, HAS_RRESP 0, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN top_aurora_0_0_user_clk_out, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input S_AXI_RREADY;
 
   wire SFP_RX_N;
   wire SFP_RX_P;
   wire SFP_TX_DISABLE_N;
   wire SFP_TX_N;
   wire SFP_TX_P;
-  wire S_AXI_ACLK;
   wire [5:0]S_AXI_ARADDR;
   wire S_AXI_ARESETN;
   wire [2:0]S_AXI_ARPROT;
@@ -117,9 +112,8 @@ module top_aurora_0_0
   wire S_AXI_WREADY;
   wire [3:0]S_AXI_WSTRB;
   wire S_AXI_WVALID;
-  wire drpclk_in;
+  wire free_clk_in;
   wire gt_refclk1;
-  wire init_clk_in;
   wire [31:0]m_axis_tdata;
   wire m_axis_tlast;
   wire m_axis_tready;
@@ -139,7 +133,6 @@ module top_aurora_0_0
         .SFP_TX_DISABLE_N(SFP_TX_DISABLE_N),
         .SFP_TX_N(SFP_TX_N),
         .SFP_TX_P(SFP_TX_P),
-        .S_AXI_ACLK(S_AXI_ACLK),
         .S_AXI_ARADDR(S_AXI_ARADDR),
         .S_AXI_ARESETN(S_AXI_ARESETN),
         .S_AXI_ARPROT(S_AXI_ARPROT),
@@ -158,9 +151,8 @@ module top_aurora_0_0
         .S_AXI_WREADY(S_AXI_WREADY),
         .S_AXI_WSTRB(S_AXI_WSTRB),
         .S_AXI_WVALID(S_AXI_WVALID),
-        .drpclk_in(drpclk_in),
+        .free_clk_in(free_clk_in),
         .gt_refclk1(gt_refclk1),
-        .init_clk_in(init_clk_in),
         .m_axis_tdata(m_axis_tdata),
         .m_axis_tlast(m_axis_tlast),
         .m_axis_tready(m_axis_tready),
@@ -189,13 +181,11 @@ module top_aurora_0_0_aurora
     m_axis_tdata,
     m_axis_tlast,
     m_axis_tready,
-    init_clk_in,
+    free_clk_in,
     gt_refclk1,
-    drpclk_in,
     user_clk_out,
     reset,
     sys_reset_out,
-    S_AXI_ACLK,
     S_AXI_ARESETN,
     S_AXI_AWADDR,
     S_AXI_AWPROT,
@@ -227,13 +217,11 @@ module top_aurora_0_0_aurora
   output [31:0]m_axis_tdata;
   output m_axis_tlast;
   input m_axis_tready;
-  input init_clk_in;
+  input free_clk_in;
   input gt_refclk1;
-  input drpclk_in;
   output user_clk_out;
   input reset;
   output sys_reset_out;
-  input S_AXI_ACLK;
   input S_AXI_ARESETN;
   input [5:0]S_AXI_AWADDR;
   input [2:0]S_AXI_AWPROT;
@@ -259,7 +247,6 @@ module top_aurora_0_0_aurora
   wire SFP_RX_P;
   wire SFP_TX_N;
   wire SFP_TX_P;
-  wire S_AXI_ACLK;
   wire [5:0]S_AXI_ARADDR;
   wire S_AXI_ARESETN;
   wire S_AXI_ARREADY;
@@ -282,10 +269,9 @@ module top_aurora_0_0_aurora
   wire S_AXI_WREADY;
   wire S_AXI_WREADY0;
   wire S_AXI_WVALID;
-  wire drpclk_in;
   wire fifo_loop_0_i_1_n_0;
+  wire free_clk_in;
   wire gt_refclk1;
-  wire init_clk_in;
   wire [0:31]m_axis_aurora_tdata;
   wire m_axis_aurora_tlast;
   wire m_axis_aurora_tvalid;
@@ -377,7 +363,7 @@ module top_aurora_0_0_aurora
         .I1(S_AXI_ARREADY),
         .O(S_AXI_ARREADY0));
   FDRE S_AXI_ARREADY_reg
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(1'b1),
         .D(S_AXI_ARREADY0),
         .Q(S_AXI_ARREADY),
@@ -395,7 +381,7 @@ module top_aurora_0_0_aurora
         .I2(S_AXI_WVALID),
         .O(S_AXI_AWREADY0));
   FDRE S_AXI_AWREADY_reg
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(1'b1),
         .D(S_AXI_AWREADY0),
         .Q(S_AXI_AWREADY),
@@ -411,7 +397,7 @@ module top_aurora_0_0_aurora
         .I5(S_AXI_BVALID),
         .O(S_AXI_BVALID_i_1_n_0));
   FDRE S_AXI_BVALID_reg
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(1'b1),
         .D(S_AXI_BVALID_i_1_n_0),
         .Q(S_AXI_BVALID),
@@ -427,7 +413,7 @@ module top_aurora_0_0_aurora
         .I5(S_AXI_ARESETN),
         .O(\S_AXI_RDATA[0]_i_1_n_0 ));
   FDRE \S_AXI_RDATA_reg[0] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(1'b1),
         .D(\S_AXI_RDATA[0]_i_1_n_0 ),
         .Q(\^S_AXI_RDATA ),
@@ -441,7 +427,7 @@ module top_aurora_0_0_aurora
         .I3(S_AXI_RREADY),
         .O(S_AXI_RVALID_i_1_n_0));
   FDRE S_AXI_RVALID_reg
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(1'b1),
         .D(S_AXI_RVALID_i_1_n_0),
         .Q(S_AXI_RVALID),
@@ -454,7 +440,7 @@ module top_aurora_0_0_aurora
         .I2(S_AXI_WVALID),
         .O(S_AXI_WREADY0));
   FDRE S_AXI_WREADY_reg
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(1'b1),
         .D(S_AXI_WREADY0),
         .Q(S_AXI_WREADY),
@@ -464,7 +450,7 @@ module top_aurora_0_0_aurora
   top_aurora_0_0_aurora_8b10b_0 aurora_0
        (.channel_up(NLW_aurora_0_channel_up_UNCONNECTED),
         .drpaddr_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .drpclk_in(drpclk_in),
+        .drpclk_in(free_clk_in),
         .drpdi_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .drpdo_out(NLW_aurora_0_drpdo_out_UNCONNECTED[15:0]),
         .drpen_in(1'b0),
@@ -479,7 +465,7 @@ module top_aurora_0_0_aurora
         .gt_reset(reset),
         .gt_reset_out(NLW_aurora_0_gt_reset_out_UNCONNECTED),
         .hard_err(NLW_aurora_0_hard_err_UNCONNECTED),
-        .init_clk_in(init_clk_in),
+        .init_clk_in(free_clk_in),
         .lane_up(NLW_aurora_0_lane_up_UNCONNECTED),
         .link_reset_out(NLW_aurora_0_link_reset_out_UNCONNECTED),
         .loopback({1'b0,1'b0,1'b0}),
@@ -689,14 +675,15 @@ module top_aurora_0_0_aurora
         .I1(m_axis_aurora_tvalid),
         .O(m_axis_tvalid));
   top_aurora_0_0_post post
-       (.m_axi_rx_tdata(m_axis_aurora_tdata),
+       (.CLK(user_clk_out),
+        .m_axi_rx_tdata(m_axis_aurora_tdata),
         .m_axi_rx_tlast(m_axis_aurora_tlast),
         .m_axi_rx_tvalid(m_axis_aurora_tvalid),
         .m_axis_tdata(m_axis_tdata),
-        .sys_reset_out(sys_reset_out),
-        .user_clk_out(user_clk_out));
+        .sys_reset_out(sys_reset_out));
   top_aurora_0_0_pre pre
-       (.m_axis_tdata(s_axis_loop_tdata),
+       (.CLK(user_clk_out),
+        .m_axis_tdata(s_axis_loop_tdata),
         .m_axis_tlast(s_axis_loop_tlast),
         .m_axis_tvalid(s_axis_loop_tvalid),
         .passthrough_reg_0(s_axis_tready),
@@ -707,52 +694,51 @@ module top_aurora_0_0_aurora
         .s_axis_tlast(s_axis_tlast),
         .s_axis_tvalid(s_axis_tvalid),
         .\storage_r_reg[15] (vio_in0[0]),
-        .sys_reset_out(sys_reset_out),
-        .user_clk_out(user_clk_out));
+        .sys_reset_out(sys_reset_out));
   FDRE \s_axi_araddr_reg[2] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_ARREADY0),
         .D(S_AXI_ARADDR[2]),
         .Q(s_axi_araddr[2]),
         .R(S_AXI_AWREADY_i_1_n_0));
   FDRE \s_axi_araddr_reg[3] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_ARREADY0),
         .D(S_AXI_ARADDR[3]),
         .Q(s_axi_araddr[3]),
         .R(S_AXI_AWREADY_i_1_n_0));
   FDRE \s_axi_araddr_reg[4] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_ARREADY0),
         .D(S_AXI_ARADDR[4]),
         .Q(s_axi_araddr[4]),
         .R(S_AXI_AWREADY_i_1_n_0));
   FDRE \s_axi_araddr_reg[5] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_ARREADY0),
         .D(S_AXI_ARADDR[5]),
         .Q(s_axi_araddr[5]),
         .R(S_AXI_AWREADY_i_1_n_0));
   FDRE \s_axi_awaddr_reg[2] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_AWREADY0),
         .D(S_AXI_AWADDR[2]),
         .Q(p_0_in[0]),
         .R(S_AXI_AWREADY_i_1_n_0));
   FDRE \s_axi_awaddr_reg[3] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_AWREADY0),
         .D(S_AXI_AWADDR[3]),
         .Q(p_0_in[1]),
         .R(S_AXI_AWREADY_i_1_n_0));
   FDRE \s_axi_awaddr_reg[4] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_AWREADY0),
         .D(S_AXI_AWADDR[4]),
         .Q(p_0_in[2]),
         .R(S_AXI_AWREADY_i_1_n_0));
   FDRE \s_axi_awaddr_reg[5] 
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(S_AXI_AWREADY0),
         .D(S_AXI_AWADDR[5]),
         .Q(p_0_in[3]),
@@ -777,7 +763,7 @@ module top_aurora_0_0_aurora
         .I5(S_AXI_WREADY),
         .O(slv_ctrl_loopback_i_2_n_0));
   FDRE slv_ctrl_loopback_reg
-       (.C(S_AXI_ACLK),
+       (.C(user_clk_out),
         .CE(1'b1),
         .D(slv_ctrl_loopback_i_1_n_0),
         .Q(vio_in0[0]),
@@ -2028,18 +2014,18 @@ endmodule
 
 (* ORIG_REF_NAME = "aurora_8b10b_0_CLOCK_MODULE" *) 
 module top_aurora_0_0_aurora_8b10b_0_CLOCK_MODULE
-   (init_clk_in,
+   (free_clk_in,
     tx_out_clk);
-  output init_clk_in;
+  output free_clk_in;
   input tx_out_clk;
 
-  wire init_clk_in;
+  wire free_clk_in;
   wire tx_out_clk;
 
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG user_clk_buf_i
        (.I(tx_out_clk),
-        .O(init_clk_in));
+        .O(free_clk_in));
 endmodule
 
 (* ORIG_REF_NAME = "aurora_8b10b_0_ERR_DETECT_4BYTE" *) 
@@ -2461,7 +2447,7 @@ endmodule
 (* ORIG_REF_NAME = "aurora_8b10b_0_GT_WRAPPER" *) 
 module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
    (out,
-    init_clk_in_0,
+    free_clk_in,
     drprdy_out,
     txn,
     txp,
@@ -2476,7 +2462,7 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
     pll_not_locked_out,
     ENABLE_ERR_DETECT_reg,
     consecutive_commas_r_reg,
-    init_clk_in_1,
+    free_clk_in_0,
     \previous_cycle_data_r_reg[7] ,
     \left_align_select_r_reg[0] ,
     \previous_cycle_control_r_reg[0] ,
@@ -2516,7 +2502,7 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
     \word_aligned_control_bits_r_reg[2] ,
     \left_align_select_r_reg[0]_2 );
   output out;
-  output init_clk_in_0;
+  output free_clk_in;
   output drprdy_out;
   output txn;
   output txp;
@@ -2531,7 +2517,7 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
   output pll_not_locked_out;
   output [3:0]ENABLE_ERR_DETECT_reg;
   output consecutive_commas_r_reg;
-  output init_clk_in_1;
+  output free_clk_in_0;
   output [5:0]\previous_cycle_data_r_reg[7] ;
   output [7:0]\left_align_select_r_reg[0] ;
   output \previous_cycle_control_r_reg[0] ;
@@ -2593,6 +2579,8 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
   wire drpwe_in;
   wire ena_comma_align_i;
   wire enable_err_detect_i;
+  wire free_clk_in;
+  wire free_clk_in_0;
   wire \gt0_aurora_8b10b_0_i/ack_flag ;
   wire gt0_rxresetdone_r3_reg_srl3_n_0;
   wire gt0_txresetdone_r3_reg_srl3_n_0;
@@ -2615,8 +2603,6 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
   wire gtrxreset_sync;
   wire hard_err_gt0;
   wire init_clk_in;
-  wire init_clk_in_0;
-  wire init_clk_in_1;
   wire \init_wait_count_reg[7] ;
   wire [7:0]\left_align_select_r_reg[0] ;
   wire \left_align_select_r_reg[0]_0 ;
@@ -2752,6 +2738,9 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
         .ena_comma_align_i(ena_comma_align_i),
         .enable_err_detect_i(enable_err_detect_i),
         .flag2_reg(gt_txresetfsm_i_n_4),
+        .free_clk_in(aurora_8b10b_0_multi_gt_i_n_5),
+        .free_clk_in_0(aurora_8b10b_0_multi_gt_i_n_7),
+        .free_clk_in_1(free_clk_in_0),
         .gt_qpllclk_quad1_out(gt_qpllclk_quad1_out),
         .gt_qpllrefclk_quad1_out(gt_qpllrefclk_quad1_out),
         .gt_refclk1(gt_refclk1),
@@ -2760,11 +2749,8 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
         .gt_tx_reset_i(gt_tx_reset_i),
         .gt_txuserrdy_i(gt_txuserrdy_i),
         .hard_err_gt0(hard_err_gt0),
-        .in0(init_clk_in_0),
+        .in0(free_clk_in),
         .init_clk_in(init_clk_in),
-        .init_clk_in_0(aurora_8b10b_0_multi_gt_i_n_5),
-        .init_clk_in_1(aurora_8b10b_0_multi_gt_i_n_7),
-        .init_clk_in_2(init_clk_in_1),
         .\left_align_select_r_reg[0] (\left_align_select_r_reg[0] ),
         .\left_align_select_r_reg[0]_0 (\left_align_select_r_reg[0]_0 ),
         .\left_align_select_r_reg[0]_1 (\left_align_select_r_reg[0]_1 ),
@@ -2828,7 +2814,7 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
         .p_level_in_d1_cdc_from_reg(p_level_in_d1_cdc_from_reg),
         .reset_time_out_reg_0(rx_cdrlocked_reg_n_0),
         .rxfsm_rxresetdone_r(rxfsm_rxresetdone_r),
-        .s_level_out_d1_aurora_8b10b_0_cdc_to_reg(init_clk_in_0));
+        .s_level_out_d1_aurora_8b10b_0_cdc_to_reg(free_clk_in));
   top_aurora_0_0_aurora_8b10b_0_tx_startup_fsm gt_txresetfsm_i
        (.CPLL_RESET_reg_0(gt_txresetfsm_i_n_4),
         .ack_flag(\gt0_aurora_8b10b_0_i/ack_flag ),
@@ -2838,7 +2824,7 @@ module top_aurora_0_0_aurora_8b10b_0_GT_WRAPPER
         .init_clk_in(init_clk_in),
         .\init_wait_count_reg[7]_0 (\init_wait_count_reg[7] ),
         .out(out),
-        .s_level_out_d1_aurora_8b10b_0_cdc_to_reg(init_clk_in_0),
+        .s_level_out_d1_aurora_8b10b_0_cdc_to_reg(free_clk_in),
         .s_level_out_d3_reg(s_level_out_d3_reg),
         .s_level_out_d5_reg(p_level_in_d1_cdc_from_reg),
         .txfsm_txresetdone_r(txfsm_txresetdone_r));
@@ -17534,14 +17520,14 @@ module top_aurora_0_0_aurora_8b10b_0_core
         .drpwe_in(drpwe_in),
         .ena_comma_align_i(ena_comma_align_i),
         .enable_err_detect_i(enable_err_detect_i),
+        .free_clk_in(tx_lock),
+        .free_clk_in_0(gt_wrapper_i_n_71),
         .gt_qpllclk_quad1_out(gt_qpllclk_quad1_out),
         .gt_qpllrefclk_quad1_out(gt_qpllrefclk_quad1_out),
         .gt_refclk1(gt_refclk1),
         .gtrxreset_i(gtrxreset_i),
         .hard_err_gt0(\aurora_8b10b_0_err_detect_4byte_i/hard_err_gt0 ),
         .init_clk_in(init_clk_in),
-        .init_clk_in_0(tx_lock),
-        .init_clk_in_1(gt_wrapper_i_n_71),
         .\init_wait_count_reg[7] (\init_wait_count_reg[7] ),
         .\left_align_select_r_reg[0] ({gt_wrapper_i_n_78,gt_wrapper_i_n_79,gt_wrapper_i_n_80,gt_wrapper_i_n_81,gt_wrapper_i_n_82,gt_wrapper_i_n_83,gt_wrapper_i_n_84,gt_wrapper_i_n_85}),
         .\left_align_select_r_reg[0]_0 (gt_wrapper_i_n_91),
@@ -17591,9 +17577,9 @@ module top_aurora_0_0_aurora_8b10b_0_gt
     txn,
     txp,
     rx_realign_i,
-    init_clk_in_0,
+    free_clk_in,
     tx_out_clk,
-    init_clk_in_1,
+    free_clk_in_0,
     drpdo_out,
     RXDATA,
     D,
@@ -17602,7 +17588,7 @@ module top_aurora_0_0_aurora_8b10b_0_gt
     pll_not_locked_out,
     ENABLE_ERR_DETECT_reg,
     consecutive_commas_r_reg,
-    init_clk_in_2,
+    free_clk_in_1,
     \previous_cycle_data_r_reg[7] ,
     \left_align_select_r_reg[0] ,
     \previous_cycle_control_r_reg[0] ,
@@ -17648,9 +17634,9 @@ module top_aurora_0_0_aurora_8b10b_0_gt
   output txn;
   output txp;
   output rx_realign_i;
-  output init_clk_in_0;
+  output free_clk_in;
   output tx_out_clk;
-  output init_clk_in_1;
+  output free_clk_in_0;
   output [15:0]drpdo_out;
   output [31:0]RXDATA;
   output [3:0]D;
@@ -17659,7 +17645,7 @@ module top_aurora_0_0_aurora_8b10b_0_gt
   output pll_not_locked_out;
   output [3:0]ENABLE_ERR_DETECT_reg;
   output consecutive_commas_r_reg;
-  output init_clk_in_2;
+  output free_clk_in_1;
   output [5:0]\previous_cycle_data_r_reg[7] ;
   output [7:0]\left_align_select_r_reg[0] ;
   output \previous_cycle_control_r_reg[0] ;
@@ -17749,6 +17735,9 @@ module top_aurora_0_0_aurora_8b10b_0_gt
   wire flag2;
   wire flag2_reg_0;
   wire flag_i_1_n_0;
+  wire free_clk_in;
+  wire free_clk_in_0;
+  wire free_clk_in_1;
   wire gt_pllrefclklost_i;
   wire gt_qpllclk_quad1_out;
   wire gt_qpllrefclk_quad1_out;
@@ -17789,9 +17778,6 @@ module top_aurora_0_0_aurora_8b10b_0_gt
   wire hard_err_gt0;
   wire in0;
   wire init_clk_in;
-  wire init_clk_in_0;
-  wire init_clk_in_1;
-  wire init_clk_in_2;
   wire [7:0]\left_align_select_r_reg[0] ;
   wire \left_align_select_r_reg[0]_0 ;
   wire \left_align_select_r_reg[0]_1 ;
@@ -18530,7 +18516,7 @@ module top_aurora_0_0_aurora_8b10b_0_gt
         .RXQPISENP(NLW_gtxe2_i_RXQPISENP_UNCONNECTED),
         .RXRATE({1'b0,1'b0,1'b0}),
         .RXRATEDONE(NLW_gtxe2_i_RXRATEDONE_UNCONNECTED),
-        .RXRESETDONE(init_clk_in_0),
+        .RXRESETDONE(free_clk_in),
         .RXSLIDE(1'b0),
         .RXSTARTOFSEQ(NLW_gtxe2_i_RXSTARTOFSEQ_UNCONNECTED),
         .RXSTATUS(NLW_gtxe2_i_RXSTATUS_UNCONNECTED[2:0]),
@@ -18603,7 +18589,7 @@ module top_aurora_0_0_aurora_8b10b_0_gt
         .TXQPIWEAKPUP(1'b0),
         .TXRATE({1'b0,1'b0,1'b0}),
         .TXRATEDONE(NLW_gtxe2_i_TXRATEDONE_UNCONNECTED),
-        .TXRESETDONE(init_clk_in_1),
+        .TXRESETDONE(free_clk_in_0),
         .TXSEQUENCE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .TXSTARTSEQ(1'b0),
         .TXSWING(1'b0),
@@ -18632,7 +18618,7 @@ module top_aurora_0_0_aurora_8b10b_0_gt
         .I3(rx_disp_err_i[1]),
         .I4(rx_disp_err_i[0]),
         .I5(rx_disp_err_i[2]),
-        .O(init_clk_in_2));
+        .O(free_clk_in_1));
   LUT4 #(
     .INIT(16'h0010)) 
     reset_count_r_i_3
@@ -19450,9 +19436,9 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
     txn,
     txp,
     rx_realign_i,
-    init_clk_in_0,
+    free_clk_in,
     tx_out_clk,
-    init_clk_in_1,
+    free_clk_in_0,
     drpdo_out,
     RXDATA,
     D,
@@ -19461,7 +19447,7 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
     pll_not_locked_out,
     ENABLE_ERR_DETECT_reg,
     consecutive_commas_r_reg,
-    init_clk_in_2,
+    free_clk_in_1,
     \previous_cycle_data_r_reg[7] ,
     \left_align_select_r_reg[0] ,
     \previous_cycle_control_r_reg[0] ,
@@ -19507,9 +19493,9 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
   output txn;
   output txp;
   output rx_realign_i;
-  output init_clk_in_0;
+  output free_clk_in;
   output tx_out_clk;
-  output init_clk_in_1;
+  output free_clk_in_0;
   output [15:0]drpdo_out;
   output [31:0]RXDATA;
   output [3:0]D;
@@ -19518,7 +19504,7 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
   output pll_not_locked_out;
   output [3:0]ENABLE_ERR_DETECT_reg;
   output consecutive_commas_r_reg;
-  output init_clk_in_2;
+  output free_clk_in_1;
   output [5:0]\previous_cycle_data_r_reg[7] ;
   output [7:0]\left_align_select_r_reg[0] ;
   output \previous_cycle_control_r_reg[0] ;
@@ -19582,6 +19568,9 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
   wire ena_comma_align_i;
   wire enable_err_detect_i;
   wire flag2_reg;
+  wire free_clk_in;
+  wire free_clk_in_0;
+  wire free_clk_in_1;
   wire gt_qpllclk_quad1_out;
   wire gt_qpllrefclk_quad1_out;
   wire gt_refclk1;
@@ -19592,9 +19581,6 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
   wire hard_err_gt0;
   wire in0;
   wire init_clk_in;
-  wire init_clk_in_0;
-  wire init_clk_in_1;
-  wire init_clk_in_2;
   wire [7:0]\left_align_select_r_reg[0] ;
   wire \left_align_select_r_reg[0]_0 ;
   wire \left_align_select_r_reg[0]_1 ;
@@ -19641,6 +19627,9 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
         .ena_comma_align_i(ena_comma_align_i),
         .enable_err_detect_i(enable_err_detect_i),
         .flag2_reg_0(flag2_reg),
+        .free_clk_in(free_clk_in),
+        .free_clk_in_0(free_clk_in_0),
+        .free_clk_in_1(free_clk_in_1),
         .gt_qpllclk_quad1_out(gt_qpllclk_quad1_out),
         .gt_qpllrefclk_quad1_out(gt_qpllrefclk_quad1_out),
         .gt_refclk1(gt_refclk1),
@@ -19651,9 +19640,6 @@ module top_aurora_0_0_aurora_8b10b_0_multi_gt
         .hard_err_gt0(hard_err_gt0),
         .in0(in0),
         .init_clk_in(init_clk_in),
-        .init_clk_in_0(init_clk_in_0),
-        .init_clk_in_1(init_clk_in_1),
-        .init_clk_in_2(init_clk_in_2),
         .\left_align_select_r_reg[0] (\left_align_select_r_reg[0] ),
         .\left_align_select_r_reg[0]_0 (\left_align_select_r_reg[0]_0 ),
         .\left_align_select_r_reg[0]_1 (\left_align_select_r_reg[0]_1 ),
@@ -22244,7 +22230,7 @@ module top_aurora_0_0_aurora_8b10b_0_support
         .txn(txn),
         .txp(txp));
   top_aurora_0_0_aurora_8b10b_0_CLOCK_MODULE clock_module_i
-       (.init_clk_in(user_clk_out),
+       (.free_clk_in(user_clk_out),
         .tx_out_clk(tx_out_clk_i));
   top_aurora_0_0_aurora_8b10b_0_gt_common_wrapper gt_common_support
        (.gt0_qplllock_out(gt0_qplllock_out),
@@ -24650,17 +24636,18 @@ endmodule
 module top_aurora_0_0_post
    (m_axis_tdata,
     sys_reset_out,
-    user_clk_out,
+    CLK,
     m_axi_rx_tlast,
     m_axi_rx_tvalid,
     m_axi_rx_tdata);
   output [31:0]m_axis_tdata;
   input sys_reset_out;
-  input user_clk_out;
+  input CLK;
   input m_axi_rx_tlast;
   input m_axi_rx_tvalid;
   input [0:31]m_axi_rx_tdata;
 
+  wire CLK;
   wire [0:31]m_axi_rx_tdata;
   wire m_axi_rx_tlast;
   wire m_axi_rx_tvalid;
@@ -24670,7 +24657,6 @@ module top_aurora_0_0_post
   wire state_cnt_pkts;
   wire state_cnt_pkts_i_1_n_0;
   wire sys_reset_out;
-  wire user_clk_out;
 
   (* SOFT_HLUTNM = "soft_lutpair148" *) 
   LUT4 #(
@@ -24969,7 +24955,7 @@ module top_aurora_0_0_post
         .I2(m_axi_rx_tvalid),
         .O(stat_cnt_pkts_rdy_i_i_1_n_0));
   FDRE stat_cnt_pkts_rdy_i_reg
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(1'b1),
         .D(stat_cnt_pkts_rdy_i_i_1_n_0),
         .Q(stat_cnt_pkts_rdy_i_reg_n_0),
@@ -24983,7 +24969,7 @@ module top_aurora_0_0_post
         .I2(m_axi_rx_tlast),
         .O(state_cnt_pkts_i_1_n_0));
   FDRE state_cnt_pkts_reg
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(1'b1),
         .D(state_cnt_pkts_i_1_n_0),
         .Q(state_cnt_pkts),
@@ -24997,7 +24983,7 @@ module top_aurora_0_0_pre
     s_axi_tx_tlast,
     s_axi_tx_tdata,
     sys_reset_out,
-    user_clk_out,
+    CLK,
     m_axis_tvalid,
     \storage_r_reg[15] ,
     s_axis_tvalid,
@@ -25010,7 +24996,7 @@ module top_aurora_0_0_pre
   output s_axi_tx_tlast;
   output [0:31]s_axi_tx_tdata;
   input sys_reset_out;
-  input user_clk_out;
+  input CLK;
   input m_axis_tvalid;
   input \storage_r_reg[15] ;
   input s_axis_tvalid;
@@ -25019,6 +25005,7 @@ module top_aurora_0_0_pre
   input [31:0]m_axis_tdata;
   input [31:0]s_axis_tdata;
 
+  wire CLK;
   wire [31:0]m_axis_tdata;
   wire m_axis_tlast;
   wire m_axis_tvalid;
@@ -25068,7 +25055,6 @@ module top_aurora_0_0_pre
   wire state_reg_n_0;
   wire \storage_r_reg[15] ;
   wire sys_reset_out;
-  wire user_clk_out;
   wire [3:3]\NLW_seq_ctr_reg[12]_i_1_CO_UNCONNECTED ;
 
   LUT4 #(
@@ -25369,7 +25355,7 @@ module top_aurora_0_0_pre
         .I3(passthrough_reg_0),
         .O(passthrough_i_1_n_0));
   FDSE passthrough_reg
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(1'b1),
         .D(passthrough_i_1_n_0),
         .Q(passthrough_reg_0),
@@ -25387,7 +25373,7 @@ module top_aurora_0_0_pre
        (.I0(seq_ctr_reg[0]),
         .O(\seq_ctr[0]_i_3_n_0 ));
   FDSE \seq_ctr_reg[0] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[0]_i_2_n_7 ),
         .Q(seq_ctr_reg[0]),
@@ -25400,19 +25386,19 @@ module top_aurora_0_0_pre
         .O({\seq_ctr_reg[0]_i_2_n_4 ,\seq_ctr_reg[0]_i_2_n_5 ,\seq_ctr_reg[0]_i_2_n_6 ,\seq_ctr_reg[0]_i_2_n_7 }),
         .S({seq_ctr_reg[3:1],\seq_ctr[0]_i_3_n_0 }));
   FDRE \seq_ctr_reg[10] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[8]_i_1_n_5 ),
         .Q(seq_ctr_reg[10]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[11] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[8]_i_1_n_4 ),
         .Q(seq_ctr_reg[11]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[12] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[12]_i_1_n_7 ),
         .Q(seq_ctr_reg[12]),
@@ -25425,43 +25411,43 @@ module top_aurora_0_0_pre
         .O({\seq_ctr_reg[12]_i_1_n_4 ,\seq_ctr_reg[12]_i_1_n_5 ,\seq_ctr_reg[12]_i_1_n_6 ,\seq_ctr_reg[12]_i_1_n_7 }),
         .S(seq_ctr_reg[15:12]));
   FDRE \seq_ctr_reg[13] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[12]_i_1_n_6 ),
         .Q(seq_ctr_reg[13]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[14] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[12]_i_1_n_5 ),
         .Q(seq_ctr_reg[14]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[15] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[12]_i_1_n_4 ),
         .Q(seq_ctr_reg[15]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[1] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[0]_i_2_n_6 ),
         .Q(seq_ctr_reg[1]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[2] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[0]_i_2_n_5 ),
         .Q(seq_ctr_reg[2]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[3] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[0]_i_2_n_4 ),
         .Q(seq_ctr_reg[3]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[4] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[4]_i_1_n_7 ),
         .Q(seq_ctr_reg[4]),
@@ -25474,25 +25460,25 @@ module top_aurora_0_0_pre
         .O({\seq_ctr_reg[4]_i_1_n_4 ,\seq_ctr_reg[4]_i_1_n_5 ,\seq_ctr_reg[4]_i_1_n_6 ,\seq_ctr_reg[4]_i_1_n_7 }),
         .S(seq_ctr_reg[7:4]));
   FDRE \seq_ctr_reg[5] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[4]_i_1_n_6 ),
         .Q(seq_ctr_reg[5]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[6] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[4]_i_1_n_5 ),
         .Q(seq_ctr_reg[6]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[7] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[4]_i_1_n_4 ),
         .Q(seq_ctr_reg[7]),
         .R(sys_reset_out));
   FDRE \seq_ctr_reg[8] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[8]_i_1_n_7 ),
         .Q(seq_ctr_reg[8]),
@@ -25505,7 +25491,7 @@ module top_aurora_0_0_pre
         .O({\seq_ctr_reg[8]_i_1_n_4 ,\seq_ctr_reg[8]_i_1_n_5 ,\seq_ctr_reg[8]_i_1_n_6 ,\seq_ctr_reg[8]_i_1_n_7 }),
         .S(seq_ctr_reg[11:8]));
   FDRE \seq_ctr_reg[9] 
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(\seq_ctr[0]_i_1_n_0 ),
         .D(\seq_ctr_reg[8]_i_1_n_6 ),
         .Q(seq_ctr_reg[9]),
@@ -25518,7 +25504,7 @@ module top_aurora_0_0_pre
         .I2(s_axis_tvalid),
         .O(state_i_1_n_0));
   FDRE state_reg
-       (.C(user_clk_out),
+       (.C(CLK),
         .CE(1'b1),
         .D(state_i_1_n_0),
         .Q(state_reg_n_0),

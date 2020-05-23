@@ -30,10 +30,21 @@ ips/rtds_axis/netlist/RTDS_InterfaceModule.ngc
 # Vivado working directories
 ips/aurora_rtds/vivado
 ips/axi_pcie_intc/vivado
+
 vc707/vc707_pcie/work/
-vc707/vc707_villas/work/
+
+vc707/vc707_villas/vivado/
+vc707/vc707_villas/bd/top/ip*
+vc707/vc707_villas/bd/top/sim 
+vc707/vc707_villas/bd/top/synth 
+vc707/vc707_villas/bd/top/top* 
+vc707/vc707_villas/bd/top/ui 
+vc707/vc707_villas/bd/top/hw_handoff
+
 vc707/vc707_villas_simple/work/
+
 vc707/vc707_prom_flasher/work/
+
 ips/hdl_multiply/work/
 ips/pcie_msi_requester/work/
 ips/rtds_axis/work/

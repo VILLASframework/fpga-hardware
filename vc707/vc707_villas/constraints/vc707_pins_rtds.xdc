@@ -7,9 +7,6 @@
 set_property -dict {PACKAGE_PIN AH7} [get_ports clkbuf_clk_n]
 set_property -dict {PACKAGE_PIN AH8} [get_ports clkbuf_clk_p]
 
-# SYSCLK (200 Mhz)
-#set_property -dict {PACKAGE_PIN E19 IOSTANDARD LVDS} [get_ports sys_clk_clk_p]
-#set_property -dict {PACKAGE_PIN E18 IOSTANDARD LVDS} [get_ports sys_clk_clk_n]
 
 # Free running 156 MHz clock, called drpclk on the Aurora
 set_property -dict {PACKAGE_PIN AK34 IOSTANDARD LVDS} [get_ports user_clk_clk_p]

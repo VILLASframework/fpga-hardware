@@ -2,6 +2,7 @@
 
 # Build directories
 ips/aurora_rtds/build
+vc707/vc707_villas/build
 
 # Backup files
 *~

@@ -86,7 +86,12 @@ module aurora(
 
    // Addresses of slave registers
    localparam
-     ADDR_CTRL_LOOPBACK = 4'b0000;
+     ADDR_STAT_REG   = 4'b0000,
+     ADDR_CTRL_REG   = 4'b0001,
+     ADDR_CNTR_IN_H  = 4'b0011, // 32-bits
+     ADDR_CNTR_IN_L  = 4'b0010, // 32-bits
+     ADDR_CNTR_OUT_H = 4'b0110, // 32-bits
+     ADDR_CNTR_OUT_L = 4'b0111; // 32-bits
 
    // S_AXI_AWREADY / S_AXI_WREADY asserted for one S_AXI_ACLK cycle and 
    // S_AXI_AWADDR latched when both S_AXI_AWVALID and S_AXI_WVALID high
@@ -188,8 +193,23 @@ module aurora(
          S_AXI_RDATA <= 32'h00_00_00_00;
       end else begin
          case (s_axi_araddr[5 : 2])
-           ADDR_CTRL_LOOPBACK: begin
-              S_AXI_RDATA <= { {31{1'b0}}, slv_ctrl_loopback };
+           ADDR_STAT_REG: begin
+              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+           end
+           ADDR_CTRL_REG: begin
+              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+           end
+           ADDR_CNTR_IN_H: begin
+              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+           end
+           ADDR_CNTR_IN_L: begin
+              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+           end
+           ADDR_CNTR_OUT_H: begin
+              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+           end
+           ADDR_CNTR_OUT_L: begin
+              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
            end
            default: begin
               S_AXI_RDATA <= 32'h00_00_00_00;

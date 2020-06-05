@@ -21,6 +21,9 @@ write_bitstream -verbose ./build/top.bit -force
 # Generate configuration memory for VC707 BPI flash mt28gu01gaax1e-bpi-x16
 write_cfgmem -format mcs -size 128 -interface BPIx16 -loadbit {up 0x00000000 "./build/top.bit" } -force -file "./build/top.mcs"
 
+# Generate Hardware Definition file
+write_hwdef -force -file "./build/top.hdf"
+
 # If successful, "touch" a file so Make will know it's done
 touch {./build/.bitstream.done}
 

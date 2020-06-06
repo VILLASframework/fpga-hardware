@@ -134,9 +134,8 @@ module aurora(
 `ifndef USE_VIO_SLV_AURORA
          if (slv_reg_wren == 1'b1) begin
             case (s_axi_awaddr[5 : 2])
-              ADDR_CTRL_LOOPBACK: begin
-                 // Only use LSB of incoming write data word 
-                 slv_ctrl_loopback <= S_AXI_WDATA[0 : 0];
+              ADDR_CTRL_REG: begin
+                 // TODO
               end
             endcase
          end

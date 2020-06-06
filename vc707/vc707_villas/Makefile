@@ -15,7 +15,7 @@ bitstream: ./build/.bitstream.done
 
 villas_config: ./build/.villas_config.done
 ./build/.villas_config.done: ./build/.bitstream.done
-	python3 ./scripts/hwdef-parse.py ./build/vc707_vivc707_villas.hdf > ./etc/main.json
+	python3 ./scripts/hwdef-parse.py ./build/vc707_villas.hdf > ./etc/main.json
 	cat ./etc/pre.json ./etc/main.json ./etc/post.json > ./build/vc707_villas.json
 	touch ./build/.villas_config.done
 

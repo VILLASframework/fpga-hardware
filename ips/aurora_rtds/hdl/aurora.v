@@ -236,16 +236,19 @@ module aurora(
             .m_axis_aresetn (!sys_reset_out),
 
             // AXI-Stream slave interface
-            .s_axis_tvalid  (s_axis_tvalid),
-            .s_axis_tdata   (s_axis_tdata),
-            .s_axis_tlast   (s_axis_tlast),
-            .s_axis_tready  (s_axis_tready),
+            .s_axis_tvalid     (s_axis_tvalid),
+            .s_axis_tdata      (s_axis_tdata),
+            .s_axis_tlast      (s_axis_tlast),
+            .s_axis_tready     (s_axis_tready),
 
             // AXI-Stream master interface
-            .m_axis_tvalid  (m_axis_pre_tvalid),
-            .m_axis_tdata   (m_axis_pre_tdata),
-            .m_axis_tlast   (m_axis_pre_tlast),
-            .m_axis_tready  (s_axis_aurora_tready)
+            .m_axis_tvalid     (m_axis_pre_tvalid),
+            .m_axis_tdata      (m_axis_pre_tdata),
+            .m_axis_tlast      (m_axis_pre_tlast),
+            .m_axis_tready     (s_axis_aurora_tready),
+
+            .ctrl_rst_cntr_out (),
+            .slv_cntr_out      ()
             );
 
 

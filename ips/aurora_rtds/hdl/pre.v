@@ -25,15 +25,62 @@ module pre(
            output wire          m_axis_tvalid,
            output wire [31 : 0] m_axis_tdata,
            output wire          m_axis_tlast,
-           input wire           m_axis_tready
+           input wire           m_axis_tready,
+
+           // Status and control ports
+           input wire           ctrl_rst_cntr_out,
+           output wire [63 : 0] slv_cntr_out
            );
 
-   reg                          state, passthrough, tvalid;
+   reg                          state_pre, state_cnt, passthrough, tvalid;
    reg [15 : 0]                 seq_ctr;
+   reg [63 : 0]                 slv_cntr_out_i; // Slave register to count sent frames
 
    localparam
-     S_PASS = 1'b0,
-     S_SEQ  = 1'b1;
+     S_PRE_PASS = 1'b0,
+     S_PRE_SEQ  = 1'b1;
+
+   localparam
+     S_CNT_COUNT = 1'b0,
+     S_CNT_RST   = 1'b1;
+
+   /* Count number of outgoing frames, frames from Aurora to
+    * NovaCor. Counter is reset as long as corresponding bit in 
+    * control register is asserted. 
+    * 
+    * TODO: Handle overflow of counter. */
+   always @(posedge m_axis_aclk) begin
+      if (m_axis_aresetn == 1'b0) begin // Global reset
+         slv_cntr_out_i <= { {64{1'b0}} };
+
+         state_cnt <= S_CNT_COUNT;
+      end else begin
+         case (state_cnt)
+           S_CNT_RST: begin
+              // Wait here until control port is de-asserted
+              if (ctrl_rst_cntr_out == 1'b0) begin
+                 state_cnt <= S_CNT_COUNT;
+              end
+           end
+           S_CNT_COUNT: begin
+              // Increment counter as the last bit is transmitted.
+              if (s_axis_tvalid == 1'b1 && s_axis_tlast == 1'b1) begin
+                 slv_cntr_out_i <= slv_cntr_out_i + 64'h0000_0000_0000_0001;
+              end
+
+              // Reset counter when control port is asserted
+              if (ctrl_rst_cntr_out == 1'b1) begin
+                 slv_cntr_out_i <= { {64{1'b0}} };
+
+                 state_cnt <= S_CNT_RST;
+              end
+           end
+         endcase
+      end
+   end
+
+   assign slv_cntr_out = slv_cntr_out_i;
+
 
    always @(posedge m_axis_aclk) begin
       if (m_axis_aresetn == 1'b0) begin
@@ -41,25 +88,27 @@ module pre(
          // see RTDS NovaCor Aurora user guide)
          seq_ctr <= 16'h00_01;
 
+         // When asserted, frames "pass-through" to Aurora. 
+         // We de-assert for one cycle, to append the sequence number.
          passthrough <= 1'b1;
 
-         state <= S_PASS;
+         state_pre <= S_PRE_PASS;
       end else begin
-         case (state)
-           S_PASS: begin
+         case (state_pre)
+           S_PRE_PASS: begin
               if (s_axis_tvalid == 1'b1 && s_axis_tlast == 1'b1) begin
                  seq_ctr <= seq_ctr + 16'h00_01;
 
                  passthrough <= 1'b0;
                  tvalid <= 1'b1;
 
-                 state <= S_SEQ;
+                 state_pre <= S_PRE_SEQ;
               end
            end
-           S_SEQ: begin
+           S_PRE_SEQ: begin
               passthrough <= 1'b1;
 
-              state <= S_PASS;
+              state_pre <= S_PRE_PASS;
            end
          endcase
       end
@@ -77,7 +126,7 @@ module pre(
                     .clk    (m_axis_aclk),
                     .probe0 (seq_ctr),
                     .probe1 (passthrough),
-                    .probe2 (state)
+                    .probe2 (state_pre)
                     );
 `endif
 

@@ -71,15 +71,14 @@ module aurora(
                                    m_axis_aurora_tlast, m_axis_aurora_tvalid,
                                    s_axis_loop_tlast, s_axis_loop_tvalid,
                                    m_axis_pre_tvalid, m_axis_pre_tlast,
-                                   usr_clk;
+                                   usr_clk, slv_reg_wren;
    wire [0 : 3]                    s_axis_aurora_tkeep, m_axis_aurora_tkeep;
    wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
    wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata,
                                    vio_in0, vio_out0;
+   wire [63 : 0]                   slv_cntr_out, slv_cntr_in;
 
    reg                             slv_ctrl_loopback; // Control register, assert for loopback mode
-
-   wire                            slv_reg_wren;
    reg [5 : 0]                     s_axi_awaddr, s_axi_araddr;
 
    assign user_clk_out = usr_clk;
@@ -199,16 +198,16 @@ module aurora(
               S_AXI_RDATA <= { {32{1'b0}} }; // TODO
            end
            ADDR_CNTR_IN_H: begin
-              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+              S_AXI_RDATA <= slv_cntr_in[63 : 32];
            end
            ADDR_CNTR_IN_L: begin
-              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+              S_AXI_RDATA <= slv_cntr_in[31 : 0];
            end
            ADDR_CNTR_OUT_H: begin
-              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+              S_AXI_RDATA <= slv_cntr_out[63 : 32];
            end
            ADDR_CNTR_OUT_L: begin
-              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+              S_AXI_RDATA <= slv_cntr_out[31 : 0];
            end
            default: begin
               S_AXI_RDATA <= 32'h00_00_00_00;
@@ -246,8 +245,9 @@ module aurora(
             .m_axis_tlast      (m_axis_pre_tlast),
             .m_axis_tready     (s_axis_aurora_tready),
 
+            // Status and control ports
             .ctrl_rst_cntr_out (),
-            .slv_cntr_out      ()
+            .slv_cntr_out      (slv_cntr_out)
             );
 
 
@@ -330,8 +330,10 @@ module aurora(
               .m_axis_tdata      (m_axis_tdata),
               .m_axis_tlast      (m_axis_tlast),
 
-              // Control ports
-              .ctrl_strip_seq_en (1'b1) // TODO: ctrl_strip_seq_en should be exposed over AXI register interface for external control
+              // Status and control ports
+              .ctrl_strip_seq_en (1'b1), // TODO: ctrl_strip_seq_en should be exposed over AXI register interface for external control
+              .ctrl_rst_cntr_in  (),
+              .slv_cntr_in       (slv_cntr_in)
               );
 
 

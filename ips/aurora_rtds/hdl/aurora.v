@@ -78,7 +78,11 @@ module aurora(
                                    vio_in0, vio_out0;
    wire [63 : 0]                   slv_cntr_out, slv_cntr_in;
 
-   reg                             slv_ctrl_loopback; // Control register, assert for loopback mode
+   reg                             slv_ctrl_loopback, // Assert to put Aurora IP in loopback mode
+                                   slv_ctrl_rst_ctrs, // Assert to reset counters, incoming and outgoing frame counters
+                                   slv_ctrl_seq_mode, // Assert to turn off any sequence number handling by Aurora IP
+                                   slv_ctrl_seq_strip, // Assert to strip the received frame of the trailing sequence number
+                                   slv_ctrl_seq_echo; // Assert to use sequence number of incoming frame
    reg [5 : 0]                     s_axi_awaddr, s_axi_araddr;
 
    assign user_clk_out = usr_clk;
@@ -129,12 +133,20 @@ module aurora(
    always @(posedge usr_clk) begin
       if (S_AXI_ARESETN == 1'b0) begin
          slv_ctrl_loopback <= 1'b0;
+         slv_ctrl_rst_ctrs <= 1'b0;
+         slv_ctrl_seq_mode <= 1'b0; // TODO: This has no influence on the logic yet
+         slv_ctrl_seq_strip <= 1'b1;
+         slv_ctrl_seq_echo <= 1'b0;
       end else begin
 `ifndef USE_VIO_SLV_AURORA
          if (slv_reg_wren == 1'b1) begin
             case (s_axi_awaddr[5 : 2])
               ADDR_CTRL_REG: begin
-                 // TODO
+                 slv_ctrl_loopback <= S_AXI_WDATA[0];
+                 slv_ctrl_rst_ctrs <= S_AXI_WDATA[1];
+                 slv_ctrl_seq_mode <= S_AXI_WDATA[2];
+                 slv_ctrl_seq_strip <= S_AXI_WDATA[3];
+                 slv_ctrl_seq_echo <= S_AXI_WDATA[4];
               end
             endcase
          end
@@ -195,7 +207,7 @@ module aurora(
               S_AXI_RDATA <= { {26{1'b0}}, link_reset_out, frame_err, soft_err, hard_err, lane_up, channel_up };
            end
            ADDR_CTRL_REG: begin
-              S_AXI_RDATA <= { {32{1'b0}} }; // TODO
+              S_AXI_RDATA <= { {27{1'b0}}, slv_ctrl_seq_echo, slv_ctrl_seq_strip, slv_ctrl_seq_mode, slv_ctrl_rst_ctrs, slv_ctrl_loopback};
            end
            ADDR_CNTR_IN_H: begin
               S_AXI_RDATA <= slv_cntr_in[63 : 32];
@@ -230,8 +242,8 @@ module aurora(
    assign SFP_TX_DISABLE_N = 1'b1;
 
    pre pre (
-            .m_axis_aclk    (user_clk_out),
-            .m_axis_aresetn (!sys_reset_out),
+            .m_axis_aclk       (user_clk_out),
+            .m_axis_aresetn    (!sys_reset_out),
 
             // AXI-Stream slave interface
             .s_axis_tvalid     (s_axis_tvalid),
@@ -246,7 +258,7 @@ module aurora(
             .m_axis_tready     (s_axis_aurora_tready),
 
             // Status and control ports
-            .ctrl_rst_cntr_out (),
+            .ctrl_rst_cntr_out (slv_ctrl_rst_ctrs),
             .slv_cntr_out      (slv_cntr_out)
             );
 
@@ -331,8 +343,8 @@ module aurora(
               .m_axis_tlast      (m_axis_tlast),
 
               // Status and control ports
-              .ctrl_strip_seq_en (1'b1), // TODO: ctrl_strip_seq_en should be exposed over AXI register interface for external control
-              .ctrl_rst_cntr_in  (),
+              .ctrl_strip_seq_en (slv_ctrl_seq_strip),
+              .ctrl_rst_cntr_in  (slv_ctrl_rst_ctrs),
               .slv_cntr_in       (slv_cntr_in)
               );
 

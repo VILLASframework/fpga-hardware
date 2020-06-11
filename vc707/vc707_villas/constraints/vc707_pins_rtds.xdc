@@ -19,4 +19,3 @@ set_property -dict {PACKAGE_PIN AL6} [get_ports sfp_rxp]
 set_property -dict {PACKAGE_PIN AM3} [get_ports sfp_txn]
 set_property -dict {PACKAGE_PIN AM4} [get_ports sfp_txp]
 set_property -dict {PACKAGE_PIN AP33 IOSTANDARD LVCMOS18} [get_ports sfp_tx_disable]
-

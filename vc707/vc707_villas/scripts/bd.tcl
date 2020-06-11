@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# concat, aurora_reset
+# concat, areset_cdc, aurora_reset
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -66,7 +66,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./bd
+  set origin_dir ./projects/villas/fpga/hardware/vc707/vc707_villas/bd
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -130,7 +130,7 @@ set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
 xilinx.com:ip:util_ds_buf:2.1\
-acs.eonerc.rwth-aachen.de:user:aurora:1.9\
+acs.eonerc.rwth-aachen.de:user:aurora:1.11\
 xilinx.com:ip:axi_fifo_mm_s:4.2\
 xilinx.com:ip:axis_data_fifo:2.0\
 xilinx.com:ip:util_vector_logic:2.0\
@@ -166,6 +166,7 @@ set bCheckModules 1
 if { $bCheckModules == 1 } {
    set list_check_mods "\ 
 concat\
+areset_cdc\
 aurora_reset\
 "
 
@@ -275,46 +276,6 @@ proc create_hier_cell_axis_interconnect_0 { parentCell nameHier } {
   connect_bd_net -net S00_AXIS_ARESETN_1 [get_bd_pins S00_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/M00_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/S00_AXIS_ARESETN]
   connect_bd_net -net s_axi_aclk_2 [get_bd_pins S00_AXIS_ACLK] [get_bd_pins axis_interconnect_0/ACLK] [get_bd_pins axis_interconnect_0/M01_AXIS_ACLK] [get_bd_pins axis_interconnect_0/M02_AXIS_ACLK] [get_bd_pins axis_interconnect_0/M03_AXIS_ACLK] [get_bd_pins axis_interconnect_0/M04_AXIS_ACLK] [get_bd_pins axis_interconnect_0/S01_AXIS_ACLK] [get_bd_pins axis_interconnect_0/S02_AXIS_ACLK] [get_bd_pins axis_interconnect_0/S03_AXIS_ACLK] [get_bd_pins axis_interconnect_0/S04_AXIS_ACLK] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ACLK]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins S_AXI_CTRL_ARESETN] [get_bd_pins axis_interconnect_0/ARESETN] [get_bd_pins axis_interconnect_0/M01_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/M02_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/M03_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/M04_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/S01_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/S02_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/S03_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/S04_AXIS_ARESETN] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ARESETN]
-
-  # Perform GUI Layout
-  regenerate_bd_layout -hierarchy [get_bd_cells /hier_0/axis_interconnect_0] -layout_string {
-   "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
-#  -string -flagsOSRD
-preplace port S00_AXIS_ACLK1 -pg 1 -y 210 -defaultsOSRD
-preplace port S01_AXIS -pg 1 -y 70 -defaultsOSRD
-preplace port S03_AXIS -pg 1 -y 110 -defaultsOSRD
-preplace port M04_AXIS -pg 1 -y 380 -defaultsOSRD
-preplace port S02_AXIS -pg 1 -y 90 -defaultsOSRD
-preplace port S_AXI_CTRL -pg 1 -y 150 -defaultsOSRD
-preplace port S00_AXIS -pg 1 -y 50 -defaultsOSRD
-preplace port S04_AXIS -pg 1 -y 130 -defaultsOSRD
-preplace port M03_AXIS -pg 1 -y 360 -defaultsOSRD
-preplace port M01_AXIS -pg 1 -y 320 -defaultsOSRD
-preplace port M00_AXIS -pg 1 -y 300 -defaultsOSRD
-preplace port M02_AXIS -pg 1 -y 340 -defaultsOSRD
-preplace port S00_AXIS_ACLK -pg 1 -y 170 -defaultsOSRD
-preplace portBus S00_AXIS_ARESETN -pg 1 -y 230 -defaultsOSRD
-preplace portBus S_AXI_CTRL_ARESETN -pg 1 -y 190 -defaultsOSRD
-preplace inst axis_interconnect_0 -pg 1 -lvl 1 -y 340 -defaultsOSRD
-preplace netloc Conn1 1 1 1 NJ
-preplace netloc S00_AXIS_1 1 0 1 NJ
-preplace netloc Conn2 1 0 1 NJ
-preplace netloc axis_interconnect_0_M01_AXIS 1 1 1 NJ
-preplace netloc Conn3 1 1 1 NJ
-preplace netloc s_axi_aresetn_1 1 0 1 30
-preplace netloc s_axi_aclk_2 1 0 1 50
-preplace netloc Conn4 1 0 1 NJ
-preplace netloc S_AXI_CTRL_1 1 0 1 NJ
-preplace netloc axis_interconnect_0_M00_AXIS 1 1 1 NJ
-preplace netloc S00_AXIS_ARESETN_1 1 0 1 20
-preplace netloc S01_AXIS_1 1 0 1 NJ
-preplace netloc axis_interconnect_0_M02_AXIS 1 1 1 NJ
-preplace netloc S02_AXIS_1 1 0 1 NJ
-preplace netloc S00_AXIS_ACLK_1 1 0 1 40
-levelinfo -pg 1 0 210 390 -top -10 -bot 690
-"
-}
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -689,6 +650,55 @@ proc create_hier_cell_pcie_0 { parentCell nameHier } {
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins axi_pcie_0/REFCLK] [get_bd_pins util_ds_buf_0/IBUF_OUT]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins rst_axi_pcie_0_125M/ext_reset_in] [get_bd_pins util_vector_logic_0/Res]
 
+  # Perform GUI Layout
+  regenerate_bd_layout -hierarchy [get_bd_cells /pcie_0] -layout_string {
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port perstn -pg 1 -y 430 -defaultsOSRD
+preplace port axi_aclk_out -pg 1 -y 620 -defaultsOSRD
+preplace port S_AXI -pg 1 -y 620 -defaultsOSRD
+preplace port PCIE_REFCLK -pg 1 -y 730 -defaultsOSRD
+preplace port PCIE_MGT -pg 1 -y 600 -defaultsOSRD
+preplace port M_AXI -pg 1 -y 580 -defaultsOSRD
+preplace port S_AXI_CTL -pg 1 -y 50 -defaultsOSRD
+preplace portBus msi_irq -pg 1 -y 530 -defaultsOSRD
+preplace portBus peripheral_aresetn -pg 1 -y 100 -defaultsOSRD
+preplace portBus interconnect_aresetn -pg 1 -y 820 -defaultsOSRD
+preplace inst axi_pcie_0 -pg 1 -lvl 3 -y 670 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 1 -y 370 -defaultsOSRD
+preplace inst axi_pcie_intc_0 -pg 1 -lvl 3 -y 390 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 2 -y 150 -defaultsOSRD
+preplace inst rst_axi_pcie_0_125M -pg 1 -lvl 2 -y 430 -defaultsOSRD
+preplace inst util_ds_buf_0 -pg 1 -lvl 2 -y 730 -defaultsOSRD
+preplace inst axi_reset_0 -pg 1 -lvl 3 -y 190 -defaultsOSRD
+preplace netloc S_AXI_1 1 0 3 NJ 620 NJ 620 NJ
+preplace netloc axi_pcie_0_INTX_MSI_Grant 1 2 2 780 110 1190
+preplace netloc S_AXI_CTL_1 1 0 2 NJ 50 NJ
+preplace netloc axi_reset_0_gpio_io_o 1 0 4 20 310 NJ 310 710J 80 1160
+preplace netloc axi_pcie_0_axi_aclk_out1 1 1 3 330 330 740 70 1210
+preplace netloc axi_pcie_0_pcie_7x_mgt 1 3 1 NJ
+preplace netloc msi_irq_1 1 0 3 NJ 530 NJ 530 750J
+preplace netloc axi_interconnect_0_M02_AXI 1 2 1 N
+preplace netloc util_vector_logic_0_Res 1 1 1 320J
+preplace netloc axi_pcie_0_axi_ctl_aclk_out 1 1 3 340 830 NJ 830 1170
+preplace netloc axi_pcie_intc_0_MSI_Vector_Num 1 2 2 760 270 1180
+preplace netloc axi_pcie_0_MSI_Vector_Width 1 2 2 770 520 1180
+preplace netloc util_ds_buf_0_IBUF_OUT 1 2 1 NJ
+preplace netloc axi_pcie_0_mmcm_lock 1 1 3 350 840 NJ 840 1160
+preplace netloc axi_pcie_0_M_AXI 1 3 1 NJ
+preplace netloc axi_interconnect_0_M00_AXI 1 2 1 720
+preplace netloc axi_pcie_intc_0_INTX_MSI_Request 1 2 2 780 510 1160
+preplace netloc axi_interconnect_0_M01_AXI 1 2 1 750
+preplace netloc pcie_ref_1 1 0 2 NJ 730 NJ
+preplace netloc rst_axi_pcie_0_125M_peripheral_aresetn 1 1 3 350 320 730 100 NJ
+preplace netloc axi_pcie_0_MSI_enable 1 2 2 770 90 1200
+preplace netloc aux_reset_in_1 1 0 2 NJ 430 NJ
+preplace netloc S00_ARESETN_1 1 2 2 710 820 NJ
+levelinfo -pg 1 0 170 530 980 1230 -top -10 -bot 880
+"
+}
+
   # Restore current instance
   current_bd_instance $oldCurInst
 }
@@ -813,8 +823,19 @@ proc create_hier_cell_hier_0 { parentCell nameHier } {
   create_bd_pin -dir O -type intr irq_fifo
   create_bd_pin -dir I -from 0 -to 0 user_clk
 
+  # Create instance: areset_cdc_0, and set properties
+  set block_name areset_cdc
+  set block_cell_name areset_cdc_0
+  if { [catch {set areset_cdc_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $areset_cdc_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: aurora_0, and set properties
-  set aurora_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora:1.9 aurora_0 ]
+  set aurora_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora:1.11 aurora_0 ]
 
   # Create instance: aurora_reset_0, and set properties
   set block_name aurora_reset
@@ -915,13 +936,14 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets axis_interconnect
   connect_bd_intf_net -intf_net clkbuf_1 [get_bd_intf_pins clkbuf] [get_bd_intf_pins util_ds_buf_0/CLK_IN_D]
 
   # Create port connections
-  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins aurora_0/user_clk_out] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
+  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins areset_cdc_0/aclk] [get_bd_pins aurora_0/user_clk_out] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
   connect_bd_net -net S00_AXIS_ARESETN_1 [get_bd_pins axis_interconnect_0/S00_AXIS_ARESETN] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net areset_cdc_0_aresetn [get_bd_pins areset_cdc_0/aresetn] [get_bd_pins aurora_0/S_AXI_ARESETN]
   connect_bd_net -net aurora_0_sys_reset_out [get_bd_pins aurora_0/sys_reset_out] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net aurora_reset_0_reset [get_bd_pins aurora_0/reset] [get_bd_pins aurora_reset_0/reset]
   connect_bd_net -net axi_dma_0_mm2s_introut [get_bd_pins irq_dma_mm2s] [get_bd_pins axi_dma/mm2s_introut]
   connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins irq_dma_s2mm] [get_bd_pins axi_dma/s2mm_introut]
-  connect_bd_net -net pcie_0_peripheral_aresetn [get_bd_pins aresetn] [get_bd_pins aurora_0/S_AXI_ARESETN] [get_bd_pins axi_dma/axi_resetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_interconnect_mm_0/M04_ARESETN] [get_bd_pins axi_interconnect_mm_0/S00_ARESETN] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins axis_data_fifo_1/s_axis_aresetn] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ARESETN]
+  connect_bd_net -net pcie_0_peripheral_aresetn [get_bd_pins aresetn] [get_bd_pins areset_cdc_0/aresetn_in] [get_bd_pins axi_dma/axi_resetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_interconnect_mm_0/M04_ARESETN] [get_bd_pins axi_interconnect_mm_0/S00_ARESETN] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins axis_data_fifo_1/s_axis_aresetn] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ARESETN]
   connect_bd_net -net s_axi_aclk_1 [get_bd_pins clk] [get_bd_pins axi_dma/m_axi_sg_aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_interconnect_mm_0/S00_ACLK] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins axis_data_fifo_1/s_axis_aclk] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK]
   connect_bd_net -net user_clk_1 [get_bd_pins user_clk] [get_bd_pins aurora_0/free_clk_in] [get_bd_pins aurora_reset_0/clk156]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins aurora_0/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
@@ -933,58 +955,60 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets axis_interconnect
    "commentid":"",
    "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port S_AXI_LITE -pg 1 -y 430 -defaultsOSRD
+preplace port S_AXI_LITE -pg 1 -y 440 -defaultsOSRD
 preplace port S_AXI_FULL -pg 1 -y 580 -defaultsOSRD
 preplace port irq_fifo -pg 1 -y 400 -defaultsOSRD
 preplace port clkbuf -pg 1 -y 710 -defaultsOSRD
-preplace port M_AXI_DMA_PCIE -pg 1 -y 590 -defaultsOSRD
+preplace port M_AXI_DMA_PCIE -pg 1 -y 570 -defaultsOSRD
 preplace port sfp -pg 1 -y 680 -defaultsOSRD
-preplace port clk -pg 1 -y 450 -defaultsOSRD
+preplace port clk -pg 1 -y 480 -defaultsOSRD
 preplace portBus irq_dma_s2mm -pg 1 -y 630 -defaultsOSRD
 preplace portBus user_clk -pg 1 -y 730 -defaultsOSRD
 preplace portBus irq_dma_mm2s -pg 1 -y 610 -defaultsOSRD
-preplace portBus aresetn -pg 1 -y 470 -defaultsOSRD
+preplace portBus aresetn -pg 1 -y 460 -defaultsOSRD
 preplace inst axis_data_fifo_1 -pg 1 -lvl 2 -y 250 -defaultsOSRD
 preplace inst axi_dma -pg 1 -lvl 4 -y 600 -defaultsOSRD
 preplace inst axis_interconnect_0 -pg 1 -lvl 3 -y 330 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 2 -y 410 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 2 -y 400 -defaultsOSRD
+preplace inst areset_cdc_0 -pg 1 -lvl 1 -y 930 -defaultsOSRD
 preplace inst aurora_reset_0 -pg 1 -lvl 1 -y 820 -defaultsOSRD
 preplace inst aurora_0 -pg 1 -lvl 2 -y 690 -defaultsOSRD
-preplace inst axi_interconnect_mm_0 -pg 1 -lvl 1 -y 470 -defaultsOSRD
+preplace inst axi_interconnect_mm_0 -pg 1 -lvl 1 -y 480 -defaultsOSRD
 preplace inst axi_fifo_mm_s_0 -pg 1 -lvl 4 -y 410 -defaultsOSRD
 preplace inst util_ds_buf_0 -pg 1 -lvl 1 -y 710 -defaultsOSRD
 preplace inst axis_data_fifo_0 -pg 1 -lvl 2 -y 90 -defaultsOSRD
-preplace netloc aurora_0_m_axis 1 2 1 780
 preplace netloc Conn1 1 0 1 NJ
-preplace netloc axis_interconnect_0_M04_AXIS 1 1 3 370 170 NJ 170 1170
-preplace netloc S_AXI_FULL_1 1 0 4 NJ 580 NJ 580 740J 160 1220J
-preplace netloc axis_interconnect_M03_AXIS 1 1 3 350 10 NJ 10 1180
-preplace netloc s_axi_aclk_1 1 0 4 20 330 360 330 770 130 1210
+preplace netloc aurora_0_m_axis 1 2 1 1090
+preplace netloc axis_interconnect_0_M04_AXIS 1 1 3 700 170 NJ 170 1510
+preplace netloc S_AXI_FULL_1 1 0 4 NJ 580 NJ 580 NJ 580 1560J
+preplace netloc axis_interconnect_M03_AXIS 1 1 3 670 10 NJ 10 1520
 preplace netloc xsg_pio_interrupt 1 4 1 NJ
+preplace netloc s_axi_aclk_1 1 0 4 -70 590 670 460 1130 520 1570
+preplace netloc areset_cdc_0_aresetn 1 1 1 700
+preplace netloc axi_interconnect_mm_M02_AXI 1 1 3 NJ 470 NJ 470 1550
+preplace netloc axis_interconnect_M01_AXIS 1 3 1 1530
 preplace netloc Conn4 1 4 1 NJ
-preplace netloc axis_interconnect_M01_AXIS 1 3 1 1190
-preplace netloc axi_interconnect_mm_M02_AXI 1 1 3 360J 470 730J 180 1230
-preplace netloc axis_interconnect_0_M00_AXIS 1 1 3 380 500 NJ 500 1160
-preplace netloc S_AXI_CTRL_1 1 1 2 340 340 750J
-preplace netloc axi_interconnect_mm_M03_AXI 1 1 3 NJ 480 NJ 480 1170
-preplace netloc aurora_reset_0_reset 1 1 1 380J
-preplace netloc S00_AXIS_ARESETN_1 1 2 1 720J
-preplace netloc user_clk_1 1 0 2 30 640 330J
-preplace netloc S01_AXIS_1 1 2 3 800 140 NJ 140 1630
+preplace netloc axis_interconnect_0_M00_AXIS 1 1 3 710 500 1100J 490 1500
+preplace netloc S_AXI_CTRL_1 1 1 2 690 340 NJ
+preplace netloc axi_interconnect_mm_M03_AXI 1 1 3 N 490 1080J 590 NJ
+preplace netloc user_clk_1 1 0 2 -50 640 670J
+preplace netloc aurora_reset_0_reset 1 1 1 680J
+preplace netloc S00_AXIS_ARESETN_1 1 2 1 NJ
+preplace netloc S01_AXIS_1 1 2 3 1140 510 NJ 510 1980
 preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 NJ
 preplace netloc axi_dma_0_s2mm_introut 1 4 1 NJ
 preplace netloc clkbuf_1 1 0 1 NJ
 preplace netloc axi_dma_0_mm2s_introut 1 4 1 NJ
-preplace netloc axi_interconnect_mm_0_M04_AXI 1 1 1 340
-preplace netloc aurora_0_sys_reset_out 1 1 2 370 510 720
-preplace netloc S02_AXIS_1 1 2 3 810 150 NJ 150 1620
-preplace netloc axis_data_fifo_1_M_AXIS 1 2 1 760
+preplace netloc axi_interconnect_mm_0_M04_AXI 1 1 1 690
+preplace netloc aurora_0_sys_reset_out 1 1 2 700 510 1070
+preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 1130
 preplace netloc aurora_0_SFP 1 2 3 NJ 680 NJ 680 NJ
-preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 790
-preplace netloc S00_AXIS_ACLK1_1 1 0 3 30 570 N 570 810
-preplace netloc axis_interconnect_M02_AXIS 1 3 1 1200
-preplace netloc pcie_0_peripheral_aresetn 1 0 4 20 590 350 490 800 470 1230
-levelinfo -pg 1 0 180 550 990 1440 1660 -top 0 -bot 880
+preplace netloc S02_AXIS_1 1 2 3 1150 480 1540J 310 1980
+preplace netloc axis_data_fifo_1_M_AXIS 1 2 1 1110
+preplace netloc S00_AXIS_ACLK1_1 1 0 3 -40J 600 680J 570 1120
+preplace netloc axis_interconnect_M02_AXIS 1 3 1 1580
+preplace netloc pcie_0_peripheral_aresetn 1 0 4 -60 330 690 330 1110 500 1580
+levelinfo -pg 1 -90 520 900 1330 1800 2020 -top -100 -bot 1340
 "
 }
 
@@ -1119,39 +1143,40 @@ preplace port user_clk -pg 1 -y 400 -defaultsOSRD
 preplace port pcie_mgt -pg 1 -y 410 -defaultsOSRD
 preplace port sfp -pg 1 -y 280 -defaultsOSRD
 preplace inst util_ds_buf_1 -pg 1 -lvl 1 -y 400 -defaultsOSRD
-preplace inst hier_0 -pg 1 -lvl 2 -y 320 -defaultsOSRD
 preplace inst timer_0 -pg 1 -lvl 2 -y 630 -defaultsOSRD
+preplace inst hier_0 -pg 1 -lvl 2 -y 320 -defaultsOSRD
 preplace inst concat_0 -pg 1 -lvl 2 -y 110 -defaultsOSRD
 preplace inst mm_interconnect_0 -pg 1 -lvl 1 -y 270 -defaultsOSRD
 preplace inst pcie_0 -pg 1 -lvl 3 -y 430 -defaultsOSRD
 preplace netloc pcie_PCIE_MGT 1 3 1 NJ
-preplace netloc timer_0_irq_timer_0 1 1 2 390 430 700
-preplace netloc mm_interconnect_0_M04_AXI 1 1 1 N
-preplace netloc s_axi_aclk_1 1 0 4 30 160 360 540 NJ 540 1160
-preplace netloc msi_irq_1 1 2 1 740
-preplace netloc hier_0_irq_dma_mm2s 1 1 2 400 200 700
-preplace netloc hier_0_sfp 1 2 2 NJ 280 NJ
-preplace netloc user_clk_1 1 1 1 370J
-preplace netloc mm_interconnect_M03_AXI 1 1 1 N
+preplace netloc timer_0_irq_timer_0 1 1 2 410 440 720
+preplace netloc mm_interconnect_0_M04_AXI 1 1 1 360
+preplace netloc s_axi_aclk_1 1 0 4 30 470 390 530 NJ 530 1180
+preplace netloc msi_irq_1 1 2 1 760
+preplace netloc hier_0_irq_dma_mm2s 1 1 2 420 200 730
+preplace netloc hier_0_sfp 1 2 2 750J 280 NJ
+preplace netloc user_clk_1 1 1 1 380J
 preplace netloc user_clk_2 1 0 1 NJ
-preplace netloc pcie_0_interconnect_aresetn 1 0 4 30 520 NJ 520 NJ 520 1150
-preplace netloc hier_0_M_AXI_DMA_PCIE 1 2 1 720
-preplace netloc clkbuf_1 1 0 2 NJ 170 370J
-preplace netloc mm_interconnect_M00_AXI 1 1 1 340
-preplace netloc pcie_ref_1 1 0 3 NJ 460 NJ 460 710J
-preplace netloc mm_interconnect_M04_AXI1 1 1 2 350 210 730J
-preplace netloc pcie_M_AXI 1 0 4 20 10 NJ 10 NJ 10 1160
-preplace netloc hier_0_irq_fifo 1 1 2 390 20 710
-preplace netloc pcie_0_peripheral_aresetn 1 1 3 400 530 NJ 530 1140
-preplace netloc hier_0_irq_dma_s2mm 1 1 2 380 420 700
-preplace netloc perstn_1 1 0 3 NJ 480 NJ 480 720J
-levelinfo -pg 1 0 200 550 960 1210 -top 0 -bot 700
+preplace netloc mm_interconnect_M03_AXI 1 1 1 350
+preplace netloc pcie_0_interconnect_aresetn 1 0 4 30 20 NJ 20 NJ 20 1170
+preplace netloc hier_0_M_AXI_DMA_PCIE 1 2 1 740
+preplace netloc clkbuf_1 1 0 2 NJ 170 380J
+preplace netloc mm_interconnect_M00_AXI 1 1 1 370
+preplace netloc pcie_ref_1 1 0 3 NJ 460 NJ 460 770J
+preplace netloc pcie_M_AXI 1 0 4 20 10 NJ 10 NJ 10 1180
+preplace netloc mm_interconnect_M04_AXI1 1 1 2 340 430 NJ
+preplace netloc hier_0_irq_fifo 1 1 2 400 420 720
+preplace netloc pcie_0_peripheral_aresetn 1 1 3 420 520 NJ 520 1170
+preplace netloc perstn_1 1 0 3 NJ 480 410J 470 NJ
+preplace netloc hier_0_irq_dma_s2mm 1 1 2 390 210 720
+levelinfo -pg 1 0 200 570 990 1220 -top 0 -bot 700
 "
 }
 
   # Restore current instance
   current_bd_instance $oldCurInst
 
+  validate_bd_design
   save_bd_design
 }
 # End of create_root_design()
@@ -1163,6 +1188,4 @@ levelinfo -pg 1 0 200 550 960 1210 -top 0 -bot 700
 
 create_root_design ""
 
-
-common::send_msg_id "BD_TCL-1000" "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
 

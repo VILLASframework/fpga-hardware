@@ -68,6 +68,7 @@ update_ip_catalog -rebuild
 set obj [get_filesets sources_1]
 set files [list \
  [file normalize "$hdlRoot/concat.v"]\
+ [file normalize "$hdlRoot/areset_cdc.v"]\
  [file normalize "$hdlRoot/aurora_reset.v"] \
  [file normalize "$bdHdlRoot/top_wrapper.v"] \
 ]

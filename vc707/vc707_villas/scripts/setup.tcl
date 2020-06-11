@@ -188,7 +188,3 @@ set_property "steps.write_bitstream.args.verbose" "0" $obj
 current_run -implementation [get_runs impl_1]
 
 puts "INFO: Project created:vc707_villas"
-
-# If successful, "touch" a file so Make will know it's done
-touch {./vivado/.setup_vivado.done}
-

@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# concat, areset_cdc, aurora_reset
+# concat, aresetn_cdc, aurora_reset
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -130,7 +130,7 @@ set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
 xilinx.com:ip:util_ds_buf:2.1\
-acs.eonerc.rwth-aachen.de:user:aurora_axis:1.11\
+acs.eonerc.rwth-aachen.de:user:aurora_axis:1.12\
 xilinx.com:ip:axi_fifo_mm_s:4.2\
 xilinx.com:ip:axis_data_fifo:2.0\
 xilinx.com:ip:util_vector_logic:2.0\
@@ -166,7 +166,7 @@ set bCheckModules 1
 if { $bCheckModules == 1 } {
    set list_check_mods "\ 
 concat\
-areset_cdc\
+aresetn_cdc\
 aurora_reset\
 "
 
@@ -650,55 +650,6 @@ proc create_hier_cell_pcie_0 { parentCell nameHier } {
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins axi_pcie_0/REFCLK] [get_bd_pins util_ds_buf_0/IBUF_OUT]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins rst_axi_pcie_0_125M/ext_reset_in] [get_bd_pins util_vector_logic_0/Res]
 
-  # Perform GUI Layout
-  regenerate_bd_layout -hierarchy [get_bd_cells /pcie_0] -layout_string {
-   "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
-#  -string -flagsOSRD
-preplace port perstn -pg 1 -y 430 -defaultsOSRD
-preplace port axi_aclk_out -pg 1 -y 620 -defaultsOSRD
-preplace port S_AXI -pg 1 -y 620 -defaultsOSRD
-preplace port PCIE_REFCLK -pg 1 -y 730 -defaultsOSRD
-preplace port PCIE_MGT -pg 1 -y 600 -defaultsOSRD
-preplace port M_AXI -pg 1 -y 580 -defaultsOSRD
-preplace port S_AXI_CTL -pg 1 -y 50 -defaultsOSRD
-preplace portBus msi_irq -pg 1 -y 530 -defaultsOSRD
-preplace portBus peripheral_aresetn -pg 1 -y 100 -defaultsOSRD
-preplace portBus interconnect_aresetn -pg 1 -y 820 -defaultsOSRD
-preplace inst axi_pcie_0 -pg 1 -lvl 3 -y 670 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 1 -y 370 -defaultsOSRD
-preplace inst axi_pcie_intc_0 -pg 1 -lvl 3 -y 390 -defaultsOSRD
-preplace inst axi_interconnect_0 -pg 1 -lvl 2 -y 150 -defaultsOSRD
-preplace inst rst_axi_pcie_0_125M -pg 1 -lvl 2 -y 430 -defaultsOSRD
-preplace inst util_ds_buf_0 -pg 1 -lvl 2 -y 730 -defaultsOSRD
-preplace inst axi_reset_0 -pg 1 -lvl 3 -y 190 -defaultsOSRD
-preplace netloc S_AXI_1 1 0 3 NJ 620 NJ 620 NJ
-preplace netloc axi_pcie_0_INTX_MSI_Grant 1 2 2 780 110 1190
-preplace netloc S_AXI_CTL_1 1 0 2 NJ 50 NJ
-preplace netloc axi_reset_0_gpio_io_o 1 0 4 20 310 NJ 310 710J 80 1160
-preplace netloc axi_pcie_0_axi_aclk_out1 1 1 3 330 330 740 70 1210
-preplace netloc axi_pcie_0_pcie_7x_mgt 1 3 1 NJ
-preplace netloc msi_irq_1 1 0 3 NJ 530 NJ 530 750J
-preplace netloc axi_interconnect_0_M02_AXI 1 2 1 N
-preplace netloc util_vector_logic_0_Res 1 1 1 320J
-preplace netloc axi_pcie_0_axi_ctl_aclk_out 1 1 3 340 830 NJ 830 1170
-preplace netloc axi_pcie_intc_0_MSI_Vector_Num 1 2 2 760 270 1180
-preplace netloc axi_pcie_0_MSI_Vector_Width 1 2 2 770 520 1180
-preplace netloc util_ds_buf_0_IBUF_OUT 1 2 1 NJ
-preplace netloc axi_pcie_0_mmcm_lock 1 1 3 350 840 NJ 840 1160
-preplace netloc axi_pcie_0_M_AXI 1 3 1 NJ
-preplace netloc axi_interconnect_0_M00_AXI 1 2 1 720
-preplace netloc axi_pcie_intc_0_INTX_MSI_Request 1 2 2 780 510 1160
-preplace netloc axi_interconnect_0_M01_AXI 1 2 1 750
-preplace netloc pcie_ref_1 1 0 2 NJ 730 NJ
-preplace netloc rst_axi_pcie_0_125M_peripheral_aresetn 1 1 3 350 320 730 100 NJ
-preplace netloc axi_pcie_0_MSI_enable 1 2 2 770 90 1200
-preplace netloc aux_reset_in_1 1 0 2 NJ 430 NJ
-preplace netloc S00_ARESETN_1 1 2 2 710 820 NJ
-levelinfo -pg 1 0 170 530 980 1230 -top -10 -bot 880
-"
-}
-
   # Restore current instance
   current_bd_instance $oldCurInst
 }
@@ -823,19 +774,19 @@ proc create_hier_cell_hier_0 { parentCell nameHier } {
   create_bd_pin -dir O -type intr irq_fifo
   create_bd_pin -dir I -from 0 -to 0 user_clk
 
-  # Create instance: areset_cdc_0, and set properties
-  set block_name areset_cdc
-  set block_cell_name areset_cdc_0
-  if { [catch {set areset_cdc_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: aresetn_cdc_0, and set properties
+  set block_name aresetn_cdc
+  set block_cell_name aresetn_cdc_0
+  if { [catch {set aresetn_cdc_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $areset_cdc_0 eq "" } {
+   } elseif { $aresetn_cdc_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
   
   # Create instance: aurora_axis_0, and set properties
-  set aurora_axis_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora_axis:1.11 aurora_axis_0 ]
+  set aurora_axis_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora_axis:1.12 aurora_axis_0 ]
 
   # Create instance: aurora_reset_0, and set properties
   set block_name aurora_reset
@@ -936,14 +887,14 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets axis_interconnect
   connect_bd_intf_net -intf_net clkbuf_1 [get_bd_intf_pins clkbuf] [get_bd_intf_pins util_ds_buf_0/CLK_IN_D]
 
   # Create port connections
-  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins areset_cdc_0/aclk] [get_bd_pins aurora_axis_0/user_clk_out] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
+  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins aresetn_cdc_0/aclk] [get_bd_pins aurora_axis_0/user_clk_out] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
   connect_bd_net -net S00_AXIS_ARESETN_1 [get_bd_pins axis_interconnect_0/S00_AXIS_ARESETN] [get_bd_pins util_vector_logic_0/Res]
-  connect_bd_net -net areset_cdc_0_aresetn [get_bd_pins areset_cdc_0/aresetn] [get_bd_pins aurora_axis_0/S_AXI_ARESETN]
+  connect_bd_net -net aresetn_cdc_0_aresetn [get_bd_pins aresetn_cdc_0/aresetn] [get_bd_pins aurora_axis_0/S_AXI_ARESETN]
   connect_bd_net -net aurora_axis_0_sys_reset_out [get_bd_pins aurora_axis_0/sys_reset_out] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net aurora_reset_0_reset [get_bd_pins aurora_axis_0/reset] [get_bd_pins aurora_reset_0/reset]
   connect_bd_net -net axi_dma_0_mm2s_introut [get_bd_pins irq_dma_mm2s] [get_bd_pins axi_dma/mm2s_introut]
   connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins irq_dma_s2mm] [get_bd_pins axi_dma/s2mm_introut]
-  connect_bd_net -net pcie_0_peripheral_aresetn [get_bd_pins aresetn] [get_bd_pins areset_cdc_0/aresetn_in] [get_bd_pins axi_dma/axi_resetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_interconnect_mm_0/M04_ARESETN] [get_bd_pins axi_interconnect_mm_0/S00_ARESETN] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins axis_data_fifo_1/s_axis_aresetn] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ARESETN]
+  connect_bd_net -net pcie_0_peripheral_aresetn [get_bd_pins aresetn] [get_bd_pins aresetn_cdc_0/aresetn_in] [get_bd_pins axi_dma/axi_resetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_interconnect_mm_0/M04_ARESETN] [get_bd_pins axi_interconnect_mm_0/S00_ARESETN] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins axis_data_fifo_1/s_axis_aresetn] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ARESETN]
   connect_bd_net -net s_axi_aclk_1 [get_bd_pins clk] [get_bd_pins axi_dma/m_axi_sg_aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_interconnect_mm_0/S00_ACLK] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins axis_data_fifo_1/s_axis_aclk] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK]
   connect_bd_net -net user_clk_1 [get_bd_pins user_clk] [get_bd_pins aurora_axis_0/free_clk_in] [get_bd_pins aurora_reset_0/clk156]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins aurora_axis_0/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
@@ -970,7 +921,7 @@ preplace inst axis_data_fifo_1 -pg 1 -lvl 2 -y 250 -defaultsOSRD
 preplace inst axi_dma -pg 1 -lvl 4 -y 600 -defaultsOSRD
 preplace inst axis_interconnect_0 -pg 1 -lvl 3 -y 330 -defaultsOSRD
 preplace inst util_vector_logic_0 -pg 1 -lvl 2 -y 400 -defaultsOSRD
-preplace inst areset_cdc_0 -pg 1 -lvl 1 -y 930 -defaultsOSRD
+preplace inst aresetn_cdc_0 -pg 1 -lvl 1 -y 970 -defaultsOSRD
 preplace inst aurora_reset_0 -pg 1 -lvl 1 -y 820 -defaultsOSRD
 preplace inst aurora_axis_0 -pg 1 -lvl 2 -y 840 -defaultsOSRD
 preplace inst axi_interconnect_mm_0 -pg 1 -lvl 1 -y 480 -defaultsOSRD
@@ -979,36 +930,36 @@ preplace inst util_ds_buf_0 -pg 1 -lvl 1 -y 710 -defaultsOSRD
 preplace inst axis_data_fifo_0 -pg 1 -lvl 2 -y 90 -defaultsOSRD
 preplace netloc S00_AXIS_1 1 2 1 1100
 preplace netloc Conn1 1 0 1 NJ
-preplace netloc axis_interconnect_0_M04_AXIS 1 1 3 710 170 NJ 170 1530
+preplace netloc axis_interconnect_0_M04_AXIS 1 1 3 700 170 NJ 170 1530
 preplace netloc S_AXI_FULL_1 1 0 4 NJ 580 NJ 580 NJ 580 1580J
 preplace netloc axis_interconnect_M03_AXIS 1 1 3 680 10 NJ 10 1540
 preplace netloc xsg_pio_interrupt 1 4 1 NJ
-preplace netloc s_axi_aclk_1 1 0 4 -70 590 680 460 1140 520 1590
-preplace netloc areset_cdc_0_aresetn 1 1 1 700
-preplace netloc aurora_axis_0_sys_reset_out 1 1 2 710 510 1080
+preplace netloc s_axi_aclk_1 1 0 4 -70 330 690 330 1090 520 1590
+preplace netloc aurora_axis_0_sys_reset_out 1 1 2 700 460 1080
 preplace netloc aurora_axis_0_SFP 1 2 3 NJ 830 NJ 830 2000
-preplace netloc axi_interconnect_mm_M02_AXI 1 1 3 NJ 470 NJ 470 1570
+preplace netloc axi_interconnect_mm_M02_AXI 1 1 3 690J 480 NJ 480 1570
 preplace netloc axis_interconnect_M01_AXIS 1 3 1 1550
 preplace netloc Conn4 1 4 1 NJ
-preplace netloc axis_interconnect_0_M00_AXIS 1 1 3 720 500 1110J 490 1520
-preplace netloc S_AXI_CTRL_1 1 1 2 700 340 NJ
-preplace netloc axi_interconnect_mm_M03_AXI 1 1 3 N 490 1090J 590 NJ
+preplace netloc axis_interconnect_0_M00_AXIS 1 1 3 710 490 NJ 490 1520
+preplace netloc S_AXI_CTRL_1 1 1 2 690 340 NJ
+preplace netloc axi_interconnect_mm_M03_AXI 1 1 3 700 590 NJ 590 NJ
 preplace netloc aurora_reset_0_reset 1 1 1 670
-preplace netloc user_clk_1 1 0 2 -50 640 690
+preplace netloc user_clk_1 1 0 2 -70 880 700
 preplace netloc S00_AXIS_ARESETN_1 1 2 1 NJ
-preplace netloc S01_AXIS_1 1 2 3 1150 510 NJ 510 2000
+preplace netloc S01_AXIS_1 1 2 3 1130 510 NJ 510 2000
 preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 680
 preplace netloc axi_dma_0_s2mm_introut 1 4 1 NJ
+preplace netloc aresetn_cdc_0_aresetn 1 1 1 690
 preplace netloc clkbuf_1 1 0 1 NJ
 preplace netloc axi_dma_0_mm2s_introut 1 4 1 NJ
-preplace netloc axi_interconnect_mm_0_M04_AXI 1 1 1 700
-preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 1140
-preplace netloc S02_AXIS_1 1 2 3 1160 480 1560J 310 2000
-preplace netloc axis_data_fifo_1_M_AXIS 1 2 1 1120
-preplace netloc S00_AXIS_ACLK1_1 1 0 3 -40J 600 NJ 600 1130
+preplace netloc axi_interconnect_mm_0_M04_AXI 1 1 1 690
+preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 1120
+preplace netloc S02_AXIS_1 1 2 3 1140 470 1560J 310 2000
+preplace netloc axis_data_fifo_1_M_AXIS 1 2 1 1110
+preplace netloc S00_AXIS_ACLK1_1 1 0 3 -50J 600 NJ 600 1110
 preplace netloc axis_interconnect_M02_AXIS 1 3 1 1600
-preplace netloc pcie_0_peripheral_aresetn 1 0 4 -60 330 700 330 1120 500 1600
-levelinfo -pg 1 -90 520 910 1350 1820 2040 -top -100 -bot 1340
+preplace netloc pcie_0_peripheral_aresetn 1 0 4 -60 590 680 500 1120 500 1600
+levelinfo -pg 1 -90 520 910 1350 1820 2040 -top -130 -bot 1340
 "
 }
 
@@ -1176,7 +1127,6 @@ levelinfo -pg 1 0 200 570 990 1220 -top 0 -bot 700
   # Restore current instance
   current_bd_instance $oldCurInst
 
-  validate_bd_design
   save_bd_design
 }
 # End of create_root_design()
@@ -1188,4 +1138,6 @@ levelinfo -pg 1 0 200 570 990 1220 -top 0 -bot 700
 
 create_root_design ""
 
+
+common::send_msg_id "BD_TCL-1000" "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
 

@@ -4,7 +4,7 @@
 
 `timescale 1ns / 1ps
 
-module areset_cdc(
+module aresetn_cdc(
     (* TYPE = "rst" *)
     input aresetn_in,
 

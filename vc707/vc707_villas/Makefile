@@ -1,4 +1,4 @@
-RTL=./hdl/aurora_reset.v ./hdl/concat.v
+RTL=./hdl/aurora_reset.v ./hdl/concat.v ./hdl/aresetn_cdc.v
 XDC=./constraints/vc707_pins.xdc ./constraints/vc707_pins_rtds.xdc ./constraints/timing.xdc ./constraints/bitstream.xdc
 
 vivado: setup_vivado

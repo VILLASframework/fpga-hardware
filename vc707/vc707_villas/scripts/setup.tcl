@@ -68,7 +68,7 @@ update_ip_catalog -rebuild
 set obj [get_filesets sources_1]
 set files [list \
  [file normalize "$hdlRoot/concat.v"]\
- [file normalize "$hdlRoot/areset_cdc.v"]\
+ [file normalize "$hdlRoot/aresetn_cdc.v"]\
  [file normalize "$hdlRoot/aurora_reset.v"] \
  [file normalize "$bdHdlRoot/top_wrapper.v"] \
 ]
@@ -146,6 +146,7 @@ set obj [get_filesets utils_1]
 
 
 # Proc to create BD top
+#  created by "write_bd_tcl -include_layout path/to/scripts/bd.tcl"
 source ./scripts/bd.tcl
 set_property REGISTERED_WITH_MANAGER "1" [get_files top.bd ] 
 set_property SYNTH_CHECKPOINT_MODE "Hierarchical" [get_files top.bd ] 

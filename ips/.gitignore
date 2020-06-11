@@ -1,4 +1,3 @@
-/hls_dft/*.dat
 /*/solution*/csim/
 /*/solution*/syn/
 /*/solution*/sim/
@@ -6,3 +5,20 @@
 /*/solution*/.autopilot/
 .vivado_hls_log_all.xml
 !*.aps
+
+/aurora_axis/build
+/aurora_axis/ip
+/aurora_axis/vivado
+
+/axi_pcie_intc/ip
+/axi_pcie_intc/vivado
+
+/rtds_axis/ip
+/rtds_axis/work
+/rtds_axis/netlist/RTDS_InterfaceModule.ngc
+
+/hdl_multiply/work
+
+/pcie_msi_requester/work/
+
+/hls_dft/*.dat

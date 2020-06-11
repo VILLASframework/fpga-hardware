@@ -32,7 +32,7 @@ whitelist = [
 	[ 'xilinx.com', 'ip', 'axi_dma' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'user', 'axi_pcie_intc' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'user', 'rtds_axis' ],
-        [ 'acs.eonerc.rwth-aachen.de', 'user', 'aurora' ],
+	[ 'acs.eonerc.rwth-aachen.de', 'user', 'aurora_axis' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'hls' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'sysgen' ],
 	[ 'xilinx.com', 'ip', 'axi_gpio' ],

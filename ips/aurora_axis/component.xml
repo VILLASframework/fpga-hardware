@@ -2,7 +2,7 @@
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spirit:vendor>acs.eonerc.rwth-aachen.de</spirit:vendor>
   <spirit:library>user</spirit:library>
-  <spirit:name>aurora</spirit:name>
+  <spirit:name>aurora_axis</spirit:name>
   <spirit:version>1.11</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
@@ -1225,14 +1225,14 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/aurora_v1_10.tcl</spirit:name>
+        <spirit:name>xgui/aurora_axis_v1_11.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_f92e9879</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>Aurora 8B/10B and additional support modules, like, communication with NovaCor and read/write status/control registers</spirit:description>
+  <spirit:description>Aurora 8B/10B and additional support modules, like an AXI4-Lite register interface</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -1247,7 +1247,7 @@
       <xilinx:taxonomies>
         <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>Aurora</xilinx:displayName>
+      <xilinx:displayName>Aurora AXI4-stream bridge</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_CDC</xilinx:xpmLibrary>
@@ -1255,8 +1255,8 @@
       </xilinx:xpmLibraries>
       <xilinx:vendorDisplayName>Institute for Automation of Complex Power Systems, RWTH Aachen</xilinx:vendorDisplayName>
       <xilinx:vendorURL>http://www.acs.eonerc.rwth-aachen.de</xilinx:vendorURL>
-      <xilinx:coreRevision>21</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-06-11T06:47:18Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>22</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2020-06-11T08:54:52Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@55147c9c_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@76271a54_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
@@ -1557,6 +1557,18 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@c7ef7f8_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@4c519b06_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@12a44026_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_rtds</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@246ee501_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f6710bc_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27e2c1ba_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e94611f_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a9d67ea_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b165ce2_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@796b6a25_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13d439ad_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bc4b7e_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4eae940d_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e2a9089_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3288474_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

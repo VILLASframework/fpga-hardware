@@ -130,7 +130,7 @@ set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
 xilinx.com:ip:util_ds_buf:2.1\
-acs.eonerc.rwth-aachen.de:user:aurora:1.11\
+acs.eonerc.rwth-aachen.de:user:aurora_axis:1.11\
 xilinx.com:ip:axi_fifo_mm_s:4.2\
 xilinx.com:ip:axis_data_fifo:2.0\
 xilinx.com:ip:util_vector_logic:2.0\
@@ -834,8 +834,8 @@ proc create_hier_cell_hier_0 { parentCell nameHier } {
      return 1
    }
   
-  # Create instance: aurora_0, and set properties
-  set aurora_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora:1.11 aurora_0 ]
+  # Create instance: aurora_axis_0, and set properties
+  set aurora_axis_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora_axis:1.11 aurora_axis_0 ]
 
   # Create instance: aurora_reset_0, and set properties
   set block_name aurora_reset
@@ -909,6 +909,7 @@ proc create_hier_cell_hier_0 { parentCell nameHier } {
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI_LITE] [get_bd_intf_pins axi_interconnect_mm_0/S00_AXI]
   connect_bd_intf_net -intf_net Conn4 [get_bd_intf_pins M_AXI_DMA_PCIE] [get_bd_intf_pins axi_dma/M00_AXI]
+  connect_bd_intf_net -intf_net S00_AXIS_1 [get_bd_intf_pins aurora_axis_0/m_axis] [get_bd_intf_pins axis_interconnect_0/S00_AXIS]
   connect_bd_intf_net -intf_net S01_AXIS_1 [get_bd_intf_pins axi_dma/M_AXIS_MM2S] [get_bd_intf_pins axis_interconnect_0/S01_AXIS]
 set_property HDL_ATTRIBUTE.DEBUG_IN_BD {true} [get_bd_intf_nets S01_AXIS_1]
 set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets S01_AXIS_1]
@@ -917,14 +918,13 @@ set_property HDL_ATTRIBUTE.DEBUG_IN_BD {true} [get_bd_intf_nets S02_AXIS_1]
 set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets S02_AXIS_1]
   connect_bd_intf_net -intf_net S_AXI_CTRL_1 [get_bd_intf_pins axi_interconnect_mm_0/M00_AXI] [get_bd_intf_pins axis_interconnect_0/S_AXI_CTRL]
   connect_bd_intf_net -intf_net S_AXI_FULL_1 [get_bd_intf_pins S_AXI_FULL] [get_bd_intf_pins axi_fifo_mm_s_0/S_AXI_FULL]
-  connect_bd_intf_net -intf_net aurora_0_SFP [get_bd_intf_pins sfp] [get_bd_intf_pins aurora_0/SFP]
-  connect_bd_intf_net -intf_net aurora_0_m_axis [get_bd_intf_pins aurora_0/m_axis] [get_bd_intf_pins axis_interconnect_0/S00_AXIS]
-  connect_bd_intf_net -intf_net axi_interconnect_mm_0_M04_AXI [get_bd_intf_pins aurora_0/S_AXI] [get_bd_intf_pins axi_interconnect_mm_0/M04_AXI]
+  connect_bd_intf_net -intf_net aurora_axis_0_SFP [get_bd_intf_pins sfp] [get_bd_intf_pins aurora_axis_0/SFP]
+  connect_bd_intf_net -intf_net axi_interconnect_mm_0_M04_AXI [get_bd_intf_pins aurora_axis_0/S_AXI] [get_bd_intf_pins axi_interconnect_mm_0/M04_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_mm_M02_AXI [get_bd_intf_pins axi_fifo_mm_s_0/S_AXI] [get_bd_intf_pins axi_interconnect_mm_0/M02_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_mm_M03_AXI [get_bd_intf_pins axi_dma/S_AXI_LITE] [get_bd_intf_pins axi_interconnect_mm_0/M03_AXI]
   connect_bd_intf_net -intf_net axis_data_fifo_0_M_AXIS [get_bd_intf_pins axis_data_fifo_0/M_AXIS] [get_bd_intf_pins axis_interconnect_0/S03_AXIS]
   connect_bd_intf_net -intf_net axis_data_fifo_1_M_AXIS [get_bd_intf_pins axis_data_fifo_1/M_AXIS] [get_bd_intf_pins axis_interconnect_0/S04_AXIS]
-  connect_bd_intf_net -intf_net axis_interconnect_0_M00_AXIS [get_bd_intf_pins aurora_0/s_axis] [get_bd_intf_pins axis_interconnect_0/M00_AXIS]
+  connect_bd_intf_net -intf_net axis_interconnect_0_M00_AXIS [get_bd_intf_pins aurora_axis_0/s_axis] [get_bd_intf_pins axis_interconnect_0/M00_AXIS]
   connect_bd_intf_net -intf_net axis_interconnect_0_M04_AXIS [get_bd_intf_pins axis_data_fifo_1/S_AXIS] [get_bd_intf_pins axis_interconnect_0/M04_AXIS]
   connect_bd_intf_net -intf_net axis_interconnect_M01_AXIS [get_bd_intf_pins axi_dma/S_AXIS_S2MM] [get_bd_intf_pins axis_interconnect_0/M01_AXIS]
 set_property HDL_ATTRIBUTE.DEBUG_IN_BD {true} [get_bd_intf_nets axis_interconnect_M01_AXIS]
@@ -936,17 +936,17 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets axis_interconnect
   connect_bd_intf_net -intf_net clkbuf_1 [get_bd_intf_pins clkbuf] [get_bd_intf_pins util_ds_buf_0/CLK_IN_D]
 
   # Create port connections
-  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins areset_cdc_0/aclk] [get_bd_pins aurora_0/user_clk_out] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
+  connect_bd_net -net S00_AXIS_ACLK1_1 [get_bd_pins areset_cdc_0/aclk] [get_bd_pins aurora_axis_0/user_clk_out] [get_bd_pins axi_interconnect_mm_0/M04_ACLK] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK1]
   connect_bd_net -net S00_AXIS_ARESETN_1 [get_bd_pins axis_interconnect_0/S00_AXIS_ARESETN] [get_bd_pins util_vector_logic_0/Res]
-  connect_bd_net -net areset_cdc_0_aresetn [get_bd_pins areset_cdc_0/aresetn] [get_bd_pins aurora_0/S_AXI_ARESETN]
-  connect_bd_net -net aurora_0_sys_reset_out [get_bd_pins aurora_0/sys_reset_out] [get_bd_pins util_vector_logic_0/Op1]
-  connect_bd_net -net aurora_reset_0_reset [get_bd_pins aurora_0/reset] [get_bd_pins aurora_reset_0/reset]
+  connect_bd_net -net areset_cdc_0_aresetn [get_bd_pins areset_cdc_0/aresetn] [get_bd_pins aurora_axis_0/S_AXI_ARESETN]
+  connect_bd_net -net aurora_axis_0_sys_reset_out [get_bd_pins aurora_axis_0/sys_reset_out] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net aurora_reset_0_reset [get_bd_pins aurora_axis_0/reset] [get_bd_pins aurora_reset_0/reset]
   connect_bd_net -net axi_dma_0_mm2s_introut [get_bd_pins irq_dma_mm2s] [get_bd_pins axi_dma/mm2s_introut]
   connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins irq_dma_s2mm] [get_bd_pins axi_dma/s2mm_introut]
   connect_bd_net -net pcie_0_peripheral_aresetn [get_bd_pins aresetn] [get_bd_pins areset_cdc_0/aresetn_in] [get_bd_pins axi_dma/axi_resetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_interconnect_mm_0/M04_ARESETN] [get_bd_pins axi_interconnect_mm_0/S00_ARESETN] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins axis_data_fifo_1/s_axis_aresetn] [get_bd_pins axis_interconnect_0/S_AXI_CTRL_ARESETN]
   connect_bd_net -net s_axi_aclk_1 [get_bd_pins clk] [get_bd_pins axi_dma/m_axi_sg_aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_interconnect_mm_0/S00_ACLK] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins axis_data_fifo_1/s_axis_aclk] [get_bd_pins axis_interconnect_0/S00_AXIS_ACLK]
-  connect_bd_net -net user_clk_1 [get_bd_pins user_clk] [get_bd_pins aurora_0/free_clk_in] [get_bd_pins aurora_reset_0/clk156]
-  connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins aurora_0/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
+  connect_bd_net -net user_clk_1 [get_bd_pins user_clk] [get_bd_pins aurora_axis_0/free_clk_in] [get_bd_pins aurora_reset_0/clk156]
+  connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins aurora_axis_0/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
   connect_bd_net -net xsg_pio_interrupt [get_bd_pins irq_fifo] [get_bd_pins axi_fifo_mm_s_0/interrupt]
 
   # Perform GUI Layout
@@ -972,43 +972,43 @@ preplace inst axis_interconnect_0 -pg 1 -lvl 3 -y 330 -defaultsOSRD
 preplace inst util_vector_logic_0 -pg 1 -lvl 2 -y 400 -defaultsOSRD
 preplace inst areset_cdc_0 -pg 1 -lvl 1 -y 930 -defaultsOSRD
 preplace inst aurora_reset_0 -pg 1 -lvl 1 -y 820 -defaultsOSRD
-preplace inst aurora_0 -pg 1 -lvl 2 -y 690 -defaultsOSRD
+preplace inst aurora_axis_0 -pg 1 -lvl 2 -y 840 -defaultsOSRD
 preplace inst axi_interconnect_mm_0 -pg 1 -lvl 1 -y 480 -defaultsOSRD
 preplace inst axi_fifo_mm_s_0 -pg 1 -lvl 4 -y 410 -defaultsOSRD
 preplace inst util_ds_buf_0 -pg 1 -lvl 1 -y 710 -defaultsOSRD
 preplace inst axis_data_fifo_0 -pg 1 -lvl 2 -y 90 -defaultsOSRD
+preplace netloc S00_AXIS_1 1 2 1 1100
 preplace netloc Conn1 1 0 1 NJ
-preplace netloc aurora_0_m_axis 1 2 1 1090
-preplace netloc axis_interconnect_0_M04_AXIS 1 1 3 700 170 NJ 170 1510
-preplace netloc S_AXI_FULL_1 1 0 4 NJ 580 NJ 580 NJ 580 1560J
-preplace netloc axis_interconnect_M03_AXIS 1 1 3 670 10 NJ 10 1520
+preplace netloc axis_interconnect_0_M04_AXIS 1 1 3 710 170 NJ 170 1530
+preplace netloc S_AXI_FULL_1 1 0 4 NJ 580 NJ 580 NJ 580 1580J
+preplace netloc axis_interconnect_M03_AXIS 1 1 3 680 10 NJ 10 1540
 preplace netloc xsg_pio_interrupt 1 4 1 NJ
-preplace netloc s_axi_aclk_1 1 0 4 -70 590 670 460 1130 520 1570
+preplace netloc s_axi_aclk_1 1 0 4 -70 590 680 460 1140 520 1590
 preplace netloc areset_cdc_0_aresetn 1 1 1 700
-preplace netloc axi_interconnect_mm_M02_AXI 1 1 3 NJ 470 NJ 470 1550
-preplace netloc axis_interconnect_M01_AXIS 1 3 1 1530
+preplace netloc aurora_axis_0_sys_reset_out 1 1 2 710 510 1080
+preplace netloc aurora_axis_0_SFP 1 2 3 NJ 830 NJ 830 2000
+preplace netloc axi_interconnect_mm_M02_AXI 1 1 3 NJ 470 NJ 470 1570
+preplace netloc axis_interconnect_M01_AXIS 1 3 1 1550
 preplace netloc Conn4 1 4 1 NJ
-preplace netloc axis_interconnect_0_M00_AXIS 1 1 3 710 500 1100J 490 1500
-preplace netloc S_AXI_CTRL_1 1 1 2 690 340 NJ
-preplace netloc axi_interconnect_mm_M03_AXI 1 1 3 N 490 1080J 590 NJ
-preplace netloc user_clk_1 1 0 2 -50 640 670J
-preplace netloc aurora_reset_0_reset 1 1 1 680J
+preplace netloc axis_interconnect_0_M00_AXIS 1 1 3 720 500 1110J 490 1520
+preplace netloc S_AXI_CTRL_1 1 1 2 700 340 NJ
+preplace netloc axi_interconnect_mm_M03_AXI 1 1 3 N 490 1090J 590 NJ
+preplace netloc aurora_reset_0_reset 1 1 1 670
+preplace netloc user_clk_1 1 0 2 -50 640 690
 preplace netloc S00_AXIS_ARESETN_1 1 2 1 NJ
-preplace netloc S01_AXIS_1 1 2 3 1140 510 NJ 510 1980
-preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 NJ
+preplace netloc S01_AXIS_1 1 2 3 1150 510 NJ 510 2000
+preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 680
 preplace netloc axi_dma_0_s2mm_introut 1 4 1 NJ
 preplace netloc clkbuf_1 1 0 1 NJ
 preplace netloc axi_dma_0_mm2s_introut 1 4 1 NJ
-preplace netloc axi_interconnect_mm_0_M04_AXI 1 1 1 690
-preplace netloc aurora_0_sys_reset_out 1 1 2 700 510 1070
-preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 1130
-preplace netloc aurora_0_SFP 1 2 3 NJ 680 NJ 680 NJ
-preplace netloc S02_AXIS_1 1 2 3 1150 480 1540J 310 1980
-preplace netloc axis_data_fifo_1_M_AXIS 1 2 1 1110
-preplace netloc S00_AXIS_ACLK1_1 1 0 3 -40J 600 680J 570 1120
-preplace netloc axis_interconnect_M02_AXIS 1 3 1 1580
-preplace netloc pcie_0_peripheral_aresetn 1 0 4 -60 330 690 330 1110 500 1580
-levelinfo -pg 1 -90 520 900 1330 1800 2020 -top -100 -bot 1340
+preplace netloc axi_interconnect_mm_0_M04_AXI 1 1 1 700
+preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 1140
+preplace netloc S02_AXIS_1 1 2 3 1160 480 1560J 310 2000
+preplace netloc axis_data_fifo_1_M_AXIS 1 2 1 1120
+preplace netloc S00_AXIS_ACLK1_1 1 0 3 -40J 600 NJ 600 1130
+preplace netloc axis_interconnect_M02_AXIS 1 3 1 1600
+preplace netloc pcie_0_peripheral_aresetn 1 0 4 -60 330 700 330 1120 500 1600
+levelinfo -pg 1 -90 520 910 1350 1820 2040 -top -100 -bot 1340
 "
 }
 
@@ -1119,7 +1119,7 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets pcie_M_AXI]
   connect_bd_net -net user_clk_1 [get_bd_pins hier_0/user_clk] [get_bd_pins util_ds_buf_1/IBUF_OUT]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00001000 -offset 0x00006000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/aurora_0/S_AXI/reg0] SEG_aurora_0_reg0
+  create_bd_addr_seg -range 0x00010000 -offset 0x44A00000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/aurora_axis_0/S_AXI/reg0] SEG_aurora_axis_0_reg0
   create_bd_addr_seg -range 0x00001000 -offset 0x00003000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/axi_dma/axi_dma_0/S_AXI_LITE/Reg] SEG_axi_dma_0_Reg
   create_bd_addr_seg -range 0x00002000 -offset 0x00008000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/axi_fifo_mm_s_0/S_AXI/Mem0] SEG_axi_fifo_mm_s_0_Mem0
   create_bd_addr_seg -range 0x00002000 -offset 0x0000C000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/axi_fifo_mm_s_0/S_AXI_FULL/Mem1] SEG_axi_fifo_mm_s_0_Mem1

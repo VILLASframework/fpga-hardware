@@ -29,7 +29,7 @@ ips/rtds_axis/ip
 ips/rtds_axis/netlist/RTDS_InterfaceModule.ngc
 
 # Vivado working directories
-ips/aurora_rtds/vivado
+ips/aurora_axis/vivado
 ips/axi_pcie_intc/vivado
 
 vc707/vc707_pcie/work/

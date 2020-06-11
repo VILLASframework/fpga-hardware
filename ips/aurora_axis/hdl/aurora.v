@@ -199,7 +199,7 @@ module aurora(
       end else begin
          case (s_axi_araddr[5 : 2])
            ADDR_STAT_REG: begin
-              S_AXI_RDATA <= { {26{1'b0}}, link_reset_out, frame_err, soft_err, hard_err, lane_up, channel_up };
+              S_AXI_RDATA <= { {27{1'b0}}, frame_err, soft_err, hard_err, lane_up, channel_up };
            end
            ADDR_CTRL_REG: begin
               S_AXI_RDATA <= { {27{1'b0}}, slv_ctrl_seq_echo, slv_ctrl_seq_strip, slv_ctrl_seq_mode, slv_ctrl_rst_ctrs, slv_ctrl_loopback};

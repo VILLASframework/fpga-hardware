@@ -13,31 +13,31 @@
  */
 
 module post(
-            input wire           m_axis_aclk,
-            input wire           m_axis_aresetn,
+   input wire           m_axis_aclk,
+   input wire           m_axis_aresetn,
 
-            // AXI-Stream slave interface
-            input wire           s_axis_tvalid,
-            input wire [31 : 0]  s_axis_tdata,
-            input wire           s_axis_tlast,
+   // AXI-Stream slave interface
+   input wire           s_axis_tvalid,
+   input wire [31 : 0]  s_axis_tdata,
+   input wire           s_axis_tlast,
 
-            // AXI-Stream master interface
-            output wire          m_axis_tvalid,
-            output wire [31 : 0] m_axis_tdata,
-            output wire          m_axis_tlast,
+   // AXI-Stream master interface
+   output wire          m_axis_tvalid,
+   output wire [31 : 0] m_axis_tdata,
+   output wire          m_axis_tlast,
 
-            // Status and control ports
-            input wire           ctrl_strip_seq_en,
-            input wire           ctrl_rst_cntr_in,
-            output wire [63 : 0] slv_cntr_in
-            );
+   // Status and control ports
+   input wire           ctrl_strip_seq_en,
+   input wire           ctrl_rst_cntr_in,
+   output wire [63 : 0] slv_cntr_in
+);
 
-   wire                          stat_cnt_pkts_rdy, // Indicates when the corresponding status register holds the correct count
-                                 data_pkts_window;
-   wire [15 : 0]                 stat_cnt_pkts; // Count of number of packets received (depends on ctrl_strip_seq_en)
-   reg                           stat_cnt_pkts_rdy_i, state_cnt_pkts, state_cnt;
-   reg [15 : 0]                  cnt_pkts; // Count of number of packets received (always including sequence number), maximum count 2^16 = 65,536
-   reg [63 : 0]                  slv_cntr_in_i; // Slave register to count received frames
+   wire           stat_cnt_pkts_rdy, // Indicates when the corresponding status register holds the correct count
+                  data_pkts_window;
+   wire [15 : 0]  stat_cnt_pkts; // Count of number of packets received (depends on ctrl_strip_seq_en)
+   reg            stat_cnt_pkts_rdy_i, state_cnt_pkts, state_cnt;
+   reg [15 : 0]   cnt_pkts; // Count of number of packets received (always including sequence number), maximum count 2^16 = 65,536
+   reg [63 : 0]   slv_cntr_in_i; // Slave register to count received frames
 
    localparam
      S_IN_COUNT = 1'b0,

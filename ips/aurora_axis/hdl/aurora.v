@@ -18,71 +18,71 @@
  */
 
 module aurora(
-              // External ports, exposed through to physical pins
-              input wire           SFP_RX_P,
-              input wire           SFP_RX_N,
-              output wire          SFP_TX_P,
-              output wire          SFP_TX_N,
-              output wire          SFP_TX_DISABLE_N,
+   // External ports, exposed through to physical pins
+   input wire           SFP_RX_P,
+   input wire           SFP_RX_N,
+   output wire          SFP_TX_P,
+   output wire          SFP_TX_N,
+   output wire          SFP_TX_DISABLE_N,
 
-              // AXI-Stream slave interface
-              input wire           s_axis_tvalid,
-              input wire [31 : 0]  s_axis_tdata,
-              input wire           s_axis_tlast,
-              output wire          s_axis_tready,
+   // AXI-Stream slave interface
+   input wire           s_axis_tvalid,
+   input wire [31 : 0]  s_axis_tdata,
+   input wire           s_axis_tlast,
+   output wire          s_axis_tready,
 
-              // AXI-Stream master interface
-              output wire          m_axis_tvalid,
-              output wire [31 : 0] m_axis_tdata,
-              output wire          m_axis_tlast,
-              input wire           m_axis_tready,
+   // AXI-Stream master interface
+   output wire          m_axis_tvalid,
+   output wire [31 : 0] m_axis_tdata,
+   output wire          m_axis_tlast,
+   input wire           m_axis_tready,
 
-              // Clock and reset interface
-              input wire           free_clk_in,
-              input wire           gt_refclk1,
-              output wire          user_clk_out,
-              input wire           reset,
-              output wire          sys_reset_out,
+   // Clock and reset interface
+   input wire           free_clk_in,
+   input wire           gt_refclk1,
+   output wire          user_clk_out,
+   input wire           reset,
+   output wire          sys_reset_out,
 
-              // AXI Slave register interface
-              input wire           S_AXI_ARESETN, // Global reset signal, active LOW
-              input wire [5 : 0]   S_AXI_AWADDR, // Write address
-              input wire [2 : 0]   S_AXI_AWPROT, // Write protection type, TODO: unused for now.
-              input wire           S_AXI_AWVALID, // Write address valid
-              output reg           S_AXI_AWREADY, // Write address ready (slave ready to accept write address)
-              input wire [31 : 0]  S_AXI_WDATA, // Write data bus
-              input wire [3 : 0]   S_AXI_WSTRB, // Write strobes, per 8 bits of S_AXI_WDATA, indicating valid lane
-              input wire           S_AXI_WVALID, // Write valid
-              output reg           S_AXI_WREADY, // Write ready (slave ready to accept data)
-              output reg           S_AXI_BVALID, // Write response valid
-              input wire           S_AXI_BREADY, // Write response ready (master ready to accept write response)
-              input wire [5 : 0]   S_AXI_ARADDR, // Read address
-              input wire [2 : 0]   S_AXI_ARPROT, // Read protection type, TODO: unused for now.
-              input wire           S_AXI_ARVALID, // Read address valid
-              output reg           S_AXI_ARREADY, // Read address ready (slave ready to accept read address)
-              output reg [31 : 0]  S_AXI_RDATA, // Read data
-              output reg           S_AXI_RVALID, // Read valid
-              input wire           S_AXI_RREADY // Read ready (master ready to receive)
-              );
+   // AXI Slave register interface
+   input wire           S_AXI_ARESETN, // Global reset signal, active LOW
+   input wire [5 : 0]   S_AXI_AWADDR, // Write address
+   input wire [2 : 0]   S_AXI_AWPROT, // Write protection type, TODO: unused for now.
+   input wire           S_AXI_AWVALID, // Write address valid
+   output reg           S_AXI_AWREADY, // Write address ready (slave ready to accept write address)
+   input wire [31 : 0]  S_AXI_WDATA, // Write data bus
+   input wire [3 : 0]   S_AXI_WSTRB, // Write strobes, per 8 bits of S_AXI_WDATA, indicating valid lane
+   input wire           S_AXI_WVALID, // Write valid
+   output reg           S_AXI_WREADY, // Write ready (slave ready to accept data)
+   output reg           S_AXI_BVALID, // Write response valid
+   input wire           S_AXI_BREADY, // Write response ready (master ready to accept write response)
+   input wire [5 : 0]   S_AXI_ARADDR, // Read address
+   input wire [2 : 0]   S_AXI_ARPROT, // Read protection type, TODO: unused for now.
+   input wire           S_AXI_ARVALID, // Read address valid
+   output reg           S_AXI_ARREADY, // Read address ready (slave ready to accept read address)
+   output reg [31 : 0]  S_AXI_RDATA, // Read data
+   output reg           S_AXI_RVALID, // Read valid
+   input wire           S_AXI_RREADY // Read ready (master ready to receive)
+);
 
-   wire                            channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out,
-                                   rx_resetdone_out, tx_resetdone_out, tx_lock,
-                                   s_axis_aurora_tlast, s_axis_aurora_tvalid, s_axis_aurora_tready,
-                                   m_axis_aurora_tlast, m_axis_aurora_tvalid,
-                                   s_axis_loop_tlast, s_axis_loop_tvalid,
-                                   m_axis_pre_tvalid, m_axis_pre_tlast,
-                                   usr_clk, slv_reg_wren;
-   wire [0 : 3]                    s_axis_aurora_tkeep, m_axis_aurora_tkeep;
-   wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
-   wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata;
-   wire [63 : 0]                   slv_cntr_out, slv_cntr_in;
+   wire           channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out,
+                  rx_resetdone_out, tx_resetdone_out, tx_lock,
+                  s_axis_aurora_tlast, s_axis_aurora_tvalid, s_axis_aurora_tready,
+                  m_axis_aurora_tlast, m_axis_aurora_tvalid,
+                  s_axis_loop_tlast, s_axis_loop_tvalid,
+                  m_axis_pre_tvalid, m_axis_pre_tlast,
+                  usr_clk, slv_reg_wren;
+   wire [0 : 3]   s_axis_aurora_tkeep, m_axis_aurora_tkeep;
+   wire [0 : 31]  s_axis_aurora_tdata, m_axis_aurora_tdata;
+   wire [31 : 0]  s_axis_loop_tdata, m_axis_pre_tdata;
+   wire [63 : 0]  slv_cntr_out, slv_cntr_in;
 
-   reg                             slv_ctrl_loopback, // Assert to put Aurora IP in loopback mode
-                                   slv_ctrl_rst_ctrs, // Assert to reset counters, incoming and outgoing frame counters
-                                   slv_ctrl_seq_mode, // Assert to turn off any sequence number handling by Aurora IP
-                                   slv_ctrl_seq_strip, // Assert to strip the received frame of the trailing sequence number
-                                   slv_ctrl_seq_echo; // Assert to use sequence number of incoming frame
-   reg [5 : 0]                     s_axi_awaddr, s_axi_araddr;
+   reg            slv_ctrl_loopback, // Assert to put Aurora IP in loopback mode
+                  slv_ctrl_rst_ctrs, // Assert to reset counters, incoming and outgoing frame counters
+                  slv_ctrl_seq_mode, // Assert to turn off any sequence number handling by Aurora IP
+                  slv_ctrl_seq_strip, // Assert to strip the received frame of the trailing sequence number
+                  slv_ctrl_seq_echo; // Assert to use sequence number of incoming frame
+   reg [5 : 0]    s_axi_awaddr, s_axi_araddr;
 
    assign user_clk_out = usr_clk;
 
@@ -249,112 +249,111 @@ module aurora(
 
 
    aurora_8b10b_0 aurora_0 (
-                            // Status and control ports
-                            .reset                   (reset),
-                            .gt_reset                (reset),
+      // Status and control ports
+      .reset                   (reset),
+      .gt_reset                (reset),
 
-                            .channel_up              (channel_up),
-                            .lane_up                 (lane_up),
-                            .hard_err                (hard_err),
-                            .soft_err                (soft_err),
-                            .frame_err               (frame_err),
-                            .link_reset_out          (link_reset_out), // Relative to init_clk_in
+      .channel_up              (channel_up),
+      .lane_up                 (lane_up),
+      .hard_err                (hard_err),
+      .soft_err                (soft_err),
+      .frame_err               (frame_err),
+      .link_reset_out          (link_reset_out), // Relative to init_clk_in
 
-                            // User IO ports (TX), AXI_Stream slave interface
-                            .s_axi_tx_tdata          (s_axis_aurora_tdata),
-                            .s_axi_tx_tkeep          (s_axis_aurora_tkeep),
-                            .s_axi_tx_tlast          (s_axis_aurora_tlast),
-                            .s_axi_tx_tvalid         (s_axis_aurora_tvalid),
+      // User IO ports (TX), AXI_Stream slave interface
+      .s_axi_tx_tdata          (s_axis_aurora_tdata),
+      .s_axi_tx_tkeep          (s_axis_aurora_tkeep),
+      .s_axi_tx_tlast          (s_axis_aurora_tlast),
+      .s_axi_tx_tvalid         (s_axis_aurora_tvalid),
 
-                            .s_axi_tx_tready         (s_axis_aurora_tready),
+      .s_axi_tx_tready         (s_axis_aurora_tready),
 
-                            // User IO ports (RX), AXI_Stream master interface
-                            .m_axi_rx_tdata         (m_axis_aurora_tdata),
-                            .m_axi_rx_tkeep         (m_axis_aurora_tkeep),
-                            .m_axi_rx_tlast         (m_axis_aurora_tlast),
-                            .m_axi_rx_tvalid        (m_axis_aurora_tvalid),
+      // User IO ports (RX), AXI_Stream master interface
+      .m_axi_rx_tdata         (m_axis_aurora_tdata),
+      .m_axi_rx_tkeep         (m_axis_aurora_tkeep),
+      .m_axi_rx_tlast         (m_axis_aurora_tlast),
+      .m_axi_rx_tvalid        (m_axis_aurora_tvalid),
 
-                            // Transceiver ports 
-                            .rxp                     (SFP_RX_P),
-                            .rxn                     (SFP_RX_N),
-                            .txp                     (SFP_TX_P),
-                            .txn                     (SFP_TX_N),
-                            .power_down              (1'b0),
-                            .loopback                (1'b0),
-                            .rx_resetdone_out        (rx_resetdone_out),
-                            .tx_resetdone_out        (tx_resetdone_out),
-                            .tx_lock                 (tx_lock),
+      // Transceiver ports 
+      .rxp                     (SFP_RX_P),
+      .rxn                     (SFP_RX_N),
+      .txp                     (SFP_TX_P),
+      .txn                     (SFP_TX_N),
+      .power_down              (1'b0),
+      .loopback                (1'b0),
+      .rx_resetdone_out        (rx_resetdone_out),
+      .tx_resetdone_out        (tx_resetdone_out),
+      .tx_lock                 (tx_lock),
 
-                            // Clock interface
-                            .pll_not_locked_out      (),
-                            .gt_refclk1              (gt_refclk1),
-                            .user_clk_out            (usr_clk),
-                            .sync_clk_out            (), // Same as user_clk_out
-                            .sys_reset_out           (sys_reset_out), // Relative to user_clk_out
-                            .gt_reset_out            (),
-                            .init_clk_in             (free_clk_in),
-                            .gt0_qplllock_out        (),
-                            .gt0_qpllrefclklost_out  (),
-                            .gt_qpllclk_quad1_out    (),
-                            .gt_qpllrefclk_quad1_out (),
+      // Clock interface
+      .pll_not_locked_out      (),
+      .gt_refclk1              (gt_refclk1),
+      .user_clk_out            (usr_clk),
+      .sync_clk_out            (), // Same as user_clk_out
+      .sys_reset_out           (sys_reset_out), // Relative to user_clk_out
+      .gt_reset_out            (),
+      .init_clk_in             (free_clk_in),
+      .gt0_qplllock_out        (),
+      .gt0_qpllrefclklost_out  (),
+      .gt_qpllclk_quad1_out    (),
+      .gt_qpllrefclk_quad1_out (),
 
-                            // Transceiver DRP ports
-                            .drpclk_in               (free_clk_in),
-                            .drpaddr_in              (9'h0),
-                            .drpen_in                (1'b0),
-                            .drpdi_in                (16'h0),
-                            .drprdy_out              (),
-                            .drpdo_out               (),
-                            .drpwe_in                (1'b0)
-                            );
+      // Transceiver DRP ports
+      .drpclk_in               (free_clk_in),
+      .drpaddr_in              (9'h0),
+      .drpen_in                (1'b0),
+      .drpdi_in                (16'h0),
+      .drprdy_out              (),
+      .drpdo_out               (),
+      .drpwe_in                (1'b0)
+   );
 
    assign s_axis_aurora_tvalid = (slv_ctrl_loopback == 1'b1) ? s_axis_loop_tvalid : m_axis_pre_tvalid;
    assign s_axis_aurora_tdata = (slv_ctrl_loopback == 1'b1) ? s_axis_loop_tdata : m_axis_pre_tdata;
    assign s_axis_aurora_tlast = (slv_ctrl_loopback == 1'b1) ? s_axis_loop_tlast : m_axis_pre_tlast;
 
-
    post post (
-              .m_axis_aclk    (user_clk_out),
-              .m_axis_aresetn (!sys_reset_out),
+      .m_axis_aclk    (user_clk_out),
+      .m_axis_aresetn (!sys_reset_out),
 
-              // AXI-Stream slave interface
-              .s_axis_tvalid     (m_axis_aurora_tvalid),
-              .s_axis_tdata      (m_axis_aurora_tdata),
-              .s_axis_tlast      (m_axis_aurora_tlast),
+      // AXI-Stream slave interface
+      .s_axis_tvalid     (m_axis_aurora_tvalid),
+      .s_axis_tdata      (m_axis_aurora_tdata),
+      .s_axis_tlast      (m_axis_aurora_tlast),
 
-              // AXI-Stream master interface
-              .m_axis_tvalid     (m_axis_tvalid),
-              .m_axis_tdata      (m_axis_tdata),
-              .m_axis_tlast      (m_axis_tlast),
+      // AXI-Stream master interface
+      .m_axis_tvalid     (m_axis_tvalid),
+      .m_axis_tdata      (m_axis_tdata),
+      .m_axis_tlast      (m_axis_tlast),
 
-              // Status and control ports
-              .ctrl_strip_seq_en (slv_ctrl_seq_strip),
-              .ctrl_rst_cntr_in  (slv_ctrl_rst_ctrs),
-              .slv_cntr_in       (slv_cntr_in)
-              );
+      // Status and control ports
+      .ctrl_strip_seq_en (slv_ctrl_seq_strip),
+      .ctrl_rst_cntr_in  (slv_ctrl_rst_ctrs),
+      .slv_cntr_in       (slv_cntr_in)
+   );
 
 
    fifo_loop fifo_loop_0 (
-                          .s_aclk        (user_clk_out),
-                          .s_aresetn     (!sys_reset_out),
+      .s_aclk        (user_clk_out),
+      .s_aresetn     (!sys_reset_out),
 
-                          // Status ports
-                          .wr_rst_busy   (),
-                          .rd_rst_busy   (),
+      // Status ports
+      .wr_rst_busy   (),
+      .rd_rst_busy   (),
 
-                          // User IO ports AXI-Stream (TX)
-                          .s_axis_tvalid (m_axis_aurora_tvalid),
-                          .s_axis_tdata  (m_axis_aurora_tdata),
-                          .s_axis_tlast  (m_axis_aurora_tlast),
+      // User IO ports AXI-Stream (TX)
+      .s_axis_tvalid (m_axis_aurora_tvalid),
+      .s_axis_tdata  (m_axis_aurora_tdata),
+      .s_axis_tlast  (m_axis_aurora_tlast),
 
-                          .s_axis_tready (), // Aurora does NOT have a m_axis_tready, so partner cannot exert backpressure
+      .s_axis_tready (), // Aurora does NOT have a m_axis_tready, so partner cannot exert backpressure
 
-                          // User IO ports AXI-Stream (RX)
-                          .m_axis_tvalid (s_axis_loop_tvalid),
-                          .m_axis_tdata  (s_axis_loop_tdata),
-                          .m_axis_tlast  (s_axis_loop_tlast),
+      // User IO ports AXI-Stream (RX)
+      .m_axis_tvalid (s_axis_loop_tvalid),
+      .m_axis_tdata  (s_axis_loop_tdata),
+      .m_axis_tlast  (s_axis_loop_tlast),
 
-                          .m_axis_tready (s_axis_aurora_tready)
-                          );
+      .m_axis_tready (s_axis_aurora_tready)
+   );
 
 endmodule // aurora

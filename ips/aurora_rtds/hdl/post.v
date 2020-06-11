@@ -128,14 +128,4 @@ module post(
    assign m_axis_tvalid = (ctrl_strip_seq_en) ? s_axis_tvalid & data_pkts_window : s_axis_tvalid;
    assign m_axis_tdata = (ctrl_strip_seq_en) ? s_axis_tdata & {32{data_pkts_window}} : s_axis_tdata;
 
-
-`ifdef INCLUDE_ILA_AURORA_POST
-   ila_post ila_post (
-                      .clk    (m_axis_aclk),
-                      .probe0 (stat_cnt_pkts_rdy),
-                      .probe1 (stat_cnt_pkts),
-                      .probe2 (data_pkts_window)
-                      );
-`endif
-
 endmodule // post

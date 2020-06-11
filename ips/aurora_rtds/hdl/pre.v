@@ -120,14 +120,4 @@ module pre(
    assign m_axis_tdata = (passthrough == 1'b1) ? s_axis_tdata : {16'h00_00, seq_ctr};
    assign m_axis_tlast = (passthrough == 1'b1) ? 1'b0 : 1'b1;
 
-
-`ifdef INCLUDE_ILA_AURORA_PRE
-   ila_pre ila_pre (
-                    .clk    (m_axis_aclk),
-                    .probe0 (seq_ctr),
-                    .probe1 (passthrough),
-                    .probe2 (state_pre)
-                    );
-`endif
-
 endmodule // pre

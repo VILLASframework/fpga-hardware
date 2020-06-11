@@ -74,8 +74,7 @@ module aurora(
                                    usr_clk, slv_reg_wren;
    wire [0 : 3]                    s_axis_aurora_tkeep, m_axis_aurora_tkeep;
    wire [0 : 31]                   s_axis_aurora_tdata, m_axis_aurora_tdata;
-   wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata,
-                                   vio_in0, vio_out0;
+   wire [31 : 0]                   s_axis_loop_tdata, m_axis_pre_tdata;
    wire [63 : 0]                   slv_cntr_out, slv_cntr_in;
 
    reg                             slv_ctrl_loopback, // Assert to put Aurora IP in loopback mode
@@ -138,7 +137,6 @@ module aurora(
          slv_ctrl_seq_strip <= 1'b1;
          slv_ctrl_seq_echo <= 1'b0;
       end else begin
-`ifndef USE_VIO_SLV_AURORA
          if (slv_reg_wren == 1'b1) begin
             case (s_axi_awaddr[5 : 2])
               ADDR_CTRL_REG: begin
@@ -150,9 +148,6 @@ module aurora(
               end
             endcase
          end
-`else
-         slv_ctrl_loopback <= vio_out0[0 : 0];
-`endif
       end
    end
 
@@ -227,16 +222,6 @@ module aurora(
          endcase
       end
    end
-
-
-   assign vio_in0 = { {31{1'b0}}, slv_ctrl_loopback };
-
-   vio_aurora vio_aurora (
-                          .clk        (user_clk_out),
-                          .probe_in0  (vio_in0),
-                          .probe_out0 (vio_out0)
-                          );
-
 
    // This must be asserted for the RTDS to be able to detect the Aurora link
    assign SFP_TX_DISABLE_N = 1'b1;
@@ -371,16 +356,5 @@ module aurora(
 
                           .m_axis_tready (s_axis_aurora_tready)
                           );
-
-
-`ifdef INCLUDE_ILA_AURORA
-   ila_aurora ila_aurora (
-                          .clk    (user_clk_out),
-                          .probe0 ({m_axis_aurora_tdata, m_axis_aurora_tkeep, m_axis_aurora_tlast, m_axis_aurora_tvalid}),
-                          .probe1 ({s_axis_aurora_tdata, s_axis_aurora_tkeep, s_axis_aurora_tlast, s_axis_aurora_tvalid, s_axis_aurora_tready}),
-                          .probe2 ({channel_up, lane_up, hard_err, soft_err, frame_err, link_reset_out}),
-                          .probe3 ({m_axis_tvalid, m_axis_tdata, 1'b0})
-                          );
-`endif
 
 endmodule // aurora

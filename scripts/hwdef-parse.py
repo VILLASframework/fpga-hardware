@@ -140,7 +140,7 @@ for module in modules:
 
 	# populate memory view
 	mmap = module.find('.//MEMORYMAP')
-	if not mmap:
+	if mmap is None:
 		continue
 
 	mem = ips[instance].setdefault('memory-view', {})
@@ -190,7 +190,7 @@ for busif in busifs:
 
 		module_ep = root.find('.//MODULE[@INSTANCE="{}"]'.format(ep))
 		busif_ep = module_ep.find('.//BUSINTERFACE[@BUSNAME="{}"]'.format(busname_ep))
-		if not busif_ep:
+		if busif_ep is None:
 			print("cannot find businterface: {}".format(busname_ep))
 			sys.exit(1)
 

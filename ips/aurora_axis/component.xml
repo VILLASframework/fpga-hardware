@@ -3,7 +3,7 @@
   <spirit:vendor>acs.eonerc.rwth-aachen.de</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>aurora_axis</spirit:name>
-  <spirit:version>1.12</spirit:version>
+  <spirit:version>1.14</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>m_axis</spirit:name>
@@ -229,6 +229,22 @@
             <spirit:name>S_AXI_RREADY</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RRESP</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>S_AXI_RRESP</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>BRESP</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>S_AXI_BRESP</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
@@ -430,6 +446,28 @@
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>S_AXI_ACLK</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>S_AXI_ACLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_ACLK.ASSOCIATED_RESET">S_AXI_ARESETN</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
   </spirit:busInterfaces>
   <spirit:memoryMaps>
     <spirit:memoryMap>
@@ -469,7 +507,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>bc86aa4a</spirit:value>
+            <spirit:value>b11d096e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -497,7 +535,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>15a1e640</spirit:value>
+            <spirit:value>b11d096e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -511,7 +549,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f92e9879</spirit:value>
+            <spirit:value>94762266</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -769,6 +807,19 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>S_AXI_ACLK</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>S_AXI_ARESETN</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
@@ -786,7 +837,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">5</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -843,7 +894,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>reg</spirit:typeName>
+              <spirit:typeName>wire</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -855,7 +906,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -875,7 +926,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">3</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -912,7 +963,24 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>reg</spirit:typeName>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>S_AXI_BRESP</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">1</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -925,7 +993,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>reg</spirit:typeName>
+              <spirit:typeName>wire</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -953,7 +1021,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">5</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1010,7 +1078,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>reg</spirit:typeName>
+              <spirit:typeName>wire</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -1022,12 +1090,29 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>reg</spirit:typeName>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>S_AXI_RRESP</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">1</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -1040,7 +1125,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>reg</spirit:typeName>
+              <spirit:typeName>wire</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -1064,6 +1149,18 @@
         </spirit:wire>
       </spirit:port>
     </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>C_S_AXI_DATA_WIDTH</spirit:name>
+        <spirit:displayName>C S Axi Data Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_S_AXI_ADDR_WIDTH</spirit:name>
+        <spirit:displayName>C S Axi Addr Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_ADDR_WIDTH">5</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
   </spirit:model>
   <spirit:choices>
     <spirit:choice>
@@ -1071,16 +1168,21 @@
       <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
       <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
     </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_list_a3c0ae87</spirit:name>
+      <spirit:enumeration>32</spirit:enumeration>
+      <spirit:enumeration>64</spirit:enumeration>
+    </spirit:choice>
   </spirit:choices>
   <spirit:fileSets>
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>ip/fifo_loop/fifo_loop.xci</spirit:name>
+        <spirit:name>ips/fifo_loop/fifo_loop.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>ip/aurora_8b10b_0/aurora_8b10b_0.xci</spirit:name>
+        <spirit:name>ips/aurora_8b10b_0/aurora_8b10b_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
@@ -1099,22 +1201,14 @@
       <spirit:file>
         <spirit:name>hdl/aurora.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>xdc/top.xdc</spirit:name>
-        <spirit:userFileType>xdc</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>hdl/top.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_b404b8be</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_21c4738c</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_xilinx_com_ip_ila_6_2__ref_view_fileset</spirit:name>
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
-          <xilinx:componentRef xsi:type="xilinx:componentRefType" xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="ila" xilinx:version="6.2">
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="ila" xilinx:version="6.2">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
@@ -1153,11 +1247,11 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>ip/fifo_loop/fifo_loop.xci</spirit:name>
+        <spirit:name>ips/fifo_loop/fifo_loop.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>ip/aurora_8b10b_0/aurora_8b10b_0.xci</spirit:name>
+        <spirit:name>ips/aurora_8b10b_0/aurora_8b10b_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
@@ -1175,10 +1269,6 @@
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/aurora.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>hdl/top.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1225,9 +1315,9 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/aurora_axis_v1_12.tcl</spirit:name>
+        <spirit:name>xgui/aurora_axis_v1_14.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_f92e9879</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_94762266</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1237,6 +1327,16 @@
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
       <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">aurora_v1_0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_S_AXI_DATA_WIDTH</spirit:name>
+      <spirit:displayName>AXI Data Bus Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXI_DATA_WIDTH" spirit:choiceRef="choice_list_a3c0ae87">32</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_S_AXI_ADDR_WIDTH</spirit:name>
+      <spirit:displayName>AXI Address Bus Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXI_ADDR_WIDTH">5</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
@@ -1255,8 +1355,8 @@
       </xilinx:xpmLibraries>
       <xilinx:vendorDisplayName>Institute for Automation of Complex Power Systems, RWTH Aachen</xilinx:vendorDisplayName>
       <xilinx:vendorURL>http://www.acs.eonerc.rwth-aachen.de</xilinx:vendorURL>
-      <xilinx:coreRevision>23</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-06-11T09:39:55Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>25</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2020-06-29T16:47:59Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@55147c9c_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@76271a54_ARCHIVE_LOCATION">/home/svg-hka/tmp/fpga-hardware/vc707/aurora_rtds</xilinx:tag>
@@ -1575,15 +1675,47 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@18e67244_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@35b4a531_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@15302dd8_ARCHIVE_LOCATION">/projects/villas/fpga/hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a7aa21_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66bee76c_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@139cd1e7_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a6609d6_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bbeb5de_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1589356c_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32fc6d5c_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4baedf86_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53763f7d_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c995dee_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17b723d8_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@767d13ad_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@283aeffb_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37e62e31_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bdfef19_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a6f3f54_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c8043aa_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56ad68a0_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32b6f14d_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3174264_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a1771ff_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@279d1023_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@325768b7_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@539ff94b_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67da7057_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@753ec34_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a62b1a8_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ca2a6ad_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1db71a1f_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@450f5b8d_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68c84a92_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/aurora_axis</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="331ce024"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="1bbfa4b6"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="509d916e"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="bdab062a"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="a4f735b4"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="771eb76a"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="7e6458e5"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="2c5c313c"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="8a8d3f4e"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="1745359b"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

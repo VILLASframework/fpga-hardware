@@ -87,28 +87,28 @@ module top(
 
    // Clock Buffering for Aurora
    // --------------------------
-//   IBUFDS IBUFDS_0 (
-//                    .I  (SYS_CLK_P),
-//                    .IB (SYS_CLK_N),
+   //   IBUFDS IBUFDS_0 (
+   //                    .I  (SYS_CLK_P),
+   //                    .IB (SYS_CLK_N),
 
-//                    .O  (sys_clk_i1)
-//                    );
+   //                    .O  (sys_clk_i1)
+   //                    );
 
-//   BUFR #(
-//          .BUFR_DIVIDE   ("4")
-//          ) BUFR_0 (
-//                    .CE  (1'b1),
-//                    .CLR (1'b0),
-//                    .I   (sys_clk_i1),
+   //   BUFR #(
+   //          .BUFR_DIVIDE   ("4")
+   //          ) BUFR_0 (
+   //                    .CE  (1'b1),
+   //                    .CLR (1'b0),
+   //                    .I   (sys_clk_i1),
 
-//                    .O   (sys_clk_i2)
-//                    );
+   //                    .O   (sys_clk_i2)
+   //                    );
 
-//   BUFG BUFG_0 (
-//                .I (sys_clk_i2),
+   //   BUFG BUFG_0 (
+   //                .I (sys_clk_i2),
 
-//                .O (sys_clk)
-//                );
+   //                .O (sys_clk)
+   //                );
 
 
    IBUFDS_GTE2 IBUFDS_GTE2_0 (
@@ -227,6 +227,6 @@ module top(
                     .user_clk_out     (user_clk_out),
                     .sys_reset_out    (sys_reset_out),
                     .reset            (rst_156)
-   );
+                    );
 
 endmodule // top

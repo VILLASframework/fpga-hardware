@@ -12,29 +12,29 @@
  */
 
 module pre(
-   input wire           m_axis_aclk,
-   input wire           m_axis_aresetn,
+           input wire           m_axis_aclk,
+           input wire           m_axis_aresetn,
 
-   // AXI-Stream slave interface
-   input wire           s_axis_tvalid,
-   input wire [31 : 0]  s_axis_tdata,
-   input wire           s_axis_tlast,
-   output wire          s_axis_tready,
+           // AXI-Stream slave interface
+           input wire           s_axis_tvalid,
+           input wire [31 : 0]  s_axis_tdata,
+           input wire           s_axis_tlast,
+           output wire          s_axis_tready,
 
-   // AXI-Stream master interface
-   output wire          m_axis_tvalid,
-   output wire [31 : 0] m_axis_tdata,
-   output wire          m_axis_tlast,
-   input wire           m_axis_tready,
+           // AXI-Stream master interface
+           output wire          m_axis_tvalid,
+           output wire [31 : 0] m_axis_tdata,
+           output wire          m_axis_tlast,
+           input wire           m_axis_tready,
 
-   // Status and control ports
-   input wire           ctrl_rst_cntr_out,
-   output wire [63 : 0] slv_cntr_out
-);
+           // Status and control ports
+           input wire           ctrl_rst_cntr_out,
+           output wire [63 : 0] slv_cntr_out
+           );
 
-   reg            state_pre, state_cnt, passthrough, tvalid;
-   reg [15 : 0]   seq_ctr;
-   reg [63 : 0]   slv_cntr_out_i; // Slave register to count sent frames
+   reg                          state_pre, state_cnt, passthrough, tvalid;
+   reg [15 : 0]                 seq_ctr;
+   reg [63 : 0]                 slv_cntr_out_i; // Slave register to count sent frames
 
    localparam
      S_PRE_PASS = 1'b0,
@@ -53,30 +53,30 @@ module pre(
       if (m_axis_aresetn == 1'b0) begin // Global reset
          slv_cntr_out_i <= { {64{1'b0}} };
 
-         state_cnt <= S_CNT_COUNT;
-      end else begin
-         case (state_cnt)
-           S_CNT_RST: begin
-              // Wait here until control port is de-asserted
-              if (ctrl_rst_cntr_out == 1'b0) begin
-                 state_cnt <= S_CNT_COUNT;
-              end
+      state_cnt <= S_CNT_COUNT;
+   end else begin
+      case (state_cnt)
+        S_CNT_RST: begin
+           // Wait here until control port is de-asserted
+           if (ctrl_rst_cntr_out == 1'b0) begin
+              state_cnt <= S_CNT_COUNT;
            end
-           S_CNT_COUNT: begin
-              // Increment counter as the last bit is transmitted.
-              if (s_axis_tvalid == 1'b1 && s_axis_tlast == 1'b1) begin
-                 slv_cntr_out_i <= slv_cntr_out_i + 64'h0000_0000_0000_0001;
-              end
-
-              // Reset counter when control port is asserted
-              if (ctrl_rst_cntr_out == 1'b1) begin
-                 slv_cntr_out_i <= { {64{1'b0}} };
-
-                 state_cnt <= S_CNT_RST;
-              end
+        end
+        S_CNT_COUNT: begin
+           // Increment counter as the last bit is transmitted.
+           if (s_axis_tvalid == 1'b1 && s_axis_tlast == 1'b1) begin
+              slv_cntr_out_i <= slv_cntr_out_i + 64'h0000_0000_0000_0001;
            end
-         endcase
-      end
+
+           // Reset counter when control port is asserted
+           if (ctrl_rst_cntr_out == 1'b1) begin
+              slv_cntr_out_i <= { {64{1'b0}} };
+
+           state_cnt <= S_CNT_RST;
+        end
+        end
+      endcase
+   end
    end
 
    assign slv_cntr_out = slv_cntr_out_i;

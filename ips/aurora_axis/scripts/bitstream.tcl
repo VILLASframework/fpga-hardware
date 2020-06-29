@@ -1,10 +1,7 @@
 # Get the directory where this script resides
 set thisDir [file dirname [info script]]
 
-# Source common utilities
-source -notrace $thisDir/utils.tcl
-
-open_project ./vivado/top/top.xpr
+open_project ./vivado/aurora_axis/aurora_axis.xpr
 
 # Reset runs
 reset_run synth_1
@@ -23,7 +20,4 @@ write_cfgmem -format mcs -size 128 -interface BPIx16 -loadbit {up 0x00000000 "./
 
 # Generate Hardware Definition file
 write_hwdef -force -file "./build/top.hdf"
-
-# If successful, "touch" a file so Make will know it's done
-touch {./build/.bitstream.done}
 

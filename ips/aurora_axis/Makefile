@@ -1,23 +1,26 @@
-RTL=./hdl/top.v ./hdl/pre.v ./hdl/aurora.v ./hdl/post.v ./hdl/defines.vh
+PROJECT=aurora_axis
 
-vivado: ip_vivado setup_vivado
+RTL=$(wildcard ./hdl/*.v) $(wildcard ./hdl/*.vh)
+XDC=$(wildcard ./xdc/*.xdc)
+TCL=$(wildcard ./scripts/*.tcl)
 
-setup_vivado: ./vivado/.setup_vivado.done
-./vivado/.setup_vivado.done: $(RTL) ./vivado/.ip_top_vivado.done
-	mkdir -p ./vivado/top
-	vivado -mode batch -source ./scripts/setup.tcl -log ./vivado/top/setup.log -jou ./vivado/top/setup.jou
+PROJECT_DIR=vivado/$(PROJECT)
+PROJECT_FILE=$(PROJECT_DIR)/$(PROJECT).xpr
 
-ip_vivado: ./vivado/.ip_top_vivado.done ./scripts/ip.tcl
-./vivado/.ip_top_vivado.done:
-	mkdir -p ./vivado/ip
-	vivado -mode batch -source ./scripts/ip.tcl -log ./vivado/ip/ip.log -jou ./vivado/ip/ip.jou
+IP_PROJECT_FILE=vivado/ips/ips.xpr
 
-bitstream: vivado ./build/.bitstream.done
-./build/.bitstream.done:
-	mkdir -p ./build
-	vivado -mode batch -source ./scripts/bitstream.tcl -nolog -nojournal
+.PHONY: clean vivado
 
-.PHONY: clean
+vivado: $(IP_PROJECT_FILE) $(PROJECT_FILE)
+
+$(PROJECT_FILE): ./scripts/setup.tcl 
+	mkdir -p $(PROJECT_DIR)
+	vivado -mode batch -source ./scripts/setup.tcl -log $(PROJECT_DIR)/setup.log -jou $(PROJECT_DIR)/setup.jou
+
+$(IP_PROJECT_FILE): ./scripts/ip.tcl
+	mkdir -p ./ips
+	mkdir -p ./vivado/ips
+	vivado -mode batch -source ./scripts/ip.tcl -nolog -nojournal
+
 clean:
-	$(MAKE) -C ./ip/axi_pcie_intc clean
-	rm -rf ./vivado ./ip .Xil ./ip/.Xil ./build vivado.jou vivado.log vivado*.str
+	rm -rf ./vivado ./ips .Xil ./build *.jou *.log vivado*.str

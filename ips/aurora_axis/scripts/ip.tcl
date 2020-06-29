@@ -1,17 +1,14 @@
 # Get directory where this script resides
 set thisDir [file dirname [info script]]
 
-# Source common utilities
-source -notrace $thisDir/utils.tcl
-
-set ipDir ./ip
+set ipDir ./ips
 
 # Create "Manage IP" project - hub for generating and configuring 
 # all IP used in the Vivado project
-create_project -force ip ./vivado/ip -part xc7vx485tffg1761-2 -ip
+create_project -force ips ./vivado/ips -part xc7vx485tffg1761-2 -ip
 
 # Set project properties
-set obj [get_projects ip]
+set obj [get_projects ips]
 set_property "board_part" "xilinx.com:vc707:part0:1.4" $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "Verilog" $obj
@@ -88,13 +85,6 @@ export_simulation -of_objects [get_files fifo_loop.xci] -directory ./vivado/ip_u
 
 wait_on_run aurora_8b10b_0_synth_1 -quiet
 wait_on_run fifo_loop_synth_1 -quiet
-wait_on_run ila_aurora_synth_1 -quiet
-wait_on_run ila_pre_synth_1 -quiet
-wait_on_run ila_post_synth_1 -quiet
-wait_on_run vio_aurora_synth_1 -quiet
 
 close_project
-
-# If successful, "touch" a file so Make will know it's done 
-touch {./vivado/.ip_top_vivado.done}
 

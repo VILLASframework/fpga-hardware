@@ -11,7 +11,6 @@ set thisDir [file dirname [info script]]
 source -notrace $thisDir/utils.tcl
 
 set hdlRoot ./hdl
-set bdHdlRoot ./bd/top/hdl
 set xdcRoot ./constraints
 set ipRoot ./../../ips
 
@@ -70,14 +69,8 @@ set files [list \
  [file normalize "$hdlRoot/concat.v"]\
  [file normalize "$hdlRoot/aresetn_cdc.v"]\
  [file normalize "$hdlRoot/aurora_reset.v"] \
- [file normalize "$bdHdlRoot/top_wrapper.v"] \
 ]
 add_files -norecurse -fileset $obj $files
-
-# Set 'sources_1' fileset properties
-set obj [get_filesets sources_1]
-set_property "top" "top_wrapper" $obj
-set_property "top_auto_set" "0" $obj
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
@@ -128,28 +121,27 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
   create_fileset -simset sim_1
 }
 
-# Set 'sim_1' fileset object
-set obj [get_filesets sim_1]
-# Empty (no sources present)
-
-# Set 'sim_1' fileset properties
-set obj [get_filesets sim_1]
-set_property "top" "top_wrapper" $obj
-set_property "top_auto_set" "0" $obj
-
-# Set 'utils_1' fileset object
-set obj [get_filesets utils_1]
-# Empty (no sources present)
-
-# Set 'utils_1' fileset properties
-set obj [get_filesets utils_1]
-
 
 # Proc to create BD top
 #  created by "write_bd_tcl -include_layout path/to/scripts/bd.tcl"
 source ./scripts/bd.tcl
 set_property REGISTERED_WITH_MANAGER "1" [get_files top.bd ] 
 set_property SYNTH_CHECKPOINT_MODE "Hierarchical" [get_files top.bd ] 
+
+
+make_wrapper -files [get_files ./vivado/vc707_villas/vc707_villas.bd/top/top.bd] -top
+add_files -norecurse ./vivado/vc707_villas/vc707_villas.bd/top/hdl/top_wrapper.v
+
+# Set 'sources_1' fileset properties
+set obj [get_filesets sources_1]
+set_property "top" "top_wrapper" $obj
+set_property "top_auto_set" "0" $obj
+
+# Set 'sim_1' fileset properties
+set obj [get_filesets sim_1]
+set_property "top" "top_wrapper" $obj
+set_property "top_auto_set" "0" $obj
+
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {

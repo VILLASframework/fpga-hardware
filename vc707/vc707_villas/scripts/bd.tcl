@@ -135,7 +135,7 @@ xilinx.com:ip:axi_fifo_mm_s:4.2\
 xilinx.com:ip:axis_data_fifo:2.0\
 xilinx.com:ip:util_vector_logic:2.0\
 xilinx.com:ip:axi_pcie:2.9\
-acs.eonerc.rwth-aachen.de:user:axi_pcie_intc:1.3\
+acs.eonerc.rwth-aachen.de:user:axi_pcie_intc:1.4\
 xilinx.com:ip:axi_gpio:2.0\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:axi_timer:2.0\
@@ -588,7 +588,7 @@ proc create_hier_cell_pcie_0 { parentCell nameHier } {
  ] $axi_pcie_0
 
   # Create instance: axi_pcie_intc_0, and set properties
-  set axi_pcie_intc_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:axi_pcie_intc:1.3 axi_pcie_intc_0 ]
+  set axi_pcie_intc_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:axi_pcie_intc:1.4 axi_pcie_intc_0 ]
 
   # Create instance: axi_reset_0, and set properties
   set axi_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_reset_0 ]
@@ -900,69 +900,6 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets axis_interconnect
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins aurora_axis_0/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
   connect_bd_net -net xsg_pio_interrupt [get_bd_pins irq_fifo] [get_bd_pins axi_fifo_mm_s_0/interrupt]
 
-  # Perform GUI Layout
-  regenerate_bd_layout -hierarchy [get_bd_cells /hier_0] -layout_string {
-   "ExpandedHierarchyInLayout":"",
-   "commentid":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 TLS
-#  -string -flagsOSRD
-preplace port S_AXI_LITE -pg 1 -y 180 -defaultsOSRD
-preplace port S_AXI_FULL -pg 1 -y 570 -defaultsOSRD
-preplace port irq_fifo -pg 1 -y 490 -defaultsOSRD
-preplace port clkbuf -pg 1 -y 790 -defaultsOSRD
-preplace port M_AXI_DMA_PCIE -pg 1 -y 140 -defaultsOSRD
-preplace port sfp -pg 1 -y 690 -defaultsOSRD
-preplace port clk -pg 1 -y 240 -defaultsOSRD
-preplace portBus irq_dma_s2mm -pg 1 -y 200 -defaultsOSRD
-preplace portBus user_clk -pg 1 -y 810 -defaultsOSRD
-preplace portBus irq_dma_mm2s -pg 1 -y 180 -defaultsOSRD
-preplace portBus aresetn -pg 1 -y 220 -defaultsOSRD
-preplace inst axis_data_fifo_1 -pg 1 -lvl 2 -y 470 -defaultsOSRD
-preplace inst axi_dma -pg 1 -lvl 4 -y 170 -defaultsOSRD
-preplace inst axis_interconnect_0 -pg 1 -lvl 3 -y 160 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 2 -y 850 -defaultsOSRD
-preplace inst aresetn_cdc_0 -pg 1 -lvl 1 -y 650 -defaultsOSRD
-preplace inst aurora_reset_0 -pg 1 -lvl 1 -y 900 -defaultsOSRD
-preplace inst aurora_axis_0 -pg 1 -lvl 2 -y 690 -defaultsOSRD
-preplace inst axi_interconnect_mm_0 -pg 1 -lvl 1 -y 220 -defaultsOSRD
-preplace inst axi_fifo_mm_s_0 -pg 1 -lvl 4 -y 500 -defaultsOSRD
-preplace inst util_ds_buf_0 -pg 1 -lvl 1 -y 790 -defaultsOSRD
-preplace inst axis_data_fifo_0 -pg 1 -lvl 2 -y 310 -defaultsOSRD
-preplace netloc Conn1 1 0 1 NJ
-preplace netloc S00_AXIS_1 1 2 1 740
-preplace netloc axis_interconnect_M03_AXIS 1 1 3 360 220 780J 310 1240
-preplace netloc S_AXI_FULL_1 1 0 4 -20J 550 NJ 550 810J 500 NJ
-preplace netloc axis_interconnect_0_M04_AXIS 1 1 3 370 230 770J 300 1230
-preplace netloc xsg_pio_interrupt 1 4 1 NJ
-preplace netloc s_axi_aclk_1 1 0 4 -20 320 350 200 830 350 1280
-preplace netloc aurora_axis_0_sys_reset_out 1 1 2 380 910 740
-preplace netloc aurora_axis_0_SFP 1 2 3 740J 690 NJ 690 NJ
-preplace netloc axi_interconnect_mm_M02_AXI 1 1 3 NJ 210 760J 400 1240
-preplace netloc axis_interconnect_M01_AXIS 1 3 1 N
-preplace netloc Conn4 1 4 1 NJ
-preplace netloc axis_interconnect_0_M00_AXIS 1 1 3 380 390 NJ 390 1250
-preplace netloc axi_interconnect_mm_M03_AXI 1 1 3 330J 10 NJ 10 1280
-preplace netloc S_AXI_CTRL_1 1 1 2 N 170 NJ
-preplace netloc user_clk_1 1 0 2 0 580 320J
-preplace netloc aurora_reset_0_reset 1 1 1 370J
-preplace netloc S00_AXIS_ARESETN_1 1 2 1 820J
-preplace netloc S01_AXIS_1 1 2 3 840 320 NJ 320 1690
-preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 360J
-preplace netloc axi_dma_0_s2mm_introut 1 4 1 NJ
-preplace netloc aresetn_cdc_0_aresetn 1 1 1 310
-preplace netloc clkbuf_1 1 0 1 NJ
-preplace netloc axi_dma_0_mm2s_introut 1 4 1 NJ
-preplace netloc axi_interconnect_mm_0_M04_AXI 1 1 1 330
-preplace netloc S02_AXIS_1 1 2 3 850 330 NJ 330 1690
-preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 730
-preplace netloc axis_data_fifo_1_M_AXIS 1 2 1 750
-preplace netloc S00_AXIS_ACLK1_1 1 0 3 10 570 340J 570 800
-preplace netloc axis_interconnect_M02_AXIS 1 3 1 1260
-preplace netloc pcie_0_peripheral_aresetn 1 0 4 -10 110 340 190 790 340 1270
-levelinfo -pg 1 -40 160 560 1040 1493 1710 -top 0 -bot 1300
-"
-}
-
   # Restore current instance
   current_bd_instance $oldCurInst
 }
@@ -1070,7 +1007,7 @@ set_property HDL_ATTRIBUTE.MARK_DEBUG {true} [get_bd_intf_nets pcie_M_AXI]
   connect_bd_net -net user_clk_1 [get_bd_pins hier_0/user_clk] [get_bd_pins util_ds_buf_1/IBUF_OUT]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00010000 -offset 0x44A00000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/aurora_axis_0/S_AXI/reg0] SEG_aurora_axis_0_reg0
+  create_bd_addr_seg -range 0x00001000 -offset 0x00002000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/aurora_axis_0/S_AXI/reg0] SEG_aurora_axis_0_reg0
   create_bd_addr_seg -range 0x00001000 -offset 0x00003000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/axi_dma/axi_dma_0/S_AXI_LITE/Reg] SEG_axi_dma_0_Reg
   create_bd_addr_seg -range 0x00002000 -offset 0x00008000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/axi_fifo_mm_s_0/S_AXI/Mem0] SEG_axi_fifo_mm_s_0_Mem0
   create_bd_addr_seg -range 0x00002000 -offset 0x0000C000 [get_bd_addr_spaces pcie_0/axi_pcie_0/M_AXI] [get_bd_addr_segs hier_0/axi_fifo_mm_s_0/S_AXI_FULL/Mem1] SEG_axi_fifo_mm_s_0_Mem1
@@ -1107,15 +1044,15 @@ preplace netloc msi_irq_1 1 2 1 760
 preplace netloc hier_0_irq_dma_mm2s 1 1 2 420 200 730
 preplace netloc hier_0_sfp 1 2 2 750J 280 NJ
 preplace netloc user_clk_1 1 1 1 380J
-preplace netloc user_clk_2 1 0 1 NJ
 preplace netloc mm_interconnect_M03_AXI 1 1 1 350
+preplace netloc user_clk_2 1 0 1 NJ
 preplace netloc pcie_0_interconnect_aresetn 1 0 4 30 20 NJ 20 NJ 20 1170
 preplace netloc hier_0_M_AXI_DMA_PCIE 1 2 1 740
 preplace netloc clkbuf_1 1 0 2 NJ 170 380J
 preplace netloc mm_interconnect_M00_AXI 1 1 1 370
+preplace netloc mm_interconnect_M04_AXI1 1 1 2 340 430 NJ
 preplace netloc pcie_ref_1 1 0 3 NJ 460 NJ 460 770J
 preplace netloc pcie_M_AXI 1 0 4 20 10 NJ 10 NJ 10 1180
-preplace netloc mm_interconnect_M04_AXI1 1 1 2 340 430 NJ
 preplace netloc hier_0_irq_fifo 1 1 2 400 420 720
 preplace netloc pcie_0_peripheral_aresetn 1 1 3 420 520 NJ 520 1170
 preplace netloc perstn_1 1 0 3 NJ 480 410J 470 NJ
@@ -1127,7 +1064,6 @@ levelinfo -pg 1 0 200 570 990 1220 -top 0 -bot 700
   # Restore current instance
   current_bd_instance $oldCurInst
 
-  validate_bd_design
   save_bd_design
 }
 # End of create_root_design()
@@ -1139,4 +1075,6 @@ levelinfo -pg 1 0 200 570 990 1220 -top 0 -bot 700
 
 create_root_design ""
 
+
+common::send_msg_id "BD_TCL-1000" "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
 

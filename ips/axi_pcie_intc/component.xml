@@ -3,7 +3,7 @@
   <spirit:vendor>acs.eonerc.rwth-aachen.de</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>axi_pcie_intc</spirit:name>
-  <spirit:version>1.3</spirit:version>
+  <spirit:version>1.4</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>s_axi</spirit:name>
@@ -251,7 +251,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>65354487</spirit:value>
+            <spirit:value>9de9700e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -270,7 +270,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>65354487</spirit:value>
+            <spirit:value>9de9700e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -699,13 +699,13 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../ip/axi_intc_0/axi_intc_0.xci</spirit:name>
+        <spirit:name>ips/axi_intc_0/axi_intc_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../hdl/axi_pcie_intc.vhd</spirit:name>
+        <spirit:name>hdl/axi_pcie_intc.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_516c591d</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_7b7b1776</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -721,11 +721,11 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../ip/axi_intc_0/axi_intc_0.xci</spirit:name>
+        <spirit:name>ips/axi_intc_0/axi_intc_0.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../hdl/axi_pcie_intc.vhd</spirit:name>
+        <spirit:name>hdl/axi_pcie_intc.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -742,7 +742,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../misc/axi_pcie_intc_v1_0.tcl</spirit:name>
+        <spirit:name>xgui/axi_pcie_intc_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_f92e9879</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -768,8 +768,8 @@
       <xilinx:displayName>MSI Interrupt controller for AXI PCIe bridge</xilinx:displayName>
       <xilinx:vendorDisplayName>Institute for Automation of Complex Power Systems, RWTH Aachen University</xilinx:vendorDisplayName>
       <xilinx:vendorURL>http://www.acs.eonerc.rwth-aachen.de</xilinx:vendorURL>
-      <xilinx:coreRevision>17</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-04-16T18:17:08Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>18</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2020-06-30T12:16:20Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="acs.eonerc.rwth-aachen.de:user:axi_pcie_intc:1.0_ARCHIVE_LOCATION">D:/svo/gtfpga/axi_pcie_intc</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@5e8659b8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
@@ -881,13 +881,27 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@447661c3_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@64cfecbf_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@6ba1b35b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc/misc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7586310c_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c488c7a_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72d27169_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6aaf6195_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5304919_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cfd4dec_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4565c91_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fda7ba_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@674c3e7_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b64ef6c_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e85f89_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e0c47c5_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f5bb6b7_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b1c3fee_ARCHIVE_LOCATION">/local-home/svg-hka/VILLASfpga-hardware/ips/axi_pcie_intc</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="51025d61"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="2cb0d1b0"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="14e42e46"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1c9a7235"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="a7a2fa18"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="20fdd6c9"/>
     </xilinx:packagingInfo>

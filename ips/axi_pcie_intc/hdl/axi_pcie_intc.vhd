@@ -40,7 +40,7 @@ end entity;
 
 architecture structural of axi_pcie_intc is
   signal ack                            : std_logic_vector(1 downto 0);
-  signal address                                : std_logic_vector(31 downto 0);
+  signal address                        : std_logic_vector(31 downto 0);
 
   component axi_intc_0
     port (
@@ -69,7 +69,7 @@ architecture structural of axi_pcie_intc is
       processor_rst             : in    std_logic;
       irq                       : out   std_logic;
       processor_ack             : in    std_logic_vector(1 downto 0);
-      interrupt_address : out   std_logic_vector(31 downto 0)
+      interrupt_address         : out   std_logic_vector(31 downto 0)
       );
   end component;
 begin
@@ -100,7 +100,7 @@ begin
       processor_rst             => s_axi_aresetn,
       irq                       => INTX_MSI_Request,
       processor_ack             => ack,
-      interrupt_address => address
+      interrupt_address         => address
       );
   
   MSI_Vector_Num <= address(4 downto 0);

@@ -7,14 +7,15 @@
 !*.aps
 
 /aurora_axis/build
-/aurora_axis/ip
+/aurora_axis/ips
 /aurora_axis/vivado
 
-/axi_pcie_intc/ip
+/axi_pcie_intc/ips
 /axi_pcie_intc/vivado
 
-/rtds_axis/ip
-/rtds_axis/work
+/rtds_axis/build
+/rtds_axis/ips
+/rtds_axis/vivado
 /rtds_axis/netlist/RTDS_InterfaceModule.ngc
 
 /hdl_multiply/work
@@ -22,3 +23,4 @@
 /pcie_msi_requester/work/
 
 /hls_dft/*.dat
+

@@ -15,6 +15,8 @@
 
 /ibufds_gte2/vivado
 
+/pcie_msi_requester/vivado
+
 /rtds_axis/build
 /rtds_axis/ips
 /rtds_axis/vivado

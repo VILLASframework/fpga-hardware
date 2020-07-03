@@ -13,6 +13,7 @@ set obj [get_projects aurora_axis]
 set_property "board_part" "xilinx.com:vc707:part0:1.4" $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "Verilog" $obj
+set_property "coreContainer.enable" "1" $obj
 
 # Include custom IP in Vivado repo path
 set_property "ip_repo_paths" "$ipRoot" $obj
@@ -33,8 +34,8 @@ set files [list \
  [file normalize "$hdlRoot/aurora.v"] \
  [file normalize "$hdlRoot/pre.v"] \
  [file normalize "$hdlRoot/post.v"] \
- [file normalize "$ipRoot/aurora_8b10b_0/aurora_8b10b_0.xci"] \
- [file normalize "$ipRoot/fifo_loop/fifo_loop.xci"] \
+ [file normalize "$ipRoot/aurora_8b10b_0.xcix"] \
+ [file normalize "$ipRoot/fifo_loop.xcix"] \
  [file normalize "./component.xml"] \
 ]
 add_files -norecurse -fileset $obj $files

@@ -12,11 +12,11 @@ set obj [get_projects ips]
 set_property "board_part" "xilinx.com:vc707:part0:1.4" $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "Verilog" $obj
-
-set_property target_simulator XSim [current_project]
+set_property "coreContainer.enable" "1" $obj
+set_property "target_simulator" "XSim" [current_project]
 
 # Aurora 8B/10B
-create_ip -vendor xilinx.com -library ip -name aurora_8b10b -module_name aurora_8b10b_0 -dir $ipDir -quiet
+create_ip -vendor xilinx.com -library ip -name aurora_8b10b -module_name aurora_8b10b_0 -dir $ipDir
 
 set_property -dict [list \
     CONFIG.Component_Name {aurora_8b10b_0} \
@@ -33,20 +33,20 @@ set_property -dict [list \
     CONFIG.SupportLevel {1} \
 ] [get_ips aurora_8b10b_0]
 
-generate_target all [get_files aurora_8b10b_0.xci] -quiet
+generate_target all [get_files $ipDir/aurora_8b10b_0/aurora_8b10b_0.xci]
 
-export_ip_user_files -of_objects [get_files aurora_8b10b_0.xci] -no_script -ip_user_files_dir ./vivado/ip_user_files -sync -force -quiet
+export_ip_user_files -of_objects [get_files $ipDir/aurora_8b10b_0/aurora_8b10b_0.xci] -no_script -ip_user_files_dir ./vivado/ip_user_files -sync -force
 
-create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files */aurora_8b10b_0.xci]] -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files $ipDir/aurora_8b10b_0/aurora_8b10b_0.xci]] 
 
-launch_runs -jobs 16 aurora_8b10b_0_synth_1 -quiet
+launch_runs -jobs 16 aurora_8b10b_0_synth_1
 
-export_simulation -of_objects [get_files aurora_8b10b_0.xci] -directory ./vivado/ip_user_files/sim_scripts -ip_user_files_dir ./vivado/ip_user_files -ipstatic_source_dir ./vivado/ip_user_files/ipstatic -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files $ipDir/aurora_8b10b_0/aurora_8b10b_0.xci] -directory ./vivado/ip_user_files/sim_scripts -ip_user_files_dir ./vivado/ip_user_files -ipstatic_source_dir ./vivado/ip_user_files/ipstatic -use_ip_compiled_libs -force
 
 #############
 
 # FIFO for loopback
-create_ip -vendor xilinx.com -library ip -name fifo_generator -module_name fifo_loop -dir $ipDir -quiet
+create_ip -vendor xilinx.com -library ip -name fifo_generator -module_name fifo_loop -dir $ipDir
 
 set_property -dict [list \
     CONFIG.Component_Name {fifo_loop} \
@@ -71,15 +71,15 @@ set_property -dict [list \
     CONFIG.Enable_Safety_Circuit {true} \
 ] [get_ips fifo_loop]
 
-generate_target all [get_files fifo_loop.xci] -quiet
+generate_target all [get_files $ipDir/fifo_loop/fifo_loop.xci]
 
-export_ip_user_files -of_objects [get_files fifo_loop.xci] -no_script -ip_user_files_dir ./vivado/ip_user_files -sync -force -quiet
+export_ip_user_files -of_objects [get_files $ipDir/fifo_loop/fifo_loop.xci] -no_script -ip_user_files_dir ./vivado/ip_user_files -sync -force
 
-create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files */fifo_loop.xci]] -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] [get_files $ipDir/fifo_loop/fifo_loop.xci]] -quiet
 
-launch_runs -jobs 16 fifo_loop_synth_1 -quiet
+launch_runs -jobs 16 fifo_loop_synth_1
 
-export_simulation -of_objects [get_files fifo_loop.xci] -directory ./vivado/ip_user_files/sim_scripts -ip_user_files_dir ./vivado/ip_user_files -ipstatic_source_dir ./vivado/ip_user_files/ipstatic -use_ip_compiled_libs -force -quiet
+export_simulation -of_objects [get_files $ipDir/fifo_loop/fifo_loop.xci] -directory ./vivado/ip_user_files/sim_scripts -ip_user_files_dir ./vivado/ip_user_files -ipstatic_source_dir ./vivado/ip_user_files/ipstatic -use_ip_compiled_libs -force
 
 #############
 

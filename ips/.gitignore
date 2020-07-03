@@ -13,6 +13,8 @@
 /axi_pcie_intc/ips
 /axi_pcie_intc/vivado
 
+/ibufds_gte2/vivado
+
 /rtds_axis/build
 /rtds_axis/ips
 /rtds_axis/vivado

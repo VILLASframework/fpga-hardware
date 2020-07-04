@@ -21,10 +21,11 @@ This directory contains HDL projects for Virtex 5 (ML507) / Virtex 6 (ML605) bas
   - `vc707_villas`
   - `vc707_villas_simple`
   - `vc707_prom_flasher`
+  - `aurora_rtds` Vivado project for Aurora <-> RTDS link with VC707
 
 ## Copyright
 
-2017-2018, Institute for Automation of Complex Power Systems, EONERC
+2017-2019, Institute for Automation of Complex Power Systems, EONERC
 
 ## License
 
@@ -53,6 +54,7 @@ For other licensing options please consult [Prof. Antonello Monti](mailto:amonti
 
  - Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
  - Daniel Krebs <daniel.krebs1@eonerc.rwth-aachen.de>
+ - Hatim Kanchwala <hatim@hatimak.me>
 
 [Institute for Automation of Complex Power Systems (ACS)](http://www.acs.eonerc.rwth-aachen.de)
 [EON Energy Research Center (EONERC)](http://www.eonerc.rwth-aachen.de)

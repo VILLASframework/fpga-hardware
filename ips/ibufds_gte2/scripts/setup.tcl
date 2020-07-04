@@ -1,0 +1,58 @@
+# Get the directory where this script resides
+set thisDir [file dirname [info script]]
+
+set hdlRoot ./hdl
+
+# Create project
+create_project -force ibufds_gte2 ./vivado/ibufds_gte2 -part xc7vx485tffg1761-2
+
+# Set project properties
+set obj [get_projects ibufds_gte2]
+set_property "board_part" "xilinx.com:vc707:part0:1.4" $obj
+set_property "simulator_language" "Mixed" $obj
+set_property "target_language" "VHDL" $obj
+set_property "coreContainer.enable" "1" $obj
+set_property "default_lib" "xil_defaultlib" $obj
+set_property "sim.ip.auto_export_scripts" "1" $obj
+
+check_ip_cache -disable_cache
+update_ip_catalog
+
+# Create 'sources_1' fileset (if not found)
+if {[string equal [get_filesets -quiet sources_1] ""]} {
+  create_fileset -srcset sources_1
+}
+
+# Set 'sources_1' fileset object
+set obj [get_filesets sources_1]
+set files [list \
+ [file normalize "$hdlRoot/ibufds_gte2.vhd"] \
+ [file normalize "./component.xml"] \
+]
+add_files -norecurse -fileset $obj $files
+
+# Set 'sources_1' fileset properties
+set_property "file_type" "IP-XACT" [get_files "*component.xml"]
+
+# Create 'sim_1' fileset (if not found)
+if {[string equal [get_filesets -quiet sim_1] ""]} {
+  create_fileset -simset sim_1
+}
+
+# Set 'sim_1' fileset object
+set obj [get_filesets sim_1]
+# Empty (no sources present)
+
+# Set 'sim_1' fileset properties
+set obj [get_filesets sim_1]
+set_property "top" "ibufds_gte2_wrapper" $obj
+
+set_property "top" "ibufds_gte2_wrapper" [get_filesets sources_1]
+
+update_compile_order -fileset sources_1
+
+# Need raw bit file to generate memory configuration for VC707's BPI flash
+set_property STEPS.WRITE_BITSTREAM.ARGS.RAW_BITFILE true [get_runs impl_1]
+
+puts "INFO: Project created:ibufds_gte2"
+

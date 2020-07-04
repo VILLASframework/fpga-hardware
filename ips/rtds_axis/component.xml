@@ -425,7 +425,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>SENSITIVITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.IRQ_TS.SENSITIVITY" spirit:choiceRef="choice_list_99a1d2b9">EDGE_RISING</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.IRQ_TS.SENSITIVITY" spirit:choiceRef="choice_list_99a1d2b9">LEVEL_HIGH</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -447,7 +447,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>SENSITIVITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.IRQ_OVERFLOW.SENSITIVITY" spirit:choiceRef="choice_list_99a1d2b9">EDGE_RISING</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.IRQ_OVERFLOW.SENSITIVITY" spirit:choiceRef="choice_list_99a1d2b9">LEVEL_HIGH</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -469,7 +469,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>SENSITIVITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.IRQ_CASE.SENSITIVITY" spirit:choiceRef="choice_list_99a1d2b9">EDGE_RISING</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.IRQ_CASE.SENSITIVITY" spirit:choiceRef="choice_list_99a1d2b9">LEVEL_HIGH</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -495,7 +495,7 @@
         <spirit:language>VHDL</spirit:language>
         <spirit:modelName>rtds_axis</spirit:modelName>
         <spirit:fileSetRef>
-          <spirit:localName>xilinx_anylanguagesynthesis_xilinx_com_ip_axis_data_fifo_1_1__ref_view_fileset</spirit:localName>
+          <spirit:localName>xilinx_anylanguagesynthesis_xilinx_com_ip_axis_data_fifo_2_0__ref_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
@@ -503,7 +503,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>dd1dbd9b</spirit:value>
+            <spirit:value>00cd201b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -514,7 +514,7 @@
         <spirit:language>VHDL</spirit:language>
         <spirit:modelName>rtds_axis</spirit:modelName>
         <spirit:fileSetRef>
-          <spirit:localName>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_axis_data_fifo_1_1__ref_view_fileset</spirit:localName>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_axis_data_fifo_2_0__ref_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
@@ -522,22 +522,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>76e4b31c</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_implementation</spirit:name>
-        <spirit:displayName>Implementation</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:implementation</spirit:envIdentifier>
-        <spirit:modelName>rtds_axis</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_implementation_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>fe3b6650</spirit:value>
+            <spirit:value>9156e865</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -552,7 +537,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>e343f25b</spirit:value>
+            <spirit:value>fb668d97</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -566,7 +551,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>ad29d4e7</spirit:value>
+            <spirit:value>adb8217a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1200,9 +1185,7 @@
       <spirit:file>
         <spirit:name>constraints/rtds_axis_ooc.xdc</spirit:name>
         <spirit:userFileType>xdc</spirit:userFileType>
-        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
         <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
-        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:define>
           <spirit:name>processing_order</spirit:name>
           <spirit:value>early</spirit:value>
@@ -1211,8 +1194,6 @@
       <spirit:file>
         <spirit:name>constraints/rtds_axis_clocks.xdc</spirit:name>
         <spirit:userFileType>xdc</spirit:userFileType>
-        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:define>
           <spirit:name>processing_order</spirit:name>
           <spirit:value>early</spirit:value>
@@ -1221,12 +1202,14 @@
       <spirit:file>
         <spirit:name>constraints/rtds_axis.xdc</spirit:name>
         <spirit:userFileType>xdc</spirit:userFileType>
-        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:define>
           <spirit:name>processing_order</spirit:name>
           <spirit:value>late</spirit:value>
         </spirit:define>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>ip/axis_data_fifo_0_1/axis_data_fifo_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/two_flop_synchronizer.vhd</spirit:name>
@@ -1235,7 +1218,6 @@
       <spirit:file>
         <spirit:name>netlist/RTDS_InterfaceModule.ngc</spirit:name>
         <spirit:userFileType>ngc</spirit:userFileType>
-        <spirit:userFileType>core</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/rtds_axis_fsm_axis2rtds.vhd</spirit:name>
@@ -1250,20 +1232,16 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>ip/axis_data_fifo_0_1/axis_data_fifo_0.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>hdl/rtds_axis.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_a6d23720</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_5086f20e</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
-      <spirit:name>xilinx_anylanguagesynthesis_xilinx_com_ip_axis_data_fifo_1_1__ref_view_fileset</spirit:name>
+      <spirit:name>xilinx_anylanguagesynthesis_xilinx_com_ip_axis_data_fifo_2_0__ref_view_fileset</spirit:name>
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
-          <xilinx:componentRef xsi:type="xilinx:componentRefType" xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="axis_data_fifo" xilinx:version="1.1">
+          <xilinx:componentRef xsi:type="xilinx:componentRefType" xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="axis_data_fifo" xilinx:version="2.0">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
@@ -1272,6 +1250,10 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
+        <spirit:name>ip/axis_data_fifo_0_1/axis_data_fifo_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>hdl/two_flop_synchronizer.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
@@ -1288,63 +1270,64 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>ip/axis_data_fifo_0_1/axis_data_fifo_0.xci</spirit:name>
-        <spirit:userFileType>xci</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>hdl/rtds_axis.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
-      <spirit:name>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_axis_data_fifo_1_1__ref_view_fileset</spirit:name>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_xilinx_com_ip_axis_data_fifo_2_0__ref_view_fileset</spirit:name>
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
-          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="axis_data_fifo" xilinx:version="1.1">
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="axis_data_fifo" xilinx:version="2.0">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
       </spirit:vendorExtensions>
     </spirit:fileSet>
     <spirit:fileSet>
-      <spirit:name>xilinx_implementation_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>netlist/RTDS_InterfaceModule.ngc</spirit:name>
-        <spirit:userFileType>ngc</spirit:userFileType>
-        <spirit:userFileType>core</spirit:userFileType>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
       <spirit:name>xilinx_testbench_view_fileset</spirit:name>
       <spirit:file>
         <spirit:name>hdl/villas.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:logicalName>acs</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/helpers.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:logicalName>acs</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/RTDS_InterfaceModule.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/top_tb.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>simulation/top_tb_behav.wcfg</spirit:name>
         <spirit:fileType>unknown</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/axis_delay.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/txt_util.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1357,7 +1340,7 @@
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>A wrapper around RTDS provided RTDS_InterfaceModule netlist</spirit:description>
+  <spirit:description>A wrapper around RTDS provided RTDS_InterfaceModule netlist (villas-remake-1)</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -1388,21 +1371,53 @@
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>Institute for Automation of Complex Power Systems, RWTH Aachen University</xilinx:vendorDisplayName>
       <xilinx:vendorURL>http://www.acs.eonerc.rwth-aachen.de</xilinx:vendorURL>
-      <xilinx:coreRevision>7</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2016-06-26T11:36:53Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>8</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2019-11-11T00:39:38Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="xilinx.com:user:rtds_axis:1.0_ARCHIVE_LOCATION">D:/svo/gtfpga/rtds/rtds_axis</xilinx:tag>
         <xilinx:tag xilinx:name="acs.eonerc.rwth-aachen.de:user:rtds_axis:1.0_ARCHIVE_LOCATION">D:/svo/gtfpga/rtds/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4568abf4_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28ef8e26_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fba5fa3_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ca93281_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78b0c21f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78b682cb_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4932da54_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cff2cf6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49d4fb34_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28182f49_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35cad6db_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67d4d2a9_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11123da7_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63c9d9_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79b6f5c6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a685eeb_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26a7277f_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42fe14d5_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24d7c3f7_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3237f953_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22c364a6_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42c2e8d8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a295425_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50b6e62a_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76e9809b_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6489ec77_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@665d0543_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b72c6e_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@634627e1_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@420b414e_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@391839f8_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10afcb10_ARCHIVE_LOCATION">/home/svg-hka/VILLASfpga-hardware/ips/rtds_axis</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2016.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="9c9198fc"/>
-      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="52b315fe"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a3bde0e7"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="34590ca7"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="fa8ab778"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="6f81bf81"/>
+      <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="47cbf119"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="a71b4cd7"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="b46f8ece"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="60912cb4"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="c627ce35"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="433912d4"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

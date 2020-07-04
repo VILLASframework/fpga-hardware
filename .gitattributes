@@ -1,0 +1,2 @@
+/vc707/aurora_rtds/aurora_rtds.runs/impl_1/top.mcs filter=lfs diff=lfs merge=lfs -text
+/vc707/aurora_rtds/aurora_rtds.runs/impl_1/top.rbt filter=lfs diff=lfs merge=lfs -text

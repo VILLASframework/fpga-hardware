@@ -33,9 +33,7 @@ $(HWDEF): ./scripts/hwdef.tcl $(PROJECT_FILE)
 	vivado -mode batch -source ./scripts/hwdef.tcl -nolog -nojournal
 
 $(VILLAS_CONFIG): $(HWDEF)
-	python3 ../../scripts/hwdef-parse.py $(HWDEF) > ./etc/main.json
-	cat ./etc/pre.json ./etc/main.json ./etc/post.json > $(VILLAS_CONFIG)
-	rm -rf ./etc/main.json
+	python3 ../../scripts/hwdef-parse.py $(HWDEF) > $(VILLAS_CONFIG)
 
 clean:
 	rm -rf ./vivado .Xil vivado.jou vivado.log vivado*.str ./build

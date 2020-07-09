@@ -13,39 +13,38 @@
  */
 
 module post(
-	    input wire 		 m_axis_aclk,
-	    input wire 		 m_axis_aresetn,
+            input wire           m_axis_aclk,
+            input wire           m_axis_aresetn,
 
-	    // AXI-Stream slave interface
-	    input wire 		 s_axis_tvalid,
-	    input wire [31 : 0]  s_axis_tdata,
-	    input wire 		 s_axis_tlast,
+            // AXI-Stream slave interface
+            input wire           s_axis_tvalid,
+            input wire [31 : 0]  s_axis_tdata,
+            input wire           s_axis_tlast,
 
-	    // AXI-Stream master interface
-	    output wire 	 m_axis_tvalid,
-	    output wire [31 : 0] m_axis_tdata,
-	    output wire 	 m_axis_tlast,
+            // AXI-Stream master interface
+            output wire          m_axis_tvalid,
+            output wire [31 : 0] m_axis_tdata,
+            output wire          m_axis_tlast,
 
-	    // Status and control ports
-	    input wire 		 ctrl_strip_seq_en,
-	    input wire 		 ctrl_rst_cntr_in,
-	    output wire [63 : 0] slv_cntr_in
-	    );
+            // Status and control ports
+            input wire           ctrl_strip_seq_en,
+            input wire           ctrl_rst_cntr_in,
+            output wire [63 : 0] slv_cntr_in
+            );
 
-   wire 			 stat_cnt_pkts_rdy, // Indicates when the corresponding status register holds the correct count
-				 data_pkts_window;
-   wire [15 : 0] 		 stat_cnt_pkts; // Count of number of packets received (depends on ctrl_strip_seq_en)
-   reg 				 stat_cnt_pkts_rdy_i, state_cnt_pkts, state_cnt;
-   reg [15 : 0] 		 cnt_pkts; // Count of number of packets received (always including sequence number), maximum count 2^16 = 65,536
-   reg [63 : 0] 		 slv_cntr_in_i; // Slave register to count received frames
-
-   localparam
-     S_IN_COUNT = 1'b0,
-     S_IN_LAST  = 1'b1;
+   reg                           state_cnt, state_window, window_tlast_d, window_tvalid_d, s_axis_tvalid_d;
+   reg [31 : 0]                  s_axis_tdata_d;
+   reg [63 : 0]                  slv_cntr_in_i; // Slave register to count received frames
+   wire                          window_tlast, window_tvalid, s_axis_tlast_d;
 
    localparam
      S_CNT_COUNT = 1'b0,
      S_CNT_RST   = 1'b1;
+
+   localparam
+     S_WIN_IDLE = 1'b0,
+     S_WIN_UP   = 1'b1;
+
 
    /* Count number of incoming frames, frames from NovaCor to
     * Aurora. Counter is reset as long as corresponding bit in 
@@ -85,47 +84,51 @@ module post(
    assign slv_cntr_in = slv_cntr_in_i;
 
 
-   // Count the number of packets received from RTDS
-   // TODO: Does stat_cnt_pkts_in need to be 16-bit long?
    always @(posedge m_axis_aclk) begin
       if (m_axis_aresetn == 1'b0) begin
-         cnt_pkts <= 16'h00_00;
-         stat_cnt_pkts_rdy_i <= 1'b0;
-
-         state_cnt_pkts <= S_IN_COUNT;
+         state_window <= S_WIN_IDLE;
       end else begin
-         case (state_cnt_pkts)
-           S_IN_COUNT: begin
-              stat_cnt_pkts_rdy_i <= 1'b0;
-
+         case (state_window)
+           S_WIN_IDLE: begin
               if (s_axis_tvalid == 1'b1) begin
-                 cnt_pkts <= cnt_pkts + 16'h00_01;
-
-                 if (s_axis_tlast == 1'b1) begin
-                    stat_cnt_pkts_rdy_i <= 1'b1;
-                    state_cnt_pkts <= S_IN_LAST;
-                 end
+                 state_window <= S_WIN_UP;
               end
            end
-           S_IN_LAST: begin
-              stat_cnt_pkts_rdy_i <= 1'b1;
-              if (s_axis_tvalid == 1'b1) begin
-                 cnt_pkts <= 16'h00_01;
-
-                 state_cnt_pkts <= S_IN_COUNT;
+           S_WIN_UP: begin
+              if (s_axis_tlast == 1'b1) begin
+                 state_window <= S_WIN_IDLE;
               end
            end
          endcase
       end
    end
+   assign window_tlast = (~s_axis_tlast & (state_window == S_WIN_UP)) & s_axis_tvalid;
+   assign window_tvalid = (~s_axis_tlast & (s_axis_tvalid | (state_window == S_WIN_UP))) & s_axis_tvalid;
+   always @(posedge m_axis_aclk) begin
+      if (m_axis_aresetn == 1'b0) begin
+         window_tlast_d <= 1'b0;
+         window_tvalid_d <= 1'b0;
+      end else begin
+         window_tlast_d <= window_tlast;
+         window_tvalid_d <= window_tvalid;
+      end
+   end
 
-   assign stat_cnt_pkts_rdy = stat_cnt_pkts_rdy_i & ~s_axis_tvalid;
-   assign stat_cnt_pkts = (ctrl_strip_seq_en) ? cnt_pkts - 16'h00_01 : cnt_pkts;
+   assign s_axis_tlast_d = ~window_tlast & window_tlast_d;
+
+   always @(posedge m_axis_aclk) begin
+      if (m_axis_aresetn == 1'b0) begin
+         s_axis_tdata_d <= 32'h0;
+         s_axis_tvalid_d <= 1'b0;
+      end else begin
+         s_axis_tdata_d <= s_axis_tdata;
+         s_axis_tvalid_d <= s_axis_tvalid;
+      end
+   end
 
 
-   assign data_pkts_window = ~stat_cnt_pkts_rdy & ~s_axis_tlast;
-
-   assign m_axis_tvalid = (ctrl_strip_seq_en) ? s_axis_tvalid & data_pkts_window : s_axis_tvalid;
-   assign m_axis_tdata = (ctrl_strip_seq_en) ? s_axis_tdata & {32{data_pkts_window}} : s_axis_tdata;
+   assign m_axis_tvalid = (ctrl_strip_seq_en) ? s_axis_tvalid_d & window_tvalid_d : s_axis_tvalid;
+   assign m_axis_tdata = (ctrl_strip_seq_en) ? s_axis_tdata_d : s_axis_tdata;
+   assign m_axis_tlast = (ctrl_strip_seq_en) ? s_axis_tlast_d : s_axis_tlast;
 
 endmodule // post

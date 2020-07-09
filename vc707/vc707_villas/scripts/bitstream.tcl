@@ -5,7 +5,7 @@ open_project ./vivado/vc707_villas/vc707_villas.xpr
 
 reset_run synth_1
 reset_run impl_1
-launch_runs impl_1 -jobs 16 -verbose
+launch_runs impl_1 -jobs 32 -verbose
 wait_on_run impl_1
 
 # Generate bitstream

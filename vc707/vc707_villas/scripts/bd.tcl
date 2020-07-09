@@ -130,7 +130,7 @@ set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
 xilinx.com:ip:util_ds_buf:2.1\
-acs.eonerc.rwth-aachen.de:user:aurora_axis:1.14\
+acs.eonerc.rwth-aachen.de:user:aurora_axis:1.16\
 xilinx.com:ip:axi_fifo_mm_s:4.2\
 xilinx.com:ip:axis_data_fifo:2.0\
 xilinx.com:ip:util_vector_logic:2.0\
@@ -786,7 +786,7 @@ proc create_hier_cell_hier_0 { parentCell nameHier } {
    }
   
   # Create instance: aurora_axis_0, and set properties
-  set aurora_axis_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora_axis:1.14 aurora_axis_0 ]
+  set aurora_axis_0 [ create_bd_cell -type ip -vlnv acs.eonerc.rwth-aachen.de:user:aurora_axis:1.16 aurora_axis_0 ]
 
   # Create instance: aurora_reset_0, and set properties
   set block_name aurora_reset
@@ -1044,8 +1044,8 @@ preplace netloc msi_irq_1 1 2 1 760
 preplace netloc hier_0_irq_dma_mm2s 1 1 2 420 200 730
 preplace netloc hier_0_sfp 1 2 2 750J 280 NJ
 preplace netloc user_clk_1 1 1 1 380J
-preplace netloc mm_interconnect_M03_AXI 1 1 1 350
 preplace netloc user_clk_2 1 0 1 NJ
+preplace netloc mm_interconnect_M03_AXI 1 1 1 350
 preplace netloc pcie_0_interconnect_aresetn 1 0 4 30 20 NJ 20 NJ 20 1170
 preplace netloc hier_0_M_AXI_DMA_PCIE 1 2 1 740
 preplace netloc clkbuf_1 1 0 2 NJ 170 380J

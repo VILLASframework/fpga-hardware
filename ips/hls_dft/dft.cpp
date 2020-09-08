@@ -95,7 +95,7 @@ LOOP_HARMONICS:
 }
 
 void hls_idft(hls::stream<axis> &input, hls::stream<axis> &output, float fharmonics[MAX_HARMONICS], ap_int<8> num_harmonics) {
-    #pragma HLS INTERFACE s_axilite port=return,fharmonics,num_harmonics bundle=ctrl
+	#pragma HLS INTERFACE s_axilite port=return,fharmonics,num_harmonics bundle=ctrl
 	#pragma HLS INTERFACE axis port=input,output
 	#pragma HLS STREAM depth=64 variable=input,output
 	#pragma HLS dataflow

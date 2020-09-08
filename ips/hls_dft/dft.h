@@ -28,7 +28,7 @@ const float PERIOD = 1.0 / 50; // in sec
 const float TIMESTEP = 50e-6; // in sec
 
 /** Number of samples in a window */
-const int NSAMPLES = 400;//PERIOD / TIMESTEP;
+const int NSAMPLES = 400; // PERIOD / TIMESTEP;
 
 /** Number of values per sample */
 const int MAX_VALUES = 8;

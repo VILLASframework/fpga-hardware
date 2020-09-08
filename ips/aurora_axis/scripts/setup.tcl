@@ -2,6 +2,7 @@
 set thisDir [file dirname [info script]]
 
 set hdlRoot ./hdl
+set simRoot ./tb
 set xdcRoot ./xdc
 set ipRoot ./ips
 
@@ -54,9 +55,27 @@ set files [list \
 ]
 add_files -norecurse -fileset $obj $files
 
+# Create 'sim_1' fileset (if not found)
+if {[string equal [get_filesets -quiet sim_1] ""]} {
+  create_fileset -simset sim_1
+}
+
+# Set 'sim_1' fileset object
+set obj [get_filesets sim_1]
+set files [list \
+ "[file normalize "$simRoot/post_tb.v"]"\
+]
+add_files -norecurse -fileset $obj $files
+
+# Set 'sim_1' fileset properties
+set obj [get_filesets sim_1]
+set_property "top" "post_tb" $obj
+set_property "top_lib" "xil_defaultlib" $obj
+
 set_property "top" "aurora" [get_filesets sources_1]
 
 update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
 
 # Need raw bit file to generate memory configuration for VC707's BPI flash
 set_property STEPS.WRITE_BITSTREAM.ARGS.RAW_BITFILE true [get_runs impl_1]

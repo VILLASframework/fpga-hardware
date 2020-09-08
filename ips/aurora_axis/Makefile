@@ -1,6 +1,6 @@
 PROJECT=aurora_axis
 
-RTL=$(wildcard ./hdl/*.v) $(wildcard ./hdl/*.vh)
+RTL=$(wildcard ./hdl/*.v) $(wildcard ./tb/*.v) $(wildcard ./hdl/*.vh)
 XDC=$(wildcard ./xdc/*.xdc)
 TCL=$(wildcard ./scripts/*.tcl)
 

@@ -295,6 +295,5 @@ for pcie in pcies:
 				axi_bar['highaddr'] = axi_bar_hi
 				axi_bar['size'] = axi_bar_size
 
-print('"ips":')
 print(json.dumps(ips, indent=2))
 

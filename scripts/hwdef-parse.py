@@ -211,7 +211,7 @@ ips[switch.get('INSTANCE')]['num_ports'] = int(switch_ports / 2)
 # find Interrupt assignments
 intc = root.find('.//MODULE[@MODTYPE="axi_pcie_intc"]')
 intr = intc.xpath('.//PORT[@NAME="intr" and @DIR="I"]')[0]
-concat = root.xpath('.//MODULE[@MODTYPE="concat" and .//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(intr.get('SIGNAME')))[0]
+concat = root.xpath('.//MODULE[@MODTYPE="xlconcat" and .//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(intr.get('SIGNAME')))[0]
 ports = concat.xpath('.//PORT[@DIR="I"]')
 
 for port in ports:
@@ -222,7 +222,7 @@ for port in ports:
 	if not signame:
 		continue
 
-	r = re.compile('in([0-9+])')
+	r = re.compile('In([0-9+])')
 	m = r.search(name)
 
 	irq = int(m.group(1))

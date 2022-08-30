@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
+Author:     Steffen Vogel <post@steffenvogel.de>
 Author:     Daniel Krebs <github@daniel-krebs.net>
 Author:     Hatim Kanchwala <hatim@hatimak.me>
-Copyright:  2017-2020, Institute for Automation of Complex Power Systems, EONERC
+Copyright:  2017-2022, Institute for Automation of Complex Power Systems, EONERC
 License:    GNU General Public License (version 3)
 
 This program is free software: you can redistribute it and/or modify
@@ -104,7 +105,7 @@ def sanitize_name(name):
 
 if len(sys.argv) < 2:
 	print('Usage: {} path/to/*.hwdef'.format(sys.argv[0]))
-	print('       {} path/to/*.xml'.format(sys.argv[0]))
+	print('       {} path/to/*.hwh'.format(sys.argv[0]))
 	sys.exit(1)
 
 try:
@@ -208,56 +209,57 @@ for busif in busifs:
 ips[switch.get('INSTANCE')]['num_ports'] = int(switch_ports / 2)
 
 
-# find Interrupt assignments
+# find interrupt assignments
 intc = root.find('.//MODULE[@MODTYPE="axi_pcie_intc"]')
-intr = intc.xpath('.//PORT[@NAME="intr" and @DIR="I"]')[0]
-concat = root.xpath('.//MODULE[@MODTYPE="xlconcat" and .//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(intr.get('SIGNAME')))[0]
-ports = concat.xpath('.//PORT[@DIR="I"]')
+if intc is not None:
+	intr = intc.xpath('.//PORT[@NAME="intr" and @DIR="I"]')[0]
+	concat = root.xpath('.//MODULE[@MODTYPE="xlconcat" and .//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(intr.get('SIGNAME')))[0]
+	ports = concat.xpath('.//PORT[@DIR="I"]')
 
-for port in ports:
-	name = port.get('NAME')
-	signame = port.get('SIGNAME')
+	for port in ports:
+		name = port.get('NAME')
+		signame = port.get('SIGNAME')
 
-	# Skip unconnected IRQs
-	if not signame:
-		continue
+		# Skip unconnected IRQs
+		if not signame:
+			continue
 
-	r = re.compile('In([0-9+])')
-	m = r.search(name)
+		r = re.compile('In([0-9+])')
+		m = r.search(name)
 
-	irq = int(m.group(1))
-	ip = root.xpath('.//MODULE[.//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(signame))[0]
-
-	instance = ip.get('INSTANCE')
-	vlnv = ip.get('VLNV')
-	modtype = ip.get('MODTYPE')
-
-	originators = []
-
-	# follow one level of OR gates merging interrupts (may be generalized later)
-	if modtype == 'util_vector_logic':
-		logic_op = ip.xpath('.//PARAMETER[@NAME="C_OPERATION"]')[0]
-		if logic_op.get('VALUE') == 'or':
-			# hardware interrupts sharing the same IRQ at the controller
-			ports = ip.xpath('.//PORT[@DIR="I"]')
-			for port in ports:
-				signame = port.get('SIGNAME')
-				ip = root.xpath('.//MODULE[.//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(signame))[0]
-				instance = ip.get('INSTANCE')
-				originators.append((instance, signame))
-	else:
-		# consider this instance as originator
-		originators.append((instance, signame))
-
-
-	for instance, signame in originators:
+		irq = int(m.group(1))
 		ip = root.xpath('.//MODULE[.//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(signame))[0]
-		port = ip.xpath('.//PORT[@SIGNAME="{}" and @DIR="O"]'.format(signame))[0]
-		irqname = port.get('NAME')
 
-		if instance in ips:
-			irqs = ips[instance].setdefault('irqs', {})
-			irqs[irqname] = '{}:{}'.format(intc.get('INSTANCE'), irq)
+		instance = ip.get('INSTANCE')
+		vlnv = ip.get('VLNV')
+		modtype = ip.get('MODTYPE')
+
+		originators = []
+
+		# follow one level of OR gates merging interrupts (may be generalized later)
+		if modtype == 'util_vector_logic':
+			logic_op = ip.xpath('.//PARAMETER[@NAME="C_OPERATION"]')[0]
+			if logic_op.get('VALUE') == 'or':
+				# hardware interrupts sharing the same IRQ at the controller
+				ports = ip.xpath('.//PORT[@DIR="I"]')
+				for port in ports:
+					signame = port.get('SIGNAME')
+					ip = root.xpath('.//MODULE[.//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(signame))[0]
+					instance = ip.get('INSTANCE')
+					originators.append((instance, signame))
+		else:
+			# consider this instance as originator
+			originators.append((instance, signame))
+
+
+		for instance, signame in originators:
+			ip = root.xpath('.//MODULE[.//PORT[@SIGNAME="{}" and @DIR="O"]]'.format(signame))[0]
+			port = ip.xpath('.//PORT[@SIGNAME="{}" and @DIR="O"]'.format(signame))[0]
+			irqname = port.get('NAME')
+
+			if instance in ips:
+				irqs = ips[instance].setdefault('irqs', {})
+				irqs[irqname] = '{}:{}'.format(intc.get('INSTANCE'), irq)
 
 # Find BRAM storage depths (size)
 brams = root.xpath('.//MODULE[@MODTYPE="axi_bram_ctrl"]')

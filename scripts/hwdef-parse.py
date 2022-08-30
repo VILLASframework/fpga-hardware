@@ -31,17 +31,17 @@ whitelist = [
 	[ 'xilinx.com', 'ip', 'axis_switch' ],
 	[ 'xilinx.com', 'ip', 'axi_fifo_mm_s' ],
 	[ 'xilinx.com', 'ip', 'axi_dma' ],
+	[ 'xilinx.com', 'ip', 'aurora_8b10b' ],
+	[ 'xilinx.com', 'ip', 'axi_gpio' ],
+	[ 'xilinx.com', 'ip', 'axi_bram_ctrl' ],
+	[ 'xilinx.com', 'ip', 'axi_pcie' ],
+	[ 'xilinx.com', 'hls', 'rtds2gpu' ],
+	[ 'xilinx.com', 'hls', 'mem' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'user', 'axi_pcie_intc' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'user', 'rtds_axis' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'user', 'aurora_axis' ],
 	[ 'acs.eonerc.rwth-aachen.de', 'hls' ],
-	[ 'acs.eonerc.rwth-aachen.de', 'sysgen' ],
-	[ 'xilinx.com', 'ip', 'axi_gpio' ],
-	[ 'xilinx.com', 'ip', 'axi_bram_ctrl' ],
-	[ 'xilinx.com', 'ip', 'axis_data_fifo' ],
-	[ 'xilinx.com', 'ip', 'axi_pcie' ],
-	[ 'xilinx.com', 'hls', 'rtds2gpu' ],
-	[ 'xilinx.com', 'hls', 'mem' ]
+	[ 'acs.eonerc.rwth-aachen.de', 'sysgen' ]
 ]
 
 # List of VLNI ids of AXI4-Stream infrastructure IP cores which do not alter data
@@ -51,7 +51,8 @@ axi_converter_whitelist = [
 	[ 'xilinx.com', 'ip', 'axis_clock_converter' ],
 	[ 'xilinx.com', 'ip', 'axis_register_slice' ],
 	[ 'xilinx.com', 'ip', 'axis_dwidth_converter' ],
-	[ 'xilinx.com', 'ip', 'axis_register_slice' ]
+	[ 'xilinx.com', 'ip', 'axis_register_slice' ],
+	[ 'xilinx.com', 'ip', 'axis_data_fifo' ]
 ]
 
 opponent = {
@@ -60,12 +61,6 @@ opponent = {
 	'INITIATOR' : ('TARGET', 'SLAVE'),
 	'TARGET' : ('INITIATOR', 'MASTER')
 }
-
-def port_trace(root, signame, idx):
-	pass
-
-def port_find_driver(root, signame):
-	pass
 
 def bus_trace(root, busname, type, whitelist):
 	module = root.xpath('.//MODULE[.//BUSINTERFACE[@BUSNAME="{}" and (@TYPE="{}" or @TYPE="{}")]]'.format(busname, type[0], type[1]))
@@ -204,10 +199,8 @@ for busif in busifs:
 			'name': name
 		})
 
-
 # set number of master/slave port pairs for switch
 ips[switch.get('INSTANCE')]['num_ports'] = int(switch_ports / 2)
-
 
 # find interrupt assignments
 intc = root.find('.//MODULE[@MODTYPE="axi_pcie_intc"]')

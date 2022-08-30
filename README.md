@@ -7,8 +7,8 @@ This directory contains HDL projects for Virtex 5 (ML507) / Virtex 6 (ML605) bas
 - `xsg` Xilinx System Generator files
 - `ips`
   - `rtds_axis` An AXI4-Stream to RTDS_InterfaceModule interface
-  - `axi_pcie_intc`
-  - `pcie_msi_requester`
+  - `axi_pcie_intc` New PCI-MSI interrupt controller (embeds AXI interrupt controller)
+  - `pcie_msi_requester` Previous PCI-MSI interrupt controller
   - `hdl_multiply` An AXI4-Stream floating point multiplier implemented in VHDL
   - `hls_multiply` An AXI4-Stream floating point multiplier implemented in HLS
   - `hls_decimate` An AXI4-Stream decimation / downsampler

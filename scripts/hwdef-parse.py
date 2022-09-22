@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+from multiprocessing.sharedctypes import Value
 from lxml import etree
 import zipfile
 import sys
@@ -133,6 +134,22 @@ for module in modules:
 	ips[instance] = {
 		'vlnv' : vlnv
 	}
+
+	# populate parameters
+	params = module.find('.//PARAMETERS')
+	if params is not None:
+		p = ips[instance].setdefault('parameters', {})
+		
+		for param in params:
+			name = param.get('NAME').lower()
+			value = param.get('VALUE')
+
+			try:
+				value = int(value, 0)
+			except ValueError:
+				pass
+
+			p[name] = value
 
 	# populate memory view
 	mmap = module.find('.//MEMORYMAP')

@@ -1,7 +1,7 @@
 /** Testbench for dft() and idft()
  *
  * @author Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
- * @copyright 2015-2016, Steffen Vogel
+ * @copyright 2015-2022, Steffen Vogel
  *   This file is part of S2SS. All Rights Reserved. Proprietary and confidential.
  *   Unauthorized copying of this file, via any medium is strictly prohibited.
  **********************************************************************************/
@@ -30,7 +30,7 @@ int read_data(std::fstream &file, hls::stream<axis> &stream)
 
 		std::stringstream lineStream(line);
 
-		/* Fill input stream with data for one AXI Stream packet*/
+		// Fill input stream with data for one AXI Stream packet
 		while (lineStream >> value) {
 			axis d;
 
@@ -68,7 +68,7 @@ int write_data(std::fstream &file, hls::stream<axis> &stream)
 int main(int argc, char *argv[])
 {
 	hls::stream<axis> in, out;
-	
+
 	for (int i = 0; i < 100; i++) {
 		for (int j = 0; j < 5; j++) {
 			struct axis d = {

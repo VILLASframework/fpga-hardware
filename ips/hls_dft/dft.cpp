@@ -1,7 +1,7 @@
 /** Recursive dft() and idft()
  *
  * @author Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
- * @copyright 2015-2016, Steffen Vogel
+ * @copyright 2015-2022, Steffen Vogel
  *   This file is part of S2SS. All Rights Reserved. Proprietary and confidential.
  *   Unauthorized copying of this file, via any medium is strictly prohibited.
  **********************************************************************************/
@@ -14,7 +14,7 @@
 
 #include "dft.h"
 
-/* Single precision pi constant becuase M_PI is double! */
+// Single precision pi constant becuase M_PI is double!
 const float pi = 3.141592653589793238462643383279502884f;
 
 void hls_dft(stream<axis> &input, stream<axis> &output, float fharmonics[MAX_HARMONICS], ap_int<8> num_harmonics, ap_int<8> decimation) {
@@ -23,25 +23,25 @@ void hls_dft(stream<axis> &input, stream<axis> &output, float fharmonics[MAX_HAR
 	#pragma HLS STREAM depth=64 variable=input,output
 	#pragma HLS DATAFLOW
 
-	/** Previous coefficients for incremental update */
+	// Previous coefficients for incremental update
 	static complex<float> coeffs[MAX_HARMONICS];
 
-	/* Time */
+	// Time
 	static float t;
 	static ap_int<32> decimation_cnt;
 
-	/** Sliding window of samples */
+	// Sliding window of samples
 	static ap_shift_reg<float,NSAMPLES> windows[MAX_VALUES];
 
-	/** AXI Stream signals */
+	// AXI Stream signals
 	axis real, imag, refph;
 
 LOOP_VALUES:
 	for (int index = 0; index < MAX_VALUES; index++) {
-		/* Read real-valued time-domain data from AXI Stream interface */
+		// Read real-valued time-domain data from AXI Stream interface
 		axis in = input.read();
 
-		/* Shift and get data from SLR */
+		// Shift and get data from SLR
 		float newest = in.data;
 		float oldest = windows[index].shift(newest, NSAMPLES-1);
 
@@ -51,26 +51,26 @@ LOOP_HARMONICS:
 
 			float pi_fharm = 2.0f * pi * fharmonics[i];
 
-			/* Recursive update */
+			// Recursive update
 			coeffs[i] = polar<float>(1.0f, pi_fharm) * (coeffs[i] + (newest - oldest));
 
-			/* Correction for stationary phasor */
+			// Correction for stationary phasor
 			complex<float> correction = polar<float>(1.0f, pi_fharm * (t - (NSAMPLES + 1)));
 			complex<float> result = 2.0f / NSAMPLES * coeffs[i] / correction;
 
-			/* DC component */
+			// DC component
 			if (i == 0)
 				result /= 2.0f;
 
-			/* Update real part */
+			// Update real part
 			real.data = result.real();
 			real.last = 0;
 
-			/* Update imaginary part */
+			// Update imaginary part
 			imag.data = result.imag();
 			imag.last = 0;
 
-			/* Only every'th decimation_cnt'th sample will be sent via AXI4-Stream */
+			// Only every'th decimation_cnt'th sample will be sent via AXI4-Stream
 			if (decimation_cnt == 0) {
 				output.write(real);
 				output.write(imag);
@@ -78,14 +78,14 @@ LOOP_HARMONICS:
 		}
 
 		if (in.last)
-			break; /* start next packet */
+			break; // Start next packet
 	}
 
-	/* The decimation_cnt suppresses the output of results */
+	// The decimation_cnt suppresses the output of results
 	if (decimation_cnt == 0) {
 		decimation_cnt = decimation;
 
-		/* Last word on AXI-Stream bus is the reference phase */
+		// Last word on AXI-Stream bus is the reference phase
 		refph.data = t++;
 		refph.last = 1;
 		output.write(refph);
@@ -115,7 +115,7 @@ LOOP_VALUES:
 LOOP_HARMONICS:
 		for (int i = 0; i < num_harmonics; i++) {
 
-			/* Read complex-valued DFT coefficients from AXI Stream interface */
+			// Read complex-valued DFT coefficients from AXI Stream interface
 			input.read(real);
 			input.read(imag);
 
@@ -128,11 +128,11 @@ LOOP_HARMONICS:
 		out.data = value.real();
 		out.last = imag.last || real.last;
 
-		/** Write real-valued time-domain data to AXI Stream interface */
+		// Write real-valued time-domain data to AXI Stream interface
 		output.write(out);
 
 		if (imag.last == 1)
-			break; /* This was the last value for this sample. */
+			break; // This was the last value for this sample
 	}
 
 	t++;

@@ -1,5 +1,5 @@
 /* @author Steffen Vogel <svogel2@eonerc.rwth-aachen.de>
- * @copyright 2020, Institute for Automation of Complex Power Systems
+ * @copyright 2020-2022, Institute for Automation of Complex Power Systems, EONERC
  */
 
 `timescale 1ns / 1ps

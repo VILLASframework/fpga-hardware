@@ -1,7 +1,7 @@
 /** Testbench for dft() and idft()
  *
  * @author Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
- * @copyright 2015-2016, Steffen Vogel
+ * @copyright 2015-2022, Steffen Vogel
  *   This file is part of S2SS. All Rights Reserved. Proprietary and confidential.
  *   Unauthorized copying of this file, via any medium is strictly prohibited.
  **********************************************************************************/
@@ -28,7 +28,7 @@ int generate_test_data(fstream &file, map<int,complex<float> > &harmonics)
 	time_t tm = time(NULL);
 	file << "# Generated at " << ctime(&tm);
 
-	/* Generate input file / data */
+	// Generate input file / data
 	for (int i = 0; i < NUM_SAMPLES; i++) {
 		for (int j = 0; j < NUM_VALUES; j++) {
 			file << setprecision(12) << real(signal(i));
@@ -74,7 +74,7 @@ int read_data(fstream &file, hls::stream<axis> &stream)
 
 		stringstream lineStream(line);
 
-		/* Fill input stream with data for one AXI Stream packet*/
+		// Fill input stream with data for one AXI Stream packet
 		while (lineStream >> value) {
 			axis d;
 
@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
 
 	read_data(input, in);
 
-	/* Do forward transform */
+	// Do forward transform
 	while (!in.empty())
 		hls_dft(in, out_a, dft_harmonics, num_harmonics, 0);
 
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
 
 	read_data(coeffs, out_b);
 
-	/* Do reverse transform */
+	// Do reverse transform
 	while (!out_b.empty())
 		hls_idft(out_b, out_c, dft_harmonics, num_harmonics);
 

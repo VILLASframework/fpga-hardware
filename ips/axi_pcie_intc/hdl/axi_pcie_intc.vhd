@@ -1,6 +1,6 @@
 -- Wrapper around axi_intc to be used with pcie_axi Bridge
 --
--- Author: Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
+-- Author: Steffen Vogel <post@steffenvogel.de>
 -- Copyright: 2016, Steffen Vogel
 -- License: LGPLv2.1
 

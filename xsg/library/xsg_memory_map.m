@@ -5,7 +5,7 @@
 %
 % See: xsg.h & xsg.c for the code which parses this memory map
 %
-% Author: Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
+% Author: Steffen Vogel <post@steffenvogel.de>
 % Copyright: Steffen Vogel, 2015
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

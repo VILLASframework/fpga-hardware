@@ -2,7 +2,7 @@
 --
 -- Based on work from Sisou (OPAL-RT)
 --
--- @author Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
+-- @author Steffen Vogel <post@steffenvogel.de>
 -- @author Sisounthone Souvanlasy <sisou@opal-rt.com>
 --
 

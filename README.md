@@ -52,7 +52,7 @@ For other licensing options please consult [Prof. Antonello Monti](mailto:amonti
 
 [![EONERC ACS Logo](doc/pictures/eonerc_logo.png)](http://www.acs.eonerc.rwth-aachen.de)
 
- - Steffen Vogel <stvogel@eonerc.rwth-aachen.de>
+ - Steffen Vogel <post@steffenvogel.de>
  - Daniel Krebs <daniel.krebs1@eonerc.rwth-aachen.de>
  - Hatim Kanchwala <hatim@hatimak.me>
 

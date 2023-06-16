@@ -3,6 +3,7 @@
 Author:     Steffen Vogel <post@steffenvogel.de>
 Author:     Daniel Krebs <github@daniel-krebs.net>
 Author:     Hatim Kanchwala <hatim@hatimak.me>
+Author:		Pascal Bauer <pascal.bauer@rwth-aachen.de>
 Copyright:  2017-2022, Institute for Automation of Complex Power Systems, EONERC
 License:    GNU General Public License (version 3)
 
@@ -28,6 +29,7 @@ import re
 import json
 
 whitelist = [
+	[ 'xilinx.com', 'ip', 'zynq_ultra_ps_e' ],
 	[ 'xilinx.com', 'ip', 'axi_timer' ],
 	[ 'xilinx.com', 'ip', 'axis_switch' ],
 	[ 'xilinx.com', 'ip', 'axi_fifo_mm_s' ],
@@ -137,7 +139,7 @@ for module in modules:
 
 	# populate parameters
 	params = module.find('.//PARAMETERS')
-	if params is not None:
+	if params is not None and instance != "zynq_ultra_ps_e_0": #! Parameters of "zynq" ignored
 		p = ips[instance].setdefault('parameters', {})
 		
 		for param in params:
